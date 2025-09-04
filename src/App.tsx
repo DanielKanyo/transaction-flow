@@ -6,7 +6,7 @@ import Exchange from "./Components/Exchange/Exchange";
 import Header from "./Components/Header/Header";
 import Wallet from "./Components/Wallet/Wallet";
 
-const HEADER_HEIGHT = 60;
+const HEADER_HEIGHT = 70;
 const CONTENT_PADDING = 10;
 const GRID_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + CONTENT_PADDING}px)`;
 

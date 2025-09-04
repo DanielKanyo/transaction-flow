@@ -1,4 +1,4 @@
-export enum Unit {
+export enum Units {
     Bitcoin = "btc",
     Satoshi = "sats",
 }
