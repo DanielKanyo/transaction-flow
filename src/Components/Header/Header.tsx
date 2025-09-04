@@ -1,11 +1,11 @@
 import { Flex } from "@mantine/core";
-import { IconTransfer } from "@tabler/icons-react";
+import { IconTransactionBitcoin } from "@tabler/icons-react";
 
 function Header() {
     return (
         <Flex align="center" h="100%" lh={1}>
             <Flex align="center" gap="sm">
-                <IconTransfer />
+                <IconTransactionBitcoin />
                 Transaction Flow
             </Flex>
         </Flex>

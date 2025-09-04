@@ -2,7 +2,9 @@ import { AppShell, Grid, Paper } from "@mantine/core";
 import { useHeadroom } from "@mantine/hooks";
 
 import "./App.css";
+import Exchange from "./Components/Exchange/Exchange";
 import Header from "./Components/Header/Header";
+import Wallet from "./Components/Wallet/Wallet";
 
 const HEADER_HEIGHT = 60;
 const CONTENT_PADDING = 10;
@@ -20,9 +22,7 @@ export default function App() {
             <AppShell.Main px="xs" pb={0} pt={HEADER_HEIGHT + CONTENT_PADDING}>
                 <Grid gutter="xs" h={GRID_HEIGHT} classNames={{ inner: "grid-inner" }}>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
-                        <Paper shadow="xl" p="md" h="100%" withBorder>
-                            Column 1
-                        </Paper>
+                        <Exchange />
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
                         <Paper shadow="xl" p="md" h="100%" withBorder>
@@ -30,9 +30,7 @@ export default function App() {
                         </Paper>
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
-                        <Paper shadow="xl" p="md" h="100%" withBorder>
-                            Column 3
-                        </Paper>
+                        <Wallet />
                     </Grid.Col>
                 </Grid>
             </AppShell.Main>
