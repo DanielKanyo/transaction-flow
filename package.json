@@ -1,6 +1,5 @@
 {
-    "name": "vite-min-template",
-    "private": true,
+    "name": "transaction-flow",
     "version": "0.0.0",
     "type": "module",
     "scripts": {
