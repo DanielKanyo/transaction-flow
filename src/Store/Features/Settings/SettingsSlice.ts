@@ -1,11 +1,25 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { Languages } from "./language";
-import { Units } from "./unit";
+export const DEFAULT_NUMBER_OF_DIGITS = {
+    BTC: 4,
+    SAT: 0,
+};
+
+export enum Languages {
+    English = "en",
+    German = "de",
+    Spanish = "es",
+    Hungarian = "hu",
+}
+
+export enum Units {
+    Bitcoin = "btc",
+    Satoshi = "sat",
+}
 
 export type Settings = {
     unit: Units;
-    language: string;
+    language: Languages;
 };
 
 const initSettings: Settings = {
@@ -20,7 +34,7 @@ export const settingsSlice = createSlice({
         updateUnit: (state, action: PayloadAction<Units>) => {
             state.unit = action.payload;
         },
-        updateLanguage: (state, action: PayloadAction<string>) => {
+        updateLanguage: (state, action: PayloadAction<Languages>) => {
             state.language = action.payload;
         },
     },

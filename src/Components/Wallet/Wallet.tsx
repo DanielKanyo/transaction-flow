@@ -1,95 +1,120 @@
 import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 
-import { ActionIcon, Button, Card, Flex, HoverCard, Stack, Text } from "@mantine/core";
+import { Button, Card, Flex, HoverCard, Stack, Text } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } from "@tabler/icons-react";
 
-import { updateUnit } from "../../Store/Features/Settings/SettingsSlice";
-import { Units } from "../../Store/Features/Settings/unit";
+import { ADDRESSES } from "../../Store/Features/Ledger/LedgerSlice";
+import { DEFAULT_NUMBER_OF_DIGITS, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import ValueDisplay from "../ValueDisplay/ValueDisplay";
+import { btcToSat } from "../../Utils/btc-to-sat-converter";
+import SendModal from "../Modals/SendModal";
 
 function Wallet() {
+    const [opened, { open, close }] = useDisclosure(false);
     const { unit } = useAppSelector((state) => state.settings);
-    const { inWallet: value } = useAppSelector((state) => state.balance);
+    const { balanceInWallet: balance } = useAppSelector((state) => state.ledger);
+    const { walletUtxos } = useAppSelector((state) => state.ledger);
     const dispatch = useDispatch();
 
     const { displayedValue, numOfDig } = useMemo(() => {
-        if (!value) {
+        if (!balance) {
             return {
                 displayedValue: 0,
-                numOfDig: unit === Units.Bitcoin ? 2 : 0,
+                numOfDig: unit === Units.Bitcoin ? DEFAULT_NUMBER_OF_DIGITS.BTC : DEFAULT_NUMBER_OF_DIGITS.SAT,
             };
         }
 
         return {
-            displayedValue: unit === Units.Bitcoin ? value : value * 100_000_000,
-            numOfDig: unit === Units.Bitcoin ? 2 : 0,
+            displayedValue: unit === Units.Bitcoin ? balance : btcToSat(balance),
+            numOfDig: unit === Units.Bitcoin ? DEFAULT_NUMBER_OF_DIGITS.BTC : DEFAULT_NUMBER_OF_DIGITS.SAT,
         };
-    }, [value, unit]);
+    }, [balance, unit]);
 
     return (
-        <Flex direction="column" gap="xs" h="100%">
-            <Card shadow="sm" padding="md" radius="md" h="100%">
-                <Card shadow="sm" padding="md" radius="md" bg="teal" mb="sm" c={"white"}>
-                    <Flex justify="space-between" align="center">
-                        <Flex gap="sm" align="center">
-                            <IconWallet />
-                            Your Wallet
+        <>
+            <Flex direction="column" gap="xs" h="100%">
+                <Card shadow="sm" padding="md" radius="md" h="100%">
+                    <Card shadow="sm" padding="md" radius="md" bg="teal" mb="sm" c={"white"}>
+                        <Flex justify="space-between" align="center">
+                            <Flex gap="sm" align="center">
+                                <IconWallet />
+                                Your Wallet
+                            </Flex>
+                            <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
+                                <HoverCard.Target>
+                                    <IconInfoSquareRoundedFilled />
+                                </HoverCard.Target>
+                                <HoverCard.Dropdown>
+                                    <Stack align="stretch" justify="center" gap="xs">
+                                        <Text fw={600}>Wallet</Text>
+                                        <Text fz="sm">
+                                            A wallet is a tool that lets you store, send, and receive Bitcoin. Unlike an exchange, a wallet
+                                            gives <b>you control of the private keys</b> - which means you truly own your Bitcoin. Wallets
+                                            can be apps on your phone/computer (software wallets) or special devices (hardware wallets).
+                                            People say
+                                            <i> "Not your keys, not your Bitcoin"</i> because with a wallet, the keys are yours - and so is
+                                            your Bitcoin.
+                                        </Text>
+                                        <Text fz="sm">
+                                            Your Bitcoin itself is always on the blockchain, not inside your phone or device. The wallet
+                                            simply
+                                            <b> keeps your private key safe</b>. If you lose the wallet, you can restore access using your
+                                            private key (usually written as 12 or 24 recovery words).
+                                        </Text>
+                                    </Stack>
+                                    <Text></Text>
+                                </HoverCard.Dropdown>
+                            </HoverCard>
                         </Flex>
-                        <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
-                            <HoverCard.Target>
-                                <IconInfoSquareRoundedFilled />
-                            </HoverCard.Target>
-                            <HoverCard.Dropdown>
-                                <Stack align="stretch" justify="center" gap="xs">
-                                    <Text fw={600}>Wallet</Text>
-                                    <Text fz="sm">
-                                        A wallet is a tool that lets you store, send, and receive Bitcoin. Unlike an exchange, a wallet
-                                        gives <b>you control of the private keys</b> - which means you truly own your Bitcoin. Wallets can
-                                        be apps on your phone/computer (software wallets) or special devices (hardware wallets). People say
-                                        <i>"Not your keys, not your Bitcoin"</i> because with a wallet, the keys are yours - and so is your
-                                        Bitcoin.
-                                    </Text>
-                                    <Text fz="sm">
-                                        Your Bitcoin itself is always on the blockchain, not inside your phone or device. The wallet simply
-                                        keeps your private key safe. If you lose the wallet, you can restore access using your private key
-                                        (usually written as 12 or 24 recovery words).
-                                    </Text>
-                                </Stack>
-                                <Text></Text>
-                            </HoverCard.Dropdown>
-                        </HoverCard>
+                    </Card>
+                    <Flex my="xl" justify="center">
+                        <Button
+                            variant="transparent"
+                            color="gray"
+                            h="fit-content"
+                            fullWidth
+                            onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
+                        >
+                            <Stack gap={0}>
+                                <NumberFlow
+                                    className="balance"
+                                    value={displayedValue}
+                                    suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
+                                    style={{
+                                        fontSize: 66,
+                                        fontWeight: 100,
+                                    }}
+                                    format={{ minimumFractionDigits: numOfDig }}
+                                />
+                                <Text mt={-15} c="dimmed">
+                                    balance
+                                </Text>
+                            </Stack>
+                        </Button>
+                    </Flex>
+                    <Flex justify="center" gap="xs">
+                        <Button variant="light" color="gray" size="lg" radius="xl" leftSection={<IconArrowUp />} onClick={open}>
+                            Send
+                        </Button>
+                        <Button variant="light" color="gray" size="lg" radius="xl" leftSection={<IconArrowDown />}>
+                            Receive
+                        </Button>
                     </Flex>
                 </Card>
-                <Flex my="xl" justify="center">
-                    <Button
-                        variant="transparent"
-                        color="gray"
-                        h="fit-content"
-                        miw={430}
-                        onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
-                    >
-                        <ValueDisplay
-                            value={displayedValue}
-                            size={66}
-                            justify="center"
-                            label="balance"
-                            numOfDig={numOfDig}
-                            unit={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
-                        />
-                    </Button>
-                </Flex>
-                <Flex justify="center" gap="md">
-                    <ActionIcon variant="light" color="gray" size={64} aria-label="Receive" radius={64}>
-                        <IconArrowUp />
-                    </ActionIcon>
-                    <ActionIcon variant="light" color="gray" size={64} aria-label="Send" radius={64}>
-                        <IconArrowDown />
-                    </ActionIcon>
-                </Flex>
-            </Card>
-        </Flex>
+            </Flex>
+            <SendModal
+                title="Send Bitcoin from Wallet"
+                color="teal"
+                opened={opened}
+                senderAddress={ADDRESSES.WALLET_ADDRESS}
+                recipientAddress={ADDRESSES.EXCHANGE_ADDRESS}
+                utxos={walletUtxos}
+                close={close}
+            />
+        </>
     );
 }
 

@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import balanceReducer from "./Features/Balance/BalanceSlice";
+import ledgerReducer from "./Features/Ledger/LedgerSlice";
 import settingsReducer from "./Features/Settings/SettingsSlice";
 
 const store = configureStore({
     reducer: {
         settings: settingsReducer,
-        balance: balanceReducer,
+        ledger: ledgerReducer,
     },
 });
 
