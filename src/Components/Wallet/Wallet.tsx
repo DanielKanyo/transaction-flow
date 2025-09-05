@@ -1,21 +1,7 @@
 import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-    Badge,
-    Button,
-    Card,
-    Divider,
-    Flex,
-    Group,
-    HoverCard,
-    ScrollArea,
-    Stack,
-    Switch,
-    Text,
-    useMantineColorScheme,
-    useMantineTheme,
-} from "@mantine/core";
+import { Button, Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } from "@tabler/icons-react";
@@ -25,6 +11,7 @@ import { DEFAULT_NUMBER_OF_DIGITS, Units, updateUnit } from "../../Store/Feature
 import { useAppSelector } from "../../Store/hook";
 import { btcToSat } from "../../Utils/btc-to-sat-converter";
 import SendModal from "../Modals/SendModal";
+import UtxoList from "./UtxoList";
 
 function Wallet() {
     const [opened, { open, close }] = useDisclosure(false);
@@ -48,9 +35,6 @@ function Wallet() {
             numOfDig: unit === Units.Bitcoin ? DEFAULT_NUMBER_OF_DIGITS.BTC : DEFAULT_NUMBER_OF_DIGITS.SAT,
         };
     }, [balance, unit]);
-
-    const unspentUtxos = useMemo(() => walletUtxos.filter((utxo) => !utxo.spent), [walletUtxos]);
-    const spentUtxos = useMemo(() => walletUtxos.filter((utxo) => utxo.spent), [walletUtxos]);
 
     return (
         <>
@@ -112,7 +96,7 @@ function Wallet() {
                                         suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
                                         style={{
                                             fontSize: 66,
-                                            fontWeight: 100,
+                                            fontWeight: 400,
                                         }}
                                         format={{ minimumFractionDigits: numOfDig }}
                                     />
@@ -132,56 +116,7 @@ function Wallet() {
                         </Flex>
                     </Flex>
 
-                    <Flex align="center" justify="space-between" m="xs">
-                        <Flex align="center" gap="xs">
-                            <IconInfoSquareRoundedFilled />
-                            <Text c="dimmed" mt={2}>
-                                Your UTXOs
-                            </Text>
-                        </Flex>
-                        <Group gap={6}>
-                            <Badge variant="light" color="gray">
-                                {spentUtxos.length}
-                            </Badge>
-                            <Badge color="teal">{unspentUtxos.length}</Badge>
-                            <Switch defaultChecked color="teal" withThumbIndicator={false} />
-                        </Group>
-                    </Flex>
-
-                    <Card
-                        h="50%"
-                        radius="md"
-                        bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7]}
-                        py={0}
-                        pe={0}
-                        ps="xs"
-                    >
-                        <ScrollArea h="100%" scrollbarSize={6}>
-                            <Stack gap="xs" my="xs" me="xs">
-                                {walletUtxos.length === 0 ? (
-                                    <Text size="sm" c="dimmed">
-                                        No UTXOs available
-                                    </Text>
-                                ) : (
-                                    walletUtxos.map((utxo) => (
-                                        <Card key={`${utxo.txid}-${utxo.index}`} shadow="xs" padding="sm" radius="md">
-                                            <Group justify="space-between">
-                                                <Text size="sm">
-                                                    Amount: <strong>{utxo.amount} BTC</strong>
-                                                </Text>
-                                                <Badge color={utxo.spent ? "red" : "teal"} variant="light">
-                                                    {utxo.spent ? "Spent" : "Unspent"}
-                                                </Badge>
-                                            </Group>
-                                            <Text size="xs" mt={4} c="dimmed">
-                                                TXID: {utxo.txid.slice(0, 10)}... Index: {utxo.index}
-                                            </Text>
-                                        </Card>
-                                    ))
-                                )}
-                            </Stack>
-                        </ScrollArea>
-                    </Card>
+                    <UtxoList walletUtxos={walletUtxos} />
                 </Card>
             </Flex>
             <SendModal

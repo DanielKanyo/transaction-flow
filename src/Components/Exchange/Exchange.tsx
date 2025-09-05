@@ -92,7 +92,7 @@ function Exchange() {
                                         suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
                                         style={{
                                             fontSize: 66,
-                                            fontWeight: 100,
+                                            fontWeight: 400,
                                         }}
                                         format={{ minimumFractionDigits: numOfDig }}
                                     />
