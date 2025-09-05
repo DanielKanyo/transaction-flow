@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Modal, TextInput, NumberInput, Button, Group, Text, Stack } from "@mantine/core";
+import { IconArrowUp } from "@tabler/icons-react";
 
 import { ADDRESSES, createTransaction, DEFAULT_FEE, UTXO } from "../../Store/Features/Ledger/LedgerSlice";
 import { buildTransaction } from "../../Utils/transaction-builder";
@@ -74,6 +75,7 @@ function SendModal({ title, opened, senderAddress, recipientAddress, utxos, colo
                         if (isValid) send(dummyRecipentAddress, amount as number, DEFAULT_FEE);
                     }}
                     disabled={!isValid}
+                    leftSection={<IconArrowUp size={20} />}
                 >
                     Send
                 </Button>

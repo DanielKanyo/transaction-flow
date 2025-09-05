@@ -1,4 +1,6 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
     Card,
@@ -35,8 +37,10 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
     const { colorScheme } = useMantineColorScheme();
     const theme = useMantineTheme();
 
-    const formatAmount = (amount: number) => (unit === Units.Bitcoin ? amount.toFixed(DEFAULT_NUMBER_OF_DIGITS.BTC) : btcToSat(amount));
-
+    const formatAmount = useCallback(
+        (amount: number) => (unit === Units.Bitcoin ? amount.toFixed(DEFAULT_NUMBER_OF_DIGITS.BTC) : btcToSat(amount)),
+        [unit]
+    );
     const formatUnit = unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi;
 
     const unspentUtxos = useMemo(() => walletUtxos.filter((utxo) => !utxo.spent), [walletUtxos]);
@@ -109,21 +113,32 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                 <Text c="dimmed">No UTXOs available...</Text>
                             </Center>
                         ) : (
-                            displayedUtxos.map(({ txid, index, amount, spent }) => (
-                                <Card key={`${txid}-${index}`} shadow="xs" p="md" radius="md">
-                                    <Group justify="space-between" align="center">
-                                        <Group gap={6} align="baseline">
-                                            <Text size="lg" lh={1} fw={500}>
-                                                <NumberFormatter value={formatAmount(amount)} thousandSeparator />
-                                            </Text>
-                                            <Text lh={1} size="sm" c="dimmed">
-                                                {formatUnit}
-                                            </Text>
-                                        </Group>
-                                        <Badge color={spent ? "red" : "teal"}>{spent ? "Spent" : "Unspent"}</Badge>
-                                    </Group>
-                                </Card>
-                            ))
+                            <AnimatePresence mode="popLayout">
+                                {displayedUtxos.map(({ txid, index, amount, spent }) => (
+                                    <motion.div
+                                        key={`${txid}-${index}`}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        transition={{ duration: 0.25 }}
+                                        layout
+                                    >
+                                        <Card shadow="xs" p="md" radius="md">
+                                            <Group justify="space-between" align="center">
+                                                <Group gap={6} align="baseline">
+                                                    <Text size="lg" lh={1}>
+                                                        <NumberFormatter value={formatAmount(amount)} thousandSeparator />
+                                                    </Text>
+                                                    <Text lh={1} size="sm" c="dimmed">
+                                                        {formatUnit}
+                                                    </Text>
+                                                </Group>
+                                                <Badge color={spent ? "red" : "teal"}>{spent ? "Spent" : "Unspent"}</Badge>
+                                            </Group>
+                                        </Card>
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
                         )}
                     </Stack>
                 </ScrollArea>
