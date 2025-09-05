@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 
-import { ActionIcon, Flex, Group, Menu, Text, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
-import { IconCheck, IconLanguage, IconMoon, IconSun, IconTransactionBitcoin } from "@tabler/icons-react";
+import { ActionIcon, Button, Flex, Group, Menu, Text, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import { IconCheck, IconLanguage, IconMoon, IconReload, IconSun, IconTransactionBitcoin } from "@tabler/icons-react";
 
+import { resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
 import { Languages, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 
@@ -58,6 +59,15 @@ function Header() {
                 >
                     {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
                 </ActionIcon>
+                <Button
+                    color="red"
+                    aria-label="Reset"
+                    radius="md"
+                    leftSection={<IconReload size={20} />}
+                    onClick={() => dispatch(resetLedger())}
+                >
+                    Reset
+                </Button>
             </Group>
         </Flex>
     );

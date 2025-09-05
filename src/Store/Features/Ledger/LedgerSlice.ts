@@ -97,10 +97,9 @@ export const ledgerSlice = createSlice({
             // Add transaction to history
             state.transactions.push(tx);
         },
-
-        resetState: () => initialState,
+        resetLedger: () => initialState,
     },
 });
 
-export const { createTransaction, resetState } = ledgerSlice.actions;
+export const { createTransaction, resetLedger } = ledgerSlice.actions;
 export default ledgerSlice.reducer;
