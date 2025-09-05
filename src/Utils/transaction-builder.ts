@@ -17,8 +17,6 @@ export function buildTransaction({
 }): Transaction | null {
     const availableUTXOs = utxos.filter((u) => !u.spent && u.address === senderAddress);
 
-    console.log(utxos, senderAddress);
-
     let selectedUTXOs: UTXO[] = [];
     let totalSelected = 0;
 
