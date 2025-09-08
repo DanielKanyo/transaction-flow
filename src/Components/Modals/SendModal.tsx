@@ -114,36 +114,38 @@ function SendModal({ title, opened, senderAddress, recipientAddress, utxos, colo
                     }
                 />
 
-                {isValid ? (
-                    <Alert variant="light" color="orange" radius="md" title="Important Reminder" icon={<IconAlertSquareRoundedFilled />}>
-                        Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin
-                        will go to the wrong place - and once sent, transactions cannot be reversed.
-                    </Alert>
-                ) : null}
+                <Divider />
+
+                <Group justify="space-between" align="center">
+                    <Group gap="xs" c="dimmed">
+                        <IconInfoSquareRoundedFilled size={16} />
+                        <Text fz={14}>
+                            Transaction Fee
+                        </Text>
+                    </Group>
+                    <Text fz={14}>{DEFAULT_FEE} BTC</Text>
+                </Group>
+
+                <Alert variant="light" color="yellow" radius="md" title="Important Reminder" icon={<IconAlertSquareRoundedFilled />}>
+                    Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin
+                    will go to the wrong place - and once sent, transactions cannot be reversed.
+                </Alert>
             </Stack>
 
-            <Group justify="space-between" mt="xl" align="center">
-                <Stack gap={3}>
-                    <Text lh={1}>{DEFAULT_FEE} BTC</Text>
-                    <Text fz={13} c="dimmed">
-                        Transaction Fee
-                    </Text>
-                </Stack>
-                <Group gap="xs">
-                    <Button variant="light" color="gray" onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    <Button
-                        color={color}
-                        onClick={() => {
-                            if (isValid) send(dummyRecipentAddress, amount as number, DEFAULT_FEE);
-                        }}
-                        disabled={!isValid}
-                        leftSection={<IconArrowUp size={20} />}
-                    >
-                        Send
-                    </Button>
-                </Group>
+            <Group gap="xs" mt="xl" justify="flex-end">
+                <Button variant="light" color="gray" onClick={handleClose}>
+                    Cancel
+                </Button>
+                <Button
+                    color={color}
+                    onClick={() => {
+                        if (isValid) send(dummyRecipentAddress, amount as number, DEFAULT_FEE);
+                    }}
+                    disabled={!isValid}
+                    leftSection={<IconArrowUp size={20} />}
+                >
+                    Send
+                </Button>
             </Group>
         </Modal>
     );
