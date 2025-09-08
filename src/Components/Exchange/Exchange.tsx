@@ -7,9 +7,9 @@ import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconExchange, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { selectLatestExchangeAddress } from "../../Store/Features/Ledger/LedgerSlice";
-import { DEFAULT_NUMBER_OF_DIGITS, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
+import { Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import { btcToSat } from "../../Utils/btc-to-sat-converter";
+import { determineDisplayedValueAndNumOfDigits } from "../../Utils/number-of-digits";
 import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
 
@@ -25,29 +25,13 @@ function Exchange() {
     const dispatch = useDispatch();
 
     const { displayedValue, numOfDig } = useMemo(() => {
-        if (!balance) {
-            return {
-                displayedValue: 0,
-                numOfDig: unit === Units.Bitcoin ? DEFAULT_NUMBER_OF_DIGITS.BTC : DEFAULT_NUMBER_OF_DIGITS.SAT,
-            };
-        }
-
-        return {
-            displayedValue: unit === Units.Bitcoin ? balance : btcToSat(balance),
-            numOfDig: unit === Units.Bitcoin ? DEFAULT_NUMBER_OF_DIGITS.BTC : 0,
-        };
+        return determineDisplayedValueAndNumOfDigits(balance, unit);
     }, [balance, unit]);
 
     return (
         <>
             <Flex direction="column" gap="xs" h="100%">
-                <Card
-                    shadow="sm"
-                    padding="md"
-                    radius="md"
-                    h="100%"
-                    bg={colorScheme === "light" ? theme.colors.gray[0] : theme.colors.dark[6]}
-                >
+                <Card shadow="sm" padding="md" radius="md" h="100%">
                     <Flex h="50%" direction="column" justify="space-between" pb={84}>
                         <Card shadow="sm" padding="md" radius="md" bg="blue" c="white">
                             <Flex justify="space-between" align="center">

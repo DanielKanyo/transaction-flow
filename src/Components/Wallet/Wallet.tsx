@@ -1,18 +1,18 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button, Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import { Button, Card, Divider, Flex, HoverCard, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } from "@tabler/icons-react";
 
 import { selectLatestWalletAddress } from "../../Store/Features/Ledger/LedgerSlice";
-import { DEFAULT_NUMBER_OF_DIGITS, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
+import { Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import { btcToSat } from "../../Utils/btc-to-sat-converter";
+import { determineDisplayedValueAndNumOfDigits } from "../../Utils/number-of-digits";
 import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
-import UtxoList from "./UtxoList";
+import UtxoList from "../UtxoList/UtxoList";
 
 function Wallet() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
@@ -21,34 +21,16 @@ function Wallet() {
     const { balanceInWallet: balance, walletAddresses } = useAppSelector((state) => state.ledger);
     const latestAddress = useSelector(selectLatestWalletAddress);
     const { walletUtxos } = useAppSelector((state) => state.ledger);
-    const { colorScheme } = useMantineColorScheme();
-    const theme = useMantineTheme();
     const dispatch = useDispatch();
 
     const { displayedValue, numOfDig } = useMemo(() => {
-        if (!balance) {
-            return {
-                displayedValue: 0,
-                numOfDig: unit === Units.Bitcoin ? DEFAULT_NUMBER_OF_DIGITS.BTC : DEFAULT_NUMBER_OF_DIGITS.SAT,
-            };
-        }
-
-        return {
-            displayedValue: unit === Units.Bitcoin ? balance : btcToSat(balance),
-            numOfDig: unit === Units.Bitcoin ? DEFAULT_NUMBER_OF_DIGITS.BTC : DEFAULT_NUMBER_OF_DIGITS.SAT,
-        };
+        return determineDisplayedValueAndNumOfDigits(balance, unit);
     }, [balance, unit]);
 
     return (
         <>
             <Flex direction="column" gap="xs" h="100%">
-                <Card
-                    shadow="sm"
-                    padding="md"
-                    radius="md"
-                    h="100%"
-                    bg={colorScheme === "light" ? theme.colors.gray[0] : theme.colors.dark[6]}
-                >
+                <Card shadow="sm" padding="md" radius="md" h="100%">
                     <Flex h="50%" direction="column" justify="space-between" pb={84}>
                         <Card shadow="sm" padding="md" radius="md" bg="teal" c="white">
                             <Flex justify="space-between" align="center">

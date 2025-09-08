@@ -4,12 +4,7 @@ import { generateDummyBTCAddress } from "../../../Utils/address";
 
 const INITIAL_BTC_AMOUNT = 1;
 
-export const DEFAULT_FEE = 0.0001;
-
-export enum ADDRESSES {
-    EXCHANGE_ADDRESS = "exchange_address_1",
-    WALLET_ADDRESS = "wallet_address_1",
-}
+export const DEFAULT_FEE = 0.000001;
 
 export type UTXO = {
     txid: string;

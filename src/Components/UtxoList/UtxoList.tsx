@@ -66,7 +66,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                 </Text>
                                 <Divider />
                                 <Text fz="sm">
-                                    The number of UTXOs matters for the transaction fee — more UTXOs usually mean a higher fee, even if the
+                                    The number of UTXOs matters for the transaction fee - more UTXOs usually mean a higher fee, even if the
                                     total amount is the same. That's why it can sometimes make sense to consolidate your UTXOs (combine
                                     smaller ones into a bigger one) when fees are low.
                                 </Text>
@@ -111,7 +111,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                             </Center>
                         ) : (
                             <AnimatePresence mode="popLayout">
-                                {displayedUtxos.map(({ txid, index, amount, spent }) => (
+                                {displayedUtxos.map(({ txid, index, amount, spent, address }) => (
                                     <motion.div
                                         key={`${txid}-${index}`}
                                         initial={{ opacity: 0, y: 10 }}
@@ -132,6 +132,9 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                                 </Group>
                                                 <Badge color={spent ? "red" : "teal"}>{spent ? "Spent" : "Unspent"}</Badge>
                                             </Group>
+                                            <Text size="xs" c="dimmed" mt={4} style={{ wordBreak: "break-all" }}>
+                                                {address}
+                                            </Text>
                                         </Card>
                                     </motion.div>
                                 ))}

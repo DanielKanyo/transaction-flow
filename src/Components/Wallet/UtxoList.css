@@ -1,5 +1,0 @@
-.amount-at-utxo::part(suffix) {
-    margin-left: 6px;
-    font-size: 16px;
-    color: var(--mantine-color-dimmed);
-}

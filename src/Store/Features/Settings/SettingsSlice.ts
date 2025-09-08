@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export const DEFAULT_NUMBER_OF_DIGITS = {
-    BTC: 4,
+    BTC: 6,
     SAT: 0,
 };
 
