@@ -4,18 +4,18 @@ import { UTXO, Transaction } from "../Store/Features/Ledger/LedgerSlice";
 
 export function buildTransaction({
     utxos,
-    senderAddress,
+    senderAddresses,
     recipientAddress,
     amountToSend,
     fee,
 }: {
     utxos: UTXO[];
-    senderAddress: string;
+    senderAddresses: string[];
     recipientAddress: string;
     amountToSend: number;
     fee: number;
 }): Transaction | null {
-    const availableUTXOs = utxos.filter((u) => !u.spent && u.address === senderAddress);
+    const availableUTXOs = utxos.filter((u) => !u.spent);
 
     let selectedUTXOs: UTXO[] = [];
     let totalSelected = 0;
@@ -42,7 +42,7 @@ export function buildTransaction({
 
     if (change > 0) {
         outputs.push({
-            address: senderAddress,
+            address: senderAddresses[senderAddresses.length - 1],
             amount: change,
         });
     }

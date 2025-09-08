@@ -1,22 +1,25 @@
 import { useMemo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button, Card, Divider, Flex, HoverCard, ScrollArea, Stack, Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconExchange, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
-import { ADDRESSES } from "../../Store/Features/Ledger/LedgerSlice";
+import { selectLatestExchangeAddress } from "../../Store/Features/Ledger/LedgerSlice";
 import { DEFAULT_NUMBER_OF_DIGITS, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import { btcToSat } from "../../Utils/btc-to-sat-converter";
+import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
 
 function Exchange() {
-    const [opened, { open, close }] = useDisclosure(false);
+    const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
+    const [receiveModalOpened, { open: openReceiveModal, close: closeReceiveModal }] = useDisclosure(false);
     const { unit } = useAppSelector((state) => state.settings);
-    const { balanceOnExchange: balance } = useAppSelector((state) => state.ledger);
+    const { balanceOnExchange: balance, exchangeAddresses } = useAppSelector((state) => state.ledger);
     const { exhangeUtxos } = useAppSelector((state) => state.ledger);
+    const latestAddress = useSelector(selectLatestExchangeAddress);
     const { colorScheme } = useMantineColorScheme();
     const theme = useMantineTheme();
     const dispatch = useDispatch();
@@ -103,10 +106,24 @@ function Exchange() {
                             </Button>
                         </Flex>
                         <Flex justify="center" gap="xs">
-                            <Button variant="light" color="gray" size="lg" radius="xl" leftSection={<IconArrowUp />} onClick={open}>
+                            <Button
+                                variant="light"
+                                color="gray"
+                                size="lg"
+                                radius="xl"
+                                leftSection={<IconArrowUp />}
+                                onClick={openSendModal}
+                            >
                                 Send
                             </Button>
-                            <Button variant="light" color="gray" size="lg" radius="xl" leftSection={<IconArrowDown />}>
+                            <Button
+                                variant="light"
+                                color="gray"
+                                size="lg"
+                                radius="xl"
+                                leftSection={<IconArrowDown />}
+                                onClick={openReceiveModal}
+                            >
                                 Receive
                             </Button>
                         </Flex>
@@ -121,11 +138,17 @@ function Exchange() {
             <SendModal
                 title="Send Bitcoin from Exchange"
                 color="blue"
-                opened={opened}
-                senderAddress={ADDRESSES.EXCHANGE_ADDRESS}
-                recipientAddress={ADDRESSES.WALLET_ADDRESS}
+                opened={sendModalOpened}
+                senderAddresses={exchangeAddresses}
                 utxos={exhangeUtxos}
-                close={close}
+                close={closeSendModal}
+            />
+            <ReceiveModal
+                title="Receive Bitcoin to Exchange"
+                color="teal"
+                latestAddress={latestAddress}
+                opened={receiveModalOpened}
+                close={closeReceiveModal}
             />
         </>
     );

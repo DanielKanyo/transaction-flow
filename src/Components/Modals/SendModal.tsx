@@ -4,39 +4,44 @@ import { useDispatch } from "react-redux";
 import { Modal, TextInput, NumberInput, Button, Group, Text, Stack, HoverCard, Divider, ActionIcon, Alert } from "@mantine/core";
 import { IconAlertSquareRoundedFilled, IconArrowUp, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
-import { ADDRESSES, createTransaction, DEFAULT_FEE, UTXO } from "../../Store/Features/Ledger/LedgerSlice";
+import {
+    createTransaction,
+    DEFAULT_FEE,
+    generateNewExchangeAddress,
+    generateNewWalletAddress,
+    UTXO,
+} from "../../Store/Features/Ledger/LedgerSlice";
 import { buildTransaction } from "../../Utils/transaction-builder";
 
 type SendModalProps = {
     title: string;
     opened: boolean;
-    senderAddress: ADDRESSES;
-    recipientAddress: ADDRESSES;
+    senderAddresses: string[];
     utxos: UTXO[];
     color: string;
     close: () => void;
 };
 
-function SendModal({ title, opened, senderAddress, recipientAddress, utxos, color, close }: SendModalProps) {
-    const [dummyRecipentAddress, setDummyRecipentAddress] = useState("");
+function SendModal({ title, opened, senderAddresses, utxos, color, close }: SendModalProps) {
+    const [recipentAddress, setRecipentAddress] = useState("");
     const [amount, setAmount] = useState<string | number>("");
     const dispatch = useDispatch();
 
     const totalBalance = useMemo(() => {
-        return utxos.filter((utxo) => !utxo.spent && utxo.address === senderAddress).reduce((sum, utxo) => sum + utxo.amount, 0);
-    }, [utxos, senderAddress]);
+        return utxos.filter((utxo) => !utxo.spent).reduce((sum, utxo) => sum + utxo.amount, 0);
+    }, [utxos]);
 
     const handleClose = useCallback(() => {
-        setDummyRecipentAddress("");
+        setRecipentAddress("");
         setAmount("");
         close();
     }, [close]);
 
     const send = useCallback(
-        (_recipient: string, amount: number, fee: number) => {
+        (recipientAddress: string, amount: number, fee: number) => {
             const tx = buildTransaction({
                 utxos,
-                senderAddress,
+                senderAddresses,
                 recipientAddress,
                 amountToSend: amount,
                 fee,
@@ -44,14 +49,16 @@ function SendModal({ title, opened, senderAddress, recipientAddress, utxos, colo
 
             if (tx) {
                 dispatch(createTransaction(tx));
+                dispatch(generateNewWalletAddress());
+                dispatch(generateNewExchangeAddress());
 
                 handleClose();
             }
         },
-        [utxos, senderAddress, recipientAddress, dispatch, handleClose]
+        [utxos, senderAddresses, dispatch, handleClose]
     );
 
-    const isValid = dummyRecipentAddress.length > 0 && typeof amount === "number" && amount > 0 && amount + DEFAULT_FEE <= totalBalance;
+    const isValid = recipentAddress.length > 0 && typeof amount === "number" && amount > 0 && amount + DEFAULT_FEE <= totalBalance;
 
     const addressInfo = (
         <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
@@ -81,9 +88,9 @@ function SendModal({ title, opened, senderAddress, recipientAddress, utxos, colo
                 <TextInput
                     variant="filled"
                     label="Recipient Address"
-                    placeholder="Paste wallet address"
-                    value={dummyRecipentAddress}
-                    onChange={(e) => setDummyRecipentAddress(e.currentTarget.value)}
+                    placeholder="Paste address"
+                    value={recipentAddress}
+                    onChange={(e) => setRecipentAddress(e.currentTarget.value)}
                     radius="md"
                     required
                     rightSection={addressInfo}
@@ -114,21 +121,16 @@ function SendModal({ title, opened, senderAddress, recipientAddress, utxos, colo
                     }
                 />
 
-                <Divider />
-
-                <Group justify="space-between" align="center">
-                    <Group gap="xs" c="dimmed">
-                        <IconInfoSquareRoundedFilled size={16} />
-                        <Text fz={14}>
-                            Transaction Fee
-                        </Text>
-                    </Group>
+                <Group justify="flex-end" align="center">
+                    <Text fz={14} c="dimmed">
+                        Transaction Fee:
+                    </Text>
                     <Text fz={14}>{DEFAULT_FEE} BTC</Text>
                 </Group>
 
                 <Alert variant="light" color="yellow" radius="md" title="Important Reminder" icon={<IconAlertSquareRoundedFilled />}>
-                    Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin
-                    will go to the wrong place - and once sent, transactions cannot be reversed.
+                    Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin will
+                    go to the wrong place - and once sent, transactions cannot be reversed.
                 </Alert>
             </Stack>
 
@@ -139,7 +141,7 @@ function SendModal({ title, opened, senderAddress, recipientAddress, utxos, colo
                 <Button
                     color={color}
                     onClick={() => {
-                        if (isValid) send(dummyRecipentAddress, amount as number, DEFAULT_FEE);
+                        if (isValid) send(recipentAddress, amount as number, DEFAULT_FEE);
                     }}
                     disabled={!isValid}
                     leftSection={<IconArrowUp size={20} />}

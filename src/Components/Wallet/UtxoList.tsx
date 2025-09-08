@@ -70,17 +70,14 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                     total amount is the same. That's why it can sometimes make sense to consolidate your UTXOs (combine
                                     smaller ones into a bigger one) when fees are low.
                                 </Text>
-                                <Group>
-                                    <Button
-                                        fullWidth
-                                        size="xs"
-                                        component="a"
-                                        href="https://en.wikipedia.org/wiki/Unspent_transaction_output"
-                                        target="_blank"
-                                    >
-                                        Learn more
-                                    </Button>
-                                </Group>
+                                <Button
+                                    fullWidth
+                                    component="a"
+                                    href="https://en.wikipedia.org/wiki/Unspent_transaction_output"
+                                    target="_blank"
+                                >
+                                    Learn more
+                                </Button>
                             </Stack>
                         </HoverCard.Dropdown>
                     </HoverCard>

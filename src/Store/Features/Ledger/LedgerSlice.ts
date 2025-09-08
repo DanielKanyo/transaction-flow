@@ -1,5 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+import { generateDummyBTCAddress } from "../../../Utils/address";
+
 const INITIAL_BTC_AMOUNT = 1;
 
 export const DEFAULT_FEE = 0.0001;
@@ -29,6 +31,8 @@ export type Transaction = {
 };
 
 export type LedgerState = {
+    exchangeAddresses: string[];
+    walletAddresses: string[];
     balanceOnExchange: number;
     exhangeUtxos: UTXO[];
     balanceInWallet: number;
@@ -36,21 +40,30 @@ export type LedgerState = {
     transactions: Transaction[];
 };
 
-const initialState: LedgerState = {
-    balanceOnExchange: INITIAL_BTC_AMOUNT,
-    exhangeUtxos: [
-        {
-            txid: "genesis_exchange_tx",
-            index: 0,
-            amount: INITIAL_BTC_AMOUNT,
-            address: ADDRESSES.EXCHANGE_ADDRESS,
-            spent: false,
-        },
-    ],
-    balanceInWallet: 0,
-    walletUtxos: [],
-    transactions: [],
+const createInitialLedgerState = (): LedgerState => {
+    const exchangeAddr = generateDummyBTCAddress("3");
+    const walletAddr = generateDummyBTCAddress("bc1q");
+
+    return {
+        exchangeAddresses: [exchangeAddr],
+        walletAddresses: [walletAddr],
+        balanceOnExchange: INITIAL_BTC_AMOUNT,
+        exhangeUtxos: [
+            {
+                txid: "genesis_exchange_tx",
+                index: 0,
+                amount: INITIAL_BTC_AMOUNT,
+                address: exchangeAddr, // set properly
+                spent: false,
+            },
+        ],
+        balanceInWallet: 0,
+        walletUtxos: [],
+        transactions: [],
+    };
 };
+
+const initialState = createInitialLedgerState();
 
 export const ledgerSlice = createSlice({
     name: "ledger",
@@ -59,24 +72,27 @@ export const ledgerSlice = createSlice({
         createTransaction: (state, action: PayloadAction<Transaction>) => {
             const tx = action.payload;
 
-            // Mark inputs as spent and deduct from balances
+            // Mark inputs as spent and deduct balances
             tx.inputs.forEach((input) => {
-                const isWallet = input.address === ADDRESSES.WALLET_ADDRESS;
+                const isWallet = state.walletAddresses.includes(input.address);
+                const isExchange = state.exchangeAddresses.includes(input.address);
                 const utxoList = isWallet ? state.walletUtxos : state.exhangeUtxos;
 
                 const utxo = utxoList.find((u) => u.txid === input.txid && u.index === input.index);
+
                 if (utxo) utxo.spent = true;
 
                 if (isWallet) {
                     state.balanceInWallet -= input.amount;
-                } else {
+                } else if (isExchange) {
                     state.balanceOnExchange -= input.amount;
                 }
             });
 
-            // Add outputs as new UTXOs and update balances
+            // Add outputs
             tx.outputs.forEach((output, index) => {
-                const isWallet = output.address === ADDRESSES.WALLET_ADDRESS;
+                const isWallet = state.walletAddresses.includes(output.address);
+                const isExchange = state.exchangeAddresses.includes(output.address);
                 const utxoList = isWallet ? state.walletUtxos : state.exhangeUtxos;
 
                 utxoList.push({
@@ -89,17 +105,41 @@ export const ledgerSlice = createSlice({
 
                 if (isWallet) {
                     state.balanceInWallet += output.amount;
-                } else {
+                } else if (isExchange) {
                     state.balanceOnExchange += output.amount;
                 }
             });
 
-            // Add transaction to history
             state.transactions.push(tx);
         },
-        resetLedger: () => initialState,
+
+        generateNewWalletAddress: (state) => {
+            const newAddr = generateDummyBTCAddress("bc1q");
+
+            state.walletAddresses.push(newAddr);
+        },
+
+        generateNewExchangeAddress: (state) => {
+            const newAddr = generateDummyBTCAddress("3"); // P2SH-like
+
+            state.exchangeAddresses.push(newAddr);
+        },
+
+        resetLedger: () => createInitialLedgerState(),
     },
 });
 
-export const { createTransaction, resetLedger } = ledgerSlice.actions;
+export const selectLatestWalletAddress = (state: { ledger: LedgerState }) => {
+    const { walletAddresses } = state.ledger;
+
+    return walletAddresses[walletAddresses.length - 1];
+};
+
+export const selectLatestExchangeAddress = (state: { ledger: LedgerState }) => {
+    const { exchangeAddresses } = state.ledger;
+
+    return exchangeAddresses[exchangeAddresses.length - 1];
+};
+
+export const { createTransaction, generateNewWalletAddress, generateNewExchangeAddress, resetLedger } = ledgerSlice.actions;
 export default ledgerSlice.reducer;
