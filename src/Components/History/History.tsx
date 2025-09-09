@@ -4,7 +4,7 @@ import { Card, Text, Stack, ScrollArea, Flex, useMantineTheme, useMantineColorSc
 import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { useAppSelector } from "../../Store/hook";
-import TranscationItem from "./TransactionItem";
+import TransactionItem from "./TransactionItem";
 
 function History() {
     const { transactions } = useAppSelector((state) => state.ledger);
@@ -40,7 +40,7 @@ function History() {
                                         transition={{ duration: 0.25 }}
                                         layout
                                     >
-                                        <TranscationItem tx={tx} />
+                                        <TransactionItem tx={tx} />
                                     </motion.div>
                                 ))}
                             </AnimatePresence>

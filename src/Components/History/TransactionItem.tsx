@@ -2,11 +2,11 @@ import { Card, Divider, Stack, Text } from "@mantine/core";
 
 import { Transaction } from "../../Store/Features/Ledger/LedgerSlice";
 
-interface TranscationItemProps {
+interface TransactionItemProps {
     tx: Transaction;
 }
 
-function TranscationItem({ tx }: TranscationItemProps) {
+function TransactionItem({ tx }: TransactionItemProps) {
     return (
         <Card shadow="xs" padding="sm" radius="md">
             {/* TODO */}
@@ -44,4 +44,4 @@ function TranscationItem({ tx }: TranscationItemProps) {
     );
 }
 
-export default TranscationItem;
+export default TransactionItem;
