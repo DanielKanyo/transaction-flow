@@ -43,7 +43,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
     );
 
     return (
-        <Modal opened={opened} onClose={handleClose} title={title} centered size={480}>
+        <Modal opened={opened} onClose={handleClose} title={title} centered size={480} radius="md">
             <Stack gap="lg">
                 <TextInput
                     variant="filled"
@@ -56,7 +56,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                         <CopyButton value={latestAddress || ""} timeout={2000}>
                             {({ copied, copy }) => (
                                 <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="top">
-                                    <ActionIcon color={copied ? color : "gray"} variant="subtle" onClick={copy}>
+                                    <ActionIcon color={copied ? color : "gray"} variant="subtle" onClick={copy} radius="md">
                                         {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
                                     </ActionIcon>
                                 </Tooltip>
@@ -78,7 +78,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
             </Stack>
 
             <Group gap="xs" mt="xl" justify="flex-end">
-                <Button variant="light" color="gray" onClick={handleClose}>
+                <Button variant="light" color="gray" onClick={handleClose} radius="md">
                     Cancel
                 </Button>
             </Group>

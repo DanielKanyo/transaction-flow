@@ -3,7 +3,7 @@ import { IconCategory2, IconInfoSquareRoundedFilled } from "@tabler/icons-react"
 
 function MemoryPool() {
     return (
-        <Card shadow="sm" padding="md" radius="md" h="80%">
+        <Card shadow="sm" padding="md" radius="md" h="100%">
             <Card shadow="sm" padding="sm" radius="md" bg="dark" c="white" mb="sm" mih={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center">

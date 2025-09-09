@@ -1,4 +1,6 @@
-import { AppShell, Flex, Grid } from "@mantine/core";
+import { AnimatePresence, motion } from "framer-motion";
+
+import { AppShell, Box, Flex, Grid } from "@mantine/core";
 import { useHeadroom } from "@mantine/hooks";
 
 import "./App.css";
@@ -30,14 +32,37 @@ export default function App() {
                         <Exchange />
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
-                        <Flex direction="column" gap="xs" h="100%">
+                        <Flex direction="column" h="100%">
                             <History />
-                            {advancedMode ? (
-                                <>
-                                    <MemoryPool />
-                                    <Chain />
-                                </>
-                            ) : null}
+                            <AnimatePresence>
+                                {advancedMode && (
+                                    <>
+                                        <motion.div
+                                            key="mempool"
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "100%", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.35, type: "spring", bounce: 0 }}
+                                        >
+                                            <Box h="100%" pt="xs">
+                                                <MemoryPool />
+                                            </Box>
+                                        </motion.div>
+
+                                        <motion.div
+                                            key="chain"
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "100%", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.35, type: "spring", bounce: 0, delay: 0.1 }}
+                                        >
+                                            <Box h="100%" pt="xs">
+                                                <Chain />
+                                            </Box>
+                                        </motion.div>
+                                    </>
+                                )}
+                            </AnimatePresence>
                         </Flex>
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">

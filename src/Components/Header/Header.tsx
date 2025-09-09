@@ -1,29 +1,18 @@
 import { useDispatch } from "react-redux";
 
-import {
-    ActionIcon,
-    Button,
-    Flex,
-    Group,
-    Menu,
-    Modal,
-    Stack,
-    Switch,
-    Text,
-    useComputedColorScheme,
-    useMantineColorScheme,
-} from "@mantine/core";
+import { ActionIcon, Button, Flex, Group, Menu, Text, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconCheck, IconLanguage, IconMoon, IconReload, IconSettings, IconSun, IconTransactionBitcoin } from "@tabler/icons-react";
 
 import { resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
-import { Languages, updateAdvancedMode, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
+import { Languages, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import SettingsModal from "./SettingsModal";
 
 function Header() {
     const { setColorScheme } = useMantineColorScheme({ keepTransitions: true });
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
-    const { language, advancedMode } = useAppSelector((state) => state.settings);
+    const { language } = useAppSelector((state) => state.settings);
     const [settingsModalOpened, { open: openSetingsModal, close: closeSetingsModal }] = useDisclosure(false);
     const dispatch = useDispatch();
 
@@ -96,21 +85,7 @@ function Header() {
                 </Group>
             </Flex>
 
-            <Modal opened={settingsModalOpened} onClose={closeSetingsModal} title="Settings">
-                <Stack>
-                    <Group justify="flex-end">
-                        <Switch
-                            checked={advancedMode}
-                            onChange={(event) => dispatch(updateAdvancedMode(event.currentTarget.checked))}
-                            color="teal"
-                            withThumbIndicator={false}
-                            label="Advanced Mode"
-                            labelPosition="left"
-                            size="md"
-                        />
-                    </Group>
-                </Stack>
-            </Modal>
+            <SettingsModal opened={settingsModalOpened} close={closeSetingsModal} />
         </>
     );
 }

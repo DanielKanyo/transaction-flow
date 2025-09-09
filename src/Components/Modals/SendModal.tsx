@@ -83,7 +83,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
     );
 
     return (
-        <Modal opened={opened} onClose={handleClose} title={title} centered size={480}>
+        <Modal opened={opened} onClose={handleClose} title={title} centered size={480} radius="md">
             <Stack gap="lg">
                 <TextInput
                     variant="filled"
@@ -135,7 +135,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
             </Stack>
 
             <Group gap="xs" mt="xl" justify="flex-end">
-                <Button variant="light" color="gray" onClick={handleClose}>
+                <Button variant="light" color="gray" onClick={handleClose} radius="md">
                     Cancel
                 </Button>
                 <Button
@@ -145,6 +145,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
                     }}
                     disabled={!isValid}
                     leftSection={<IconArrowUp size={20} />}
+                    radius="md"
                 >
                     Send
                 </Button>
