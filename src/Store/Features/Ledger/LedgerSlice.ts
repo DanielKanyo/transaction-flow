@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { generateDummyBTCAddress } from "../../../Utils/address";
 
 const INITIAL_BTC_AMOUNT = 1;
+const DUST_THRESHOLD = 0.00000546; // ~546 satoshis
 
 export const DEFAULT_FEE = 0.000001;
 
@@ -74,7 +75,6 @@ export const ledgerSlice = createSlice({
                 const utxoList = isWallet ? state.walletUtxos : state.exhangeUtxos;
 
                 const utxo = utxoList.find((u) => u.txid === input.txid && u.index === input.index);
-
                 if (utxo) utxo.spent = true;
 
                 if (isWallet) {
@@ -84,8 +84,12 @@ export const ledgerSlice = createSlice({
                 }
             });
 
-            // Add outputs
+            // Add outputs (only if above dust threshold)
             tx.outputs.forEach((output, index) => {
+                if (output.amount < DUST_THRESHOLD) {
+                    return;
+                }
+
                 const isWallet = state.walletAddresses.includes(output.address);
                 const isExchange = state.exchangeAddresses.includes(output.address);
                 const utxoList = isWallet ? state.walletUtxos : state.exhangeUtxos;
