@@ -20,11 +20,13 @@ export enum Units {
 export type Settings = {
     unit: Units;
     language: Languages;
+    advancedMode: boolean;
 };
 
 const initSettings: Settings = {
     unit: Units.Bitcoin,
     language: Languages.English,
+    advancedMode: false,
 };
 
 export const settingsSlice = createSlice({
@@ -37,8 +39,11 @@ export const settingsSlice = createSlice({
         updateLanguage: (state, action: PayloadAction<Languages>) => {
             state.language = action.payload;
         },
+        updateAdvancedMode: (state, action: PayloadAction<boolean>) => {
+            state.advancedMode = action.payload;
+        },
     },
 });
 
-export const { updateUnit, updateLanguage } = settingsSlice.actions;
+export const { updateUnit, updateLanguage, updateAdvancedMode } = settingsSlice.actions;
 export default settingsSlice.reducer;

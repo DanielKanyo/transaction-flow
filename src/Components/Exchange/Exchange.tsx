@@ -62,7 +62,7 @@ function Exchange() {
                                 </HoverCard>
                             </Flex>
                         </Card>
-                        <Flex direction="column" justify="center" align="center" h="100%" gap="xl" pb={84}>
+                        <Flex direction="column" justify="center" align="center" h="100%" gap={41} pb={84}>
                             <Button
                                 variant="transparent"
                                 color="gray"

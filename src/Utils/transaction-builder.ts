@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { UTXO, Transaction } from "../Store/Features/Ledger/LedgerSlice";
+import { UTXO, Transaction, DUST_THRESHOLD } from "../Store/Features/Ledger/LedgerSlice";
+import { btcToSat } from "./btc-to-sat-converter";
 
 export function buildTransaction({
     utxos,
@@ -40,7 +41,7 @@ export function buildTransaction({
         },
     ];
 
-    if (change > 0) {
+    if (btcToSat(change) > DUST_THRESHOLD) {
         outputs.push({
             address: senderAddresses[senderAddresses.length - 1],
             amount: change,

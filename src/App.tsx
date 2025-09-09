@@ -6,14 +6,16 @@ import Chain from "./Components/Chain/Chain";
 import Exchange from "./Components/Exchange/Exchange";
 import Header from "./Components/Header/Header";
 import History from "./Components/History/History";
-import Mempool from "./Components/Mempool/Mempool";
+import MemoryPool from "./Components/MemoryPool/MemoryPool";
 import Wallet from "./Components/Wallet/Wallet";
+import { useAppSelector } from "./Store/hook";
 
 const HEADER_HEIGHT = 70;
 const CONTENT_PADDING = 10;
 const GRID_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + CONTENT_PADDING}px)`;
 
 export default function App() {
+    const { advancedMode } = useAppSelector((state) => state.settings);
     const pinned = useHeadroom({ fixedAt: 120 });
 
     return (
@@ -30,8 +32,12 @@ export default function App() {
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
                         <Flex direction="column" gap="xs" h="100%">
                             <History />
-                            <Mempool />
-                            <Chain />
+                            {advancedMode ? (
+                                <>
+                                    <MemoryPool />
+                                    <Chain />
+                                </>
+                            ) : null}
                         </Flex>
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">

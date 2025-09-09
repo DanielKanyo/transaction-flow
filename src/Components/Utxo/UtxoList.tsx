@@ -45,7 +45,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
         <>
             <Flex align="center" justify="space-between" m="xs">
                 <Flex align="center" gap="xs">
-                    <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="right">
+                    <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-start">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled />
                         </HoverCard.Target>
