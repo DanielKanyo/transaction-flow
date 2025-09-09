@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button, Card, Divider, Flex, HoverCard, ScrollArea, Stack, Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import { Button, Card, Divider, Flex, HoverCard, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconExchange, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
@@ -9,7 +9,7 @@ import { IconArrowDown, IconArrowUp, IconExchange, IconInfoSquareRoundedFilled }
 import { selectLatestExchangeAddress } from "../../Store/Features/Ledger/LedgerSlice";
 import { Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import { determineDisplayedValueAndNumOfDigits } from "../../Utils/number-of-digits";
+import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
 import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
 
@@ -20,21 +20,19 @@ function Exchange() {
     const { balanceOnExchange: balance, exchangeAddresses } = useAppSelector((state) => state.ledger);
     const { exhangeUtxos } = useAppSelector((state) => state.ledger);
     const latestAddress = useSelector(selectLatestExchangeAddress);
-    const { colorScheme } = useMantineColorScheme();
-    const theme = useMantineTheme();
     const dispatch = useDispatch();
 
-    const { displayedValue, numOfDig } = useMemo(() => {
-        return determineDisplayedValueAndNumOfDigits(balance, unit);
+    const { displayedValue, numOfDecimals } = useMemo(() => {
+        return determineDisplayedValueAndNumOfDecimals(balance, unit);
     }, [balance, unit]);
 
     return (
         <>
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding="md" radius="md" h="100%">
-                    <Flex h="50%" direction="column" justify="space-between" pb={84}>
-                        <Card shadow="sm" padding="md" radius="md" bg="blue" c="white">
-                            <Flex justify="space-between" align="center">
+                    <Flex h="100%" direction="column">
+                        <Card shadow="sm" padding="sm" radius="md" bg="blue" c="white" mih={50}>
+                            <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center">
                                     <IconExchange />
                                     Exchange
@@ -64,7 +62,7 @@ function Exchange() {
                                 </HoverCard>
                             </Flex>
                         </Card>
-                        <Flex justify="center">
+                        <Flex direction="column" justify="center" align="center" h="100%" gap="xl" pb={84}>
                             <Button
                                 variant="transparent"
                                 color="gray"
@@ -81,42 +79,37 @@ function Exchange() {
                                             fontSize: 66,
                                             fontWeight: 400,
                                         }}
-                                        format={{ maximumFractionDigits: numOfDig }}
+                                        format={{ maximumFractionDigits: numOfDecimals }}
                                     />
                                     <Text mt={-15} c="dimmed">
                                         balance
                                     </Text>
                                 </Stack>
                             </Button>
-                        </Flex>
-                        <Flex justify="center" gap="xs">
-                            <Button
-                                variant="light"
-                                color="gray"
-                                size="lg"
-                                radius="xl"
-                                leftSection={<IconArrowUp />}
-                                onClick={openSendModal}
-                            >
-                                Send
-                            </Button>
-                            <Button
-                                variant="light"
-                                color="gray"
-                                size="lg"
-                                radius="xl"
-                                leftSection={<IconArrowDown />}
-                                onClick={openReceiveModal}
-                            >
-                                Receive
-                            </Button>
+                            <Flex justify="center" gap="xs">
+                                <Button
+                                    variant="light"
+                                    color="gray"
+                                    size="lg"
+                                    radius="xl"
+                                    leftSection={<IconArrowUp />}
+                                    onClick={openSendModal}
+                                >
+                                    Send
+                                </Button>
+                                <Button
+                                    variant="light"
+                                    color="gray"
+                                    size="lg"
+                                    radius="xl"
+                                    leftSection={<IconArrowDown />}
+                                    onClick={openReceiveModal}
+                                >
+                                    Receive
+                                </Button>
+                            </Flex>
                         </Flex>
                     </Flex>
-
-                    <Card h="50%" radius="md" bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7]}>
-                        <Text>Transaction History</Text>
-                        <ScrollArea h="100%"></ScrollArea>
-                    </Card>
                 </Card>
             </Flex>
             <SendModal

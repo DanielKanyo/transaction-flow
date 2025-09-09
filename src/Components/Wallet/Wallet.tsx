@@ -9,10 +9,10 @@ import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } f
 import { selectLatestWalletAddress } from "../../Store/Features/Ledger/LedgerSlice";
 import { Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import { determineDisplayedValueAndNumOfDigits } from "../../Utils/number-of-digits";
+import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
 import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
-import UtxoList from "../UtxoList/UtxoList";
+import UtxoList from "../Utxo/UtxoList";
 
 function Wallet() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
@@ -23,8 +23,8 @@ function Wallet() {
     const { walletUtxos } = useAppSelector((state) => state.ledger);
     const dispatch = useDispatch();
 
-    const { displayedValue, numOfDig } = useMemo(() => {
-        return determineDisplayedValueAndNumOfDigits(balance, unit);
+    const { displayedValue, numOfDecimals } = useMemo(() => {
+        return determineDisplayedValueAndNumOfDecimals(balance, unit);
     }, [balance, unit]);
 
     return (
@@ -32,8 +32,8 @@ function Wallet() {
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding="md" radius="md" h="100%">
                     <Flex h="50%" direction="column" justify="space-between" pb={84}>
-                        <Card shadow="sm" padding="md" radius="md" bg="teal" c="white">
-                            <Flex justify="space-between" align="center">
+                        <Card shadow="sm" padding="sm" radius="md" bg="teal" c="white" mih={50}>
+                            <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center">
                                     <IconWallet />
                                     Your Wallet
@@ -83,7 +83,7 @@ function Wallet() {
                                             fontSize: 66,
                                             fontWeight: 400,
                                         }}
-                                        format={{ maximumFractionDigits: numOfDig }}
+                                        format={{ maximumFractionDigits: numOfDecimals }}
                                     />
                                     <Text mt={-15} c="dimmed">
                                         balance

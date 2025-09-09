@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -7,7 +7,6 @@ import {
     ScrollArea,
     Stack,
     Group,
-    NumberFormatter,
     Badge,
     Text,
     useMantineColorScheme,
@@ -23,9 +22,9 @@ import {
 import { IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { UTXO } from "../../Store/Features/Ledger/LedgerSlice";
-import { Units, DEFAULT_NUMBER_OF_DIGITS } from "../../Store/Features/Settings/SettingsSlice";
+import { Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import { btcToSat } from "../../Utils/btc-to-sat-converter";
+import UtxoItem from "./UtxoItem";
 
 interface UtxoListProps {
     walletUtxos: UTXO[];
@@ -34,18 +33,12 @@ interface UtxoListProps {
 function UtxoList({ walletUtxos }: UtxoListProps) {
     const { unit } = useAppSelector((state) => state.settings);
     const [unspentChecked, setUnspentChecked] = useState<boolean>(true);
-    const { colorScheme } = useMantineColorScheme();
+    const formatedUnit = unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi;
     const theme = useMantineTheme();
-
-    const formatAmount = useCallback(
-        (amount: number) => (unit === Units.Bitcoin ? amount.toFixed(DEFAULT_NUMBER_OF_DIGITS.BTC) : btcToSat(amount)),
-        [unit]
-    );
-    const formatUnit = unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi;
+    const { colorScheme } = useMantineColorScheme();
 
     const unspentUtxos = useMemo(() => walletUtxos.filter((utxo) => !utxo.spent), [walletUtxos]);
     const spentUtxos = useMemo(() => walletUtxos.filter((utxo) => utxo.spent), [walletUtxos]);
-
     const displayedUtxos = useMemo(() => (unspentChecked ? unspentUtxos : walletUtxos), [unspentChecked, unspentUtxos, walletUtxos]);
 
     return (
@@ -120,22 +113,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                         transition={{ duration: 0.25 }}
                                         layout
                                     >
-                                        <Card shadow="xs" p="md" radius="md">
-                                            <Group justify="space-between" align="center">
-                                                <Group gap={6} align="baseline">
-                                                    <Text size="lg" lh={1}>
-                                                        <NumberFormatter value={formatAmount(amount)} thousandSeparator />
-                                                    </Text>
-                                                    <Text lh={1} size="sm" c="dimmed">
-                                                        {formatUnit}
-                                                    </Text>
-                                                </Group>
-                                                <Badge color={spent ? "red" : "teal"}>{spent ? "Spent" : "Unspent"}</Badge>
-                                            </Group>
-                                            <Text size="xs" c="dimmed" mt={4} style={{ wordBreak: "break-all" }}>
-                                                {address}
-                                            </Text>
-                                        </Card>
+                                        <UtxoItem amount={amount} spent={spent} address={address} formatedUnit={formatedUnit} unit={unit} />
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
