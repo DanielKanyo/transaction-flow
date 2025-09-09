@@ -12,7 +12,7 @@ function History() {
     const { colorScheme } = useMantineColorScheme();
 
     return (
-        <Card shadow="sm" padding="md" radius="md" h="100%">
+        <Card shadow="sm" padding="md" radius="md" h="110%">
             <Card shadow="sm" padding="sm" radius="md" bg="gray" c="white" mb="sm" mih={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center">
