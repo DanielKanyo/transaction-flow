@@ -83,7 +83,7 @@ function Wallet() {
                                             fontSize: 66,
                                             fontWeight: 400,
                                         }}
-                                        format={{ minimumFractionDigits: numOfDig }}
+                                        format={{ maximumFractionDigits: numOfDig }}
                                     />
                                     <Text mt={-15} c="dimmed">
                                         balance
