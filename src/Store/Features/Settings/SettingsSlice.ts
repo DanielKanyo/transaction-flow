@@ -26,12 +26,14 @@ export type Settings = {
     unit: Units;
     language: Languages;
     advancedMode: boolean;
+    spentUtxosHidden: boolean;
 };
 
 const initSettings: Settings = {
     unit: Units.Bitcoin,
     language: Languages.English,
     advancedMode: false,
+    spentUtxosHidden: true,
 };
 
 export const settingsSlice = createSlice({
@@ -47,8 +49,11 @@ export const settingsSlice = createSlice({
         updateAdvancedMode: (state, action: PayloadAction<boolean>) => {
             state.advancedMode = action.payload;
         },
+        toggleSpentUtxos: (state, action: PayloadAction<boolean>) => {
+            state.spentUtxosHidden = action.payload;
+        },
     },
 });
 
-export const { updateUnit, updateLanguage, updateAdvancedMode } = settingsSlice.actions;
+export const { updateUnit, updateLanguage, updateAdvancedMode, toggleSpentUtxos } = settingsSlice.actions;
 export default settingsSlice.reducer;

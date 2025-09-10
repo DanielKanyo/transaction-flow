@@ -14,7 +14,7 @@ import {
     List,
     Code,
 } from "@mantine/core";
-import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
+import { IconChevronRight, IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { useAppSelector } from "../../Store/hook";
 import TransactionItem from "./TransactionItem";
@@ -24,9 +24,11 @@ function History() {
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
 
+    const arrow = <IconChevronRight size={14} />;
+
     return (
         <Card shadow="sm" padding="md" radius="md" h="110%">
-            <Card shadow="sm" padding="sm" radius="md" bg="dark" c="white" mb="sm" mih={50}>
+            <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center">
                         <IconHistory />
@@ -66,7 +68,9 @@ function History() {
                                 <Divider />
                                 <Text fw={600}>How a Transaction Flows</Text>
                                 <Code color="dark" block>
-                                    Wallet or Exchange ➝ Mempool ➝ Miner ➝ New Block ➝ Blockchain
+                                    <Flex align="center">
+                                        Wallet or Exchange {arrow} Mempool {arrow} Miner {arrow} New Block {arrow} Blockchain
+                                    </Flex>
                                 </Code>
                             </Stack>
                         </HoverCard.Dropdown>

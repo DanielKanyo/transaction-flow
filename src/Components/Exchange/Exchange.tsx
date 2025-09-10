@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { motion } from "framer-motion";
+
 import { Button, Card, Divider, Flex, HoverCard, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
@@ -62,52 +64,63 @@ function Exchange() {
                                 </HoverCard>
                             </Flex>
                         </Card>
-                        <Flex direction="column" justify="center" align="center" h="100%" gap={41} pb={84}>
-                            <Button
-                                variant="transparent"
-                                color="gray"
-                                h="fit-content"
-                                fullWidth
-                                onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
+                        <Flex direction="column" justify="center" align="center" h="100%" pb={84}>
+                            <motion.div
+                                key="balance"
+                                layout
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.25 }}
+                                style={{ overflow: "hidden", width: "100%" }}
                             >
-                                <Stack gap={0}>
-                                    <NumberFlow
-                                        className="balance"
-                                        value={displayedValue}
-                                        suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
-                                        style={{
-                                            fontSize: 66,
-                                            fontWeight: 400,
-                                        }}
-                                        format={{ maximumFractionDigits: numOfDecimals }}
-                                    />
-                                    <Text mt={-15} c="dimmed">
-                                        balance
-                                    </Text>
-                                </Stack>
-                            </Button>
-                            <Flex justify="center" gap="xs">
                                 <Button
-                                    variant="light"
+                                    variant="transparent"
                                     color="gray"
-                                    size="lg"
-                                    radius="xl"
-                                    leftSection={<IconArrowUp />}
-                                    onClick={openSendModal}
+                                    h="fit-content"
+                                    fullWidth
+                                    mb={41}
+                                    onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
                                 >
-                                    Send
+                                    <Stack gap={0}>
+                                        <NumberFlow
+                                            className="balance"
+                                            value={displayedValue}
+                                            suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
+                                            style={{
+                                                fontSize: 66,
+                                                fontWeight: 400,
+                                            }}
+                                            format={{ maximumFractionDigits: numOfDecimals }}
+                                        />
+                                        <Text mt={-15} c="dimmed">
+                                            balance
+                                        </Text>
+                                    </Stack>
                                 </Button>
-                                <Button
-                                    variant="light"
-                                    color="gray"
-                                    size="lg"
-                                    radius="xl"
-                                    leftSection={<IconArrowDown />}
-                                    onClick={openReceiveModal}
-                                >
-                                    Receive
-                                </Button>
-                            </Flex>
+                                <Flex justify="center" gap="xs">
+                                    <Button
+                                        variant="light"
+                                        color="gray"
+                                        size="lg"
+                                        radius="xl"
+                                        leftSection={<IconArrowUp />}
+                                        onClick={openSendModal}
+                                    >
+                                        Send
+                                    </Button>
+                                    <Button
+                                        variant="light"
+                                        color="gray"
+                                        size="lg"
+                                        radius="xl"
+                                        leftSection={<IconArrowDown />}
+                                        onClick={openReceiveModal}
+                                    >
+                                        Receive
+                                    </Button>
+                                </Flex>
+                            </motion.div>
                         </Flex>
                     </Flex>
                 </Card>

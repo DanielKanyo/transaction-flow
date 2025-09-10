@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useDispatch } from "react-redux";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -22,29 +23,32 @@ import {
 import { IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { UTXO } from "../../Store/Features/Ledger/LedgerSlice";
-import { Units } from "../../Store/Features/Settings/SettingsSlice";
+import { Units, toggleSpentUtxos } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import UtxoItem from "./UtxoItem";
+
+const UTXO_TITLE_MARGIN = 10;
+const UTXO_TITLE_CONTENT_HEIGHT = 25;
 
 interface UtxoListProps {
     walletUtxos: UTXO[];
 }
 
 function UtxoList({ walletUtxos }: UtxoListProps) {
-    const { unit } = useAppSelector((state) => state.settings);
-    const [unspentChecked, setUnspentChecked] = useState<boolean>(true);
+    const { unit, spentUtxosHidden } = useAppSelector((state) => state.settings);
     const formatedUnit = unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi;
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
+    const dispatch = useDispatch();
 
     const unspentUtxos = useMemo(() => walletUtxos.filter((utxo) => !utxo.spent), [walletUtxos]);
     const spentUtxos = useMemo(() => walletUtxos.filter((utxo) => utxo.spent), [walletUtxos]);
-    const displayedUtxos = useMemo(() => (unspentChecked ? unspentUtxos : walletUtxos), [unspentChecked, unspentUtxos, walletUtxos]);
+    const displayedUtxos = useMemo(() => (spentUtxosHidden ? unspentUtxos : walletUtxos), [spentUtxosHidden, unspentUtxos, walletUtxos]);
 
     return (
         <>
-            <Flex align="center" justify="space-between" m="xs">
-                <Flex align="center" gap="xs">
+            <Flex align="center" justify="space-between" m={UTXO_TITLE_MARGIN}>
+                <Flex align="center" gap="xs" h={UTXO_TITLE_CONTENT_HEIGHT}>
                     <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-start">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled />
@@ -83,20 +87,24 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                     <Tooltip label={`You have currently ${unspentUtxos.length} UTXO(s) in your wallet`} withArrow>
                         <Badge color="teal">{unspentUtxos.length}</Badge>
                     </Tooltip>
-                    <Tooltip label="Show/hide spent UTXOs as well" withArrow position="top">
-                        <div>
-                            <Switch
-                                checked={unspentChecked}
-                                onChange={(event) => setUnspentChecked(event.currentTarget.checked)}
-                                color="teal"
-                                withThumbIndicator={false}
-                            />
-                        </div>
+                    <Tooltip label={spentUtxosHidden ? "Show spent UTXOs" : "Hide spent UTXOs"} withArrow position="top" refProp="rootRef">
+                        <Switch
+                            checked={spentUtxosHidden}
+                            onChange={(event) => dispatch(toggleSpentUtxos(event.currentTarget.checked))}
+                            color="teal"
+                            withThumbIndicator={false}
+                        />
                     </Tooltip>
                 </Group>
             </Flex>
-            <Card h="50%" radius="md" bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7]} p={0} pl="xs">
-                <ScrollArea h="100%" scrollbarSize={6}>
+            <Card
+                h={`calc(100% - ${UTXO_TITLE_MARGIN * 2 + UTXO_TITLE_CONTENT_HEIGHT}px`}
+                radius="md"
+                bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7]}
+                p={0}
+                pl="xs"
+            >
+                <ScrollArea scrollbarSize={6}>
                     <Stack gap="xs" my="xs" me="xs">
                         {walletUtxos.length === 0 ? (
                             <Center p="xs">

@@ -28,8 +28,8 @@ function Header() {
             <Flex align="center" justify="space-between" h="100%" lh={1}>
                 <Flex align="center" gap="sm">
                     <IconTransactionBitcoin size={24} />
-                    <Text fw={600} fz="md">
-                        TX Simulator
+                    <Text fw={600} fz="xl" fs="italic">
+                        TX FLOW
                     </Text>
                 </Flex>
 

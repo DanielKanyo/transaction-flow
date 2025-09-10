@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 import { Button, Card, Divider, Flex, HoverCard, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
@@ -17,7 +19,7 @@ import UtxoList from "../Utxo/UtxoList";
 function Wallet() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
     const [receiveModalOpened, { open: openReceiveModal, close: closeReceiveModal }] = useDisclosure(false);
-    const { unit } = useAppSelector((state) => state.settings);
+    const { unit, advancedMode } = useAppSelector((state) => state.settings);
     const { balanceInWallet: balance, walletAddresses } = useAppSelector((state) => state.ledger);
     const latestAddress = useSelector(selectLatestWalletAddress);
     const { walletUtxos } = useAppSelector((state) => state.ledger);
@@ -31,7 +33,7 @@ function Wallet() {
         <>
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding="md" radius="md" h="100%">
-                    <Flex h="50%" direction="column" justify="space-between" pb={84}>
+                    <Flex h="100%" direction="column">
                         <Card shadow="sm" padding="sm" radius="md" bg="teal" c="white" mih={50}>
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center">
@@ -66,56 +68,81 @@ function Wallet() {
                                 </HoverCard>
                             </Flex>
                         </Card>
-                        <Flex justify="center">
-                            <Button
-                                variant="transparent"
-                                color="gray"
-                                h="fit-content"
-                                fullWidth
-                                onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
+                        <Flex direction="column" justify="center" align="center" h="100%" pb={84}>
+                            <motion.div
+                                key="balance"
+                                layout
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.25 }}
+                                style={{ overflow: "hidden", width: "100%" }}
                             >
-                                <Stack gap={0}>
-                                    <NumberFlow
-                                        className="balance"
-                                        value={displayedValue}
-                                        suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
-                                        style={{
-                                            fontSize: 66,
-                                            fontWeight: 400,
-                                        }}
-                                        format={{ maximumFractionDigits: numOfDecimals }}
-                                    />
-                                    <Text mt={-15} c="dimmed">
-                                        balance
-                                    </Text>
-                                </Stack>
-                            </Button>
-                        </Flex>
-                        <Flex justify="center" gap="xs">
-                            <Button
-                                variant="light"
-                                color="gray"
-                                size="lg"
-                                radius="xl"
-                                leftSection={<IconArrowUp />}
-                                onClick={openSendModal}
-                            >
-                                Send
-                            </Button>
-                            <Button
-                                variant="light"
-                                color="gray"
-                                size="lg"
-                                radius="xl"
-                                leftSection={<IconArrowDown />}
-                                onClick={openReceiveModal}
-                            >
-                                Receive
-                            </Button>
+                                <Button
+                                    variant="transparent"
+                                    color="gray"
+                                    h="fit-content"
+                                    fullWidth
+                                    onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
+                                    mb={41}
+                                >
+                                    <Stack gap={0}>
+                                        <NumberFlow
+                                            className="balance"
+                                            value={displayedValue}
+                                            suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
+                                            style={{
+                                                fontSize: 66,
+                                                fontWeight: 400,
+                                            }}
+                                            format={{ maximumFractionDigits: numOfDecimals }}
+                                        />
+                                        <Text mt={-15} c="dimmed">
+                                            balance
+                                        </Text>
+                                    </Stack>
+                                </Button>
+                                <Flex justify="center" gap="xs">
+                                    <Button
+                                        variant="light"
+                                        color="gray"
+                                        size="lg"
+                                        radius="xl"
+                                        leftSection={<IconArrowUp />}
+                                        onClick={openSendModal}
+                                    >
+                                        Send
+                                    </Button>
+                                    <Button
+                                        variant="light"
+                                        color="gray"
+                                        size="lg"
+                                        radius="xl"
+                                        leftSection={<IconArrowDown />}
+                                        onClick={openReceiveModal}
+                                    >
+                                        Receive
+                                    </Button>
+                                </Flex>
+                            </motion.div>
                         </Flex>
                     </Flex>
 
-                    <UtxoList walletUtxos={walletUtxos} />
+                    <AnimatePresence mode="popLayout">
+                        {advancedMode && (
+                            <motion.div
+                                key="utxolist"
+                                layout
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "80%", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, type: "spring", bounce: 0 }}
+                                style={{ overflow: "hidden" }}
+                            >
+                                <UtxoList walletUtxos={walletUtxos} />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </Card>
             </Flex>
             <SendModal
