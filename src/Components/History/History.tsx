@@ -32,7 +32,7 @@ function History() {
                         <IconHistory />
                         Transaction History
                     </Flex>
-                    <HoverCard width={478} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
+                    <HoverCard width={495} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled />
                         </HoverCard.Target>
@@ -46,18 +46,18 @@ function History() {
                                 <Divider />
                                 <Text fz="sm">Each transaction has three main parts:</Text>
                                 <List>
-                                    <List.Item maw={420}>
+                                    <List.Item maw={430}>
                                         <Text fz="sm">
                                             <b>Inputs</b> - the Bitcoin you already have (your UTXOs).
                                         </Text>
                                     </List.Item>
-                                    <List.Item maw={420}>
+                                    <List.Item maw={430}>
                                         <Text fz="sm">
                                             <b>Outputs</b> - where the Bitcoin is going (the recipient address and, if needed, your change
                                             address).
                                         </Text>
                                     </List.Item>
-                                    <List.Item maw={420}>
+                                    <List.Item maw={430}>
                                         <Text fz="sm">
                                             <b>Fee</b> - a small amount paid to miners so they include your transaction in the blockchain.
                                         </Text>

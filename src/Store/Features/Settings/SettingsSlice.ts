@@ -17,6 +17,11 @@ export enum Units {
     Satoshi = "sat",
 }
 
+export enum Modes {
+    BASIC = "Basic",
+    ADVANCED = "Advanced",
+}
+
 export type Settings = {
     unit: Units;
     language: Languages;

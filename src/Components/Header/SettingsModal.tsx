@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 
-import { Button, Group, Modal, Select, Stack, Switch } from "@mantine/core";
+import { Button, Divider, Group, Modal, SegmentedControl, Select, Stack } from "@mantine/core";
 
-import { Units, updateAdvancedMode, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
+import { Modes, Units, updateAdvancedMode, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 
 const unitOptions = Object.values(Units).map((value) => ({
@@ -22,6 +22,15 @@ function SettingsModal({ opened, close }: SettingsModalProps) {
     return (
         <Modal opened={opened} onClose={close} title="Settings" radius="md">
             <Stack gap="lg">
+                <SegmentedControl
+                    fullWidth
+                    data={[Modes.BASIC, Modes.ADVANCED]}
+                    radius="md"
+                    color="teal"
+                    value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
+                    onChange={(v) => dispatch(updateAdvancedMode(v !== Modes.BASIC))}
+                />
+                <Divider />
                 <Select
                     value={unit}
                     label="Unit"
@@ -30,16 +39,6 @@ function SettingsModal({ opened, close }: SettingsModalProps) {
                     onChange={(value) => value && dispatch(updateUnit(value as Units))}
                     radius="md"
                 />
-                <Group justify="flex-end">
-                    <Switch
-                        checked={advancedMode}
-                        onChange={(event) => dispatch(updateAdvancedMode(event.currentTarget.checked))}
-                        color="teal"
-                        withThumbIndicator={false}
-                        label="Advanced Mode"
-                        labelPosition="left"
-                    />
-                </Group>
             </Stack>
             <Group gap="xs" mt="xl" justify="flex-end">
                 <Button variant="light" color="gray" onClick={close} radius="md">
