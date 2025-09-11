@@ -8,7 +8,7 @@ interface TransactionItemProps {
 
 function TransactionItem({ tx }: TransactionItemProps) {
     return (
-        <Card shadow="xs" padding="sm" radius="md">
+        <Card shadow="xs" padding="sm" radius="md" bg="dark.7">
             {/* TODO */}
             <Text size="sm" fw={500}>
                 TxID: {tx.txid}

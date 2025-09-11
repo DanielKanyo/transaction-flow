@@ -12,9 +12,8 @@ import {
     Divider,
     HoverCard,
     List,
-    Code,
 } from "@mantine/core";
-import { IconChevronRight, IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
+import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { useAppSelector } from "../../Store/hook";
 import TransactionItem from "./TransactionItem";
@@ -24,8 +23,6 @@ function History() {
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
 
-    const arrow = <IconChevronRight size={14} />;
-
     return (
         <Card shadow="sm" padding="md" radius="md" h="110%">
             <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50}>
@@ -34,7 +31,7 @@ function History() {
                         <IconHistory />
                         Transaction History
                     </Flex>
-                    <HoverCard width={495} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
+                    <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled />
                         </HoverCard.Target>
@@ -48,36 +45,36 @@ function History() {
                                 <Divider />
                                 <Text fz="sm">Each transaction has three main parts:</Text>
                                 <List>
-                                    <List.Item maw={430}>
+                                    <List.Item maw={260}>
                                         <Text fz="sm">
                                             <b>Inputs</b> - the Bitcoin you already have (your UTXOs).
                                         </Text>
                                     </List.Item>
-                                    <List.Item maw={430}>
+                                    <List.Item maw={260}>
                                         <Text fz="sm">
                                             <b>Outputs</b> - where the Bitcoin is going (the recipient address and, if needed, your change
                                             address).
                                         </Text>
                                     </List.Item>
-                                    <List.Item maw={430}>
+                                    <List.Item maw={260}>
                                         <Text fz="sm">
                                             <b>Fee</b> - a small amount paid to miners so they include your transaction in the blockchain.
                                         </Text>
                                     </List.Item>
                                 </List>
-                                <Divider />
-                                <Text fw={600}>How a Transaction Flows</Text>
-                                <Code color="dark" block>
-                                    <Flex align="center">
-                                        Wallet or Exchange {arrow} Mempool {arrow} Miner {arrow} New Block {arrow} Blockchain
-                                    </Flex>
-                                </Code>
                             </Stack>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </Flex>
             </Card>
-            <Card h="100%" radius="md" bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]} p={0} pl="xs" shadow="none">
+            <Card
+                h="100%"
+                radius="md"
+                bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
+                p={0}
+                pl="xs"
+                shadow="none"
+            >
                 <ScrollArea scrollbarSize={6}>
                     <Stack gap="xs" my="xs" me="xs">
                         {transactions.length === 0 ? (

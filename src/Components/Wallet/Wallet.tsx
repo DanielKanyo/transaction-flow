@@ -16,6 +16,11 @@ import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
 import UtxoList from "../Utxo/UtxoList";
 
+const PADDING_FOR_BALANCE = {
+    BASIC_MODE: 84,
+    ADVANCED_MODE: 24,
+};
+
 function Wallet() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
     const [receiveModalOpened, { open: openReceiveModal, close: closeReceiveModal }] = useDisclosure(false);
@@ -68,7 +73,13 @@ function Wallet() {
                                 </HoverCard>
                             </Flex>
                         </Card>
-                        <Flex direction="column" justify="center" align="center" h="100%" pb={84}>
+                        <Flex
+                            direction="column"
+                            justify="center"
+                            align="center"
+                            h="100%"
+                            pb={advancedMode ? PADDING_FOR_BALANCE.ADVANCED_MODE : PADDING_FOR_BALANCE.BASIC_MODE}
+                        >
                             <motion.div
                                 key="balance"
                                 layout

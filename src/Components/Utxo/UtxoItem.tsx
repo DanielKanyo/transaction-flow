@@ -13,7 +13,7 @@ interface UtxoItemProps {
 
 function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps) {
     return (
-        <Card shadow="xs" p="md" radius="md">
+        <Card shadow="xs" p="md" radius="md" bg="dark.7">
             <Group justify="space-between" align="center">
                 <Group gap={6} align="baseline">
                     <Text size="lg" lh={1}>
