@@ -77,7 +77,7 @@ function History() {
                     </HoverCard>
                 </Flex>
             </Card>
-            <Card h="100%" radius="md" bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7]} p={0} pl="xs">
+            <Card h="100%" radius="md" bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]} p={0} pl="xs" shadow="none">
                 <ScrollArea scrollbarSize={6}>
                     <Stack gap="xs" my="xs" me="xs">
                         {transactions.length === 0 ? (

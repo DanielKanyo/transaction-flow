@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { useDispatch } from "react-redux";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -13,7 +12,6 @@ import {
     useMantineColorScheme,
     useMantineTheme,
     Flex,
-    Switch,
     HoverCard,
     Divider,
     Button,
@@ -23,7 +21,7 @@ import {
 import { IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { UTXO } from "../../Store/Features/Ledger/LedgerSlice";
-import { Units, toggleSpentUtxos } from "../../Store/Features/Settings/SettingsSlice";
+import { Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import UtxoItem from "./UtxoItem";
 
@@ -35,15 +33,13 @@ interface UtxoListProps {
 }
 
 function UtxoList({ walletUtxos }: UtxoListProps) {
-    const { unit, spentUtxosHidden } = useAppSelector((state) => state.settings);
+    const { unit } = useAppSelector((state) => state.settings);
     const formatedUnit = unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi;
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
-    const dispatch = useDispatch();
 
     const unspentUtxos = useMemo(() => walletUtxos.filter((utxo) => !utxo.spent), [walletUtxos]);
     const spentUtxos = useMemo(() => walletUtxos.filter((utxo) => utxo.spent), [walletUtxos]);
-    const displayedUtxos = useMemo(() => (spentUtxosHidden ? unspentUtxos : walletUtxos), [spentUtxosHidden, unspentUtxos, walletUtxos]);
 
     return (
         <>
@@ -81,28 +77,23 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                     <Text c="dimmed">Your UTXOs</Text>
                 </Flex>
                 <Group gap={6}>
-                    <Badge variant="light" color="gray">
-                        {spentUtxos.length}
-                    </Badge>
-                    <Tooltip label={`You have currently ${unspentUtxos.length} UTXO(s) in your wallet`} withArrow>
-                        <Badge color="teal">{unspentUtxos.length}</Badge>
+                    <Tooltip label={`${spentUtxos.length} spent UTXO${spentUtxos.length > 0 ? 's' : ''}`} withArrow>
+                        <Badge variant="light" color="gray">
+                            {spentUtxos.length}
+                        </Badge>
                     </Tooltip>
-                    <Tooltip label={spentUtxosHidden ? "Show spent UTXOs" : "Hide spent UTXOs"} withArrow position="top" refProp="rootRef">
-                        <Switch
-                            checked={spentUtxosHidden}
-                            onChange={(event) => dispatch(toggleSpentUtxos(event.currentTarget.checked))}
-                            color="teal"
-                            withThumbIndicator={false}
-                        />
+                    <Tooltip label={`${unspentUtxos.length} unspent UTXO${unspentUtxos.length > 0 ? 's' : ''}`} withArrow>
+                        <Badge color="teal">{unspentUtxos.length}</Badge>
                     </Tooltip>
                 </Group>
             </Flex>
             <Card
                 h={`calc(100% - ${UTXO_TITLE_MARGIN * 2 + UTXO_TITLE_CONTENT_HEIGHT}px`}
                 radius="md"
-                bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7]}
+                bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
                 p={0}
                 pl="xs"
+                shadow="none"
             >
                 <ScrollArea scrollbarSize={6}>
                     <Stack gap="xs" my="xs" me="xs">
@@ -112,7 +103,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                             </Center>
                         ) : (
                             <AnimatePresence mode="popLayout">
-                                {displayedUtxos.map(({ txid, index, amount, spent, address }) => (
+                                {walletUtxos.map(({ txid, index, amount, spent, address }) => (
                                     <motion.div
                                         key={`${txid}-${index}`}
                                         initial={{ opacity: 0, y: 10 }}
