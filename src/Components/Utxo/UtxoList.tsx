@@ -78,9 +78,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                 </Flex>
                 <Group gap={6}>
                     <Tooltip label={`${spentUtxos.length} spent UTXO${spentUtxos.length > 0 ? "s" : ""}`} withArrow>
-                        <Badge variant="light" color="gray">
-                            {spentUtxos.length}
-                        </Badge>
+                        <Badge color="red">{spentUtxos.length}</Badge>
                     </Tooltip>
                     <Tooltip label={`${unspentUtxos.length} unspent UTXO${unspentUtxos.length > 0 ? "s" : ""}`} withArrow>
                         <Badge color="teal">{unspentUtxos.length}</Badge>

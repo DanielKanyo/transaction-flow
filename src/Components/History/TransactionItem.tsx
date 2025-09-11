@@ -1,88 +1,126 @@
 import { useMemo } from "react";
 
-import { Card, Divider, Group, Stack, Text } from "@mantine/core";
+import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter } from "@mantine/core";
+import { IconArrowRight } from "@tabler/icons-react";
 
 import { Transaction } from "../../Store/Features/Ledger/LedgerSlice";
+import { Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
+
+enum AccountType {
+    WALLET = "Wallet",
+    EXCHANGE = "Exchange",
+}
 
 interface TransactionItemProps {
     tx: Transaction;
+    index: number;
 }
 
-function TransactionItem({ tx }: TransactionItemProps) {
-    const { advancedMode } = useAppSelector((state) => state.settings);
+function TransactionItem({ tx, index }: TransactionItemProps) {
+    const { walletAddresses } = useAppSelector((state) => state.ledger);
+    const { unit } = useAppSelector((state) => state.settings);
 
     const { from, to } = useMemo(() => {
-        const from = tx.inputs[0].address.startsWith("bc1") ? "Wallet" : "Exchange";
-        const to = tx.outputs[0].address.startsWith("bc1") ? "Wallet" : "Exchange";
+        const inputFromWallet = tx.inputs.some((i) => walletAddresses.includes(i.address));
+        const outputToWallet = tx.outputs.some((o) => walletAddresses.includes(o.address));
+        const outputToExternal = tx.outputs.some((o) => !walletAddresses.includes(o.address));
 
-        return { from, to };
-    }, [tx]);
-
-    if (advancedMode) {
-        return (
-            <Card shadow="xs" padding="sm" radius="md" bg="dark.7">
-                {/* TODO */}
-                <Text size="sm" fw={500}>
-                    TxID: {tx.txid}
-                </Text>
-                <Text size="xs" c="dimmed">
-                    Timestamp: {new Date(tx.timestamp).toLocaleString()}
-                </Text>
-                <Divider my="sm" />
-                <Text size="sm" fw={500}>
-                    Inputs:
-                </Text>
-                <Stack gap={2}>
-                    {tx.inputs.map((input, idx) => (
-                        <Text key={idx} size="xs">
-                            {input.address} - {input.amount} BTC
-                        </Text>
-                    ))}
-                </Stack>
-                <Text size="sm" fw={500} mt="sm">
-                    Outputs:
-                </Text>
-                <Stack gap={2}>
-                    {tx.outputs.map((output, idx) => (
-                        <Text key={idx} size="xs">
-                            {output.address} - {output.amount} BTC
-                        </Text>
-                    ))}
-                </Stack>
-                <Text size="xs" mt="sm">
-                    Fee: {tx.fee} BTC
-                </Text>
-            </Card>
-        );
-    }
+        if (inputFromWallet && outputToExternal) {
+            return { from: AccountType.WALLET, to: AccountType.EXCHANGE }; // Sending out (even if change comes back)
+        }
+        if (!inputFromWallet && outputToWallet) {
+            return { from: AccountType.EXCHANGE, to: AccountType.WALLET }; // Receiving
+        }
+        if (inputFromWallet && outputToWallet && !outputToExternal) {
+            return { from: AccountType.WALLET, to: AccountType.WALLET }; // Pure internal (consolidation)
+        }
+        return { from: AccountType.EXCHANGE, to: AccountType.EXCHANGE }; // No wallet involvement
+    }, [tx, walletAddresses]);
 
     return (
-        <Card shadow="xs" padding="sm" radius="md" bg="dark.7">
-            {/* TODO */}
-            <Group justify="space-between">
-                <Text size="xs" c="dimmed">
-                    {from} - {to}
-                </Text>
+        <Card shadow="xs" padding="md" radius="md" bg="dark.7">
+            <Group justify="space-between" align="center">
+                <Group align="center" gap={6}>
+                    <Badge color="gray" size="sm" variant="light">
+                        {index + 1}
+                    </Badge>
+                    <Badge color={from === AccountType.EXCHANGE ? "blue" : "teal"} size="sm">
+                        {from}
+                    </Badge>
+                    <IconArrowRight color="gray" size={16} />
+                    <Badge color={to === AccountType.EXCHANGE ? "blue" : "teal"} size="sm">
+                        {to}
+                    </Badge>
+                </Group>
+
                 <Text size="xs" c="dimmed">
                     {new Date(tx.timestamp).toLocaleString()}
                 </Text>
             </Group>
-
             <Divider my="sm" />
-
-            <Group justify="space-between" align="flex-end">
-                <Text size="xs" c="dimmed">
-                    Outputs:
-                    {tx.outputs.map((output, idx) => (
+            <Text size="sm" fw={500} mb="xs" c="dimmed">
+                Inputs
+            </Text>
+            <Stack gap={2}>
+                {tx.inputs.map((input, idx) => (
+                    <Group key={idx} justify="space-between" align="center">
+                        <Text size="xs">{input.address}</Text>
+                        <Group align="center" gap={4}>
+                            <Text size="xs">
+                                <NumberFormatter
+                                    value={determineDisplayedValueAndNumOfDecimals(input.amount, unit).displayedValue}
+                                    thousandSeparator
+                                    decimalScale={determineDisplayedValueAndNumOfDecimals(input.amount, unit).numOfDecimals}
+                                />
+                            </Text>
+                            <Text size="xs" c="dimmed">
+                                {" "}
+                                {unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
+                            </Text>
+                        </Group>
+                    </Group>
+                ))}
+            </Stack>
+            <Divider my="sm" />
+            <Text size="sm" fw={500} mb="xs" c="dimmed">
+                Outputs
+            </Text>
+            <Stack gap={2}>
+                {tx.outputs.map((output, idx) => (
+                    <Group key={idx} justify="space-between" align="center">
                         <Text key={idx} size="xs">
-                            {output.amount} BTC
+                            {output.address}
                         </Text>
-                    ))}
+                        <Group align="center" gap={4}>
+                            <Text size="xs">
+                                <NumberFormatter
+                                    value={determineDisplayedValueAndNumOfDecimals(output.amount, unit).displayedValue}
+                                    thousandSeparator
+                                    decimalScale={determineDisplayedValueAndNumOfDecimals(output.amount, unit).numOfDecimals}
+                                />
+                            </Text>
+                            <Text size="xs" c="dimmed">
+                                {" "}
+                                {unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
+                            </Text>
+                        </Group>
+                    </Group>
+                ))}
+            </Stack>
+            <Divider my="sm" />
+            <Group justify="space-between" align="baseline">
+                <Text size="sm" fw={500} c="dimmed">
+                    Fee
                 </Text>
-                <Text size="xs" c="dimmed">
-                    Fee: {tx.fee}
-                </Text>
+                <Group align="center" gap={4}>
+                    <Text size="xs">{determineDisplayedValueAndNumOfDecimals(tx.fee, unit).displayedValue}</Text>
+                    <Text size="xs" c="dimmed">
+                        {" "}
+                        {unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
+                    </Text>
+                </Group>
             </Group>
         </Card>
     );

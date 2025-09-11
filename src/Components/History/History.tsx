@@ -92,7 +92,7 @@ function History() {
                                         transition={{ duration: 0.25 }}
                                         layout
                                     >
-                                        <TransactionItem tx={tx} />
+                                        <TransactionItem tx={tx} index={index} />
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
