@@ -4,8 +4,7 @@ import { Button, Group, Modal, SegmentedControl, Select, Stack, Text } from "@ma
 
 import { Modes, Units, updateAdvancedMode, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-
-import classes from './SettingsModal.module.css';
+import classes from "./SettingsModal.module.css";
 
 const unitOptions = Object.values(Units).map((value) => ({
     value,
