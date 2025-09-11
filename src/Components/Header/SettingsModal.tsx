@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
 
-import { Button, Divider, Group, Modal, SegmentedControl, Select, Stack } from "@mantine/core";
+import { Button, Group, Modal, SegmentedControl, Select, Stack, Text } from "@mantine/core";
 
 import { Modes, Units, updateAdvancedMode, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+
+import classes from './SettingsModal.module.css';
 
 const unitOptions = Object.values(Units).map((value) => ({
     value,
@@ -22,15 +24,18 @@ function SettingsModal({ opened, close }: SettingsModalProps) {
     return (
         <Modal opened={opened} onClose={close} title="Settings" radius="md">
             <Stack gap="lg">
-                <SegmentedControl
-                    fullWidth
-                    data={[Modes.BASIC, Modes.ADVANCED]}
-                    radius="md"
-                    color="teal"
-                    value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
-                    onChange={(v) => dispatch(updateAdvancedMode(v !== Modes.BASIC))}
-                />
-                <Divider />
+                <div>
+                    <Text fz="sm">Mode</Text>
+                    <SegmentedControl
+                        classNames={{ control: classes.control, label: classes.label }}
+                        fullWidth
+                        data={[Modes.BASIC, Modes.ADVANCED]}
+                        radius="md"
+                        color="teal"
+                        value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
+                        onChange={(v) => dispatch(updateAdvancedMode(v !== Modes.BASIC))}
+                    />
+                </div>
                 <Select
                     value={unit}
                     label="Unit"
