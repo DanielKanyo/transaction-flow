@@ -61,7 +61,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
     const isValid = recipentAddress.length > 0 && typeof amount === "number" && amount > 0 && amount + DEFAULT_FEE <= totalBalance;
 
     const addressInfo = (
-        <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end">
+        <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
             <HoverCard.Target>
                 <IconInfoSquareRoundedFilled size={20} />
             </HoverCard.Target>

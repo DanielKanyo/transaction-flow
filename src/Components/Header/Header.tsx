@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { ActionIcon, Button, Flex, Group, Menu, Text, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconCheck, IconLanguage, IconMoon, IconReload, IconSettings, IconSun, IconTransactionBitcoin } from "@tabler/icons-react";
+import { IconArrowsExchange, IconCheck, IconLanguage, IconMoon, IconReload, IconSettings, IconSun } from "@tabler/icons-react";
 
 import { resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
 import { Languages, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
@@ -27,7 +27,7 @@ function Header() {
         <>
             <Flex align="center" justify="space-between" h="100%" lh={1}>
                 <Flex align="center" gap="sm">
-                    <IconTransactionBitcoin size={24} />
+                    <IconArrowsExchange size={34} />
                     <Text fw={600} fz="xl" fs="italic">
                         TX FLOW
                     </Text>
