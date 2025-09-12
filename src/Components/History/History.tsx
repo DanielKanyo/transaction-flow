@@ -90,7 +90,7 @@ function History() {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -10 }}
                                         transition={{ duration: 0.25 }}
-                                        layout
+                                        layout="position"
                                     >
                                         <TransactionItem tx={tx} index={index} />
                                     </motion.div>

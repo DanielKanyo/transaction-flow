@@ -108,7 +108,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -10 }}
                                         transition={{ duration: 0.25 }}
-                                        layout
+                                        layout="position"
                                     >
                                         <UtxoItem amount={amount} spent={spent} address={address} formatedUnit={formatedUnit} unit={unit} />
                                     </motion.div>
