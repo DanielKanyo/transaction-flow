@@ -54,6 +54,7 @@ export function buildTransaction({
         inputs: selectedUTXOs,
         outputs,
         fee,
+        transferredAmount: amountToSend,
     };
 
     return transaction;

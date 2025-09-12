@@ -25,6 +25,7 @@ export type Transaction = {
         amount: number;
     }[];
     fee: number;
+    transferredAmount: number;
 };
 
 export type LedgerState = {
