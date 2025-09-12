@@ -30,7 +30,7 @@ function SettingsModal({ opened, close }: SettingsModalProps) {
                         fullWidth
                         data={[Modes.BASIC, Modes.ADVANCED]}
                         radius="md"
-                        color="teal"
+                        color="violet"
                         value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
                         onChange={(v) => dispatch(updateAdvancedMode(v !== Modes.BASIC))}
                     />

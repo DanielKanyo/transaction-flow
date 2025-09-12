@@ -4,7 +4,7 @@ import { IconCirclesRelation, IconInfoSquareRoundedFilled } from "@tabler/icons-
 function Chain() {
     return (
         <Card shadow="sm" padding="md" radius="md" h="100%">
-            <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50}>
+            <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center">
                         <IconCirclesRelation />

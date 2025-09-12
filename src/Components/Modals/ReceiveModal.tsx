@@ -34,7 +34,13 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                         could be lost forever. For better privacy, it's best to use a new address each time you receive Bitcoin instead of
                         reusing old ones.
                     </Text>
-                    <Button fullWidth component="a" href="https://www.techtarget.com/whatis/definition/Bitcoin-address" target="_blank">
+                    <Button
+                        fullWidth
+                        component="a"
+                        href="https://www.techtarget.com/whatis/definition/Bitcoin-address"
+                        target="_blank"
+                        color="violet"
+                    >
                         Learn more
                     </Button>
                 </Stack>
@@ -71,7 +77,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                     forever.
                 </Alert>
 
-                <Alert variant="light" color="teal" radius="md" title="Privacy Tip" icon={<IconBulbFilled />}>
+                <Alert variant="light" color="violet" radius="md" title="Privacy Tip" icon={<IconBulbFilled />}>
                     For your privacy, use a new address each time you receive Bitcoin. Reusing old addresses can make it easier for others
                     to track your transactions.
                 </Alert>

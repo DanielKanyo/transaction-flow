@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter } from "@mantine/core";
+import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
 
 import { Transaction } from "../../Store/Features/Ledger/LedgerSlice";
@@ -21,6 +21,8 @@ interface TransactionItemProps {
 function TransactionItem({ tx, index }: TransactionItemProps) {
     const { walletAddresses } = useAppSelector((state) => state.ledger);
     const { unit, advancedMode } = useAppSelector((state) => state.settings);
+    const theme = useMantineTheme();
+    const { colorScheme } = useMantineColorScheme();
 
     const { from, to } = useMemo(() => {
         const inputFromWallet = tx.inputs.some((i) => walletAddresses.includes(i.address));
@@ -43,7 +45,7 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
     const formattedUnit = useMemo(() => (unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi), [unit]);
 
     return (
-        <Card shadow="xs" padding="md" radius="md" bg="dark.7">
+        <Card shadow="xs" padding="md" radius="md" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
             <Group justify="space-between">
                 <Group align="center" gap={6}>
                     <Badge color="gray" size="sm" variant="light">

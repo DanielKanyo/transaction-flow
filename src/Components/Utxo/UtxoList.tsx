@@ -68,6 +68,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                     component="a"
                                     href="https://en.wikipedia.org/wiki/Unspent_transaction_output"
                                     target="_blank"
+                                    color="violet"
                                 >
                                     Learn more
                                 </Button>
