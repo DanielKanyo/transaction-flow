@@ -21,8 +21,6 @@ function Header() {
 
     const availableLanguages = [
         { key: Languages.English, label: "English" },
-        // { key: Languages.German, label: "Deutsch" },
-        // { key: Languages.Spanish, label: "Español" },
         { key: Languages.Hungarian, label: "Magyar" },
     ];
 
