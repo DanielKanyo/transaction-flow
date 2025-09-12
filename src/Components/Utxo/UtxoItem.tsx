@@ -16,21 +16,29 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
     const { colorScheme } = useMantineColorScheme();
 
     return (
-        <Card shadow="xs" p="md" radius="md" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+        <Card
+            shadow="xs"
+            p="md"
+            radius="md"
+            bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}
+            style={{ opacity: spent ? 0.6 : 1 }}
+        >
             <Group justify="space-between" align="center">
                 <Group gap={6} align="baseline">
-                    <Text size="lg" lh={1}>
+                    <Text size="xs" lh={1}>
                         <NumberFormatter
                             value={determineDisplayedValueAndNumOfDecimals(amount, unit).displayedValue}
                             thousandSeparator
                             decimalScale={determineDisplayedValueAndNumOfDecimals(amount, unit).numOfDecimals}
                         />
                     </Text>
-                    <Text lh={1} size="sm" c="dimmed">
+                    <Text lh={1} size="xs" c="dimmed">
                         {formatedUnit}
                     </Text>
                 </Group>
-                <Badge color={spent ? "red" : "teal"}>{spent ? "Spent" : "Unspent"}</Badge>
+                <Badge variant={spent ? "light" : "filled"} color={spent ? "gray" : "teal"}>
+                    {spent ? "Spent" : "Unspent"}
+                </Badge>
             </Group>
             <Text size="xs" c="dimmed" mt={4} style={{ wordBreak: "break-all" }}>
                 {address}
