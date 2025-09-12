@@ -7,6 +7,7 @@ import "@mantine/core/styles.css";
 
 import App from "./App.tsx";
 import store from "./Store/store.ts";
+import "./i18n/i18n.tsx";
 import { theme } from "./theme.ts";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

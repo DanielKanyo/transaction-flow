@@ -7,8 +7,6 @@ export const DEFAULT_NUMBER_OF_DIGITS = {
 
 export enum Languages {
     English = "en",
-    German = "de",
-    Spanish = "es",
     Hungarian = "hu",
 }
 
@@ -18,8 +16,8 @@ export enum Units {
 }
 
 export enum Modes {
-    BASIC = "Basic",
-    ADVANCED = "Advanced",
+    BASIC = "basic",
+    ADVANCED = "advanced",
 }
 
 export type Settings = {

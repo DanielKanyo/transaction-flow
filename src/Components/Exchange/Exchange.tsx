@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { motion } from "framer-motion";
@@ -23,6 +24,7 @@ function Exchange() {
     const { exhangeUtxos } = useAppSelector((state) => state.ledger);
     const latestAddress = useSelector(selectLatestExchangeAddress);
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const { displayedValue, numOfDecimals } = useMemo(() => {
         return determineDisplayedValueAndNumOfDecimals(balance, unit);
@@ -37,7 +39,7 @@ function Exchange() {
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center">
                                     <IconExchange />
-                                    Exchange
+                                    {t("exchange")}
                                 </Flex>
                                 <HoverCard
                                     width={320}
@@ -53,7 +55,7 @@ function Exchange() {
                                     </HoverCard.Target>
                                     <HoverCard.Dropdown>
                                         <Stack align="stretch" justify="center" gap="xs">
-                                            <Text fw={600}>Exchange</Text>
+                                            <Text fw={600}>{t("exchange")}</Text>
                                             <Text fz="sm">
                                                 An exchange is a platform where you can buy, sell, or trade Bitcoin (and other
                                                 cryptocurrencies) using regular money (like USD, EUR) or other digital assets. It works like

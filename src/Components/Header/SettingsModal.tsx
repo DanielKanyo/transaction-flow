@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { Button, Group, Modal, SegmentedControl, Select, Stack, Text } from "@mantine/core";
@@ -19,16 +20,20 @@ interface SettingsModalProps {
 function SettingsModal({ opened, close }: SettingsModalProps) {
     const dispatch = useDispatch();
     const { unit, advancedMode } = useAppSelector((state) => state.settings);
+    const { t } = useTranslation();
 
     return (
-        <Modal opened={opened} onClose={close} title="Settings" radius="md">
+        <Modal opened={opened} onClose={close} title={t("settings")} radius="md">
             <Stack gap="lg">
                 <div>
-                    <Text fz="sm">Mode</Text>
+                    <Text fz="sm">{t("mode")}</Text>
                     <SegmentedControl
                         classNames={{ control: classes.control, label: classes.label }}
                         fullWidth
-                        data={[Modes.BASIC, Modes.ADVANCED]}
+                        data={[
+                            { label: t("basic"), value: Modes.BASIC },
+                            { label: t("advanced"), value: Modes.ADVANCED },
+                        ]}
                         radius="md"
                         color="violet"
                         value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
@@ -37,7 +42,7 @@ function SettingsModal({ opened, close }: SettingsModalProps) {
                 </div>
                 <Select
                     value={unit}
-                    label="Unit"
+                    label={t("unit")}
                     variant="filled"
                     data={unitOptions}
                     onChange={(value) => value && dispatch(updateUnit(value as Units))}
@@ -46,7 +51,7 @@ function SettingsModal({ opened, close }: SettingsModalProps) {
             </Stack>
             <Group gap="xs" mt="xl" justify="flex-end">
                 <Button variant="light" color="gray" onClick={close} radius="md">
-                    Cancel
+                    {t("cancel")}
                 </Button>
             </Group>
         </Modal>

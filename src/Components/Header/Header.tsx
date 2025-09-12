@@ -1,6 +1,8 @@
+import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import { ActionIcon, Button, Flex, Group, Menu, Text, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, Button, Flex, Group, Menu, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconArrowsExchange, IconCheck, IconLanguage, IconMoon, IconReload, IconSettings, IconSun } from "@tabler/icons-react";
 
@@ -14,14 +16,20 @@ function Header() {
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
     const { language } = useAppSelector((state) => state.settings);
     const [settingsModalOpened, { open: openSetingsModal, close: closeSetingsModal }] = useDisclosure(false);
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
 
     const availableLanguages = [
         { key: Languages.English, label: "English" },
-        { key: Languages.German, label: "Deutsch" },
-        { key: Languages.Spanish, label: "Español" },
+        // { key: Languages.German, label: "Deutsch" },
+        // { key: Languages.Spanish, label: "Español" },
         { key: Languages.Hungarian, label: "Magyar" },
     ];
+
+    const handleLanguageSelect = useCallback((key: Languages) => {
+        dispatch(updateLanguage(key));
+        i18n.changeLanguage(key);
+    }, []);
 
     return (
         <>
@@ -53,7 +61,7 @@ function Header() {
                                 <Menu.Item
                                     key={lng.key}
                                     leftSection={language === lng.key ? <IconCheck size={14} /> : null}
-                                    onClick={() => dispatch(updateLanguage(lng.key))}
+                                    onClick={() => handleLanguageSelect(lng.key)}
                                 >
                                     {lng.label}
                                 </Menu.Item>
@@ -70,9 +78,11 @@ function Header() {
                     >
                         {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
                     </ActionIcon>
-                    <ActionIcon size={36} variant="light" color="gray" aria-label="Settings" radius="md" onClick={openSetingsModal}>
-                        <IconSettings size={20} />
-                    </ActionIcon>
+                    <Tooltip label={t("settings")} withArrow>
+                        <ActionIcon size={36} variant="light" color="gray" aria-label="Settings" radius="md" onClick={openSetingsModal}>
+                            <IconSettings size={20} />
+                        </ActionIcon>
+                    </Tooltip>
                     <Button
                         color="red"
                         aria-label="Reset"
@@ -80,7 +90,7 @@ function Header() {
                         leftSection={<IconReload size={20} />}
                         onClick={() => dispatch(resetLedger())}
                     >
-                        Reset
+                        {t("reset")}
                     </Button>
                 </Group>
             </Flex>
