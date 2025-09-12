@@ -24,5 +24,9 @@
     "copied": "Copied",
     "latestAddress": "Latest address",
     "addressWarning": "Do not send funds to an address that has already been used.",
-    "addressInfo": "For better privacy, it is recommended to use a new address for each transaction."
+    "addressInfo": "For better privacy, it is recommended to use a new address for each transaction.",
+    "receiveBitcoinToExchange": "Receive Bitcoin to Exchange",
+    "sendBitcoinFromExchange": "Send Bitcoin from Exchange",
+    "receiveBitcoinToWallet": "Receive Bitcoin to Wallet",
+    "sendBitcoinFromWallet": "Send Bitcoin from Wallet"
 }

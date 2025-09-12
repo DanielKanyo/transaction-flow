@@ -64,7 +64,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                     rightSection={
                         <CopyButton value={latestAddress || ""} timeout={2000}>
                             {({ copied, copy }) => (
-                                <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="top">
+                                <Tooltip label={copied ? t("copied") : t("copy")} withArrow position="top">
                                     <ActionIcon color={copied ? color : "gray"} variant="subtle" onClick={copy} radius="md">
                                         {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
                                     </ActionIcon>

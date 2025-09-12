@@ -10,7 +10,7 @@
     "cancel": "Mégsem",
     "transactionHistory": "Tranzakció Előzmények",
     "fee": "Díj",
-    "toggleColorScheme": "Színséma váltása",
+    "toggleColorScheme": "Színséma Váltása",
     "balance": "Egyenleg",
     "send": "Küldés",
     "receive": "Fogadás",
@@ -24,5 +24,9 @@
     "copied": "Másolva",
     "latestAddress": "Legutóbbi cím",
     "addressWarning": "Ne küldj pénzt már használt címre.",
-    "addressInfo": "A jobb adatvédelem érdekében javasolt minden tranzakcióhoz új címet használni."
+    "addressInfo": "A jobb adatvédelem érdekében javasolt minden tranzakcióhoz új címet használni.",
+    "receiveBitcoinToExchange": "Bitcoin Fogadása Váltóra",
+    "sendBitcoinFromExchange": "Bitcoin Küldése Váltóról",
+    "receiveBitcoinToWallet": "Bitcoin Fogadása Tárcába",
+    "sendBitcoinFromWallet": "Bitcoin Küldése Tárcából"
 }

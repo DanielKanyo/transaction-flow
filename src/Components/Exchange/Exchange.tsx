@@ -136,7 +136,7 @@ function Exchange() {
                 </Card>
             </Flex>
             <SendModal
-                title="Send Bitcoin from Exchange"
+                title={t("sendBitcoinFromExchange")}
                 color="blue"
                 opened={sendModalOpened}
                 senderAddresses={exchangeAddresses}
@@ -144,7 +144,7 @@ function Exchange() {
                 close={closeSendModal}
             />
             <ReceiveModal
-                title="Receive Bitcoin to Exchange"
+                title={t("receiveBitcoinToExchange")}
                 color="teal"
                 latestAddress={latestAddress}
                 opened={receiveModalOpened}

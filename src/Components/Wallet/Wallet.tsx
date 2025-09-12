@@ -167,7 +167,7 @@ function Wallet() {
                 </Card>
             </Flex>
             <SendModal
-                title="Send Bitcoin from Wallet"
+                title={t("sendBitcoinFromWallet")}
                 color="teal"
                 opened={sendModalOpened}
                 senderAddresses={walletAddresses}
@@ -175,7 +175,7 @@ function Wallet() {
                 close={closeSendModal}
             />
             <ReceiveModal
-                title="Receive Bitcoin to Wallet"
+                title={t("receiveBitcoinToWallet")}
                 color="teal"
                 latestAddress={latestAddress}
                 opened={receiveModalOpened}
