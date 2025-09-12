@@ -2,7 +2,18 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import { ActionIcon, Button, Flex, Group, Menu, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import {
+    ActionIcon,
+    Button,
+    Flex,
+    Group,
+    Menu,
+    Text,
+    Tooltip,
+    useComputedColorScheme,
+    useMantineColorScheme,
+    useMantineTheme,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconArrowsExchange, IconCheck, IconLanguage, IconMoon, IconReload, IconSettings, IconSun } from "@tabler/icons-react";
 
@@ -16,6 +27,7 @@ function Header() {
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
     const { language } = useAppSelector((state) => state.settings);
     const [settingsModalOpened, { open: openSetingsModal, close: closeSetingsModal }] = useDisclosure(false);
+    const theme = useMantineTheme();
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
 
@@ -33,7 +45,7 @@ function Header() {
         <>
             <Flex align="center" justify="space-between" h="100%" lh={1}>
                 <Flex align="center" gap="sm">
-                    <IconArrowsExchange size={34} />
+                    <IconArrowsExchange size={34} color={theme.colors.violet[8]} />
                     <Text fw={600} fz="xl" fs="italic">
                         TX FLOW
                     </Text>
@@ -42,14 +54,7 @@ function Header() {
                 <Group gap="xs">
                     <Menu withArrow withinPortal position="bottom">
                         <Menu.Target>
-                            <ActionIcon
-                                size={36}
-                                variant="light"
-                                radius="md"
-                                color="gray"
-                                aria-label="Change language"
-                                title="Change language"
-                            >
+                            <ActionIcon size={36} variant="light" radius="md" color="gray" aria-label="Change language">
                                 <IconLanguage size={20} />
                             </ActionIcon>
                         </Menu.Target>
@@ -66,16 +71,18 @@ function Header() {
                             ))}
                         </Menu.Dropdown>
                     </Menu>
-                    <ActionIcon
-                        size={36}
-                        variant="light"
-                        color="gray"
-                        aria-label="Toggle color scheme"
-                        radius="md"
-                        onClick={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
-                    >
-                        {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
-                    </ActionIcon>
+                    <Tooltip label={t("toggleColorScheme")} withArrow>
+                        <ActionIcon
+                            size={36}
+                            variant="light"
+                            color="gray"
+                            aria-label="Toggle color scheme"
+                            radius="md"
+                            onClick={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
+                        >
+                            {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
+                        </ActionIcon>
+                    </Tooltip>
                     <Tooltip label={t("settings")} withArrow>
                         <ActionIcon size={36} variant="light" color="gray" aria-label="Settings" radius="md" onClick={openSetingsModal}>
                             <IconSettings size={20} />

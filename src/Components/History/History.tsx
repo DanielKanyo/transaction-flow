@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { AnimatePresence, motion } from "framer-motion";
 
 import {
@@ -20,6 +22,7 @@ import TransactionItem from "./TransactionItem";
 
 function History() {
     const { transactions } = useAppSelector((state) => state.ledger);
+    const { t } = useTranslation();
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
 
@@ -29,7 +32,7 @@ function History() {
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center">
                         <IconHistory />
-                        Transaction History
+                        {t("transactionHistory")}
                     </Flex>
                     <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
                         <HoverCard.Target>

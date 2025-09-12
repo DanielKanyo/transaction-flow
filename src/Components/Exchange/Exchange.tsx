@@ -23,8 +23,8 @@ function Exchange() {
     const { balanceOnExchange: balance, exchangeAddresses } = useAppSelector((state) => state.ledger);
     const { exhangeUtxos } = useAppSelector((state) => state.ledger);
     const latestAddress = useSelector(selectLatestExchangeAddress);
-    const dispatch = useDispatch();
     const { t } = useTranslation();
+    const dispatch = useDispatch();
 
     const { displayedValue, numOfDecimals } = useMemo(() => {
         return determineDisplayedValueAndNumOfDecimals(balance, unit);
@@ -104,7 +104,7 @@ function Exchange() {
                                             format={{ maximumFractionDigits: numOfDecimals }}
                                         />
                                         <Text mt={-15} c="dimmed">
-                                            balance
+                                            {t("balance").toLowerCase()}
                                         </Text>
                                     </Stack>
                                 </Button>
@@ -117,7 +117,7 @@ function Exchange() {
                                         leftSection={<IconArrowUp />}
                                         onClick={openSendModal}
                                     >
-                                        Send
+                                        {t("send")}
                                     </Button>
                                     <Button
                                         variant="light"
@@ -127,7 +127,7 @@ function Exchange() {
                                         leftSection={<IconArrowDown />}
                                         onClick={openReceiveModal}
                                     >
-                                        Receive
+                                        {t("receive")}
                                     </Button>
                                 </Flex>
                             </motion.div>

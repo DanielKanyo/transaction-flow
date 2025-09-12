@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import { ActionIcon, Alert, Button, CopyButton, Group, HoverCard, Modal, Stack, TextInput, Tooltip, Text, Divider } from "@mantine/core";
 import { IconAlertSquareRoundedFilled, IconBulbFilled, IconCheck, IconCopy, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
@@ -12,6 +13,8 @@ interface ReceiveModalProps {
 }
 
 function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveModalProps) {
+    const { t } = useTranslation();
+
     const handleClose = useCallback(() => {
         close();
     }, [close]);
@@ -85,7 +88,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
 
             <Group gap="xs" mt="xl" justify="flex-end">
                 <Button variant="light" color="gray" onClick={handleClose} radius="md">
-                    Cancel
+                    {t("cancel")}
                 </Button>
             </Group>
         </Modal>

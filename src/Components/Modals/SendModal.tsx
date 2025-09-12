@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { Modal, TextInput, NumberInput, Button, Group, Text, Stack, HoverCard, Divider, ActionIcon, Alert } from "@mantine/core";
@@ -25,6 +26,7 @@ type SendModalProps = {
 function SendModal({ title, opened, senderAddresses, utxos, color, close }: SendModalProps) {
     const [recipentAddress, setRecipentAddress] = useState("");
     const [amount, setAmount] = useState<string | number>("");
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     const totalBalance = useMemo(() => {
@@ -136,7 +138,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
 
             <Group gap="xs" mt="xl" justify="flex-end">
                 <Button variant="light" color="gray" onClick={handleClose} radius="md">
-                    Cancel
+                    {t("cancel")}
                 </Button>
                 <Button
                     color={color}

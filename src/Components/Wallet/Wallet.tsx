@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,6 +29,7 @@ function Wallet() {
     const { balanceInWallet: balance, walletAddresses } = useAppSelector((state) => state.ledger);
     const latestAddress = useSelector(selectLatestWalletAddress);
     const { walletUtxos } = useAppSelector((state) => state.ledger);
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     const { displayedValue, numOfDecimals } = useMemo(() => {
@@ -43,7 +45,7 @@ function Wallet() {
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center">
                                     <IconWallet />
-                                    Your Wallet
+                                    {t("wallet")}
                                 </Flex>
                                 <HoverCard
                                     width={320}
@@ -117,7 +119,7 @@ function Wallet() {
                                             format={{ maximumFractionDigits: numOfDecimals }}
                                         />
                                         <Text mt={-15} c="dimmed">
-                                            balance
+                                            {t("balance").toLowerCase()}
                                         </Text>
                                     </Stack>
                                 </Button>
@@ -130,7 +132,7 @@ function Wallet() {
                                         leftSection={<IconArrowUp />}
                                         onClick={openSendModal}
                                     >
-                                        Send
+                                        {t("send")}
                                     </Button>
                                     <Button
                                         variant="light"
@@ -140,7 +142,7 @@ function Wallet() {
                                         leftSection={<IconArrowDown />}
                                         onClick={openReceiveModal}
                                     >
-                                        Receive
+                                        {t("receive")}
                                     </Button>
                                 </Flex>
                             </motion.div>
