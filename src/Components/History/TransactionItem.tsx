@@ -97,14 +97,14 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
         <Card shadow="xs" padding="md" radius="md" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
             <Group justify="space-between">
                 <Group align="center" gap={6}>
-                    <Badge color="gray" size="sm" variant="light">
+                    <Badge color="gray" variant="light" radius="md">
                         {index + 1}
                     </Badge>
-                    <Badge color={from === AccountType.EXCHANGE ? "blue" : "teal"} size="sm">
+                    <Badge color={from === AccountType.EXCHANGE ? "blue" : "teal"} radius="md">
                         {from === AccountType.WALLET ? t("wallet") : t("exchange")}
                     </Badge>
                     <IconArrowRight color="gray" size={16} />
-                    <Badge color={to === AccountType.EXCHANGE ? "blue" : "teal"} size="sm">
+                    <Badge color={to === AccountType.EXCHANGE ? "blue" : "teal"} radius="md">
                         {to === AccountType.WALLET ? t("wallet") : t("exchange")}
                     </Badge>
                 </Group>

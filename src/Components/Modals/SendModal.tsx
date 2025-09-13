@@ -6,12 +6,14 @@ import { Modal, TextInput, NumberInput, Button, Group, Text, Stack, HoverCard, D
 import { IconAlertSquareRoundedFilled, IconArrowUp, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import {
-    createTransaction,
     DEFAULT_FEE,
     generateNewExchangeAddress,
     generateNewWalletAddress,
+    settleTransaction,
     UTXO,
 } from "../../Store/Features/Ledger/LedgerSlice";
+import { addTransactionToMempool } from "../../Store/Features/Mempool/MempoolSlice";
+import { useAppSelector } from "../../Store/hook";
 import { buildTransaction } from "../../Utils/transaction-builder";
 
 type SendModalProps = {
@@ -26,6 +28,7 @@ type SendModalProps = {
 function SendModal({ title, opened, senderAddresses, utxos, color, close }: SendModalProps) {
     const [recipentAddress, setRecipentAddress] = useState("");
     const [amount, setAmount] = useState<string | number>("");
+    const { advancedMode } = useAppSelector((state) => state.settings);
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
@@ -50,14 +53,19 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
             });
 
             if (tx) {
-                dispatch(createTransaction(tx));
+                if (advancedMode) {
+                    dispatch(addTransactionToMempool(tx));
+                } else {
+                    dispatch(settleTransaction(tx));
+                }
+
                 dispatch(generateNewWalletAddress());
                 dispatch(generateNewExchangeAddress());
 
                 handleClose();
             }
         },
-        [utxos, senderAddresses, dispatch, handleClose]
+        [utxos, senderAddresses, advancedMode, dispatch, handleClose]
     );
 
     const isValid = recipentAddress.length > 0 && typeof amount === "number" && amount > 0 && amount + DEFAULT_FEE <= totalBalance;

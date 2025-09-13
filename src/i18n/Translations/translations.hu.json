@@ -10,7 +10,7 @@
     "cancel": "Mégsem",
     "transactionHistory": "Tranzakció Előzmények",
     "fee": "Díj",
-    "toggleColorScheme": "Színséma Váltása",
+    "toggleColorScheme": "Színséma váltása",
     "balance": "Egyenleg",
     "send": "Küldés",
     "receive": "Fogadás",
@@ -28,5 +28,7 @@
     "receiveBitcoinToExchange": "Bitcoin Fogadása Váltóra",
     "sendBitcoinFromExchange": "Bitcoin Küldése Váltóról",
     "receiveBitcoinToWallet": "Bitcoin Fogadása Tárcába",
-    "sendBitcoinFromWallet": "Bitcoin Küldése Tárcából"
+    "sendBitcoinFromWallet": "Bitcoin Küldése Tárcából",
+    "yourUtxos": "Az Ön UTXO-i",
+    "memoryPool": "Memória Medence"
 }

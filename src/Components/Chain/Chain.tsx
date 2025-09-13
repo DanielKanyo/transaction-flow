@@ -1,7 +1,10 @@
-import { Card, Divider, Flex, HoverCard, Stack, Text } from "@mantine/core";
+import { Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { IconCirclesRelation, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 function Chain() {
+    const theme = useMantineTheme();
+    const { colorScheme } = useMantineColorScheme();
+
     return (
         <Card shadow="sm" padding="md" radius="md" h="100%">
             <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50}>
@@ -33,6 +36,16 @@ function Chain() {
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </Flex>
+            </Card>
+            <Card
+                h="100%"
+                radius="md"
+                bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
+                p={0}
+                pl="xs"
+                shadow="none"
+            >
+                {/* TODO */}
             </Card>
         </Card>
     );

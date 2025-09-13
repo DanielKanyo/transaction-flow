@@ -10,7 +10,7 @@
     "cancel": "Cancel",
     "transactionHistory": "Transaction History",
     "fee": "Fee",
-    "toggleColorScheme": "Toggle Color Scheme",
+    "toggleColorScheme": "Toggle color scheme",
     "balance": "Balance",
     "send": "Send",
     "receive": "Receive",
@@ -28,5 +28,7 @@
     "receiveBitcoinToExchange": "Receive Bitcoin to Exchange",
     "sendBitcoinFromExchange": "Send Bitcoin from Exchange",
     "receiveBitcoinToWallet": "Receive Bitcoin to Wallet",
-    "sendBitcoinFromWallet": "Send Bitcoin from Wallet"
+    "sendBitcoinFromWallet": "Send Bitcoin from Wallet",
+    "yourUtxos": "Your UTXOs",
+    "memoryPool": "Memory Pool"
 }

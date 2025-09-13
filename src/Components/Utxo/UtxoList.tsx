@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -35,6 +36,7 @@ interface UtxoListProps {
 function UtxoList({ walletUtxos }: UtxoListProps) {
     const { unit } = useAppSelector((state) => state.settings);
     const formatedUnit = unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi;
+    const { t } = useTranslation();
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
 
@@ -75,16 +77,18 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                             </Stack>
                         </HoverCard.Dropdown>
                     </HoverCard>
-                    <Text c="dimmed">Your UTXOs</Text>
+                    <Text c="dimmed">{t("yourUtxos")}</Text>
                 </Flex>
                 <Group gap={6}>
                     <Tooltip label={`${spentUtxos.length} spent UTXO${spentUtxos.length > 0 ? "s" : ""}`} withArrow>
-                        <Badge color="gray" variant="light">
+                        <Badge color="gray" variant="light" radius="md">
                             {spentUtxos.length}
                         </Badge>
                     </Tooltip>
                     <Tooltip label={`${unspentUtxos.length} unspent UTXO${unspentUtxos.length > 0 ? "s" : ""}`} withArrow>
-                        <Badge color="teal">{unspentUtxos.length}</Badge>
+                        <Badge color="teal" radius="md">
+                            {unspentUtxos.length}
+                        </Badge>
                     </Tooltip>
                 </Group>
             </Flex>
@@ -104,18 +108,26 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                             </Center>
                         ) : (
                             <AnimatePresence mode="popLayout">
-                                {walletUtxos.map(({ txid, index, amount, spent, address }) => (
-                                    <motion.div
-                                        key={`${txid}-${index}`}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        transition={{ duration: 0.25 }}
-                                        layout="position"
-                                    >
-                                        <UtxoItem amount={amount} spent={spent} address={address} formatedUnit={formatedUnit} unit={unit} />
-                                    </motion.div>
-                                ))}
+                                {[...walletUtxos]
+                                    .sort((a, b) => Number(a.spent) - Number(b.spent))
+                                    .map(({ txid, index, amount, spent, address }) => (
+                                        <motion.div
+                                            key={`${txid}-${index}`}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            transition={{ duration: 0.25 }}
+                                            layout="position"
+                                        >
+                                            <UtxoItem
+                                                amount={amount}
+                                                spent={spent}
+                                                address={address}
+                                                formatedUnit={formatedUnit}
+                                                unit={unit}
+                                            />
+                                        </motion.div>
+                                    ))}
                             </AnimatePresence>
                         )}
                     </Stack>

@@ -36,7 +36,7 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
                         {formatedUnit}
                     </Text>
                 </Group>
-                <Badge variant={spent ? "light" : "filled"} color={spent ? "gray" : "teal"}>
+                <Badge variant={spent ? "light" : "filled"} color={spent ? "gray" : "teal"} radius="md">
                     {spent ? "Spent" : "Unspent"}
                 </Badge>
             </Group>

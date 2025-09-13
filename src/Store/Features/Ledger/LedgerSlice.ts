@@ -67,7 +67,7 @@ export const ledgerSlice = createSlice({
     name: "ledger",
     initialState,
     reducers: {
-        createTransaction: (state, action: PayloadAction<Transaction>) => {
+        settleTransaction: (state, action: PayloadAction<Transaction>) => {
             const tx = action.payload;
 
             // Mark inputs as spent and deduct balances
@@ -145,5 +145,5 @@ export const selectLatestExchangeAddress = (state: { ledger: LedgerState }) => {
     return exchangeAddresses[exchangeAddresses.length - 1];
 };
 
-export const { createTransaction, generateNewWalletAddress, generateNewExchangeAddress, resetLedger } = ledgerSlice.actions;
+export const { settleTransaction, generateNewWalletAddress, generateNewExchangeAddress, resetLedger } = ledgerSlice.actions;
 export default ledgerSlice.reducer;

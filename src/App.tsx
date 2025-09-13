@@ -40,7 +40,7 @@ export default function App() {
                                         <motion.div
                                             key="mempool"
                                             initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "65%", opacity: 1 }}
+                                            animate={{ height: "68%", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.35, type: "spring", bounce: 0 }}
                                         >
@@ -52,7 +52,7 @@ export default function App() {
                                         <motion.div
                                             key="chain"
                                             initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "65%", opacity: 1 }}
+                                            animate={{ height: "68%", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.35, type: "spring", bounce: 0, delay: 0.1 }}
                                         >
