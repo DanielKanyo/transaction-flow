@@ -25,8 +25,8 @@ export default function BackgroundBlobs({ cycle }: Props) {
     const generateBlobs = (): Blob[] =>
         Array.from({ length: DEFAULT_NUMBER_OF_BLOBS }, (_, i) => ({
             key: i,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 90}%`,
+            left: `${Math.random() * 90}%`,
             size: 20 + Math.random() * 20,
             delay: Math.random() * 0.5,
         }));

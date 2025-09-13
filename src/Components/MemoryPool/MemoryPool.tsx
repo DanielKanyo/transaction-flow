@@ -163,7 +163,7 @@ function MemoryPool() {
                                         h={28}
                                         leftSection={<IconClockHour10 size={16} />}
                                     >
-                                        <Text fz={14} lh={1} w={36} ta="right">
+                                        <Text fz={14} lh={1} w={35} ta="right">
                                             {formatTime(countdown)}
                                         </Text>
                                     </Badge>
