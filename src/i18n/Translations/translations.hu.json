@@ -30,5 +30,6 @@
     "receiveBitcoinToWallet": "Bitcoin Fogadása Tárcába",
     "sendBitcoinFromWallet": "Bitcoin Küldése Tárcából",
     "yourUtxos": "Az Ön UTXO-i",
-    "memoryPool": "Memória Medence"
+    "memoryPool": "Memória Medence",
+    "sourceCode": "Forráskód"
 }

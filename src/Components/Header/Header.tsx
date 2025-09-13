@@ -15,7 +15,16 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconArrowsExchange, IconCheck, IconLanguage, IconMoon, IconReload, IconSettings, IconSun } from "@tabler/icons-react";
+import {
+    IconArrowsExchange,
+    IconBrandGithub,
+    IconCheck,
+    IconLanguage,
+    IconMoon,
+    IconReload,
+    IconSettings,
+    IconSun,
+} from "@tabler/icons-react";
 
 import { resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
 import { Languages, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
@@ -52,6 +61,15 @@ function Header() {
                 </Flex>
 
                 <Group gap="xs">
+                    <Button
+                        color="red"
+                        aria-label="Reset"
+                        radius="md"
+                        leftSection={<IconReload size={20} />}
+                        onClick={() => dispatch(resetLedger())}
+                    >
+                        {t("reset")}
+                    </Button>
                     <Menu withArrow withinPortal position="bottom">
                         <Menu.Target>
                             <ActionIcon size={36} variant="light" radius="md" color="gray" aria-label="Change language">
@@ -76,11 +94,25 @@ function Header() {
                             size={36}
                             variant="light"
                             color="gray"
-                            aria-label="Toggle color scheme"
+                            aria-label="Toggle-color-scheme"
                             radius="md"
                             onClick={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
                         >
                             {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
+                        </ActionIcon>
+                    </Tooltip>
+                    <Tooltip label={t("sourceCode")} withArrow>
+                        <ActionIcon
+                            size={36}
+                            variant="light"
+                            color="gray"
+                            aria-label="Source-code"
+                            radius="md"
+                            component="a"
+                            href="https://github.com/DanielKanyo/transaction-flow"
+                            target="_blank"
+                        >
+                            <IconBrandGithub size={20} />
                         </ActionIcon>
                     </Tooltip>
                     <Tooltip label={t("settings")} withArrow>
@@ -88,15 +120,6 @@ function Header() {
                             <IconSettings size={20} />
                         </ActionIcon>
                     </Tooltip>
-                    <Button
-                        color="red"
-                        aria-label="Reset"
-                        radius="md"
-                        leftSection={<IconReload size={20} />}
-                        onClick={() => dispatch(resetLedger())}
-                    >
-                        {t("reset")}
-                    </Button>
                 </Group>
             </Flex>
 

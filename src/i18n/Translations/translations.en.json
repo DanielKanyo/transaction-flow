@@ -30,5 +30,6 @@
     "receiveBitcoinToWallet": "Receive Bitcoin to Wallet",
     "sendBitcoinFromWallet": "Send Bitcoin from Wallet",
     "yourUtxos": "Your UTXOs",
-    "memoryPool": "Memory Pool"
+    "memoryPool": "Memory Pool",
+    "sourceCode": "Source code"
 }
