@@ -127,7 +127,7 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
                     <Divider my="sm" />
                     <Group justify="space-between" align="baseline">
                         <Text size="sm" fw="bold" c="dimmed">
-                            {t("fee")}
+                            {t("transactionFee")}
                         </Text>
                         <Group align="center" gap={4}>
                             <Text size="xs">{fee.displayedValue}</Text>
@@ -148,7 +148,7 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
                         <UnitLabel>{formattedUnit}</UnitLabel>
                     </Group>
                     <Group gap={4}>
-                        <UnitLabel>{t("fee")}:</UnitLabel>
+                        <UnitLabel>{t("transactionFee")}:</UnitLabel>
                         <Text size="xs">
                             <NumberFormatter value={fee.displayedValue} thousandSeparator decimalScale={fee.numOfDecimals} />
                         </Text>

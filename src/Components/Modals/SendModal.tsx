@@ -97,8 +97,9 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
             <Stack gap="lg">
                 <TextInput
                     variant="filled"
-                    label="Recipient Address"
-                    placeholder="Paste address"
+                    title=""
+                    label={t("recipentAddress")}
+                    placeholder={t("pasteAddressHere")}
                     value={recipentAddress}
                     onChange={(e) => setRecipentAddress(e.currentTarget.value)}
                     radius="md"
@@ -108,7 +109,8 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
 
                 <NumberInput
                     variant="filled"
-                    label="Amount to Send (BTC)"
+                    title=""
+                    label="Amount to Send"
                     placeholder="e.g. 0.5"
                     value={amount}
                     onChange={setAmount}
@@ -131,9 +133,9 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
                     }
                 />
 
-                <Group justify="flex-end" align="center">
+                <Group justify="flex-end" align="center" gap={4}>
                     <Text fz={14} c="dimmed">
-                        Transaction Fee:
+                        {t("transactionFee")}:
                     </Text>
                     <Text fz={14}>{DEFAULT_FEE} BTC</Text>
                 </Group>

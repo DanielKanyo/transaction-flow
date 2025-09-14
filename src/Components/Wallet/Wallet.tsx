@@ -61,7 +61,7 @@ function Wallet() {
                                     </HoverCard.Target>
                                     <HoverCard.Dropdown>
                                         <Stack align="stretch" justify="center" gap="xs">
-                                            <Text fw={600}>Wallet</Text>
+                                            <Text fw={600}>{t("wallet")}</Text>
                                             <Text fz="sm">
                                                 A wallet is a tool that lets you store, send, and receive Bitcoin. Unlike an exchange, a
                                                 wallet gives <b>you control of the private keys</b> - which means you truly own your

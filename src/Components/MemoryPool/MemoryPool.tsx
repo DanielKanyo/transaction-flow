@@ -122,18 +122,21 @@ function MemoryPool() {
                                     </Badge>
                                 </HoverCard.Target>
                                 <HoverCard.Dropdown>
-                                    <Text size="sm">
+                                    <Text fz="sm">
                                         {transactions.length === 1 ? (
                                             <>
                                                 Your transaction is currently in the <strong>mempool</strong> with other transactions,
-                                                waiting for a miner to include it in a block. Once mined, it will be confirmed and
-                                                permanently recorded on the blockchain.
+                                                waiting for a miner to include it in a block.
+                                                <br />
+                                                Once mined, it will be confirmed and permanently recorded on the Bitcoin blockchain.
                                             </>
                                         ) : (
                                             <>
                                                 Your <strong>{transactions.length}</strong> transactions are currently in the{" "}
                                                 <strong>mempool</strong> with other transactions, waiting for miners to include them in a
-                                                block. Once mined, they will be confirmed and permanently recorded on the blockchain.
+                                                block.
+                                                <br />
+                                                Once mined, they will be confirmed and permanently recorded on the Bitcoin blockchain.
                                             </>
                                         )}
                                     </Text>
@@ -142,7 +145,7 @@ function MemoryPool() {
                         ) : null}
 
                         <ActionIcon.Group>
-                            <Tooltip label="Set speed to 1x" withArrow>
+                            <Tooltip label={t("setSpeedTo1x")} withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="dark.5"
@@ -154,7 +157,7 @@ function MemoryPool() {
                                     <IconPlayerPlayFilled size={14} />
                                 </ActionIcon>
                             </Tooltip>
-                            <Tooltip label="Set speed to 10x" withArrow>
+                            <Tooltip label={t("setSpeedTo10x")} withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="dark.5"

@@ -82,7 +82,7 @@ function History() {
                     <Stack gap="xs" my="xs" me="xs">
                         {transactions.length === 0 ? (
                             <Center p="xs">
-                                <Text c="dimmed">No transactions found...</Text>
+                                <Text c="dimmed">{t("noTransactionsFound")}</Text>
                             </Center>
                         ) : (
                             <AnimatePresence mode="popLayout">
