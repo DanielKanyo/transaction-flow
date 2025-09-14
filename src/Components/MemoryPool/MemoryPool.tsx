@@ -126,14 +126,14 @@ function MemoryPool() {
                                         {transactions.length === 1 ? (
                                             <>
                                                 Your transaction is currently in the <strong>mempool</strong> with other transactions,
-                                                waiting for a miner to include it in a block.
-                                                Once mined, it will be confirmed and permanently recorded on the blockchain.
+                                                waiting for a miner to include it in a block. Once mined, it will be confirmed and
+                                                permanently recorded on the blockchain.
                                             </>
                                         ) : (
                                             <>
                                                 Your <strong>{transactions.length}</strong> transactions are currently in the{" "}
-                                                <strong>mempool</strong> with other transactions, waiting for miners to include them in a block.
-                                                Once mined, they will be confirmed and permanently recorded on the blockchain.
+                                                <strong>mempool</strong> with other transactions, waiting for miners to include them in a
+                                                block. Once mined, they will be confirmed and permanently recorded on the blockchain.
                                             </>
                                         )}
                                     </Text>
