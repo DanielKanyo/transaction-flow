@@ -4,8 +4,8 @@
     height: 30px;
     width: 30px;
 
-    box-shadow: 0 0 0 0 #ff7a00;
-    opacity: 0.8;
+    box-shadow: 0 0 0 0 #e8590c;
+    opacity: 1;
     transform: scale(1);
     animation: pulse 2s infinite;
 }

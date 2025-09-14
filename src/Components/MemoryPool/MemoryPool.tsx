@@ -114,6 +114,33 @@ function MemoryPool() {
                         {t("memoryPool")}
                     </Flex>
                     <Flex gap="xs" align="center">
+                        {transactions.length ? (
+                            <HoverCard width={260} shadow="md" withArrow openDelay={0} closeDelay={200} radius="md">
+                                <HoverCard.Target>
+                                    <Badge color="orange" h={28} radius="md">
+                                        {transactions.length}
+                                    </Badge>
+                                </HoverCard.Target>
+                                <HoverCard.Dropdown>
+                                    <Text size="sm">
+                                        {transactions.length === 1 ? (
+                                            <>
+                                                Your transaction is currently in the <strong>mempool</strong> with other transactions,
+                                                waiting for a miner to include it in a block.
+                                                Once mined, it will be confirmed and permanently recorded on the blockchain.
+                                            </>
+                                        ) : (
+                                            <>
+                                                Your <strong>{transactions.length}</strong> transactions are currently in the{" "}
+                                                <strong>mempool</strong> with other transactions, waiting for miners to include them in a block.
+                                                Once mined, they will be confirmed and permanently recorded on the blockchain.
+                                            </>
+                                        )}
+                                    </Text>
+                                </HoverCard.Dropdown>
+                            </HoverCard>
+                        ) : null}
+
                         <ActionIcon.Group>
                             <Tooltip label="Set speed to 1x" withArrow>
                                 <ActionIcon
@@ -146,6 +173,7 @@ function MemoryPool() {
                                     aria-label="Mine"
                                     radius="md"
                                     onClick={() => setCountdown(0)}
+                                    disabled={!Boolean(transactions.length)}
                                     w={32}
                                 >
                                     <IconPick size={16} />
