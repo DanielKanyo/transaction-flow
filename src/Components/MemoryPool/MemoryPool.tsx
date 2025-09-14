@@ -142,7 +142,7 @@ function MemoryPool() {
                             <Tooltip label="Confirm transactions now - instant mining" withArrow>
                                 <ActionIcon
                                     variant="filled"
-                                    color="red"
+                                    color="teal"
                                     aria-label="Mine"
                                     radius="md"
                                     onClick={() => setCountdown(0)}
