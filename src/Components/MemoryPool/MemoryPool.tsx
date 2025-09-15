@@ -145,7 +145,7 @@ function MemoryPool() {
                         ) : null}
 
                         <ActionIcon.Group>
-                            <Tooltip label={t("setSpeedTo1x")} withArrow>
+                            <Tooltip label={t("setSpeedTo1x")} radius="md" withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="dark.5"
@@ -157,7 +157,7 @@ function MemoryPool() {
                                     <IconPlayerPlayFilled size={14} />
                                 </ActionIcon>
                             </Tooltip>
-                            <Tooltip label={t("setSpeedTo10x")} withArrow>
+                            <Tooltip label={t("setSpeedTo10x")} radius="md" withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="dark.5"
@@ -169,7 +169,7 @@ function MemoryPool() {
                                     <IconPlayerTrackNextFilled size={16} />
                                 </ActionIcon>
                             </Tooltip>
-                            <Tooltip label="Confirm transactions now - instant mining" withArrow>
+                            <Tooltip label="Confirm transactions now - instant mining" radius="md" withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="teal"
@@ -194,7 +194,7 @@ function MemoryPool() {
                                         h={28}
                                         leftSection={<IconClockHour10 size={16} />}
                                     >
-                                        <Text fz={14} lh={1} w={35} ta="right">
+                                        <Text fz={14} lh={1} w={36} ta="right">
                                             {formatTime(countdown)}
                                         </Text>
                                     </Badge>

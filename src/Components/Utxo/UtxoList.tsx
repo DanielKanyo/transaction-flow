@@ -80,12 +80,12 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                     <Text c="dimmed">{t("yourUtxos")}</Text>
                 </Flex>
                 <Group gap={6}>
-                    <Tooltip label={`${spentUtxos.length} spent UTXO${spentUtxos.length > 0 ? "s" : ""}`} withArrow>
+                    <Tooltip label={`${spentUtxos.length} spent UTXO${spentUtxos.length > 0 ? "s" : ""}`} radius="md" withArrow>
                         <Badge color="gray" variant="light" radius="md">
                             {spentUtxos.length}
                         </Badge>
                     </Tooltip>
-                    <Tooltip label={`${unspentUtxos.length} unspent UTXO${unspentUtxos.length > 0 ? "s" : ""}`} withArrow>
+                    <Tooltip label={`${unspentUtxos.length} unspent UTXO${unspentUtxos.length > 0 ? "s" : ""}`} radius="md" withArrow>
                         <Badge color="teal" radius="md">
                             {unspentUtxos.length}
                         </Badge>

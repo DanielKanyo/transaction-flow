@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import {
     ActionIcon,
     Button,
+    em,
     Flex,
     Group,
     Menu,
@@ -14,9 +15,11 @@ import {
     useMantineColorScheme,
     useMantineTheme,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useFullscreen, useMediaQuery } from "@mantine/hooks";
 import {
     IconArrowsExchange,
+    IconArrowsMaximize,
+    IconArrowsMinimize,
     IconBrandGithub,
     IconCheck,
     IconLanguage,
@@ -39,6 +42,8 @@ function Header() {
     const theme = useMantineTheme();
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
+    const isMobile = useMediaQuery(`(max-width: ${em(1000)})`);
+    const { toggle, fullscreen } = useFullscreen();
 
     const availableLanguages = [
         { key: Languages.English, label: "English" },
@@ -89,7 +94,7 @@ function Header() {
                             ))}
                         </Menu.Dropdown>
                     </Menu>
-                    <Tooltip label={t("toggleColorScheme")} withArrow>
+                    <Tooltip label={t("toggleColorScheme")} radius="md" withArrow>
                         <ActionIcon
                             size={36}
                             variant="light"
@@ -101,7 +106,7 @@ function Header() {
                             {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
                         </ActionIcon>
                     </Tooltip>
-                    <Tooltip label={t("sourceCode")} withArrow>
+                    <Tooltip label={t("sourceCode")} radius="md" withArrow>
                         <ActionIcon
                             size={36}
                             variant="light"
@@ -115,7 +120,14 @@ function Header() {
                             <IconBrandGithub size={20} />
                         </ActionIcon>
                     </Tooltip>
-                    <Tooltip label={t("settings")} withArrow>
+                    {!isMobile && (
+                        <Tooltip label={fullscreen ? "Exit Fullscreen" : "Enter Fullscreen"} radius="md" withArrow>
+                            <ActionIcon size={36} variant="light" color="gray" aria-label="Full-screen" radius="md" onClick={toggle}>
+                                {fullscreen ? <IconArrowsMinimize size={20} /> : <IconArrowsMaximize size={20} />}
+                            </ActionIcon>
+                        </Tooltip>
+                    )}
+                    <Tooltip label={t("settings")} radius="md" withArrow>
                         <ActionIcon size={36} variant="light" color="gray" aria-label="Settings" radius="md" onClick={openSetingsModal}>
                             <IconSettings size={20} />
                         </ActionIcon>
