@@ -35,7 +35,7 @@ function Exchange() {
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding="md" radius="md" h="100%">
                     <Flex h="100%" direction="column">
-                        <Card shadow="sm" padding="sm" radius="md" bg="blue" c="white" mih={50}>
+                        <Card shadow="sm" padding="sm" radius="md" bg="blue" c="white" mih={50} mah={50}>
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center">
                                     <IconExchange />

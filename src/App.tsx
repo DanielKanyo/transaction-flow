@@ -54,7 +54,7 @@ export default function App() {
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: "68%", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.35, type: "spring", bounce: 0, delay: 0.1 }}
+                                            transition={{ duration: 0.35, type: "spring", bounce: 0 }}
                                         >
                                             <Box h="100%" pt="xs">
                                                 <Chain />

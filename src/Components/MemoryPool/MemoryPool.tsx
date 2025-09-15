@@ -26,11 +26,10 @@ import {
     IconPlayerTrackNextFilled,
 } from "@tabler/icons-react";
 
-import { settleTransaction } from "../../Store/Features/Ledger/LedgerSlice";
+import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/LedgerSlice";
 import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
 import { useAppSelector } from "../../Store/hook";
 import BackgroundBlobs from "./BackgroundBlobs/BackgroundBlobs";
-import styles from "./MemoryPool.module.css";
 
 const DEFAULT_CYCLE_DURATION = 600_000; // 10 minutes in ms
 
@@ -65,6 +64,7 @@ function MemoryPool() {
                 dispatch(settleTransaction(tx));
             });
             dispatch(clearMempool());
+            dispatch(addNewBlock(Boolean(transactions.length)));
 
             // restart cycle
             setCountdown(DEFAULT_CYCLE_DURATION / 1000);
@@ -87,7 +87,7 @@ function MemoryPool() {
 
     return (
         <Card shadow="sm" padding="md" radius="md" h="100%">
-            <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50}>
+            <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center">
                         <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-start" radius="md">
@@ -176,7 +176,6 @@ function MemoryPool() {
                                     aria-label="Mine"
                                     radius="md"
                                     onClick={() => setCountdown(0)}
-                                    disabled={!Boolean(transactions.length)}
                                     w={32}
                                 >
                                     <IconPick size={16} />
@@ -230,7 +229,7 @@ function MemoryPool() {
                                 exit={{ y: 50, opacity: 0 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             >
-                                <div className={styles.transaction}></div>
+                                <div className="transaction"></div>
                             </motion.div>
                         ))}
                     </AnimatePresence>

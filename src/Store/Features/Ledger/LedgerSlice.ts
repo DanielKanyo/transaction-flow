@@ -8,6 +8,17 @@ export const DUST_THRESHOLD = 0.00000546; // ~546 satoshis
 
 export const DEFAULT_FEE = 0.000001;
 
+export type Block = { id: number; highlightTransaction: boolean };
+
+const INITIAL_BLOCKS: Block[] = [
+    { id: 1, highlightTransaction: false },
+    { id: 2, highlightTransaction: false },
+    { id: 3, highlightTransaction: false },
+    { id: 4, highlightTransaction: false },
+    { id: 5, highlightTransaction: false },
+    { id: 6, highlightTransaction: false },
+];
+
 export type UTXO = {
     txid: string;
     index: number;
@@ -36,6 +47,9 @@ export type LedgerState = {
     balanceInWallet: number;
     walletUtxos: UTXO[];
     transactions: Transaction[];
+    blockchain: Block[];
+    enteringBlockId: number | null;
+    nextBlockId: number;
 };
 
 const createInitialLedgerState = (): LedgerState => {
@@ -58,6 +72,9 @@ const createInitialLedgerState = (): LedgerState => {
         balanceInWallet: 0,
         walletUtxos: [],
         transactions: [],
+        blockchain: INITIAL_BLOCKS,
+        enteringBlockId: null,
+        nextBlockId: INITIAL_BLOCKS[INITIAL_BLOCKS.length - 1].id,
     };
 };
 
@@ -129,6 +146,14 @@ export const ledgerSlice = createSlice({
             state.exchangeAddresses.push(newAddr);
         },
 
+        addNewBlock: (state, action: PayloadAction<boolean>) => {
+            state.nextBlockId += 1;
+            const newBlock: Block = { id: state.nextBlockId, highlightTransaction: action.payload };
+
+            state.enteringBlockId = newBlock.id;
+            state.blockchain = [...state.blockchain, newBlock].slice(-6); // keep last 6
+        },
+
         resetLedger: () => createInitialLedgerState(),
     },
 });
@@ -145,5 +170,5 @@ export const selectLatestExchangeAddress = (state: { ledger: LedgerState }) => {
     return exchangeAddresses[exchangeAddresses.length - 1];
 };
 
-export const { settleTransaction, generateNewWalletAddress, generateNewExchangeAddress, resetLedger } = ledgerSlice.actions;
+export const { settleTransaction, generateNewWalletAddress, generateNewExchangeAddress, addNewBlock, resetLedger } = ledgerSlice.actions;
 export default ledgerSlice.reducer;

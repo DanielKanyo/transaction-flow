@@ -40,7 +40,7 @@ function AddressList({
 }) {
     return (
         <>
-            <Text size="sm" fw="bold" mb="xs" c="dimmed">
+            <Text size="sm" mb="xs" c="dimmed">
                 {label}
             </Text>
             <Stack gap={2}>
@@ -126,7 +126,7 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
                     <AddressList label="Outputs" items={tx.outputs} unit={unit} formattedUnit={formattedUnit} />
                     <Divider my="sm" />
                     <Group justify="space-between" align="baseline">
-                        <Text size="sm" fw="bold" c="dimmed">
+                        <Text size="sm" c="dimmed">
                             {t("transactionFee")}
                         </Text>
                         <Group align="center" gap={4}>
