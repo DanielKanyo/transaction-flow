@@ -117,7 +117,7 @@ function MemoryPool() {
                         {transactions.length ? (
                             <HoverCard width={260} shadow="md" withArrow openDelay={0} closeDelay={200} radius="md">
                                 <HoverCard.Target>
-                                    <Badge color="orange" h={28} radius="md">
+                                    <Badge color="orange" h={28} lh={1} fz={14} radius="md" size="lg">
                                         {transactions.length}
                                     </Badge>
                                 </HoverCard.Target>
