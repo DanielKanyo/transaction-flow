@@ -43,7 +43,7 @@ function Wallet() {
                     <Flex h="100%" direction="column">
                         <Card shadow="sm" padding="sm" radius="md" bg="teal" c="white" mih={50} mah={50}>
                             <Flex justify="space-between" align="center" h="100%">
-                                <Flex gap="sm" align="center">
+                                <Flex gap="sm" align="center" lh={1}>
                                     <IconWallet />
                                     {t("wallet")}
                                 </Flex>

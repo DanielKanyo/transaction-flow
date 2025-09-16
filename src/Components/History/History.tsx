@@ -30,7 +30,7 @@ function History() {
         <Card shadow="sm" padding="md" radius="md" h="110%">
             <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">
-                    <Flex gap="sm" align="center">
+                    <Flex gap="sm" align="center" lh={1}>
                         <IconHistory />
                         {t("transactionHistory")}
                     </Flex>

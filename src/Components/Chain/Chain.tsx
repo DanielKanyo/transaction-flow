@@ -5,6 +5,30 @@ import { IconBox, IconCirclesRelation, IconInfoSquareRoundedFilled } from "@tabl
 
 import { useAppSelector } from "../../Store/hook";
 
+const FadeOverlay = () => {
+    const { colorScheme } = useMantineColorScheme();
+
+    const background =
+        colorScheme === "dark"
+            ? "linear-gradient(90deg, rgba(59, 59, 59, 0.9) 0%, rgba(255, 255, 255, 0) 100%)"
+            : "linear-gradient(90deg, rgba(241, 243, 245, 0.9) 0%, rgba(255, 255, 255, 0) 100%)";
+
+    return (
+        <div
+            style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                top: 0,
+                left: 0,
+                background,
+                zIndex: 10,
+                pointerEvents: "none",
+            }}
+        />
+    );
+};
+
 function Chain() {
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
@@ -15,7 +39,7 @@ function Chain() {
             {/* Header */}
             <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">
-                    <Flex gap="sm" align="center">
+                    <Flex gap="sm" align="center" lh={1}>
                         <IconCirclesRelation />
                         Blockchain
                     </Flex>
@@ -49,6 +73,7 @@ function Chain() {
                 py="sm"
                 shadow="none"
             >
+                <FadeOverlay />
                 <Box style={{ overflow: "hidden", width: "100%", height: "100%" }}>
                     <Flex gap={0} align="center" wrap="nowrap" justify="flex-end" h="100%" me="sm">
                         <AnimatePresence initial={false}>

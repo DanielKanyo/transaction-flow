@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-import styles from "./BackgroundBlobs.module.css";
+import classes from "./BackgroundBlobs.module.css";
 
-const DEFAULT_NUMBER_OF_BLOBS = 50;
+const DEFAULT_NUMBER_OF_BLOBS = 32;
 
 interface Blob {
     key: number;
@@ -45,7 +45,7 @@ export default function BackgroundBlobs({ cycle }: Props) {
     }, [cycle]);
 
     return (
-        <div className={styles.background}>
+        <div className={classes.background}>
             <AnimatePresence>
                 {blobs.map((b) => (
                     <motion.div
