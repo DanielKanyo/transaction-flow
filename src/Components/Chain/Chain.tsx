@@ -11,7 +11,7 @@ const FadeOverlay = () => {
     const background =
         colorScheme === "dark"
             ? "linear-gradient(90deg, rgba(59, 59, 59, 0.9) 0%, rgba(255, 255, 255, 0) 100%)"
-            : "linear-gradient(90deg, rgba(241, 243, 245, 0.9) 0%, rgba(255, 255, 255, 0) 100%)";
+            : "linear-gradient(90deg, rgba(241, 243, 245, 0.8) 0%, rgba(255, 255, 255, 0) 100%)";
 
     return (
         <div
@@ -90,6 +90,13 @@ function Chain() {
                                 >
                                     {/* Block */}
                                     <Center h="100%" pos="relative">
+                                        <Box
+                                            pos="absolute"
+                                            h={60}
+                                            w={60}
+                                            bg={colorScheme === "light" ? theme.colors.violet[5] : theme.colors.violet[8]}
+                                            style={{ borderRadius: "50%", zIndex: 1 }}
+                                        ></Box>
                                         <IconBox
                                             size={82}
                                             color={colorScheme === "light" ? theme.colors.gray[7] : theme.colors.gray[2]}
