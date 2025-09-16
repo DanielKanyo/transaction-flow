@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { motion } from "framer-motion";
@@ -57,16 +57,23 @@ function Exchange() {
                                         <Stack align="stretch" justify="center" gap="xs">
                                             <Text fw={600}>{t("exchange")}</Text>
                                             <Text fz="sm">
-                                                An exchange is a platform where you can buy, sell, or trade Bitcoin (and other
-                                                cryptocurrencies) using regular money (like USD, EUR) or other digital assets. It works like
-                                                a marketplace - you deposit money, then use it to purchase Bitcoin, which you can later
-                                                withdraw to your own wallet.
+                                                <Trans
+                                                    i18nKey="exchangeExplanationPart1"
+                                                    components={{
+                                                        bold: <b />,
+                                                        italic: <i />,
+                                                    }}
+                                                />
                                             </Text>
                                             <Divider />
                                             <Text fz="sm">
-                                                On an exchange, <b>you don't control the private keys</b> to your Bitcoin - the exchange
-                                                holds them for you. That's why people say <i>"Not your keys, not your Bitcoin"</i> - if you
-                                                don't control the keys, you don't fully control your Bitcoin.
+                                                <Trans
+                                                    i18nKey="exchangeExplanationPart2"
+                                                    components={{
+                                                        bold: <b />,
+                                                        italic: <i />,
+                                                    }}
+                                                />
                                             </Text>
                                         </Stack>
                                         <Text></Text>

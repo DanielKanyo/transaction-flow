@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -63,19 +63,23 @@ function Wallet() {
                                         <Stack align="stretch" justify="center" gap="xs">
                                             <Text fw={600}>{t("wallet")}</Text>
                                             <Text fz="sm">
-                                                A wallet is a tool that lets you store, send, and receive Bitcoin. Unlike an exchange, a
-                                                wallet gives <b>you control of the private keys</b> - which means you truly own your
-                                                Bitcoin. Wallets can be apps on your phone/computer (software wallets) or special devices
-                                                (hardware wallets). People say
-                                                <i> "Not your keys, not your Bitcoin"</i> because with a wallet, the keys are yours - and so
-                                                is your Bitcoin.
+                                                <Trans
+                                                    i18nKey="walletExplanationPart1"
+                                                    components={{
+                                                        bold: <b />,
+                                                        italic: <i />,
+                                                    }}
+                                                />
                                             </Text>
                                             <Divider />
                                             <Text fz="sm">
-                                                Your Bitcoin itself is always on the blockchain, not inside your phone or device. The wallet
-                                                simply
-                                                <b> keeps your private key safe</b>. If you lose the wallet, you can restore access using
-                                                your private key (usually written as 12 or 24 recovery words).
+                                                <Trans
+                                                    i18nKey="walletExplanationPart2"
+                                                    components={{
+                                                        bold: <b />,
+                                                        italic: <i />,
+                                                    }}
+                                                />
                                             </Text>
                                         </Stack>
                                         <Text></Text>

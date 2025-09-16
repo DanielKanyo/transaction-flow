@@ -31,5 +31,9 @@
     "pasteAddressHere": "Cím Beillesztése Ide",
     "setSpeedTo1x": "Sebesség beállítása 1x-re",
     "setSpeedTo10x": "Sebesség beállítása 10x-re",
-    "learnMore": "Tudj meg többet"
+    "learnMore": "Tudj meg többet",
+    "exchangeExplanationPart1": "A váltó egy olyan platform, ahol Bitcoint (és más kriptovalutákat) lehet venni, eladni vagy kereskedni hagyományos pénz (például USD, EUR) vagy más digitális eszközök felhasználásával. Úgy működik, mint egy piactér - befizeted a pénzt, majd azt felhasználhatod Bitcoin vásárlására, amit később kiutalhatsz a saját tárcádba.",
+    "exchangeExplanationPart2": "Egy váltón <bold>nem te irányítod a privát kulcsokat</bold> a Bitcoinodhoz - a váltó tartja azokat helyetted. Ezért mondják: <italic>\"Nem a te kulcsod, nem a te Bitcoinod\"</italic> - ha nem te kezeled a kulcsokat, akkor a Bitcoinod felett sem rendelkezel teljes mértékben.",
+    "walletExplanationPart1": "A pénztárca egy eszköz, amellyel Bitcoint tárolhatsz, küldhetsz és fogadhatsz. A váltóval ellentétben a pénztárca <bold>a privát kulcsokat a te irányításod alá adja</bold> - ami azt jelenti, hogy valóban a tiéd a Bitcoin. A pénztárcák lehetnek alkalmazások a telefonodon vagy számítógépeden (szoftveres tárcák), illetve speciális eszközök (hardveres tárcák). Ezért mondják: <italic>\"Nem a te kulcsod, nem a te Bitcoinod\"</italic> - mert ha a kulcsok nálad vannak, akkor a Bitcoin is a tiéd.",
+    "walletExplanationPart2": "Maguk a Bitcoinok mindig a blokkláncon vannak, nem pedig a telefonodon vagy az eszközödön. A pénztárca csupán <bold>biztonságban tartja a privát kulcsodat</bold>. Ha elveszíted a pénztárcát, a hozzáférést visszaállíthatod a privát kulcs segítségével (ami általában 12 vagy 24 helyreállító szóként van leírva)."
 }

@@ -31,5 +31,9 @@
     "pasteAddressHere": "Paste Address Here",
     "setSpeedTo1x": "Set speed to 1x",
     "setSpeedTo10x": "Set speed to 10x",
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "exchangeExplanationPart1": "An exchange is a platform where you can buy, sell, or trade Bitcoin (and other cryptocurrencies) using regular money (like USD, EUR) or other digital assets. It works like a marketplace - you deposit money, then use it to purchase Bitcoin, which you can later withdraw to your own wallet.",
+    "exchangeExplanationPart2": "On an exchange, <bold>you don't control the private keys</bold> to your Bitcoin - the exchange holds them for you. That's why people say <italic>\"Not your keys, not your Bitcoin\"</italic> - if you don't control the keys, you don't fully control your Bitcoin.",
+    "walletExplanationPart1": "A wallet is a tool that lets you store, send, and receive Bitcoin. Unlike an exchange, a wallet gives <bold>you control of the private keys</bold> - which means you truly own your Bitcoin. Wallets can be apps on your phone/computer (software wallets) or special devices (hardware wallets). People say <italic>\"Not your keys, not your Bitcoin\"</italic> because with a wallet, the keys are yours - and so is your Bitcoin.",
+    "walletExplanationPart2": "Your Bitcoin itself is always on the blockchain, not inside your phone or device. The wallet simply <bold> keeps your private key safe</bold>. If you lose the wallet, you can restore access using your private key (usually written as 12 or 24 recovery words)."
 }
