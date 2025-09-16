@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { Modal, TextInput, NumberInput, Button, Group, Text, Stack, HoverCard, Divider, ActionIcon, Alert } from "@mantine/core";
@@ -13,6 +13,7 @@ import {
     UTXO,
 } from "../../Store/Features/Ledger/LedgerSlice";
 import { addTransactionToMempool } from "../../Store/Features/Mempool/MempoolSlice";
+import { Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import { buildTransaction } from "../../Utils/transaction-builder";
 
@@ -84,15 +85,25 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
             </HoverCard.Target>
             <HoverCard.Dropdown>
                 <Stack align="stretch" justify="center" gap="xs">
-                    <Text fw={600}>Recipient Address</Text>
+                    <Text fw={600}>{t("recipentAddress")}</Text>
                     <Text fz="sm">
-                        The recipient address is like the "bank account number" for Bitcoin. It tells the network{" "}
-                        <b>where the Bitcoin should be sent</b>.
+                        <Trans
+                            i18nKey="recipientAddressExplanationPart1"
+                            components={{
+                                bold: <b />,
+                                italic: <i />,
+                            }}
+                        />
                     </Text>
                     <Divider />
                     <Text fz="sm">
-                        In this practice app, you can get a recipient address by going to your wallet, clicking "Receive", and then copying
-                        the address shown there. Paste that address here to simulate sending Bitcoin to your wallet.
+                        <Trans
+                            i18nKey="recipientAddressExplanationPart2"
+                            components={{
+                                bold: <b />,
+                                italic: <i />,
+                            }}
+                        />
                     </Text>
                 </Stack>
             </HoverCard.Dropdown>
@@ -122,7 +133,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                 <NumberInput
                     variant="filled"
                     title=""
-                    label="Amount to Send"
+                    label={t("amountToSend")}
                     placeholder="e.g. 0.5"
                     value={amount}
                     onChange={setAmount}
@@ -130,6 +141,8 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     required
                     disabled={exchangeAddresses.includes(recipentAddress) && exchangeMode}
                     radius="md"
+                    suffix=" BTC"
+                    decimalScale={8}
                     rightSection={
                         <ActionIcon
                             radius="md"
@@ -150,12 +163,13 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     <Text fz={14} c="dimmed">
                         {t("transactionFee")}:
                     </Text>
-                    <Text fz={14}>{DEFAULT_FEE} BTC</Text>
+                    <Text fz={14}>
+                        {DEFAULT_FEE} {Units.Bitcoin.toUpperCase()}
+                    </Text>
                 </Group>
 
-                <Alert variant="light" color="yellow" radius="md" title="Important Reminder" icon={<IconAlertSquareRoundedFilled />}>
-                    Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin will
-                    go to the wrong place - and once sent, transactions cannot be reversed.
+                <Alert variant="light" color="yellow" radius="md" title={t("importantReminder")} icon={<IconAlertSquareRoundedFilled />}>
+                    {t("doubleCheckAddress")}
                 </Alert>
             </Stack>
 
