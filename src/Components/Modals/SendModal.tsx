@@ -22,13 +22,15 @@ type SendModalProps = {
     senderAddresses: string[];
     utxos: UTXO[];
     color: string;
+    exchangeMode: boolean;
     close: () => void;
 };
 
-function SendModal({ title, opened, senderAddresses, utxos, color, close }: SendModalProps) {
+function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode, close }: SendModalProps) {
     const [recipentAddress, setRecipentAddress] = useState("");
     const [amount, setAmount] = useState<string | number>("");
     const { advancedMode } = useAppSelector((state) => state.settings);
+    const { exchangeAddresses } = useAppSelector((state) => state.ledger);
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
@@ -68,7 +70,12 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
         [utxos, senderAddresses, advancedMode, dispatch, handleClose]
     );
 
-    const isValid = recipentAddress.length > 0 && typeof amount === "number" && amount > 0 && amount + DEFAULT_FEE <= totalBalance;
+    const isValid =
+        recipentAddress.length > 0 &&
+        typeof amount === "number" &&
+        amount > 0 &&
+        amount + DEFAULT_FEE <= totalBalance &&
+        (!exchangeAddresses.includes(recipentAddress) || !exchangeMode);
 
     const addressInfo = (
         <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
@@ -105,6 +112,11 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
                     radius="md"
                     required
                     rightSection={addressInfo}
+                    error={
+                        exchangeAddresses.includes(recipentAddress) && exchangeMode
+                            ? "Consolidation between exchanges is unnecessary and may incur fees."
+                            : null
+                    }
                 />
 
                 <NumberInput
@@ -116,6 +128,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, close }: Send
                     onChange={setAmount}
                     min={0}
                     required
+                    disabled={exchangeAddresses.includes(recipentAddress) && exchangeMode}
                     radius="md"
                     rightSection={
                         <ActionIcon

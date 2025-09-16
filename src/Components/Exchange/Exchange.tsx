@@ -141,6 +141,7 @@ function Exchange() {
                 opened={sendModalOpened}
                 senderAddresses={exchangeAddresses}
                 utxos={exhangeUtxos}
+                exchangeMode
                 close={closeSendModal}
             />
             <ReceiveModal

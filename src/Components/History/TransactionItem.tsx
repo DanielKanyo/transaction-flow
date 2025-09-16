@@ -10,8 +10,9 @@ import { useAppSelector } from "../../Store/hook";
 import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
 
 enum AccountType {
-    WALLET = "Wallet",
-    EXCHANGE = "Exchange",
+    WALLET = "wallet",
+    EXCHANGE = "exchange",
+    UNKNOWN = "unknown",
 }
 
 interface TransactionItemProps {
@@ -85,13 +86,24 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
         if (inputFromWallet && outputToWallet && !outputToExternal) {
             return { from: AccountType.WALLET, to: AccountType.WALLET };
         }
-        return { from: AccountType.EXCHANGE, to: AccountType.EXCHANGE };
+        return { from: AccountType.EXCHANGE, to: AccountType.UNKNOWN };
     }, [tx, walletAddresses]);
 
     // Precompute values
     const fee = useMemo(() => determineDisplayedValueAndNumOfDecimals(tx.fee, unit), [tx.fee, unit]);
     const transferred = useMemo(() => determineDisplayedValueAndNumOfDecimals(tx.transferredAmount, unit), [tx.transferredAmount, unit]);
     const formattedUnit = useMemo(() => (unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi), [unit]);
+
+    const toBadgeColor = useMemo(() => {
+        switch (to) {
+            case AccountType.EXCHANGE:
+                return "blue";
+            case AccountType.WALLET:
+                return "teal";
+            default:
+                return "gray";
+        }
+    }, [to]);
 
     return (
         <Card shadow="xs" padding="md" radius="md" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
@@ -101,12 +113,17 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
                         {index + 1}
                     </Badge>
                     <Badge color={from === AccountType.EXCHANGE ? "blue" : "teal"} radius="md">
-                        {from === AccountType.WALLET ? t("wallet") : t("exchange")}
+                        {t(from)}
                     </Badge>
                     <IconArrowRight color="gray" size={16} />
-                    <Badge color={to === AccountType.EXCHANGE ? "blue" : "teal"} radius="md">
-                        {to === AccountType.WALLET ? t("wallet") : t("exchange")}
+                    <Badge color={toBadgeColor} radius="md">
+                        {t(to)}
                     </Badge>
+                    {to === AccountType.UNKNOWN ? (
+                        <Badge color="red" radius="md">
+                            Lost coins
+                        </Badge>
+                    ) : null}
                 </Group>
 
                 <Text size="xs" c="dimmed">
