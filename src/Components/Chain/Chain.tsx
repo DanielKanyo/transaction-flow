@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme, Box, Center } from "@mantine/core";
-import { IconBox, IconCirclesRelation, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
+import { IconBox, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { useAppSelector } from "../../Store/hook";
 
@@ -37,10 +37,10 @@ function Chain() {
     return (
         <Card shadow="sm" padding="md" radius="md" h="100%">
             {/* Header */}
-            <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50} mah={50}>
+            <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <IconCirclesRelation />
+                        <IconBox />
                         Blockchain
                     </Flex>
                     <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
@@ -52,11 +52,13 @@ function Chain() {
                                 <Text fw={600}>Bitcoin Blockchain</Text>
                                 <Text fz="sm">
                                     The Bitcoin blockchain is a <b>public record book</b> that keeps track of every Bitcoin transaction ever
-                                    made...
+                                    made. It is composed of blocks, each of which contains a list of verified <b>transactions</b> that
+                                    occurred within a specific time frame.
                                 </Text>
                                 <Divider />
                                 <Text fz="sm">
-                                    Blocks are linked one after another, forming a secure <b>chain of blocks</b>.
+                                    Blocks are linked one after another, forming a secure <b>chain of blocks</b>. This structure ensures the
+                                    integrity and chronological order of all transactions.
                                 </Text>
                             </Stack>
                         </HoverCard.Dropdown>
@@ -99,7 +101,7 @@ function Chain() {
                                         ></Box>
                                         <IconBox
                                             size={82}
-                                            color={colorScheme === "light" ? theme.colors.gray[7] : theme.colors.gray[2]}
+                                            color={colorScheme === "light" ? theme.colors.gray[8] : theme.colors.gray[2]}
                                             style={{ zIndex: 2 }}
                                         />
                                         {block.highlightTransaction ? (
@@ -119,7 +121,7 @@ function Chain() {
                                             style={{
                                                 height: 4,
                                                 width: 50,
-                                                backgroundColor: colorScheme === "light" ? theme.colors.gray[7] : theme.colors.gray[4],
+                                                backgroundColor: colorScheme === "light" ? theme.colors.gray[8] : theme.colors.gray[4],
                                                 marginLeft: 4,
                                                 marginRight: 4,
                                                 borderRadius: 2,

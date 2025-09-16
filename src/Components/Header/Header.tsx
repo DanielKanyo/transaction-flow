@@ -2,19 +2,7 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import {
-    ActionIcon,
-    Button,
-    em,
-    Flex,
-    Group,
-    Menu,
-    Text,
-    Tooltip,
-    useComputedColorScheme,
-    useMantineColorScheme,
-    useMantineTheme,
-} from "@mantine/core";
+import { ActionIcon, Button, em, Flex, Group, Menu, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useFullscreen, useMediaQuery } from "@mantine/hooks";
 import {
     IconArrowsExchange,
@@ -39,7 +27,6 @@ function Header() {
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
     const { language } = useAppSelector((state) => state.settings);
     const [settingsModalOpened, { open: openSetingsModal, close: closeSetingsModal }] = useDisclosure(false);
-    const theme = useMantineTheme();
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const isMobile = useMediaQuery(`(max-width: ${em(1000)})`);
@@ -59,7 +46,7 @@ function Header() {
         <>
             <Flex align="center" justify="space-between" h="100%" lh={1}>
                 <Flex align="center" gap="sm">
-                    <IconArrowsExchange size={34} color={theme.colors.violet[8]} />
+                    <IconArrowsExchange size={34} />
                     <Text fw={600} fz="xl" fs="italic">
                         TX FLOW
                     </Text>

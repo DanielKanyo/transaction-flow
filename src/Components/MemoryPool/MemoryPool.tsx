@@ -74,7 +74,7 @@ function MemoryPool() {
     const formatTime = (seconds: number) => {
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs.toString().padStart(2, "0")}`;
+        return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     };
 
     useEffect(() => {
@@ -87,7 +87,7 @@ function MemoryPool() {
 
     return (
         <Card shadow="sm" padding="md" radius="md" h="100%">
-            <Card shadow="sm" padding="sm" radius="md" bg="violet" c="white" mb="sm" mih={50} mah={50}>
+            <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-start" radius="md">
@@ -114,36 +114,6 @@ function MemoryPool() {
                         {t("memoryPool")}
                     </Flex>
                     <Flex gap="xs" align="center">
-                        {transactions.length ? (
-                            <HoverCard width={260} shadow="md" withArrow openDelay={0} closeDelay={200} radius="md">
-                                <HoverCard.Target>
-                                    <Badge color="orange" h={28} lh={1} fz={14} radius="md" size="lg">
-                                        {transactions.length}
-                                    </Badge>
-                                </HoverCard.Target>
-                                <HoverCard.Dropdown>
-                                    <Text fz="sm">
-                                        {transactions.length === 1 ? (
-                                            <>
-                                                Your transaction is currently in the <strong>mempool</strong> with other transactions,
-                                                waiting for a miner to include it in a block.
-                                                <br />
-                                                Once mined, it will be confirmed and permanently recorded on the Bitcoin blockchain.
-                                            </>
-                                        ) : (
-                                            <>
-                                                Your <strong>{transactions.length}</strong> transactions are currently in the{" "}
-                                                <strong>mempool</strong> with other transactions, waiting for miners to include them in a
-                                                block.
-                                                <br />
-                                                Once mined, they will be confirmed and permanently recorded on the Bitcoin blockchain.
-                                            </>
-                                        )}
-                                    </Text>
-                                </HoverCard.Dropdown>
-                            </HoverCard>
-                        ) : null}
-
                         <ActionIcon.Group>
                             <Tooltip label={t("setSpeedTo1x")} radius="md" withArrow>
                                 <ActionIcon
@@ -193,7 +163,7 @@ function MemoryPool() {
                                         h={28}
                                         leftSection={<IconClockHour10 size={16} />}
                                     >
-                                        <Text fz={14} lh={1} w={36} ta="right">
+                                        <Text fz={14} lh={1} w={43} ta="right">
                                             {formatTime(countdown)}
                                         </Text>
                                     </Badge>
