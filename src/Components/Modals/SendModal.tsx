@@ -22,7 +22,7 @@ type SendModalProps = {
     senderAddresses: string[];
     utxos: UTXO[];
     color: string;
-    exchangeMode: boolean;
+    exchangeMode?: boolean;
     close: () => void;
 };
 
