@@ -1,6 +1,8 @@
 {
     "exchange": "Exchange",
     "wallet": "Wallet",
+    "unknown": "Unknown",
+    "unrecoverable": "Unrecoverable",
     "reset": "Reset",
     "settings": "Settings",
     "mode": "Mode",
@@ -28,5 +30,6 @@
     "noTransactionsFound": "No transactions found...",
     "pasteAddressHere": "Paste Address Here",
     "setSpeedTo1x": "Set speed to 1x",
-    "setSpeedTo10x": "Set speed to 10x"
+    "setSpeedTo10x": "Set speed to 10x",
+    "learnMore": "Learn more"
 }

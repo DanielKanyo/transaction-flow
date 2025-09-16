@@ -44,7 +44,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                         target="_blank"
                         color="violet"
                     >
-                        Learn more
+                        {t("learnMore")}
                     </Button>
                 </Stack>
             </HoverCard.Dropdown>

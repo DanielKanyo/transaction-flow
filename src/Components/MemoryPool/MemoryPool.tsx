@@ -176,7 +176,7 @@ function MemoryPool() {
                                             that cycle. When it reaches 0, it restarts, just like the mempool is cleared into a new block.
                                         </Text>
                                         <Button fullWidth component="a" href="https://mempool.space/" target="_blank" color="violet">
-                                            Learn more
+                                            {t("learnMore")}
                                         </Button>
                                     </Stack>
                                 </HoverCard.Dropdown>

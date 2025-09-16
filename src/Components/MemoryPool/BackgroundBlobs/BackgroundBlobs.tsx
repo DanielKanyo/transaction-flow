@@ -27,7 +27,7 @@ export default function BackgroundBlobs({ cycle }: Props) {
             key: i,
             top: `${Math.random() * 90}%`,
             left: `${Math.random() * 90}%`,
-            size: 20 + Math.random() * 20,
+            size: 20 + Math.random() * 30,
             delay: Math.random() * 0.5,
         }));
 

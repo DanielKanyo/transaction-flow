@@ -116,12 +116,12 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
                         {t(from)}
                     </Badge>
                     <IconArrowRight color="gray" size={16} />
-                    <Badge color={toBadgeColor} radius="md">
+                    <Badge color={toBadgeColor} variant={to === AccountType.UNKNOWN ? "light" : "filled"} radius="md">
                         {t(to)}
                     </Badge>
                     {to === AccountType.UNKNOWN ? (
                         <Badge color="red" radius="md">
-                            Lost coins
+                            {t("unrecoverable")}
                         </Badge>
                     ) : null}
                 </Group>

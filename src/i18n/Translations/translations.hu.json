@@ -1,6 +1,8 @@
 {
     "exchange": "Váltó",
     "wallet": "Tárca",
+    "unknown": "Ismeretlen",
+    "unrecoverable": "Helyrehozhatatlan",
     "reset": "Visszaállítás",
     "settings": "Beállítások",
     "mode": "Mód",
@@ -28,5 +30,6 @@
     "noTransactionsFound": "Nem található tranzakció...",
     "pasteAddressHere": "Cím Beillesztése Ide",
     "setSpeedTo1x": "Sebesség beállítása 1x-re",
-    "setSpeedTo10x": "Sebesség beállítása 10x-re"
+    "setSpeedTo10x": "Sebesség beállítása 10x-re",
+    "learnMore": "Tudj meg többet"
 }

@@ -72,7 +72,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                     target="_blank"
                                     color="violet"
                                 >
-                                    Learn more
+                                    {t("learnMore")}
                                 </Button>
                             </Stack>
                         </HoverCard.Dropdown>
