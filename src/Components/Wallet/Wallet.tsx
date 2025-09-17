@@ -12,15 +12,11 @@ import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } f
 import { selectLatestWalletAddress } from "../../Store/Features/Ledger/LedgerSlice";
 import { RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import { PADDING_BOTTOM_FOR_BALANCE, PADDING_TOP_FOR_BALANCE } from "../../Utils/balance-padding";
 import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
 import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
 import UtxoList from "../Utxo/UtxoList";
-
-const PADDING_FOR_BALANCE = {
-    BASIC_MODE: 84,
-    ADVANCED_MODE: 24,
-};
 
 function Wallet() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
@@ -93,7 +89,10 @@ function Wallet() {
                             justify="center"
                             align="center"
                             h="100%"
-                            pb={advancedMode ? PADDING_FOR_BALANCE.ADVANCED_MODE : PADDING_FOR_BALANCE.BASIC_MODE}
+                            pb={
+                                advancedMode && !isMobile ? PADDING_BOTTOM_FOR_BALANCE.ADVANCED_MODE : PADDING_BOTTOM_FOR_BALANCE.BASIC_MODE
+                            }
+                            pt={isMobile ? PADDING_TOP_FOR_BALANCE : 0}
                         >
                             <motion.div
                                 key="balance"

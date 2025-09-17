@@ -1,0 +1,6 @@
+export const PADDING_BOTTOM_FOR_BALANCE = {
+    BASIC_MODE: 84,
+    ADVANCED_MODE: 24,
+};
+
+export const PADDING_TOP_FOR_BALANCE = 64;

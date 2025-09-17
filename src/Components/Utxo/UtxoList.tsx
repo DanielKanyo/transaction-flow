@@ -18,12 +18,15 @@ import {
     Button,
     Tooltip,
     Center,
+    em,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { UTXO } from "../../Store/Features/Ledger/LedgerSlice";
-import { Units } from "../../Store/Features/Settings/SettingsSlice";
+import { RESPONSIVE_BREAKPOINT, Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import classes from "./Utxo.module.css";
 import UtxoItem from "./UtxoItem";
 
 const UTXO_TITLE_MARGIN = 10;
@@ -39,6 +42,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
     const { t } = useTranslation();
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
 
     const unspentUtxos = useMemo(() => walletUtxos.filter((utxo) => !utxo.spent), [walletUtxos]);
     const spentUtxos = useMemo(() => walletUtxos.filter((utxo) => utxo.spent), [walletUtxos]);
@@ -100,7 +104,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                 pl="xs"
                 shadow="none"
             >
-                <ScrollArea scrollbarSize={6}>
+                <ScrollArea scrollbarSize={6} classNames={{ viewport: isMobile ? classes.viewport : undefined }}>
                     <Stack gap="xs" my="xs" me="xs">
                         {walletUtxos.length === 0 ? (
                             <Center p="xs">

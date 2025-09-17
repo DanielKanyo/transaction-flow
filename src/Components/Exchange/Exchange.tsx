@@ -12,6 +12,7 @@ import { IconArrowDown, IconArrowUp, IconExchange, IconInfoSquareRoundedFilled }
 import { selectLatestExchangeAddress } from "../../Store/Features/Ledger/LedgerSlice";
 import { RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import { PADDING_BOTTOM_FOR_BALANCE, PADDING_TOP_FOR_BALANCE } from "../../Utils/balance-padding";
 import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
 import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
@@ -82,7 +83,14 @@ function Exchange() {
                                 </HoverCard>
                             </Flex>
                         </Card>
-                        <Flex direction="column" justify="center" align="center" h="100%" pb={84}>
+                        <Flex
+                            direction="column"
+                            justify="center"
+                            align="center"
+                            h="100%"
+                            pb={PADDING_BOTTOM_FOR_BALANCE.BASIC_MODE}
+                            pt={isMobile ? PADDING_TOP_FOR_BALANCE : 0}
+                        >
                             <motion.div
                                 key="balance"
                                 layout

@@ -23,6 +23,7 @@ function UnitSelect({ native }: UnitSelectProps) {
     if (native) {
         return (
             <NativeSelect
+                value={unit}
                 label={t("unit")}
                 variant="filled"
                 data={unitOptions}

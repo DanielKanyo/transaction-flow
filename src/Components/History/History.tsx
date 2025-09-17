@@ -21,6 +21,7 @@ import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import classes from "./History.module.css";
 import TransactionItem from "./TransactionItem";
 
 function History() {
@@ -82,7 +83,7 @@ function History() {
                 pl="xs"
                 shadow="none"
             >
-                <ScrollArea scrollbarSize={6}>
+                <ScrollArea scrollbarSize={6} classNames={{ viewport: isMobile ? classes.viewport : undefined }}>
                     <Stack gap="xs" my="xs" me="xs">
                         {transactions.length === 0 ? (
                             <Center p="xs">

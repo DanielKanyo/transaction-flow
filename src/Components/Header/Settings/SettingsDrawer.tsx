@@ -7,6 +7,7 @@ import { IconReload } from "@tabler/icons-react";
 
 import { resetLedger } from "../../../Store/Features/Ledger/LedgerSlice";
 import { Languages } from "../../../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../../../Store/hook";
 import ModeControl from "./ModeControl";
 import classes from "./SettingsModal.module.css";
 import UnitSelect from "./UnitSelect";
@@ -23,6 +24,7 @@ function SettingsDrawer({ opened, availableLanguages, setOpened, handleLanguageS
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const { language } = useAppSelector((state) => state.settings);
 
     const languageOptions = useMemo(
         () =>
@@ -47,6 +49,7 @@ function SettingsDrawer({ opened, availableLanguages, setOpened, handleLanguageS
                     <ModeControl />
                     <UnitSelect native />
                     <NativeSelect
+                        value={language}
                         label={t("language")}
                         variant="filled"
                         data={languageOptions}
@@ -54,9 +57,13 @@ function SettingsDrawer({ opened, availableLanguages, setOpened, handleLanguageS
                         radius="md"
                     />
                     <NativeSelect
+                        value={computedColorScheme}
                         label={t("toggleColorScheme")}
                         variant="filled"
-                        data={[t("dark"), t("light")]}
+                        data={[
+                            { value: "dark", label: t("dark") },
+                            { value: "light", label: t("light") },
+                        ]}
                         onChange={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
                         radius="md"
                     />
