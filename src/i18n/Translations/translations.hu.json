@@ -40,5 +40,8 @@
     "recipientAddressExplanationPart1": "A fogadó cím olyan, mint a Bitcoin „bankszámlaszáma”. Ez mondja meg a hálózatnak, <bold>hova kell a Bitcoint küldeni</bold>.",
     "recipientAddressExplanationPart2": "Ebben a gyakorló alkalmazásban fogadó címet úgy szerezhetsz, hogy megnyitod a pénztárcádat, rákattintasz a „Fogadás” gombra, majd kimásolod a megjelenített címet. Illeszd be ide, hogy szimuláld a Bitcoin küldését a pénztárcádba.",
     "importantReminder": "Fontos emlékeztető",
-    "doubleCheckAddress": "Mindig ellenőrizd kétszer a fogadó címet, mielőtt Bitcoint küldesz. Már egyetlen hibás betű vagy szám is azt eredményezi, hogy a Bitcoin rossz helyre megy - és a tranzakciókat nem lehet visszavonni."
+    "doubleCheckAddress": "Mindig ellenőrizd kétszer a fogadó címet, mielőtt Bitcoint küldesz. Már egyetlen hibás betű vagy szám is azt eredményezi, hogy a Bitcoin rossz helyre megy - és a tranzakciókat nem lehet visszavonni.",
+    "language": "Nyelv",
+    "dark": "Sötét",
+    "light": "Világos"
 }

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 
-import { AppShell, Box, Flex, Grid } from "@mantine/core";
-import { useHeadroom } from "@mantine/hooks";
+import { AppShell, Box, em, Flex, Grid } from "@mantine/core";
+import { useHeadroom, useMediaQuery } from "@mantine/hooks";
 
 import "./App.css";
 import Chain from "./Components/Chain/Chain";
@@ -10,6 +10,7 @@ import Header from "./Components/Header/Header";
 import History from "./Components/History/History";
 import MemoryPool from "./Components/MemoryPool/MemoryPool";
 import Wallet from "./Components/Wallet/Wallet";
+import { RESPONSIVE_BREAKPOINT } from "./Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "./Store/hook";
 
 const HEADER_HEIGHT = 70;
@@ -19,6 +20,7 @@ const GRID_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + CONTENT_PADDING}px)`;
 export default function App() {
     const { advancedMode } = useAppSelector((state) => state.settings);
     const pinned = useHeadroom({ fixedAt: 120 });
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
 
     return (
         <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
@@ -26,8 +28,8 @@ export default function App() {
                 <Header />
             </AppShell.Header>
 
-            <AppShell.Main px="xs" pb={0} pt={HEADER_HEIGHT + CONTENT_PADDING}>
-                <Grid gutter="xs" h={GRID_HEIGHT} classNames={{ inner: "grid-inner" }}>
+            <AppShell.Main px="xs" pb={isMobile ? "xs" : 0} pt={HEADER_HEIGHT + CONTENT_PADDING}>
+                <Grid gutter="xs" h={isMobile ? "auto" : GRID_HEIGHT} classNames={{ inner: "grid-inner" }}>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
                         <Exchange />
                     </Grid.Col>

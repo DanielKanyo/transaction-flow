@@ -1,8 +1,20 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import { ActionIcon, Button, em, Flex, Group, Menu, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import {
+    ActionIcon,
+    Burger,
+    Button,
+    em,
+    Flex,
+    Group,
+    Menu,
+    Text,
+    Tooltip,
+    useComputedColorScheme,
+    useMantineColorScheme,
+} from "@mantine/core";
 import { useDisclosure, useFullscreen, useMediaQuery } from "@mantine/hooks";
 import {
     IconArrowsExchange,
@@ -18,9 +30,10 @@ import {
 } from "@tabler/icons-react";
 
 import { resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
-import { Languages, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
+import { Languages, RESPONSIVE_BREAKPOINT, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import SettingsModal from "./SettingsModal";
+import SettingsDrawer from "./Settings/SettingsDrawer";
+import SettingsModal from "./Settings/SettingsModal";
 
 function Header() {
     const { setColorScheme } = useMantineColorScheme({ keepTransitions: true });
@@ -29,8 +42,9 @@ function Header() {
     const [settingsModalOpened, { open: openSetingsModal, close: closeSetingsModal }] = useDisclosure(false);
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
-    const isMobile = useMediaQuery(`(max-width: ${em(1000)})`);
-    const { toggle, fullscreen } = useFullscreen();
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
+    const { toggle: toggleFullScreen, fullscreen } = useFullscreen();
+    const [opened, setOpened] = useState(false);
 
     const availableLanguages = [
         { key: Languages.English, label: "English" },
@@ -47,12 +61,14 @@ function Header() {
             <Flex align="center" justify="space-between" h="100%" lh={1}>
                 <Flex align="center" gap="sm">
                     <IconArrowsExchange size={34} />
-                    <Text fw={600} fz="xl" fs="italic">
+                    <Text fw={600} fz="xl" fs="italic" lh={1}>
                         TX FLOW
                     </Text>
                 </Flex>
 
-                <Group gap="xs">
+                <Burger hiddenFrom="sm" opened={opened} onClick={() => setOpened((o) => !o)} aria-label="Toggle drawer" size="sm" />
+
+                <Group gap="xs" visibleFrom="sm">
                     <Button
                         color="red"
                         aria-label="Reset"
@@ -109,7 +125,14 @@ function Header() {
                     </Tooltip>
                     {!isMobile && (
                         <Tooltip label={fullscreen ? "Exit Fullscreen" : "Enter Fullscreen"} radius="md" withArrow>
-                            <ActionIcon size={36} variant="light" color="gray" aria-label="Full-screen" radius="md" onClick={toggle}>
+                            <ActionIcon
+                                size={36}
+                                variant="light"
+                                color="gray"
+                                aria-label="Full-screen"
+                                radius="md"
+                                onClick={toggleFullScreen}
+                            >
                                 {fullscreen ? <IconArrowsMinimize size={20} /> : <IconArrowsMaximize size={20} />}
                             </ActionIcon>
                         </Tooltip>
@@ -123,6 +146,12 @@ function Header() {
             </Flex>
 
             <SettingsModal opened={settingsModalOpened} close={closeSetingsModal} />
+            <SettingsDrawer
+                opened={opened}
+                availableLanguages={availableLanguages}
+                setOpened={setOpened}
+                handleLanguageSelect={handleLanguageSelect}
+            />
         </>
     );
 }

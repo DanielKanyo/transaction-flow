@@ -1,5 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+export const RESPONSIVE_BREAKPOINT = 1200;
+
 export const DEFAULT_NUMBER_OF_DIGITS = {
     BTC: 6,
     SAT: 0,

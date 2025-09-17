@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-import { Button, Card, Divider, Flex, HoverCard, Stack, Text } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { Button, Card, Divider, em, Flex, HoverCard, Stack, Text } from "@mantine/core";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } from "@tabler/icons-react";
 
 import { selectLatestWalletAddress } from "../../Store/Features/Ledger/LedgerSlice";
-import { Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
+import { RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
 import ReceiveModal from "../Modals/ReceiveModal";
@@ -29,6 +29,7 @@ function Wallet() {
     const { balanceInWallet: balance, walletAddresses } = useAppSelector((state) => state.ledger);
     const latestAddress = useSelector(selectLatestWalletAddress);
     const { walletUtxos } = useAppSelector((state) => state.ledger);
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ function Wallet() {
     return (
         <>
             <Flex direction="column" gap="xs" h="100%">
-                <Card shadow="sm" padding="md" radius="md" h="100%">
+                <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
                     <Flex h="100%" direction="column">
                         <Card shadow="sm" padding="sm" radius="md" bg="teal" c="white" mih={50} mah={50}>
                             <Flex justify="space-between" align="center" h="100%">

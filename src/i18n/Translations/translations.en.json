@@ -40,5 +40,8 @@
     "recipientAddressExplanationPart1": "The recipient address is like the \"bank account number\" for Bitcoin. It tells the network <bold>where the Bitcoin should be sent</bold>.",
     "recipientAddressExplanationPart2": "In this practice app, you can get a recipient address by going to your wallet, clicking \"Receive\", and then copying the address shown there. Paste that address here to simulate sending Bitcoin to your wallet.",
     "importantReminder": "Important Reminder",
-    "doubleCheckAddress": "Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin will go to the wrong place - and once sent, transactions cannot be reversed."
+    "doubleCheckAddress": "Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin will go to the wrong place - and once sent, transactions cannot be reversed.",
+    "language": "Language",
+    "dark": "Dark",
+    "light": "Light"
 }
