@@ -17,7 +17,9 @@ import {
     Badge,
     Tooltip,
     Button,
+    em,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import {
     IconClockHour10,
     IconInfoSquareRoundedFilled,
@@ -28,6 +30,7 @@ import {
 
 import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/LedgerSlice";
 import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
+import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import BackgroundBlobs from "./BackgroundBlobs/BackgroundBlobs";
 
@@ -36,6 +39,7 @@ const DEFAULT_CYCLE_DURATION = 600_000; // 10 minutes in ms
 function MemoryPool() {
     const [cycle, setCycle] = useState(0);
     const theme = useMantineTheme();
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { colorScheme } = useMantineColorScheme();
     const [countdown, setCountdown] = useState(DEFAULT_CYCLE_DURATION / 1000); // seconds
     const [speed, setSpeed] = useState(1); // 1x or 10x
@@ -86,7 +90,7 @@ function MemoryPool() {
     }, [countdown]);
 
     return (
-        <Card shadow="sm" padding="md" radius="md" h="100%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
             <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
@@ -186,8 +190,15 @@ function MemoryPool() {
                 </Flex>
             </Card>
 
-            <Card h="100%" radius="md" bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]} p={0} shadow="none">
-                <Flex direction="row" justify="center" align="center" h="100%" gap="lg" pos={"relative"}>
+            <Card
+                h="100%"
+                mih={106}
+                radius="md"
+                bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
+                p={0}
+                shadow="none"
+            >
+                <Flex direction="row" justify="center" align="center" mih={106} h="100%" gap="lg" pos={"relative"}>
                     <BackgroundBlobs cycle={cycle} />
 
                     <AnimatePresence>

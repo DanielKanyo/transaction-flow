@@ -118,12 +118,12 @@ function Wallet() {
                                             value={displayedValue}
                                             suffix={unit === Units.Bitcoin ? Units.Bitcoin.toUpperCase() : Units.Satoshi}
                                             style={{
-                                                fontSize: 66,
+                                                fontSize: isMobile ? 46 : 66,
                                                 fontWeight: 400,
                                             }}
                                             format={{ maximumFractionDigits: numOfDecimals }}
                                         />
-                                        <Text mt={-15} c="dimmed">
+                                        <Text mt={isMobile ? 0 : -15} c="dimmed">
                                             {t("balance").toLowerCase()}
                                         </Text>
                                     </Stack>

@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-import { Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme, Box, Center } from "@mantine/core";
+import { Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme, Box, Center, em } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconBox, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
+import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 
 const FadeOverlay = () => {
@@ -30,12 +32,13 @@ const FadeOverlay = () => {
 };
 
 function Chain() {
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
     const { blockchain, enteringBlockId } = useAppSelector((state) => state.ledger);
 
     return (
-        <Card shadow="sm" padding="md" radius="md" h="100%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
             {/* Header */}
             <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">

@@ -14,20 +14,24 @@ import {
     Divider,
     HoverCard,
     List,
+    em,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
+import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import TransactionItem from "./TransactionItem";
 
 function History() {
     const { transactions } = useAppSelector((state) => state.ledger);
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { t } = useTranslation();
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
 
     return (
-        <Card shadow="sm" padding="md" radius="md" h="110%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="110%">
             <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
