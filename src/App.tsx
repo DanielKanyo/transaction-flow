@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import { AnimatePresence, motion } from "framer-motion";
 
 import { AppShell, Box, em, Flex, Grid } from "@mantine/core";
@@ -10,17 +13,28 @@ import Header from "./Components/Header/Header";
 import History from "./Components/History/History";
 import MemoryPool from "./Components/MemoryPool/MemoryPool";
 import Wallet from "./Components/Wallet/Wallet";
-import { RESPONSIVE_BREAKPOINT } from "./Store/Features/Settings/SettingsSlice";
+import { Languages, RESPONSIVE_BREAKPOINT, updateLanguage } from "./Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "./Store/hook";
+import i18n from "./i18n/i18n";
 
 const HEADER_HEIGHT = 70;
 const CONTENT_PADDING = 10;
 const GRID_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + CONTENT_PADDING}px)`;
 
 export default function App() {
-    const { advancedMode } = useAppSelector((state) => state.settings);
+    const { advancedMode, language } = useAppSelector((state) => state.settings);
     const pinned = useHeadroom({ fixedAt: 120 });
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const storedLanguage = localStorage.getItem("appLanguage") as Languages | null;
+
+        if (storedLanguage && storedLanguage !== language) {
+            i18n.changeLanguage(storedLanguage);
+            dispatch(updateLanguage(storedLanguage));
+        }
+    }, [dispatch, language]);
 
     return (
         <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">

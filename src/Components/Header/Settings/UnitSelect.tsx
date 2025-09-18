@@ -15,7 +15,7 @@ interface UnitSelectProps {
     native?: boolean;
 }
 
-function UnitSelect({ native }: UnitSelectProps) {
+function UnitSelect({ native = false }: UnitSelectProps) {
     const dispatch = useDispatch();
     const { unit } = useAppSelector((state) => state.settings);
     const { t } = useTranslation();

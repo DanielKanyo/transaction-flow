@@ -1,28 +1,14 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import {
-    ActionIcon,
-    Burger,
-    Button,
-    em,
-    Flex,
-    Group,
-    Menu,
-    Text,
-    Tooltip,
-    useComputedColorScheme,
-    useMantineColorScheme,
-} from "@mantine/core";
+import { ActionIcon, Burger, Button, em, Flex, Group, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useFullscreen, useMediaQuery } from "@mantine/hooks";
 import {
     IconArrowsExchange,
     IconArrowsMaximize,
     IconArrowsMinimize,
     IconBrandGithub,
-    IconCheck,
-    IconLanguage,
     IconMoon,
     IconReload,
     IconSettings,
@@ -30,31 +16,20 @@ import {
 } from "@tabler/icons-react";
 
 import { resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
-import { Languages, RESPONSIVE_BREAKPOINT, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../Store/hook";
+import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
+import LanguageSelect from "./Settings/LanguageSelect";
 import SettingsDrawer from "./Settings/SettingsDrawer";
 import SettingsModal from "./Settings/SettingsModal";
 
 function Header() {
     const { setColorScheme } = useMantineColorScheme({ keepTransitions: true });
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
-    const { language } = useAppSelector((state) => state.settings);
     const [settingsModalOpened, { open: openSetingsModal, close: closeSetingsModal }] = useDisclosure(false);
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { toggle: toggleFullScreen, fullscreen } = useFullscreen();
     const [opened, setOpened] = useState(false);
-
-    const availableLanguages = [
-        { key: Languages.English, label: "English" },
-        { key: Languages.Hungarian, label: "Magyar" },
-    ];
-
-    const handleLanguageSelect = useCallback((key: Languages) => {
-        dispatch(updateLanguage(key));
-        i18n.changeLanguage(key);
-    }, []);
 
     return (
         <>
@@ -78,25 +53,7 @@ function Header() {
                     >
                         {t("reset")}
                     </Button>
-                    <Menu withArrow withinPortal position="bottom">
-                        <Menu.Target>
-                            <ActionIcon size={36} variant="light" radius="md" color="gray" aria-label="Change language">
-                                <IconLanguage size={20} />
-                            </ActionIcon>
-                        </Menu.Target>
-
-                        <Menu.Dropdown w={160}>
-                            {availableLanguages.map((lng) => (
-                                <Menu.Item
-                                    key={lng.key}
-                                    leftSection={language === lng.key ? <IconCheck size={14} /> : null}
-                                    onClick={() => handleLanguageSelect(lng.key)}
-                                >
-                                    {lng.label}
-                                </Menu.Item>
-                            ))}
-                        </Menu.Dropdown>
-                    </Menu>
+                    <LanguageSelect />
                     <Tooltip label={t("sourceCode")} radius="md" withArrow>
                         <ActionIcon
                             size={36}
@@ -146,12 +103,7 @@ function Header() {
             </Flex>
 
             <SettingsModal opened={settingsModalOpened} close={closeSetingsModal} />
-            <SettingsDrawer
-                opened={opened}
-                availableLanguages={availableLanguages}
-                setOpened={setOpened}
-                handleLanguageSelect={handleLanguageSelect}
-            />
+            <SettingsDrawer opened={opened} setOpened={setOpened} />
         </>
     );
 }
