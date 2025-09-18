@@ -1,3 +1,5 @@
+import { t } from "i18next";
+
 import { Card, Group, NumberFormatter, Badge, Text, useMantineColorScheme, useMantineTheme, Box } from "@mantine/core";
 
 import { Units } from "../../Store/Features/Settings/SettingsSlice";
@@ -37,7 +39,7 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
                     </Text>
                 </Group>
                 <Badge variant={spent ? "light" : "filled"} color={spent ? "gray" : "teal"} radius="md">
-                    {spent ? "Spent" : "Unspent"}
+                    {spent ? t("spent") : t("unspent")}
                 </Badge>
             </Group>
             <Box w="60%">

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -53,7 +53,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                 <Flex align="center" gap="xs" h={UTXO_TITLE_CONTENT_HEIGHT}>
                     <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-start" radius="md">
                         <HoverCard.Target>
-                            <IconInfoSquareRoundedFilled />
+                            <IconInfoSquareRoundedFilled color={colorScheme === "light" ? theme.colors.dark[2] : theme.colors.dark[1]} />
                         </HoverCard.Target>
                         <HoverCard.Dropdown>
                             <Stack align="stretch" justify="center" gap="xs">
@@ -76,12 +76,12 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                     <Text c="dimmed">{t("yourUtxos")}</Text>
                 </Flex>
                 <Group gap={6}>
-                    <Tooltip label={`${spentUtxos.length} spent UTXO${spentUtxos.length > 0 ? "s" : ""}`} radius="md" withArrow>
+                    <Tooltip label={<Trans i18nKey="xSpentUtxo" count={spentUtxos.length} />} radius="md" withArrow>
                         <Badge color="gray" variant="light" radius="md">
                             {spentUtxos.length}
                         </Badge>
                     </Tooltip>
-                    <Tooltip label={`${unspentUtxos.length} unspent UTXO${unspentUtxos.length > 0 ? "s" : ""}`} radius="md" withArrow>
+                    <Tooltip label={<Trans i18nKey="xUnspentUtxo" count={unspentUtxos.length} />} radius="md" withArrow>
                         <Badge color="teal" radius="md">
                             {unspentUtxos.length}
                         </Badge>
@@ -100,7 +100,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                     <Stack gap="xs" my="xs" me="xs">
                         {walletUtxos.length === 0 ? (
                             <Center p="xs">
-                                <Text c="dimmed">No UTXOs available...</Text>
+                                <Text c="dimmed">{t("noUtxosAvailable")}</Text>
                             </Center>
                         ) : (
                             <AnimatePresence mode="popLayout">

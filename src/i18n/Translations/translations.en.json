@@ -54,5 +54,10 @@
     "utxoExplanationPart1": "When you receive Bitcoin, it comes in pieces called UTXOs. You can think of them like coins in your wallet: if someone sends you 0.3 BTC and later another 0.2 BTC, your wallet is holding two “coins” (two UTXOs). When you send Bitcoin, your wallet uses these coins (UTXOs) as inputs.",
     "utxoExplanationPart2": "The number of UTXOs matters for the transaction fee - more UTXOs usually mean a higher fee, even if the total amount is the same. That's why it can sometimes make sense to consolidate your UTXOs (combine smaller ones into a bigger one) when fees are low.",
     "memoryPoolExplanationPart1": "When you send a Bitcoin transaction, it doesn't go straight into the blockchain. First, it enters a waiting area called the memory pool (or <italic>mempool</italic> for short). Think of it like a <bold>queue at the post office</bold>: your transaction waits there until a miner picks it up and includes it in the next block.",
-    "memoryPoolExplanationPart2": "If you set a <bold>higher fee</bold>, your transaction usually gets picked faster. If the fee is low, it may stay longer in the mempool until space is available."
+    "memoryPoolExplanationPart2": "If you set a <bold>higher fee</bold>, your transaction usually gets picked faster. If the fee is low, it may stay longer in the mempool until space is available.",
+    "spent": "Spent",
+    "unspent": "Unspent",
+    "xUnspentUtxo": "{{count}} unspent UTXO(s)",
+    "xSpentUtxo": "{{count}} spent UTXO(s)",
+    "noUtxosAvailable": "No UTXOs available..."
 }
