@@ -21,6 +21,7 @@ import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import GroupCard from "../GroupCard/GroupCard";
 import classes from "./History.module.css";
 import TransactionItem from "./TransactionItem";
 
@@ -33,7 +34,7 @@ function History() {
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="110%">
-            <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
+            <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconHistory />
@@ -74,7 +75,7 @@ function History() {
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </Flex>
-            </Card>
+            </GroupCard>
             <Card
                 h="100%"
                 radius="md"

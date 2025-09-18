@@ -43,5 +43,6 @@
     "doubleCheckAddress": "Mindig ellenőrizd kétszer a fogadó címet, mielőtt Bitcoint küldesz. Már egyetlen hibás betű vagy szám is azt eredményezi, hogy a Bitcoin rossz helyre megy - és a tranzakciókat nem lehet visszavonni.",
     "language": "Nyelv",
     "dark": "Sötét",
-    "light": "Világos"
+    "light": "Világos",
+    "blockchain": "Blokklánc"
 }

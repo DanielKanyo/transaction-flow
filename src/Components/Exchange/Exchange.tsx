@@ -14,6 +14,7 @@ import { RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../../Store/Features/S
 import { useAppSelector } from "../../Store/hook";
 import { PADDING_BOTTOM_FOR_BALANCE, PADDING_TOP_FOR_BALANCE } from "../../Utils/balance-padding";
 import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
+import GroupCard from "../GroupCard/GroupCard";
 import ReceiveModal from "../Modals/ReceiveModal";
 import SendModal from "../Modals/SendModal";
 
@@ -37,7 +38,7 @@ function Exchange() {
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
                     <Flex h="100%" direction="column">
-                        <Card shadow="sm" padding="sm" radius="md" bg="blue" c="white" mih={50} mah={50}>
+                        <GroupCard bg="blue">
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center" lh={1}>
                                     <IconExchange />
@@ -82,7 +83,7 @@ function Exchange() {
                                     </HoverCard.Dropdown>
                                 </HoverCard>
                             </Flex>
-                        </Card>
+                        </GroupCard>
                         <Flex
                             direction="column"
                             justify="center"

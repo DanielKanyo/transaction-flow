@@ -1,4 +1,4 @@
-import { Card, Group, NumberFormatter, Badge, Text, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import { Card, Group, NumberFormatter, Badge, Text, useMantineColorScheme, useMantineTheme, Box } from "@mantine/core";
 
 import { Units } from "../../Store/Features/Settings/SettingsSlice";
 import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
@@ -40,9 +40,11 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
                     {spent ? "Spent" : "Unspent"}
                 </Badge>
             </Group>
-            <Text size="xs" c="dimmed" mt={4} style={{ wordBreak: "break-all" }}>
-                {address}
-            </Text>
+            <Box w="60%">
+                <Text truncate="end" size="xs" c="dimmed" mt={4} style={{ wordBreak: "break-all" }}>
+                    {address}
+                </Text>
+            </Box>
         </Card>
     );
 }

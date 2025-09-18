@@ -49,7 +49,9 @@ function AddressList({
                     const { displayedValue, numOfDecimals } = determineDisplayedValueAndNumOfDecimals(item.amount, unit);
                     return (
                         <Group key={idx} justify="space-between" align="center">
-                            <Text size="xs">{item.address}</Text>
+                            <Text size="xs" style={{ wordBreak: "break-all" }}>
+                                {item.address}
+                            </Text>
                             <Group align="center" gap={4}>
                                 <Text size="xs">
                                     <NumberFormatter value={displayedValue} thousandSeparator decimalScale={numOfDecimals} />

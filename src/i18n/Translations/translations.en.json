@@ -43,5 +43,6 @@
     "doubleCheckAddress": "Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin will go to the wrong place - and once sent, transactions cannot be reversed.",
     "language": "Language",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "blockchain": "Blockchain"
 }

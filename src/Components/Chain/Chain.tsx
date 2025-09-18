@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme, Box, Center, em } from "@mantine/core";
@@ -6,6 +8,7 @@ import { IconBox, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import GroupCard from "../GroupCard/GroupCard";
 
 const FadeOverlay = () => {
     const { colorScheme } = useMantineColorScheme();
@@ -36,15 +39,16 @@ function Chain() {
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
     const { blockchain, enteringBlockId } = useAppSelector((state) => state.ledger);
+    const { t } = useTranslation();
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
             {/* Header */}
-            <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
+            <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconBox />
-                        Blockchain
+                        {t("blockchain")}
                     </Flex>
                     <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
                         <HoverCard.Target>
@@ -52,7 +56,7 @@ function Chain() {
                         </HoverCard.Target>
                         <HoverCard.Dropdown>
                             <Stack align="stretch" justify="center" gap="xs">
-                                <Text fw={600}>Bitcoin Blockchain</Text>
+                                <Text fw={600}>Bitcoin {t("blockchain")}</Text>
                                 <Text fz="sm">
                                     The Bitcoin blockchain is a <b>public record book</b> that keeps track of every Bitcoin transaction ever
                                     made. It is composed of blocks, each of which contains a list of verified <b>transactions</b> that
@@ -67,7 +71,7 @@ function Chain() {
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </Flex>
-            </Card>
+            </GroupCard>
 
             {/* Blockchain visualization */}
             <Card

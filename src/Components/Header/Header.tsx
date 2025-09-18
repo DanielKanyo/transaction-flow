@@ -97,18 +97,6 @@ function Header() {
                             ))}
                         </Menu.Dropdown>
                     </Menu>
-                    <Tooltip label={t("toggleColorScheme")} radius="md" withArrow>
-                        <ActionIcon
-                            size={36}
-                            variant="light"
-                            color="gray"
-                            aria-label="Toggle-color-scheme"
-                            radius="md"
-                            onClick={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
-                        >
-                            {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
-                        </ActionIcon>
-                    </Tooltip>
                     <Tooltip label={t("sourceCode")} radius="md" withArrow>
                         <ActionIcon
                             size={36}
@@ -121,6 +109,18 @@ function Header() {
                             target="_blank"
                         >
                             <IconBrandGithub size={20} />
+                        </ActionIcon>
+                    </Tooltip>
+                    <Tooltip label={t("toggleColorScheme")} radius="md" withArrow>
+                        <ActionIcon
+                            size={36}
+                            variant="light"
+                            color="gray"
+                            aria-label="Toggle-color-scheme"
+                            radius="md"
+                            onClick={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
+                        >
+                            {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
                         </ActionIcon>
                     </Tooltip>
                     {!isMobile && (

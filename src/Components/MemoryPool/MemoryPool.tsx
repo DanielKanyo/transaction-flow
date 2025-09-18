@@ -32,6 +32,7 @@ import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/Ledg
 import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import GroupCard from "../GroupCard/GroupCard";
 import BackgroundBlobs from "./BackgroundBlobs/BackgroundBlobs";
 
 const DEFAULT_CYCLE_DURATION = 600_000; // 10 minutes in ms
@@ -91,7 +92,7 @@ function MemoryPool() {
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
-            <Card shadow="sm" padding="sm" radius="md" bg="dark.7" c="white" mb="sm" mih={50} mah={50}>
+            <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-start" radius="md">
@@ -156,39 +157,9 @@ function MemoryPool() {
                                 </ActionIcon>
                             </Tooltip>
                         </ActionIcon.Group>
-                        <Flex gap={4} align="center">
-                            <HoverCard width={260} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
-                                <HoverCard.Target>
-                                    <Badge
-                                        color="dark.5"
-                                        variant="filled"
-                                        radius="md"
-                                        size="lg"
-                                        h={28}
-                                        leftSection={<IconClockHour10 size={16} />}
-                                    >
-                                        <Text fz={14} lh={1} w={43} ta="right">
-                                            {formatTime(countdown)}
-                                        </Text>
-                                    </Badge>
-                                </HoverCard.Target>
-                                <HoverCard.Dropdown>
-                                    <Stack align="stretch" justify="center" gap="xs">
-                                        <Text fw={600}>Block Mining Time</Text>
-                                        <Text fz="sm">
-                                            On average, Bitcoin miners find a new block every <b>10 minutes</b>. This countdown simulates
-                                            that cycle. When it reaches 0, it restarts, just like the mempool is cleared into a new block.
-                                        </Text>
-                                        <Button fullWidth component="a" href="https://mempool.space/" target="_blank" color="violet">
-                                            {t("learnMore")}
-                                        </Button>
-                                    </Stack>
-                                </HoverCard.Dropdown>
-                            </HoverCard>
-                        </Flex>
                     </Flex>
                 </Flex>
-            </Card>
+            </GroupCard>
 
             <Card
                 h="100%"
@@ -198,7 +169,7 @@ function MemoryPool() {
                 p={0}
                 shadow="none"
             >
-                <Flex direction="row" justify="center" align="center" mih={106} h="100%" gap="lg" pos={"relative"}>
+                <Flex direction="row" justify="center" align="center" mih={106} h="100%" gap="lg" pos="relative">
                     <BackgroundBlobs cycle={cycle} />
 
                     <AnimatePresence>
@@ -214,6 +185,37 @@ function MemoryPool() {
                             </motion.div>
                         ))}
                     </AnimatePresence>
+
+                    <HoverCard width={260} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
+                        <HoverCard.Target>
+                            <Badge
+                                pos="absolute"
+                                color="dark.6"
+                                variant="filled"
+                                radius="md"
+                                size="lg"
+                                h={28}
+                                leftSection={<IconClockHour10 size={16} />}
+                                style={{ top: 12, right: 12 }}
+                            >
+                                <Text fz={14} lh={1} miw={43} ta="right">
+                                    {formatTime(countdown)}
+                                </Text>
+                            </Badge>
+                        </HoverCard.Target>
+                        <HoverCard.Dropdown>
+                            <Stack align="stretch" justify="center" gap="xs">
+                                <Text fw={600}>Block Mining Time</Text>
+                                <Text fz="sm">
+                                    On average, Bitcoin miners find a new block every <b>10 minutes</b>. This countdown simulates that
+                                    cycle. When it reaches 0, it restarts, just like the mempool is cleared into a new block.
+                                </Text>
+                                <Button fullWidth component="a" href="https://mempool.space/" target="_blank" color="violet">
+                                    {t("learnMore")}
+                                </Button>
+                            </Stack>
+                        </HoverCard.Dropdown>
+                    </HoverCard>
                 </Flex>
             </Card>
         </Card>
