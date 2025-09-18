@@ -20,7 +20,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
     }, [close]);
 
     const info = (
-        <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-start" radius="md">
+        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-start" radius="md">
             <HoverCard.Target>
                 <IconInfoSquareRoundedFilled size={20} />
             </HoverCard.Target>

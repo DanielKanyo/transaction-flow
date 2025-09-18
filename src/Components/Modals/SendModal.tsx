@@ -79,7 +79,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
         (!exchangeAddresses.includes(recipentAddress) || !exchangeMode);
 
     const addressInfo = (
-        <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
+        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
             <HoverCard.Target>
                 <IconInfoSquareRoundedFilled size={20} />
             </HoverCard.Target>

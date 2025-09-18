@@ -62,7 +62,7 @@ function Chain() {
                         <IconBox />
                         {t("blockchain")}
                     </Flex>
-                    <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
+                    <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled />
                         </HoverCard.Target>

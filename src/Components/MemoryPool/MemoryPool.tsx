@@ -95,7 +95,7 @@ function MemoryPool() {
             <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <HoverCard width={320} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-start" radius="md">
+                        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-start" radius="md">
                             <HoverCard.Target>
                                 <IconInfoSquareRoundedFilled />
                             </HoverCard.Target>
@@ -194,7 +194,7 @@ function MemoryPool() {
                         ))}
                     </AnimatePresence>
 
-                    <HoverCard width={260} shadow="md" withArrow openDelay={0} closeDelay={200} position="bottom-end" radius="md">
+                    <HoverCard width={260} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
                         <HoverCard.Target>
                             <Badge
                                 pos="absolute"
