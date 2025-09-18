@@ -26,6 +26,7 @@ import {
     IconPick,
     IconPlayerPlayFilled,
     IconPlayerTrackNextFilled,
+    IconPool,
 } from "@tabler/icons-react";
 
 import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/LedgerSlice";
@@ -95,35 +96,7 @@ function MemoryPool() {
             <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-start" radius="md">
-                            <HoverCard.Target>
-                                <IconInfoSquareRoundedFilled />
-                            </HoverCard.Target>
-                            <HoverCard.Dropdown>
-                                <Stack align="stretch" justify="center" gap="xs">
-                                    <Text fw={600}>{t("memoryPool")} (Mempool)</Text>
-                                    <Text fz="sm">
-                                        <Trans
-                                            i18nKey="memoryPoolExplanationPart1"
-                                            components={{
-                                                bold: <b />,
-                                                italic: <i />,
-                                            }}
-                                        />
-                                    </Text>
-                                    <Divider />
-                                    <Text fz="sm">
-                                        <Trans
-                                            i18nKey="memoryPoolExplanationPart2"
-                                            components={{
-                                                bold: <b />,
-                                                italic: <i />,
-                                            }}
-                                        />
-                                    </Text>
-                                </Stack>
-                            </HoverCard.Dropdown>
-                        </HoverCard>
+                        <IconPool />
                         {t("memoryPool")}
                     </Flex>
                     <Flex gap="xs" align="center">
@@ -165,6 +138,35 @@ function MemoryPool() {
                                 </ActionIcon>
                             </Tooltip>
                         </ActionIcon.Group>
+                        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
+                            <HoverCard.Target>
+                                <IconInfoSquareRoundedFilled />
+                            </HoverCard.Target>
+                            <HoverCard.Dropdown>
+                                <Stack align="stretch" justify="center" gap="xs">
+                                    <Text fw={600}>{t("memoryPool")} (Mempool)</Text>
+                                    <Text fz="sm">
+                                        <Trans
+                                            i18nKey="memoryPoolExplanationPart1"
+                                            components={{
+                                                bold: <b />,
+                                                italic: <i />,
+                                            }}
+                                        />
+                                    </Text>
+                                    <Divider />
+                                    <Text fz="sm">
+                                        <Trans
+                                            i18nKey="memoryPoolExplanationPart2"
+                                            components={{
+                                                bold: <b />,
+                                                italic: <i />,
+                                            }}
+                                        />
+                                    </Text>
+                                </Stack>
+                            </HoverCard.Dropdown>
+                        </HoverCard>
                     </Flex>
                 </Flex>
             </GroupCard>
@@ -177,7 +179,7 @@ function MemoryPool() {
                 p={0}
                 shadow="none"
             >
-                <Flex direction="row" justify="center" align="center" h="100%" gap="lg" pos="relative">
+                <Flex direction="row" justify="center" align="center" h="100%" mih={106} gap="lg" pos="relative">
                     <BackgroundBlobs cycle={cycle} />
 
                     <AnimatePresence>

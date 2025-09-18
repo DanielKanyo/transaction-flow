@@ -134,7 +134,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     variant="filled"
                     title=""
                     label={t("amountToSend")}
-                    placeholder="e.g. 0.5"
+                    placeholder={`${t("forExample")} 0.12`}
                     value={amount}
                     onChange={setAmount}
                     min={0}
@@ -169,7 +169,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                 </Group>
 
                 <Alert variant="light" color="yellow" radius="md" title={t("importantReminder")} icon={<IconAlertSquareRoundedFilled />}>
-                    {t("doubleCheckAddress")}
+                    {t("doubleCheckAddress1")}
                 </Alert>
             </Stack>
 

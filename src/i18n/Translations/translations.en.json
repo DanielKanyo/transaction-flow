@@ -40,7 +40,7 @@
     "recipientAddressExplanationPart1": "The recipient address is like the \"bank account number\" for Bitcoin. It tells the network <bold>where the Bitcoin should be sent</bold>.",
     "recipientAddressExplanationPart2": "In this practice app, you can get a recipient address by going to your wallet, clicking \"Receive\", and then copying the address shown there. Paste that address here to simulate sending Bitcoin to your wallet.",
     "importantReminder": "Important Reminder",
-    "doubleCheckAddress": "Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin will go to the wrong place - and once sent, transactions cannot be reversed.",
+    "doubleCheckAddress1": "Always double-check the recipient address before sending Bitcoin. Even one wrong letter or number means the Bitcoin will go to the wrong place - and once sent, transactions cannot be reversed.",
     "language": "Language",
     "dark": "Dark",
     "light": "Light",
@@ -59,5 +59,11 @@
     "unspent": "Unspent",
     "xUnspentUtxo": "{{count}} unspent UTXO(s)",
     "xSpentUtxo": "{{count}} spent UTXO(s)",
-    "noUtxosAvailable": "No UTXOs available..."
+    "noUtxosAvailable": "No UTXOs available...",
+    "attention": "Attention",
+    "doubleCheckAddress2": "Always double-check the address before sharing or sending funds. If you use the wrong address, your Bitcoin may be lost forever.",
+    "privacyTip": "Privacy Tip",
+    "doNotReuseAddress": "For your privacy, use a new address each time you receive Bitcoin. Reusing old addresses can make it easier for others to track your transactions.",
+    "address": "Address",
+    "forExample": "For example"
 }

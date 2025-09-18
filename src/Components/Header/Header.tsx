@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { ActionIcon, Burger, Button, em, Flex, Group, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useFullscreen, useMediaQuery } from "@mantine/hooks";
 import {
-    IconArrowsExchange,
     IconArrowsMaximize,
     IconArrowsMinimize,
+    IconBolt,
     IconBrandGithub,
     IconMoon,
     IconReload,
@@ -35,10 +35,15 @@ function Header() {
         <>
             <Flex align="center" justify="space-between" h="100%" lh={1}>
                 <Flex align="center" gap="sm">
-                    <IconArrowsExchange size={34} />
-                    <Text fw={600} fz="xl" fs="italic" lh={1}>
-                        TX FLOW
-                    </Text>
+                    <IconBolt size={34} />
+                    <Group gap={4}>
+                        <Text fw={800} fz={27} fs="italic" lh={1}>
+                            TX
+                        </Text>
+                        <Text fw={400} fz={27} fs="italic" lh={1}>
+                            FLOW
+                        </Text>
+                    </Group>
                 </Flex>
 
                 <Burger hiddenFrom="sm" opened={opened} onClick={() => setOpened((o) => !o)} aria-label="Toggle drawer" size="sm" />

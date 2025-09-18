@@ -40,7 +40,7 @@
     "recipientAddressExplanationPart1": "A fogadó cím olyan, mint a Bitcoin „bankszámlaszáma”. Ez mondja meg a hálózatnak, <bold>hova kell a Bitcoint küldeni</bold>.",
     "recipientAddressExplanationPart2": "Ebben a gyakorló alkalmazásban fogadó címet úgy szerezhetsz, hogy megnyitod a pénztárcádat, rákattintasz a „Fogadás” gombra, majd kimásolod a megjelenített címet. Illeszd be ide, hogy szimuláld a Bitcoin küldését a pénztárcádba.",
     "importantReminder": "Fontos emlékeztető",
-    "doubleCheckAddress": "Mindig ellenőrizd kétszer a fogadó címet, mielőtt Bitcoint küldesz. Már egyetlen hibás betű vagy szám is azt eredményezi, hogy a Bitcoin rossz helyre megy - és a tranzakciókat nem lehet visszavonni.",
+    "doubleCheckAddress1": "Mindig ellenőrizd kétszer a fogadó címet, mielőtt Bitcoint küldesz. Már egyetlen hibás betű vagy szám is azt eredményezi, hogy a Bitcoin rossz helyre megy - és a tranzakciókat nem lehet visszavonni.",
     "language": "Nyelv",
     "dark": "Sötét",
     "light": "Világos",
@@ -53,9 +53,17 @@
     "utxo": "UTXO (Elköltetlen Tranzakciós Kimenet)",
     "utxoExplanationPart1": "Amikor Bitcoint kapsz, az úgynevezett UTXO-k formájában érkezik. Ezeket elképzelheted úgy, mint az aprópénzt a tárcádban: ha valaki küld neked 0,3 BTC-t, majd később 0,2 BTC-t, akkor a tárcádban két „érme” lesz (két UTXO). Amikor Bitcoint küldesz, a tárcád ezeket az érméket (UTXO-kat) használja fel bemenetként.",
     "utxoExplanationPart2": "A tranzakciós díj szempontjából számít, hány UTXO-d van - minél több UTXO-t kell felhasználni, annál magasabb lehet a díj, még akkor is, ha az összeg ugyanannyi. Ezért néha van értelme összevonni az UTXO-kat (a kisebbeket egy nagyobbá alakítani), amikor az alacsonyak a díjak.",
+    "memoryPoolExplanationPart1": "Amikor Bitcoin tranzakciót küldesz, az nem megy rögtön a blokkláncra. Először egy várakozó helyre kerül, amit memóriapoolnak (vagy röviden <italic>mempool</italic>) hívunk. Gondolj rá úgy, mint a <bold>postai sorra</bold>: a tranzakció ott vár, amíg egy bányász fel nem veszi és be nem teszi a következő blokkba.",
+    "memoryPoolExplanationPart2": "Ha <bold>magasabb díjat</bold> állítasz be, a tranzakciód általában gyorsabban kerül feldolgozásra. Ha a díj alacsony, hosszabb ideig is maradhat a mempoolban, amíg hely nem lesz.",
     "spent": "Elköltött",
     "unspent": "Elköltetlen",
     "xUnspentUtxo": "{{count}} elköltetlen UTXO",
     "xSpentUtxo": "{{count}} elköltött UTXO",
-    "noUtxosAvailable": "Nincsenek elérhető UTXO-k..."
+    "noUtxosAvailable": "Nincsenek elérhető UTXO-k...",
+    "attention": "Figyelem",
+    "doubleCheckAddress2": "Mindig ellenőrizd kétszer a címet, mielőtt megosztanád vagy pénzt küldenél. Ha a rossz címet használod, a Bitcoinod örökre elveszhet.",
+    "privacyTip": "Adatvédelmi tipp",
+    "doNotReuseAddress": "A magánéleted védelme érdekében minden alkalommal használj új címet, amikor Bitcoint kapsz. A régi címek újrahasználata megkönnyítheti mások számára a tranzakcióid követését.",
+    "address": "Cím",
+    "forExample": "Például"
 }

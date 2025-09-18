@@ -56,8 +56,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
             <Stack gap="lg">
                 <TextInput
                     variant="filled"
-                    label="Bitcoin address"
-                    placeholder="Receive address"
+                    label={`Bitcoin ${t("address")}`}
                     value={latestAddress || ""}
                     radius="md"
                     readOnly
@@ -75,14 +74,12 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                     leftSection={info}
                 />
 
-                <Alert variant="light" color="yellow" radius="md" title="Attention" icon={<IconAlertSquareRoundedFilled />}>
-                    Always double-check the address before sharing or sending funds. If you use the wrong address, your Bitcoin may be lost
-                    forever.
+                <Alert variant="light" color="yellow" radius="md" title={t("attention")} icon={<IconAlertSquareRoundedFilled />}>
+                    {t("doubleCheckAddress2")}
                 </Alert>
 
-                <Alert variant="light" color="violet" radius="md" title="Privacy Tip" icon={<IconBulbFilled />}>
-                    For your privacy, use a new address each time you receive Bitcoin. Reusing old addresses can make it easier for others
-                    to track your transactions.
+                <Alert variant="light" color="violet" radius="md" title={t("privacyTip")} icon={<IconBulbFilled />}>
+                    {t("doNotReuseAddress")}
                 </Alert>
             </Stack>
 

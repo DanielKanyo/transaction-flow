@@ -49,7 +49,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
 
     return (
         <>
-            <Flex align="center" justify="space-between" m={UTXO_TITLE_MARGIN}>
+            <Flex align="center" justify="space-between" my={UTXO_TITLE_MARGIN}>
                 <Flex align="center" gap="xs" h={UTXO_TITLE_CONTENT_HEIGHT}>
                     <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-start" radius="md">
                         <HoverCard.Target>
