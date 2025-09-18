@@ -57,18 +57,10 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                         </HoverCard.Target>
                         <HoverCard.Dropdown>
                             <Stack align="stretch" justify="center" gap="xs">
-                                <Text fw={600}>UTXO (Unspent Transaction Output)</Text>
-                                <Text fz="sm">
-                                    When you receive Bitcoin, it comes in pieces called UTXOs. You can think of them like coins in your
-                                    wallet: if someone sends you 0.3 BTC and later another 0.2 BTC, your wallet is holding two “coins” (two
-                                    UTXOs). When you send Bitcoin, your wallet uses these coins (UTXOs) as inputs.
-                                </Text>
+                                <Text fw={600}>{t("utxo")}</Text>
+                                <Text fz="sm">{t("utxoExplanationPart1")}</Text>
                                 <Divider />
-                                <Text fz="sm">
-                                    The number of UTXOs matters for the transaction fee - more UTXOs usually mean a higher fee, even if the
-                                    total amount is the same. That's why it can sometimes make sense to consolidate your UTXOs (combine
-                                    smaller ones into a bigger one) when fees are low.
-                                </Text>
+                                <Text fz="sm">{t("utxoExplanationPart2")}</Text>
                                 <Button
                                     fullWidth
                                     component="a"

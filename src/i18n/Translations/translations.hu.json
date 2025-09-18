@@ -44,5 +44,13 @@
     "language": "Nyelv",
     "dark": "Sötét",
     "light": "Világos",
-    "blockchain": "Blokklánc"
+    "blockchain": "Blokklánc",
+    "blockchainExplanationPart1": "A Bitcoin blokklánc egy <bold>nyilvános könyv</bold>, amely nyilvántartja minden valaha történt Bitcoin-tranzakciót. Blokkokból áll, amelyek mindegyike egy adott időszakban történt, ellenőrzött <bold>tranzakciók</bold> listáját tartalmazza.",
+    "blockchainExplanationPart2": "A blokkok egymás után kapcsolódnak, így létrehozva egy biztonságos <bold>blokkláncot</bold>. Ez a struktúra biztosítja az összes tranzakció integritását és időrendi sorrendjét.",
+    "blockchainExplanationPart3": "Ha szeretnéd, te is <bold>letöltheted a teljes Bitcoin blokkláncot</bold>. Ehhez a Bitcoin szoftvert kell telepítened a számítógépedre, vagy használhatsz egy dedikált eszközt. Így önállóan ellenőrizheted a tranzakciókat, és közvetlenül részt vehetsz a Bitcoin-hálózat működésében.",
+    "blockMiningTime": "Blokkbányászat Ideje",
+    "blockMiningExplanation": "A Bitcoin bányászok átlagosan <bold>10 percenként</bold> találnak egy új blokkot. Ez a visszaszámláló ezt a ciklust szimulálja: amikor eléri a nullát, újraindul, ugyanúgy, ahogy minden új blokk után kezdődik egy új, körülbelül 10 perces várakozás a következő blokkra.",
+    "utxo": "UTXO (Elköltetlen Tranzakciós Kimenet)",
+    "utxoExplanationPart1": "Amikor Bitcoint kapsz, az úgynevezett UTXO-k formájában érkezik. Ezeket elképzelheted úgy, mint az aprópénzt a tárcádban: ha valaki küld neked 0,3 BTC-t, majd később 0,2 BTC-t, akkor a tárcádban két „érme” lesz (két UTXO). Amikor Bitcoint küldesz, a tárcád ezeket az érméket (UTXO-kat) használja fel bemenetként.",
+    "utxoExplanationPart2": "A tranzakciós díj szempontjából számít, hány UTXO-d van - minél több UTXO-t kell felhasználni, annál magasabb lehet a díj, még akkor is, ha az összeg ugyanannyi. Ezért néha van értelme összevonni az UTXO-kat (a kisebbeket egy nagyobbá alakítani), amikor az alacsonyak a díjak."
 }

@@ -10,7 +10,7 @@ import NumberFlow from "@number-flow/react";
 import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } from "@tabler/icons-react";
 
 import { selectLatestWalletAddress } from "../../Store/Features/Ledger/LedgerSlice";
-import { RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
+import { MODE_ANIMATION_DURATION, RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import { PADDING_BOTTOM_FOR_BALANCE, PADDING_TOP_FOR_BALANCE } from "../../Utils/balance-padding";
 import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
@@ -98,7 +98,7 @@ function Wallet() {
                             <motion.div
                                 key="balance"
                                 layout
-                                initial={{ opacity: 0, scale: 0.95 }}
+                                initial={{ opacity: 0, scale: 0.75 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.25 }}
@@ -162,7 +162,7 @@ function Wallet() {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "80%", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.3, type: "spring", bounce: 0 }}
+                                transition={{ duration: MODE_ANIMATION_DURATION, type: "spring", bounce: 0 }}
                                 style={{ overflow: "hidden" }}
                             >
                                 <UtxoList walletUtxos={walletUtxos} />

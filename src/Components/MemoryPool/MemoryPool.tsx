@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -101,17 +101,25 @@ function MemoryPool() {
                             </HoverCard.Target>
                             <HoverCard.Dropdown>
                                 <Stack align="stretch" justify="center" gap="xs">
-                                    <Text fw={600}>Memory Pool (Mempool)</Text>
+                                    <Text fw={600}>{t("memoryPool")} (Mempool)</Text>
                                     <Text fz="sm">
-                                        When you send a Bitcoin transaction, it doesn't go straight into the blockchain. First, it enters a
-                                        waiting area called the memory pool (or <i>mempool</i> for short). Think of it like a{" "}
-                                        <b>queue at the post office</b>: your transaction waits there until a miner picks it up and includes
-                                        it in the next block.
+                                        <Trans
+                                            i18nKey="memoryPoolExplanationPart1"
+                                            components={{
+                                                bold: <b />,
+                                                italic: <i />,
+                                            }}
+                                        />
                                     </Text>
                                     <Divider />
                                     <Text fz="sm">
-                                        If you set a <b>higher fee</b>, your transaction usually gets picked faster. If the fee is low, it
-                                        may stay longer in the mempool until space is available.
+                                        <Trans
+                                            i18nKey="memoryPoolExplanationPart2"
+                                            components={{
+                                                bold: <b />,
+                                                italic: <i />,
+                                            }}
+                                        />
                                     </Text>
                                 </Stack>
                             </HoverCard.Dropdown>
@@ -169,7 +177,7 @@ function MemoryPool() {
                 p={0}
                 shadow="none"
             >
-                <Flex direction="row" justify="center" align="center" mih={106} h="100%" gap="lg" pos="relative">
+                <Flex direction="row" justify="center" align="center" h="100%" gap="lg" pos="relative">
                     <BackgroundBlobs cycle={cycle} />
 
                     <AnimatePresence>
@@ -205,10 +213,15 @@ function MemoryPool() {
                         </HoverCard.Target>
                         <HoverCard.Dropdown>
                             <Stack align="stretch" justify="center" gap="xs">
-                                <Text fw={600}>Block Mining Time</Text>
+                                <Text fw={600}>{t("blockMiningTime")}</Text>
                                 <Text fz="sm">
-                                    On average, Bitcoin miners find a new block every <b>10 minutes</b>. This countdown simulates that
-                                    cycle. When it reaches 0, it restarts, just like the mempool is cleared into a new block.
+                                    <Trans
+                                        i18nKey="blockMiningExplanation"
+                                        components={{
+                                            bold: <b />,
+                                            italic: <i />,
+                                        }}
+                                    />
                                 </Text>
                                 <Button fullWidth component="a" href="https://mempool.space/" target="_blank" color="violet">
                                     {t("learnMore")}

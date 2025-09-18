@@ -1,8 +1,21 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-import { Card, Divider, Flex, HoverCard, Stack, Text, useMantineColorScheme, useMantineTheme, Box, Center, em } from "@mantine/core";
+import {
+    Card,
+    Divider,
+    Flex,
+    HoverCard,
+    Stack,
+    Text,
+    useMantineColorScheme,
+    useMantineTheme,
+    Box,
+    Center,
+    em,
+    Button,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconBox, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
@@ -43,7 +56,6 @@ function Chain() {
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
-            {/* Header */}
             <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
@@ -58,22 +70,43 @@ function Chain() {
                             <Stack align="stretch" justify="center" gap="xs">
                                 <Text fw={600}>Bitcoin {t("blockchain")}</Text>
                                 <Text fz="sm">
-                                    The Bitcoin blockchain is a <b>public record book</b> that keeps track of every Bitcoin transaction ever
-                                    made. It is composed of blocks, each of which contains a list of verified <b>transactions</b> that
-                                    occurred within a specific time frame.
+                                    <Trans
+                                        i18nKey="blockchainExplanationPart1"
+                                        components={{
+                                            bold: <b />,
+                                            italic: <i />,
+                                        }}
+                                    />
                                 </Text>
                                 <Divider />
                                 <Text fz="sm">
-                                    Blocks are linked one after another, forming a secure <b>chain of blocks</b>. This structure ensures the
-                                    integrity and chronological order of all transactions.
+                                    <Trans
+                                        i18nKey="blockchainExplanationPart2"
+                                        components={{
+                                            bold: <b />,
+                                            italic: <i />,
+                                        }}
+                                    />
                                 </Text>
+                                <Divider />
+                                <Text fz="sm">
+                                    <Trans
+                                        i18nKey="blockchainExplanationPart3"
+                                        components={{
+                                            bold: <b />,
+                                            italic: <i />,
+                                        }}
+                                    />
+                                </Text>
+                                <Button fullWidth component="a" href="https://bitcoin.org/en/full-node" target="_blank" color="violet">
+                                    {t("learnMore")}
+                                </Button>
                             </Stack>
                         </HoverCard.Dropdown>
                     </HoverCard>
                 </Flex>
             </GroupCard>
 
-            {/* Blockchain visualization */}
             <Card
                 h="100%"
                 radius="md"
@@ -97,7 +130,6 @@ function Chain() {
                                     transition={{ duration: 0.5, ease: "easeInOut" }}
                                     style={{ display: "flex", alignItems: "center", height: "100%" }}
                                 >
-                                    {/* Block */}
                                     <Center h="100%" pos="relative">
                                         <Box
                                             pos="absolute"
@@ -122,7 +154,6 @@ function Chain() {
                                         ) : null}
                                     </Center>
 
-                                    {/* Connector */}
                                     {idx < blockchain.length - 1 && (
                                         <Box
                                             style={{

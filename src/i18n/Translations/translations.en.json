@@ -44,5 +44,15 @@
     "language": "Language",
     "dark": "Dark",
     "light": "Light",
-    "blockchain": "Blockchain"
+    "blockchain": "Blockchain",
+    "blockchainExplanationPart1": "The Bitcoin blockchain is a <bold>public record book</bold> that keeps track of every Bitcoin transaction ever made. It is composed of blocks, each of which contains a list of verified <bold>transactions</bold> that occurred within a specific time frame.",
+    "blockchainExplanationPart2": "Blocks are linked one after another, forming a secure <bold>chain of blocks</bold>. This structure ensures the integrity and chronological order of all transactions.",
+    "blockchainExplanationPart3": "If you want, <bold>you can also download the entire Bitcoin blockchain</bold> yourself. To do this, you need to install Bitcoin software on your computer or use a dedicated device. This allows you to verify transactions independently and participate directly in the Bitcoin network.",
+    "blockMiningTime": "Block Mining Time",
+    "blockMiningExplanation": "Bitcoin miners find a new block roughly every <bold>10 minutes</bold>. This countdown simulates that cycle: when it reaches zero, it restarts — just like after each block, a new ~10-minute wait for the next block begins.",
+    "utxo": "UTXO (Unspent Transaction Output)",
+    "utxoExplanationPart1": "When you receive Bitcoin, it comes in pieces called UTXOs. You can think of them like coins in your wallet: if someone sends you 0.3 BTC and later another 0.2 BTC, your wallet is holding two “coins” (two UTXOs). When you send Bitcoin, your wallet uses these coins (UTXOs) as inputs.",
+    "utxoExplanationPart2": "The number of UTXOs matters for the transaction fee - more UTXOs usually mean a higher fee, even if the total amount is the same. That's why it can sometimes make sense to consolidate your UTXOs (combine smaller ones into a bigger one) when fees are low.",
+    "memoryPoolExplanationPart1": "When you send a Bitcoin transaction, it doesn't go straight into the blockchain. First, it enters a waiting area called the memory pool (or <italic>mempool</italic> for short). Think of it like a <bold>queue at the post office</bold>: your transaction waits there until a miner picks it up and includes it in the next block.",
+    "memoryPoolExplanationPart2": "If you set a <bold>higher fee</bold>, your transaction usually gets picked faster. If the fee is low, it may stay longer in the mempool until space is available."
 }

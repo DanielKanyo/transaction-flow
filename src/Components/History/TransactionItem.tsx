@@ -67,27 +67,36 @@ function AddressList({
 }
 
 function TransactionItem({ tx, index }: TransactionItemProps) {
-    const { walletAddresses } = useAppSelector((state) => state.ledger);
+    const { walletAddresses, exchangeAddresses } = useAppSelector((state) => state.ledger);
     const { unit, advancedMode } = useAppSelector((state) => state.settings);
     const { t } = useTranslation();
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
 
-    // Determine from/to
     const { from, to } = useMemo(() => {
+        const inputFromExchange = tx.inputs.some((i) => exchangeAddresses.includes(i.address));
         const inputFromWallet = tx.inputs.some((i) => walletAddresses.includes(i.address));
-        const outputToWallet = tx.outputs.some((o) => walletAddresses.includes(o.address));
-        const outputToExternal = tx.outputs.some((o) => !walletAddresses.includes(o.address));
+        const outputToWallet = walletAddresses.includes(tx.outputs[0].address);
+        const outputToExchange = exchangeAddresses.includes(tx.outputs[0].address);
+        const outputToUnknown = !walletAddresses.includes(tx.outputs[0].address) && !exchangeAddresses.includes(tx.outputs[0].address);
 
-        if (inputFromWallet && outputToExternal) {
-            return { from: AccountType.WALLET, to: AccountType.EXCHANGE };
-        }
-        if (!inputFromWallet && outputToWallet) {
+        // input from exchange, output to wallet
+        if (inputFromExchange && outputToWallet) {
             return { from: AccountType.EXCHANGE, to: AccountType.WALLET };
         }
-        if (inputFromWallet && outputToWallet && !outputToExternal) {
+        // input from wallet, output to exchange
+        if (inputFromWallet && outputToExchange) {
+            return { from: AccountType.WALLET, to: AccountType.EXCHANGE };
+        }
+        // input from wallet, output to wallet
+        if (inputFromWallet && outputToWallet) {
             return { from: AccountType.WALLET, to: AccountType.WALLET };
         }
+        // input from wallet, output to unknown
+        if (inputFromWallet && outputToUnknown) {
+            return { from: AccountType.WALLET, to: AccountType.UNKNOWN };
+        }
+        // input from exchange, output to unknown
         return { from: AccountType.EXCHANGE, to: AccountType.UNKNOWN };
     }, [tx, walletAddresses]);
 

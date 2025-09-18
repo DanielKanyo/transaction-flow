@@ -7,6 +7,8 @@ export const DEFAULT_NUMBER_OF_DIGITS = {
     SAT: 0,
 };
 
+export const MODE_ANIMATION_DURATION = 0.6;
+
 export enum Languages {
     English = "en",
     Hungarian = "hu",

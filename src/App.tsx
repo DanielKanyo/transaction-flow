@@ -13,7 +13,7 @@ import Header from "./Components/Header/Header";
 import History from "./Components/History/History";
 import MemoryPool from "./Components/MemoryPool/MemoryPool";
 import Wallet from "./Components/Wallet/Wallet";
-import { Languages, RESPONSIVE_BREAKPOINT, updateLanguage } from "./Store/Features/Settings/SettingsSlice";
+import { Languages, MODE_ANIMATION_DURATION, RESPONSIVE_BREAKPOINT, updateLanguage } from "./Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "./Store/hook";
 import i18n from "./i18n/i18n";
 
@@ -48,7 +48,7 @@ export default function App() {
                         <Exchange />
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
-                        <Flex direction="column" h="100%">
+                        <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
                             <History />
                             <AnimatePresence>
                                 {advancedMode && (
@@ -58,7 +58,8 @@ export default function App() {
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: "68%", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.35, type: "spring", bounce: 0 }}
+                                            transition={{ duration: MODE_ANIMATION_DURATION, type: "spring", bounce: 0 }}
+                                            style={{ overflow: "hidden" }}
                                         >
                                             <Box h="100%" pt="xs">
                                                 <MemoryPool />
@@ -70,7 +71,8 @@ export default function App() {
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: "68%", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.35, type: "spring", bounce: 0 }}
+                                            transition={{ duration: MODE_ANIMATION_DURATION, type: "spring", bounce: 0 }}
+                                            style={{ overflow: "hidden" }}
                                         >
                                             <Box h="100%" pt="xs">
                                                 <Chain />
