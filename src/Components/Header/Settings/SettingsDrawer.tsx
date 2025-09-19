@@ -1,12 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
 
-import { Button, Drawer, Flex, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
-import { IconReload } from "@tabler/icons-react";
+import { Drawer, Flex, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 
-import { resetLedger } from "../../../Store/Features/Ledger/LedgerSlice";
 import LanguageSelect from "./LanguageSelect";
 import ModeControl from "./ModeControl";
+import ResetButton from "./ResetButton";
 import classes from "./SettingsModal.module.css";
 import UnitSelect from "./UnitSelect";
 
@@ -19,7 +17,6 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
     const { setColorScheme } = useMantineColorScheme({ keepTransitions: true });
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
     const { t } = useTranslation();
-    const dispatch = useDispatch();
 
     return (
         <Drawer
@@ -47,16 +44,7 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
                         radius="md"
                     />
                 </Stack>
-                <Button
-                    color="red"
-                    aria-label="Reset"
-                    fullWidth
-                    radius="md"
-                    leftSection={<IconReload size={20} />}
-                    onClick={() => dispatch(resetLedger())}
-                >
-                    {t("reset")}
-                </Button>
+                <ResetButton fullWidth />
             </Flex>
         </Drawer>
     );

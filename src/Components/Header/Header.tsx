@@ -1,23 +1,13 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
 
-import { ActionIcon, Burger, Button, em, Flex, Group, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, Burger, em, Flex, Group, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useFullscreen, useMediaQuery } from "@mantine/hooks";
-import {
-    IconArrowsMaximize,
-    IconArrowsMinimize,
-    IconBolt,
-    IconBrandGithub,
-    IconMoon,
-    IconReload,
-    IconSettings,
-    IconSun,
-} from "@tabler/icons-react";
+import { IconArrowsMaximize, IconArrowsMinimize, IconBolt, IconBrandGithub, IconMoon, IconSettings, IconSun } from "@tabler/icons-react";
 
-import { resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import LanguageSelect from "./Settings/LanguageSelect";
+import ResetButton from "./Settings/ResetButton";
 import SettingsDrawer from "./Settings/SettingsDrawer";
 import SettingsModal from "./Settings/SettingsModal";
 
@@ -26,7 +16,6 @@ function Header() {
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
     const [settingsModalOpened, { open: openSetingsModal, close: closeSetingsModal }] = useDisclosure(false);
     const { t } = useTranslation();
-    const dispatch = useDispatch();
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { toggle: toggleFullScreen, fullscreen } = useFullscreen();
     const [opened, setOpened] = useState(false);
@@ -34,13 +23,13 @@ function Header() {
     return (
         <>
             <Flex align="center" justify="space-between" h="100%" lh={1}>
-                <Flex align="center" gap="sm">
-                    <IconBolt size={34} />
+                <Flex align="center" gap="xs">
+                    <IconBolt size={28} />
                     <Group gap={4}>
-                        <Text fw={800} fz={27} fs="italic" lh={1}>
+                        <Text fw={800} fz={28} fs="italic" lh={1}>
                             TX
                         </Text>
-                        <Text fw={400} fz={27} fs="italic" lh={1}>
+                        <Text fw={400} fz={28} fs="italic" lh={1}>
                             FLOW
                         </Text>
                     </Group>
@@ -49,15 +38,7 @@ function Header() {
                 <Burger hiddenFrom="sm" opened={opened} onClick={() => setOpened((o) => !o)} aria-label="Toggle drawer" size="sm" />
 
                 <Group gap="xs" visibleFrom="sm">
-                    <Button
-                        color="red"
-                        aria-label="Reset"
-                        radius="md"
-                        leftSection={<IconReload size={20} />}
-                        onClick={() => dispatch(resetLedger())}
-                    >
-                        {t("reset")}
-                    </Button>
+                    <ResetButton />
                     <LanguageSelect />
                     <Tooltip label={t("sourceCode")} radius="md" withArrow>
                         <ActionIcon
