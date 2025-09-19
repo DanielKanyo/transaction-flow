@@ -74,5 +74,8 @@
     "transactionProcessExplanationPart5": "<bold>Fee</bold> - a small amount paid to miners so they include your transaction in the blockchain.",
     "confirmTransactions": "Confirm transactions now - instant mining",
     "inputs": "Inputs",
-    "outputs": "Outputs"
+    "outputs": "Outputs",
+    "yourTransactionWaiting": "Your transaction waiting for the settlement",
+    "donate": "Donate",
+    "sendMeSats": "If you find this app useful, send me some sats. Thanks in advance!"
 }

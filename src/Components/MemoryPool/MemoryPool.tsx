@@ -184,15 +184,17 @@ function MemoryPool() {
 
                     <AnimatePresence>
                         {transactions.map((tx) => (
-                            <motion.div
-                                key={tx.txid}
-                                initial={{ y: -50, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                exit={{ y: 50, opacity: 0 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            >
-                                <div className="transaction"></div>
-                            </motion.div>
+                            <Tooltip label={t("yourTransactionWaiting")} withArrow>
+                                <motion.div
+                                    key={tx.txid}
+                                    initial={{ y: -50, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: 50, opacity: 0 }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                >
+                                    <div className="transaction"></div>
+                                </motion.div>
+                            </Tooltip>
                         ))}
                     </AnimatePresence>
 

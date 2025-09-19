@@ -128,7 +128,7 @@ function Wallet() {
                                         </Text>
                                     </Stack>
                                 </Button>
-                                <Flex justify="center" gap="xs">
+                                <Flex justify="center" gap="xs" py={5}>
                                     <Button
                                         variant="light"
                                         color="gray"

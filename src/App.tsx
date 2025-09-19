@@ -55,7 +55,7 @@ export default function App() {
 
     const motionProps = {
         initial: { height: 0, opacity: 0 },
-        animate: { height: "68%", opacity: 1 },
+        animate: { height: "69%", opacity: 1 },
         exit: { height: 0, opacity: 0 },
         transition: {
             duration: MODE_ANIMATION_DURATION,

@@ -6,6 +6,7 @@ import { useDisclosure, useFullscreen, useMediaQuery } from "@mantine/hooks";
 import { IconArrowsMaximize, IconArrowsMinimize, IconBolt, IconBrandGithub, IconMoon, IconSettings, IconSun } from "@tabler/icons-react";
 
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
+import Donate from "./Donate/Donate";
 import LanguageSelect from "./Settings/LanguageSelect";
 import ResetButton from "./Settings/ResetButton";
 import SettingsDrawer from "./Settings/SettingsDrawer/SettingsDrawer";
@@ -40,6 +41,7 @@ function Header() {
                 <Group gap="xs" visibleFrom="sm">
                     <ResetButton />
                     <LanguageSelect />
+                    <Donate />
                     <Tooltip label={t("sourceCode")} radius="md" withArrow>
                         <ActionIcon
                             size={36}

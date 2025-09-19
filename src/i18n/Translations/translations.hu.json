@@ -74,5 +74,8 @@
     "transactionProcessExplanationPart5": "<bold>Díj</bold> - egy kis összeg, amit a bányászoknak fizetsz azért, hogy a tranzakció bekerüljön a blokkláncba.",
     "confirmTransactions": "Tranzakciók megerősítése most - azonnali bányászat",
     "inputs": "Bemenetek",
-    "outputs": "Kimenetek"
+    "outputs": "Kimenetek",
+    "yourTransactionWaiting": "A tranzakciód elszámolásra vár",
+    "donate": "Ajándékozz",
+    "sendMeSats": "Ha hasznosnak találod ezt az alkalmazást, küldj nekem pár sat-ot. Előre is köszönöm!"
 }
