@@ -2,30 +2,29 @@ import { useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Button, Card, Divider, em, Flex, HoverCard, Stack, Text } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import NumberFlow from "@number-flow/react";
-import { IconArrowDown, IconArrowUp, IconInfoSquareRoundedFilled, IconWallet } from "@tabler/icons-react";
+import { IconArrowDown, IconArrowUp, IconExchange, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
-import { selectLatestWalletAddress } from "../../Store/Features/Ledger/LedgerSlice";
-import { MODE_ANIMATION_DURATION, RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../Store/hook";
-import { PADDING_BOTTOM_FOR_BALANCE, PADDING_TOP_FOR_BALANCE } from "../../Utils/balance-padding";
-import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
-import GroupCard from "../GroupCard/GroupCard";
-import ReceiveModal from "../Modals/ReceiveModal";
-import SendModal from "../Modals/SendModal";
-import UtxoList from "../Utxo/UtxoList";
+import { selectLatestExchangeAddress } from "../Store/Features/Ledger/LedgerSlice";
+import { RESPONSIVE_BREAKPOINT, Units, updateUnit } from "../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../Store/hook";
+import { PADDING_BOTTOM_FOR_BALANCE, PADDING_TOP_FOR_BALANCE } from "../Utils/balance-padding";
+import { determineDisplayedValueAndNumOfDecimals } from "../Utils/number-of-decimals";
+import GroupCard from "./GroupCard";
+import ReceiveModal from "./ReceiveModal";
+import SendModal from "./SendModal";
 
-function Wallet() {
+function Exchange() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
     const [receiveModalOpened, { open: openReceiveModal, close: closeReceiveModal }] = useDisclosure(false);
-    const { unit, advancedMode } = useAppSelector((state) => state.settings);
-    const { balanceInWallet: balance, walletAddresses } = useAppSelector((state) => state.ledger);
-    const latestAddress = useSelector(selectLatestWalletAddress);
-    const { walletUtxos } = useAppSelector((state) => state.ledger);
+    const { unit } = useAppSelector((state) => state.settings);
+    const { balanceOnExchange: balance, exchangeAddresses } = useAppSelector((state) => state.ledger);
+    const { exhangeUtxos } = useAppSelector((state) => state.ledger);
+    const latestAddress = useSelector(selectLatestExchangeAddress);
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { t } = useTranslation();
     const dispatch = useDispatch();
@@ -39,11 +38,11 @@ function Wallet() {
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
                     <Flex h="100%" direction="column">
-                        <GroupCard bg="teal">
+                        <GroupCard bg="blue">
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center" lh={1}>
-                                    <IconWallet />
-                                    {t("wallet")}
+                                    <IconExchange />
+                                    {t("exchange")}
                                 </Flex>
                                 <HoverCard
                                     width={320}
@@ -59,10 +58,10 @@ function Wallet() {
                                     </HoverCard.Target>
                                     <HoverCard.Dropdown>
                                         <Stack align="stretch" justify="center" gap="xs">
-                                            <Text fw={600}>{t("wallet")}</Text>
+                                            <Text fw={600}>{t("exchange")}</Text>
                                             <Text fz="sm">
                                                 <Trans
-                                                    i18nKey="walletExplanationPart1"
+                                                    i18nKey="exchangeExplanationPart1"
                                                     components={{
                                                         bold: <b />,
                                                         italic: <i />,
@@ -72,7 +71,7 @@ function Wallet() {
                                             <Divider />
                                             <Text fz="sm">
                                                 <Trans
-                                                    i18nKey="walletExplanationPart2"
+                                                    i18nKey="exchangeExplanationPart2"
                                                     components={{
                                                         bold: <b />,
                                                         italic: <i />,
@@ -90,9 +89,7 @@ function Wallet() {
                             justify="center"
                             align="center"
                             h="100%"
-                            pb={
-                                advancedMode && !isMobile ? PADDING_BOTTOM_FOR_BALANCE.ADVANCED_MODE : PADDING_BOTTOM_FOR_BALANCE.BASIC_MODE
-                            }
+                            pb={PADDING_BOTTOM_FOR_BALANCE.BASIC_MODE}
                             pt={isMobile ? PADDING_TOP_FOR_BALANCE : 0}
                         >
                             <motion.div
@@ -109,8 +106,8 @@ function Wallet() {
                                     color="gray"
                                     h="fit-content"
                                     fullWidth
-                                    onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
                                     mb={41}
+                                    onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
                                 >
                                     <Stack gap={0}>
                                         <NumberFlow
@@ -153,34 +150,19 @@ function Wallet() {
                             </motion.div>
                         </Flex>
                     </Flex>
-
-                    <AnimatePresence mode="popLayout">
-                        {advancedMode && (
-                            <motion.div
-                                key="utxolist"
-                                layout
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "80%", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: MODE_ANIMATION_DURATION, type: "spring", bounce: 0 }}
-                                style={{ overflow: "hidden" }}
-                            >
-                                <UtxoList walletUtxos={walletUtxos} />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
                 </Card>
             </Flex>
             <SendModal
-                title={t("sendBitcoinFromWallet")}
-                color="teal"
+                title={t("sendBitcoinFromExchange")}
+                color="blue"
                 opened={sendModalOpened}
-                senderAddresses={walletAddresses}
-                utxos={walletUtxos}
+                senderAddresses={exchangeAddresses}
+                utxos={exhangeUtxos}
+                exchangeMode
                 close={closeSendModal}
             />
             <ReceiveModal
-                title={t("receiveBitcoinToWallet")}
+                title={t("receiveBitcoinToExchange")}
                 color="teal"
                 latestAddress={latestAddress}
                 opened={receiveModalOpened}
@@ -190,4 +172,4 @@ function Wallet() {
     );
 }
 
-export default Wallet;
+export default Exchange;

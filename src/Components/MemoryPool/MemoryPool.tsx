@@ -33,7 +33,7 @@ import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/Ledg
 import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import GroupCard from "../GroupCard/GroupCard";
+import GroupCard from "../GroupCard";
 import BackgroundBlobs from "./BackgroundBlobs/BackgroundBlobs";
 
 const DEFAULT_CYCLE_DURATION = 600_000; // 10 minutes in ms

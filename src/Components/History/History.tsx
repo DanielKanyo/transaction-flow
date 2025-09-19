@@ -21,7 +21,7 @@ import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import GroupCard from "../GroupCard/GroupCard";
+import GroupCard from "../GroupCard";
 import classes from "./History.module.css";
 import TransactionItem from "./TransactionItem";
 

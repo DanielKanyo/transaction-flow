@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Transition } from "framer-motion";
 
 import { AppShell, Box, em, Flex, Grid } from "@mantine/core";
 import { useHeadroom, useMediaQuery } from "@mantine/hooks";
 
 import "./App.css";
-import Chain from "./Components/Chain/Chain";
-import Exchange from "./Components/Exchange/Exchange";
+import Chain from "./Components/Chain";
+import Exchange from "./Components/Exchange";
 import Header from "./Components/Header/Header";
 import History from "./Components/History/History";
 import MemoryPool from "./Components/MemoryPool/MemoryPool";
-import Wallet from "./Components/Wallet/Wallet";
+import Wallet from "./Components/Wallet";
 import {
     Languages,
     MODE_ANIMATION_DURATION,
@@ -53,6 +53,18 @@ export default function App() {
         h: "100%",
     };
 
+    const motionProps = {
+        initial: { height: 0, opacity: 0 },
+        animate: { height: "68%", opacity: 1 },
+        exit: { height: 0, opacity: 0 },
+        transition: {
+            duration: MODE_ANIMATION_DURATION,
+            type: "spring" as Transition["type"],
+            bounce: 0,
+        },
+        style: { overflow: "hidden" },
+    };
+
     return (
         <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
             <AppShell.Header p="md">
@@ -70,27 +82,13 @@ export default function App() {
                             <AnimatePresence>
                                 {advancedMode && (
                                     <>
-                                        <motion.div
-                                            key="mempool"
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "68%", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: MODE_ANIMATION_DURATION, type: "spring", bounce: 0 }}
-                                            style={{ overflow: "hidden" }}
-                                        >
+                                        <motion.div key="mempool" {...motionProps}>
                                             <Box h="100%" pt="xs">
                                                 <MemoryPool />
                                             </Box>
                                         </motion.div>
 
-                                        <motion.div
-                                            key="chain"
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "68%", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: MODE_ANIMATION_DURATION, type: "spring", bounce: 0 }}
-                                            style={{ overflow: "hidden" }}
-                                        >
+                                        <motion.div key="chain" {...motionProps}>
                                             <Box h="100%" pt="xs">
                                                 <Chain />
                                             </Box>

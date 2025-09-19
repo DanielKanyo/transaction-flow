@@ -19,9 +19,9 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { IconBox, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
-import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../Store/hook";
-import GroupCard from "../GroupCard/GroupCard";
+import { RESPONSIVE_BREAKPOINT } from "../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../Store/hook";
+import GroupCard from "./GroupCard";
 
 const FadeOverlay = () => {
     const { colorScheme } = useMantineColorScheme();

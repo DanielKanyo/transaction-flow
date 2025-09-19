@@ -6,16 +6,16 @@ import { Modal, TextInput, NumberInput, Button, Group, Text, Stack, HoverCard, D
 import { IconAlertSquareRoundedFilled, IconArrowUp, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import {
-    DEFAULT_FEE,
-    generateNewExchangeAddress,
-    generateNewWalletAddress,
-    settleTransaction,
     UTXO,
-} from "../../Store/Features/Ledger/LedgerSlice";
-import { addTransactionToMempool } from "../../Store/Features/Mempool/MempoolSlice";
-import { Units } from "../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../Store/hook";
-import { buildTransaction } from "../../Utils/transaction-builder";
+    settleTransaction,
+    generateNewWalletAddress,
+    generateNewExchangeAddress,
+    DEFAULT_FEE,
+} from "../Store/Features/Ledger/LedgerSlice";
+import { addTransactionToMempool } from "../Store/Features/Mempool/MempoolSlice";
+import { Units } from "../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../Store/hook";
+import { buildTransaction } from "../Utils/transaction-builder";
 
 type SendModalProps = {
     title: string;
