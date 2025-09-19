@@ -13,7 +13,14 @@ import Header from "./Components/Header/Header";
 import History from "./Components/History/History";
 import MemoryPool from "./Components/MemoryPool/MemoryPool";
 import Wallet from "./Components/Wallet/Wallet";
-import { Languages, MODE_ANIMATION_DURATION, RESPONSIVE_BREAKPOINT, updateLanguage } from "./Store/Features/Settings/SettingsSlice";
+import {
+    Languages,
+    MODE_ANIMATION_DURATION,
+    Modes,
+    RESPONSIVE_BREAKPOINT,
+    updateAdvancedMode,
+    updateLanguage,
+} from "./Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "./Store/hook";
 import i18n from "./i18n/i18n";
 
@@ -29,12 +36,17 @@ export default function App() {
 
     useEffect(() => {
         const storedLanguage = localStorage.getItem("appLanguage") as Languages | null;
+        const storedMode = localStorage.getItem("appMode") as Modes | null;
 
         if (storedLanguage && storedLanguage !== language) {
             i18n.changeLanguage(storedLanguage);
             dispatch(updateLanguage(storedLanguage));
         }
-    }, [dispatch, language]);
+
+        if (storedMode && storedMode !== (advancedMode ? Modes.ADVANCED : Modes.BASIC)) {
+            dispatch(updateAdvancedMode(storedMode !== Modes.BASIC));
+        }
+    }, [dispatch, language, advancedMode]);
 
     return (
         <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">

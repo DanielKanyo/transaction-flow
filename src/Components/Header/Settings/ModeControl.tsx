@@ -20,6 +20,8 @@ function ModeControl() {
         (value: Modes) => {
             dispatch(updateAdvancedMode(value !== Modes.BASIC));
 
+            localStorage.setItem("appMode", value);
+
             if (transactions.length) {
                 transactions.forEach((tx) => {
                     dispatch(settleTransaction(tx));
