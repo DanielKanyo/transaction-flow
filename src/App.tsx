@@ -48,6 +48,11 @@ export default function App() {
         }
     }, [dispatch, language, advancedMode]);
 
+    const colProps = {
+        span: { base: 12, lg: 4 },
+        h: "100%",
+    };
+
     return (
         <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
             <AppShell.Header p="md">
@@ -56,10 +61,10 @@ export default function App() {
 
             <AppShell.Main px="xs" pb={isMobile ? "xs" : 0} pt={HEADER_HEIGHT + CONTENT_PADDING}>
                 <Grid gutter="xs" h={isMobile ? "auto" : GRID_HEIGHT} classNames={{ inner: "grid-inner" }}>
-                    <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
+                    <Grid.Col {...colProps}>
                         <Exchange />
                     </Grid.Col>
-                    <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
+                    <Grid.Col {...colProps}>
                         <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
                             <History />
                             <AnimatePresence>
@@ -95,7 +100,7 @@ export default function App() {
                             </AnimatePresence>
                         </Flex>
                     </Grid.Col>
-                    <Grid.Col span={{ base: 12, lg: 4 }} h="100%">
+                    <Grid.Col {...colProps}>
                         <Wallet />
                     </Grid.Col>
                 </Grid>

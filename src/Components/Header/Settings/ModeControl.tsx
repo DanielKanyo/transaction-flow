@@ -40,8 +40,8 @@ function ModeControl() {
                 classNames={{ control: classes.control, label: classes.label }}
                 fullWidth
                 data={[
-                    { label: t("basic"), value: Modes.BASIC },
-                    { label: t("advanced"), value: Modes.ADVANCED },
+                    { label: t(Modes.BASIC), value: Modes.BASIC },
+                    { label: t(Modes.ADVANCED), value: Modes.ADVANCED },
                 ]}
                 radius="md"
                 color="violet"

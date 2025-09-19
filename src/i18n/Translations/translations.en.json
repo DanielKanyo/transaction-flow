@@ -65,5 +65,12 @@
     "privacyTip": "Privacy Tip",
     "doNotReuseAddress": "For your privacy, use a new address each time you receive Bitcoin. Reusing old addresses can make it easier for others to track your transactions.",
     "address": "Address",
-    "forExample": "For example"
+    "forExample": "For example",
+    "transactions": "Transaction",
+    "transactionProcessExplanationPart1": "A Bitcoin transaction is the process of sending Bitcoin from one address to another. It works like moving digital coins from your wallet to someone else's.",
+    "transactionProcessExplanationPart2": "Each transaction has three main parts:",
+    "transactionProcessExplanationPart3": "<bold>Inputs</bold> - the Bitcoin you already have (your UTXOs).",
+    "transactionProcessExplanationPart4": "<bold>Outputs</bold> - where the Bitcoin is going (the recipient address and, if needed, your change address)",
+    "transactionProcessExplanationPart5": "<bold>Fee</bold> - a small amount paid to miners so they include your transaction in the blockchain.",
+    "confirmTransactions": "Confirm transactions now - instant mining"
 }

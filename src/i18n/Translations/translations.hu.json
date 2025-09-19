@@ -65,5 +65,12 @@
     "privacyTip": "Adatvédelmi tipp",
     "doNotReuseAddress": "A magánéleted védelme érdekében minden alkalommal használj új címet, amikor Bitcoint kapsz. A régi címek újrahasználata megkönnyítheti mások számára a tranzakcióid követését.",
     "address": "Cím",
-    "forExample": "Például"
+    "forExample": "Például",
+    "transactions": "Tranzakciók",
+    "transactionProcessExplanationPart1": "A Bitcoin tranzakció a folyamat, amely során Bitcoint küldünk egyik címről a másikra. Ez olyan, mintha digitális érméket mozgatnánk a saját pénztárcánkból valaki máséba.",
+    "transactionProcessExplanationPart2": "Minden tranzakciónak három fő része van:",
+    "transactionProcessExplanationPart3": "<bold>Bemenetek</bold> - a Bitcoin, amivel már rendelkezel (az úgynevezett UTXO-k).",
+    "transactionProcessExplanationPart4": "<bold>Kimenetek</bold> - ahová a Bitcoin megy (a címzett címe és - ha szükséges - a visszajáró cím).",
+    "transactionProcessExplanationPart5": "<bold>Díj</bold> - egy kis összeg, amit a bányászoknak fizetsz azért, hogy a tranzakció bekerüljön a blokkláncba.",
+    "confirmTransactions": "Tranzakciók megerősítése most - azonnali bányászat"
 }

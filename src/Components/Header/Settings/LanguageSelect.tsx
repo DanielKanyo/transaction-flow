@@ -25,9 +25,9 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
 
     const languageOptions = useMemo(
         () =>
-            availableLanguages.map((l) => ({
-                value: l.key,
-                label: l.label,
+            availableLanguages.map((lng) => ({
+                value: lng.key,
+                label: lng.label,
             })),
         []
     );

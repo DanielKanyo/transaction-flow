@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -46,28 +46,39 @@ function History() {
                         </HoverCard.Target>
                         <HoverCard.Dropdown>
                             <Stack align="stretch" justify="center" gap="xs">
-                                <Text fw={600}>Bitcoin Transaction</Text>
-                                <Text fz="sm">
-                                    A Bitcoin transaction is the process of sending Bitcoin from one address to another. It works like
-                                    moving digital coins from your wallet to someone else's.
-                                </Text>
+                                <Text fw={600}>Bitcoin {t("transactions")}</Text>
+                                <Text fz="sm">{t("transactionProcessExplanationPart1")}</Text>
                                 <Divider />
-                                <Text fz="sm">Each transaction has three main parts:</Text>
+                                <Text fz="sm">{t("transactionProcessExplanationPart2")}</Text>
                                 <List>
                                     <List.Item maw={260}>
                                         <Text fz="sm">
-                                            <b>Inputs</b> - the Bitcoin you already have (your UTXOs).
+                                            <Trans
+                                                i18nKey="transactionProcessExplanationPart3"
+                                                components={{
+                                                    bold: <b />,
+                                                }}
+                                            />
                                         </Text>
                                     </List.Item>
                                     <List.Item maw={260}>
                                         <Text fz="sm">
-                                            <b>Outputs</b> - where the Bitcoin is going (the recipient address and, if needed, your change
-                                            address).
+                                            <Trans
+                                                i18nKey="transactionProcessExplanationPart4"
+                                                components={{
+                                                    bold: <b />,
+                                                }}
+                                            />
                                         </Text>
                                     </List.Item>
                                     <List.Item maw={260}>
                                         <Text fz="sm">
-                                            <b>Fee</b> - a small amount paid to miners so they include your transaction in the blockchain.
+                                            <Trans
+                                                i18nKey="transactionProcessExplanationPart5"
+                                                components={{
+                                                    bold: <b />,
+                                                }}
+                                            />
                                         </Text>
                                     </List.Item>
                                 </List>

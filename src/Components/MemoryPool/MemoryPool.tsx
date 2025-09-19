@@ -125,7 +125,7 @@ function MemoryPool() {
                                     <IconPlayerTrackNextFilled size={16} />
                                 </ActionIcon>
                             </Tooltip>
-                            <Tooltip label="Confirm transactions now - instant mining" radius="md" withArrow>
+                            <Tooltip label={t("confirmTransactions")} radius="md" withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="teal"
@@ -206,7 +206,7 @@ function MemoryPool() {
                                 size="lg"
                                 h={28}
                                 leftSection={<IconClockHour10 size={16} />}
-                                style={{ top: 12, right: 12 }}
+                                style={{ top: isMobile ? 9 : 12, right: isMobile ? 9 : 12 }}
                             >
                                 <Text fz={14} lh={1} miw={43} ta="right">
                                     {formatTime(countdown)}

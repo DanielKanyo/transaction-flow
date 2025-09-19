@@ -26,7 +26,7 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
             style={{ opacity: spent ? 0.6 : 1 }}
         >
             <Group justify="space-between" align="center">
-                <Group gap={6} align="baseline">
+                <Group gap={4} align="baseline">
                     <Text size="xs" lh={1}>
                         <NumberFormatter
                             value={determineDisplayedValueAndNumOfDecimals(amount, unit).displayedValue}
