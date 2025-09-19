@@ -23,7 +23,7 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
             opened={opened}
             onClose={() => setOpened(false)}
             title={t("settings")}
-            size="100%"
+            size="lg"
             position="bottom"
             classNames={{ body: classes.body }}
         >
