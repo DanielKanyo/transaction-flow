@@ -21,12 +21,12 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import {
+    IconBlocks,
     IconClockHour10,
     IconInfoSquareRoundedFilled,
     IconPick,
     IconPlayerPlayFilled,
     IconPlayerTrackNextFilled,
-    IconPool,
 } from "@tabler/icons-react";
 
 import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/LedgerSlice";
@@ -96,7 +96,7 @@ function MemoryPool() {
             <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <IconPool />
+                        <IconBlocks />
                         {t("memoryPool")}
                     </Flex>
                     <Flex gap="xs" align="center">
