@@ -72,5 +72,7 @@
     "transactionProcessExplanationPart3": "<bold>Inputs</bold> - the Bitcoin you already have (your UTXOs).",
     "transactionProcessExplanationPart4": "<bold>Outputs</bold> - where the Bitcoin is going (the recipient address and, if needed, your change address)",
     "transactionProcessExplanationPart5": "<bold>Fee</bold> - a small amount paid to miners so they include your transaction in the blockchain.",
-    "confirmTransactions": "Confirm transactions now - instant mining"
+    "confirmTransactions": "Confirm transactions now - instant mining",
+    "inputs": "Inputs",
+    "outputs": "Outputs"
 }

@@ -149,9 +149,9 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
 
             {advancedMode ? (
                 <>
-                    <AddressList label="Inputs" items={tx.inputs} unit={unit} formattedUnit={formattedUnit} />
+                    <AddressList label={t("inputs")} items={tx.inputs} unit={unit} formattedUnit={formattedUnit} />
                     <Divider my="sm" />
-                    <AddressList label="Outputs" items={tx.outputs} unit={unit} formattedUnit={formattedUnit} />
+                    <AddressList label={t("outputs")} items={tx.outputs} unit={unit} formattedUnit={formattedUnit} />
                     <Divider my="sm" />
                     <Group justify="space-between" align="baseline">
                         <Text size="sm" c="dimmed">

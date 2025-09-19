@@ -72,5 +72,7 @@
     "transactionProcessExplanationPart3": "<bold>Bemenetek</bold> - a Bitcoin, amivel már rendelkezel (az úgynevezett UTXO-k).",
     "transactionProcessExplanationPart4": "<bold>Kimenetek</bold> - ahová a Bitcoin megy (a címzett címe és - ha szükséges - a visszajáró cím).",
     "transactionProcessExplanationPart5": "<bold>Díj</bold> - egy kis összeg, amit a bányászoknak fizetsz azért, hogy a tranzakció bekerüljön a blokkláncba.",
-    "confirmTransactions": "Tranzakciók megerősítése most - azonnali bányászat"
+    "confirmTransactions": "Tranzakciók megerősítése most - azonnali bányászat",
+    "inputs": "Bemenetek",
+    "outputs": "Kimenetek"
 }
