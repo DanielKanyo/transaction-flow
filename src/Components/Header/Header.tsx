@@ -8,7 +8,7 @@ import { IconArrowsMaximize, IconArrowsMinimize, IconBolt, IconBrandGithub, Icon
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import LanguageSelect from "./Settings/LanguageSelect";
 import ResetButton from "./Settings/ResetButton";
-import SettingsDrawer from "./Settings/SettingsDrawer";
+import SettingsDrawer from "./Settings/SettingsDrawer/SettingsDrawer";
 import SettingsModal from "./Settings/SettingsModal";
 
 function Header() {

@@ -2,11 +2,11 @@ import { useTranslation } from "react-i18next";
 
 import { Drawer, Flex, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 
-import LanguageSelect from "./LanguageSelect";
-import ModeControl from "./ModeControl";
-import ResetButton from "./ResetButton";
-import classes from "./SettingsModal.module.css";
-import UnitSelect from "./UnitSelect";
+import LanguageSelect from "../LanguageSelect";
+import ModeControl from "../ModeControl/ModeControl";
+import ResetButton from "../ResetButton";
+import UnitSelect from "../UnitSelect";
+import classes from "./SettingsDrawer.module.css";
 
 interface SettingsDrawerProps {
     opened: boolean;

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { Button, Group, Modal, Stack } from "@mantine/core";
 
-import ModeControl from "./ModeControl";
+import ModeControl from "./ModeControl/ModeControl";
 import UnitSelect from "./UnitSelect";
 
 interface SettingsModalProps {
