@@ -19,17 +19,9 @@ function SettingsMenu() {
     const [opened, setOpened] = useState(false);
 
     return (
-        <Popover
-            position="bottom-end"
-            withArrow
-            arrowPosition="center"
-            radius="md"
-            opened={opened}
-            onChange={setOpened}
-            closeOnClickOutside
-        >
+        <Popover position="bottom-end" radius="lg" opened={opened} onChange={setOpened} closeOnClickOutside>
             <Popover.Target>
-                <ActionIcon size={36} variant="light" color="gray" aria-label="Settings" radius="md" onClick={() => setOpened((o) => !o)}>
+                <ActionIcon size={40} variant="light" color="gray" aria-label="Settings" radius="xl" onClick={() => setOpened((o) => !o)}>
                     <IconSettings size={20} />
                 </ActionIcon>
             </Popover.Target>
@@ -40,14 +32,14 @@ function SettingsMenu() {
                     <UnitSelect />
                     <LanguageSelect />
                 </Stack>
-                <Group justify="flex-end" gap="xs" grow>
-                    <Tooltip label={t("sourceCode")} radius="md" withArrow>
+                <Group justify="flex-end" gap="xs">
+                    <Tooltip label={t("sourceCode")} radius="xl" withArrow>
                         <ActionIcon
-                            size={36}
+                            size="xl"
                             variant="light"
                             color="gray"
                             aria-label="Source-code"
-                            radius="md"
+                            radius="xl"
                             component="a"
                             href="https://github.com/DanielKanyo/transaction-flow"
                             target="_blank"
@@ -56,13 +48,13 @@ function SettingsMenu() {
                         </ActionIcon>
                     </Tooltip>
 
-                    <Tooltip label={t("toggleColorScheme")} radius="md" withArrow>
+                    <Tooltip label={t("toggleColorScheme")} radius="xl" withArrow>
                         <ActionIcon
-                            size={36}
+                            size="xl"
                             variant="light"
                             color="gray"
                             aria-label="Toggle-color-scheme"
-                            radius="md"
+                            radius="xl"
                             onClick={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
                         >
                             {computedColorScheme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
@@ -70,13 +62,13 @@ function SettingsMenu() {
                     </Tooltip>
 
                     {!isMobile && (
-                        <Tooltip label={fullscreen ? "Exit Fullscreen" : "Enter Fullscreen"} radius="md" withArrow>
+                        <Tooltip label={fullscreen ? "Exit Fullscreen" : "Enter Fullscreen"} radius="xl" withArrow>
                             <ActionIcon
-                                size={36}
+                                size="xl"
                                 variant="light"
                                 color="gray"
                                 aria-label="Full-screen"
-                                radius="md"
+                                radius="xl"
                                 onClick={toggleFullScreen}
                             >
                                 {fullscreen ? <IconArrowsMinimize size={20} /> : <IconArrowsMaximize size={20} />}

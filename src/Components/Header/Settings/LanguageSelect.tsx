@@ -46,7 +46,7 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
                 variant="filled"
                 data={languageOptions}
                 onChange={(event) => handleLanguageSelect(event.currentTarget.value as Languages)}
-                radius="md"
+                radius="xl"
             />
         );
     }
@@ -57,9 +57,10 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
             leftSectionPointerEvents="none"
             leftSection={<IconLanguage size={16} />}
             variant="filled"
+            autoSelectOnBlur
             data={languageOptions}
             onChange={(value) => value && handleLanguageSelect(value as Languages)}
-            radius="md"
+            radius="xl"
         />
     );
 }

@@ -21,7 +21,8 @@ function ResetButton({ fullWidth = false }: ResetButtonProps) {
             color="violet"
             aria-label="Reset"
             fullWidth={fullWidth}
-            radius="md"
+            radius="xl"
+            h={40}
             leftSection={<IconReload size={20} />}
             onClick={() => dispatch(resetLedger())}
             disabled={balanceOnExchange === INITIAL_BTC_AMOUNT}

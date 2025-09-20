@@ -20,7 +20,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
     }, [close]);
 
     const info = (
-        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-start" radius="md">
+        <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-start" radius="lg">
             <HoverCard.Target>
                 <IconInfoSquareRoundedFilled size={20} />
             </HoverCard.Target>
@@ -43,6 +43,8 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                         href="https://www.techtarget.com/whatis/definition/Bitcoin-address"
                         target="_blank"
                         color="violet"
+                        radius="xl"
+                        mt="sm"
                     >
                         {t("learnMore")}
                     </Button>
@@ -58,10 +60,13 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
             title={title}
             centered
             size={480}
-            radius="md"
+            radius="lg"
             overlayProps={{
                 backgroundOpacity: 0.6,
                 blur: 3,
+            }}
+            closeButtonProps={{
+                radius: "xl",
             }}
         >
             <Stack gap="lg">
@@ -69,13 +74,13 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                     variant="filled"
                     label={`Bitcoin ${t("address")}`}
                     value={latestAddress || ""}
-                    radius="md"
+                    radius="xl"
                     readOnly
                     rightSection={
                         <CopyButton value={latestAddress || ""} timeout={2000}>
                             {({ copied, copy }) => (
-                                <Tooltip label={copied ? t("copied") : t("copy")} radius="md" withArrow>
-                                    <ActionIcon color={copied ? color : "gray"} variant="subtle" onClick={copy} radius="md">
+                                <Tooltip label={copied ? t("copied") : t("copy")} radius="xl" withArrow>
+                                    <ActionIcon color={copied ? color : "gray"} variant="subtle" onClick={copy} radius="xl">
                                         {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
                                     </ActionIcon>
                                 </Tooltip>
@@ -85,17 +90,17 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                     leftSection={info}
                 />
 
-                <Alert variant="light" color="yellow" radius="md" title={t("attention")} icon={<IconAlertSquareRoundedFilled />}>
+                <Alert variant="light" color="yellow" radius="lg" title={t("attention")} icon={<IconAlertSquareRoundedFilled />}>
                     {t("doubleCheckAddress2")}
                 </Alert>
 
-                <Alert variant="light" color="violet" radius="md" title={t("privacyTip")} icon={<IconBulbFilled />}>
+                <Alert variant="light" color="violet" radius="lg" title={t("privacyTip")} icon={<IconBulbFilled />}>
                     {t("doNotReuseAddress")}
                 </Alert>
             </Stack>
 
             <Group gap="xs" mt="lg" justify="flex-end">
-                <Button variant="light" color="gray" onClick={handleClose} radius="md">
+                <Button variant="light" color="gray" onClick={handleClose} radius="xl">
                     {t("cancel")}
                 </Button>
             </Group>

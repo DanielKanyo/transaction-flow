@@ -32,7 +32,7 @@ function QrCode() {
     }, []);
 
     return (
-        <Paper shadow="xs" radius="md" p="sm" bg="white">
+        <Paper shadow="xs" radius="xl" p="sm" bg="white">
             <div style={{ height: SIZE, width: SIZE }} ref={ref} />
         </Paper>
     );

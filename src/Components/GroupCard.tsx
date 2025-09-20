@@ -7,7 +7,7 @@ interface GroupCardProps {
 
 function GroupCard({ bg, children }: GroupCardProps) {
     return (
-        <Card shadow="sm" padding="sm" radius="md" bg={bg} c="white" mb="sm" mih={52} mah={52} style={{ justifyContent: "center" }}>
+        <Card shadow="sm" padding="sm" radius="lg" bg={bg} c="white" mb="sm" mih={52} mah={52} style={{ justifyContent: "center" }}>
             {children}
         </Card>
     );

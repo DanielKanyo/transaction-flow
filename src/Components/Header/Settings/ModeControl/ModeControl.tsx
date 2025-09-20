@@ -41,7 +41,7 @@ function ModeControl() {
                 { label: t(Modes.BASIC), value: Modes.BASIC },
                 { label: t(Modes.ADVANCED), value: Modes.ADVANCED },
             ]}
-            radius="md"
+            radius="xl"
             color="violet"
             value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
             onChange={(v) => handleOnChange(v as Modes)}

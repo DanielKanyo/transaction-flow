@@ -92,7 +92,7 @@ function MemoryPool() {
     }, [countdown]);
 
     return (
-        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
             <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
@@ -101,44 +101,37 @@ function MemoryPool() {
                     </Flex>
                     <Flex gap="xs" align="center">
                         <ActionIcon.Group>
-                            <Tooltip label={t("setSpeedTo1x")} radius="md" withArrow>
+                            <Tooltip label={t("setSpeedTo1x")} radius="xl" withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="dark.5"
                                     aria-label="Play"
-                                    radius="md"
+                                    radius="xl"
                                     onClick={() => setSpeed(1)}
-                                    w={32}
+                                    w={34}
                                 >
                                     <IconPlayerPlayFilled size={14} />
                                 </ActionIcon>
                             </Tooltip>
-                            <Tooltip label={t("setSpeedTo10x")} radius="md" withArrow>
-                                <ActionIcon
-                                    variant="filled"
-                                    color="dark.5"
-                                    aria-label="Next"
-                                    radius="md"
-                                    onClick={() => setSpeed(10)}
-                                    w={32}
-                                >
+                            <Tooltip label={t("setSpeedTo10x")} radius="xl" withArrow>
+                                <ActionIcon variant="filled" color="dark.5" aria-label="Next" onClick={() => setSpeed(10)} w={34}>
                                     <IconPlayerTrackNextFilled size={16} />
                                 </ActionIcon>
                             </Tooltip>
-                            <Tooltip label={t("confirmTransactions")} radius="md" withArrow>
+                            <Tooltip label={t("confirmTransactions")} radius="xl" withArrow>
                                 <ActionIcon
                                     variant="filled"
                                     color="teal"
                                     aria-label="Mine"
-                                    radius="md"
+                                    radius="xl"
                                     onClick={() => setCountdown(0)}
-                                    w={32}
+                                    w={34}
                                 >
                                     <IconPick size={16} />
                                 </ActionIcon>
                             </Tooltip>
                         </ActionIcon.Group>
-                        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
+                        <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
                             <HoverCard.Target>
                                 <IconInfoSquareRoundedFilled />
                             </HoverCard.Target>
@@ -174,7 +167,7 @@ function MemoryPool() {
             <Card
                 h="100%"
                 mih={106}
-                radius="md"
+                radius="lg"
                 bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
                 p={0}
                 shadow="none"
@@ -198,12 +191,12 @@ function MemoryPool() {
                         ))}
                     </AnimatePresence>
 
-                    <HoverCard width={260} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
+                    <HoverCard width={260} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
                         <HoverCard.Target>
                             <Badge
                                 pos="absolute"
                                 variant="filled"
-                                radius="md"
+                                radius="xl"
                                 size="lg"
                                 h={28}
                                 leftSection={<IconClockHour10 size={16} />}
@@ -231,7 +224,15 @@ function MemoryPool() {
                                         }}
                                     />
                                 </Text>
-                                <Button fullWidth component="a" href="https://mempool.space/" target="_blank" color="violet">
+                                <Button
+                                    fullWidth
+                                    component="a"
+                                    href="https://mempool.space/"
+                                    target="_blank"
+                                    color="violet"
+                                    mt="sm"
+                                    radius="xl"
+                                >
                                     {t("learnMore")}
                                 </Button>
                             </Stack>

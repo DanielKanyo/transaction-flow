@@ -117,21 +117,21 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
     }, [to]);
 
     return (
-        <Card shadow="xs" padding="md" radius="md" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+        <Card shadow="xs" padding="md" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
             <Group justify="space-between">
                 <Group align="center" gap={6}>
-                    <Badge color="gray" variant="light" radius="md">
+                    <Badge color="gray" variant="light" radius="xl">
                         {index + 1}
                     </Badge>
-                    <Badge color={from === AccountType.EXCHANGE ? "blue" : "teal"} radius="md">
+                    <Badge color={from === AccountType.EXCHANGE ? "blue" : "teal"} radius="xl">
                         {t(from)}
                     </Badge>
                     <IconArrowRight color="gray" size={16} />
-                    <Badge color={toBadgeColor} variant={to === AccountType.UNKNOWN ? "light" : "filled"} radius="md">
+                    <Badge color={toBadgeColor} variant={to === AccountType.UNKNOWN ? "light" : "filled"} radius="xl">
                         {t(to)}
                     </Badge>
                     {to === AccountType.UNKNOWN ? (
-                        <Badge color="red" radius="md">
+                        <Badge color="red" radius="xl">
                             {t("unrecoverable")}
                         </Badge>
                     ) : null}

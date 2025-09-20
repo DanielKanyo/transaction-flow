@@ -55,14 +55,14 @@ function Chain() {
     const { t } = useTranslation();
 
     return (
-        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
             <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconBox />
                         {t("blockchain")}
                     </Flex>
-                    <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
+                    <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled />
                         </HoverCard.Target>
@@ -98,7 +98,15 @@ function Chain() {
                                         }}
                                     />
                                 </Text>
-                                <Button fullWidth component="a" href="https://bitcoin.org/en/full-node" target="_blank" color="violet">
+                                <Button
+                                    fullWidth
+                                    component="a"
+                                    href="https://bitcoin.org/en/full-node"
+                                    target="_blank"
+                                    color="violet"
+                                    mt="sm"
+                                    radius="xl"
+                                >
                                     {t("learnMore")}
                                 </Button>
                             </Stack>
@@ -109,7 +117,7 @@ function Chain() {
 
             <Card
                 h="100%"
-                radius="md"
+                radius="lg"
                 bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
                 px={0}
                 py="sm"

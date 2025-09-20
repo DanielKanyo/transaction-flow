@@ -41,7 +41,7 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
                             { value: "light", label: t("light") },
                         ]}
                         onChange={() => setColorScheme(computedColorScheme === "light" ? "dark" : "light")}
-                        radius="md"
+                        radius="lg"
                     />
                 </Stack>
                 <ResetButton fullWidth />

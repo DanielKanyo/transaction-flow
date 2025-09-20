@@ -29,7 +29,7 @@ function UnitSelect({ native = false }: UnitSelectProps) {
                 variant="filled"
                 data={unitOptions}
                 onChange={(event) => dispatch(updateUnit(event.currentTarget.value as Units))}
-                radius="md"
+                radius="xl"
             />
         );
     }
@@ -40,9 +40,10 @@ function UnitSelect({ native = false }: UnitSelectProps) {
             leftSectionPointerEvents="none"
             leftSection={<IconCurrencyBitcoin size={16} />}
             variant="filled"
+            autoSelectOnBlur
             data={unitOptions}
             onChange={(value) => value && dispatch(updateUnit(value as Units))}
-            radius="md"
+            radius="xl"
         />
     );
 }

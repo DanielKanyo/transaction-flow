@@ -36,7 +36,7 @@ function Exchange() {
     return (
         <>
             <Flex direction="column" gap="xs" h="100%">
-                <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="100%">
+                <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
                     <Flex h="100%" direction="column">
                         <GroupCard bg="blue">
                             <Flex justify="space-between" align="center" h="100%">
@@ -44,15 +44,7 @@ function Exchange() {
                                     <IconExchange />
                                     {t("exchange")}
                                 </Flex>
-                                <HoverCard
-                                    width={320}
-                                    shadow="md"
-                                    withArrow
-                                    openDelay={200}
-                                    closeDelay={200}
-                                    position="bottom-end"
-                                    radius="md"
-                                >
+                                <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
                                     <HoverCard.Target>
                                         <IconInfoSquareRoundedFilled />
                                     </HoverCard.Target>

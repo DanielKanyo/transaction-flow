@@ -51,7 +51,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
         <>
             <Flex align="center" justify="space-between" my={UTXO_TITLE_MARGIN}>
                 <Flex align="center" gap="xs" h={UTXO_TITLE_CONTENT_HEIGHT}>
-                    <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-start" radius="md">
+                    <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-start" radius="lg">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled color={colorScheme === "light" ? theme.colors.dark[2] : theme.colors.dark[1]} />
                         </HoverCard.Target>
@@ -67,6 +67,8 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                     href="https://en.wikipedia.org/wiki/Unspent_transaction_output"
                                     target="_blank"
                                     color="violet"
+                                    mt="sm"
+                                    radius="xl"
                                 >
                                     {t("learnMore")}
                                 </Button>
@@ -76,13 +78,13 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                     <Text c="dimmed">{t("yourUtxos")}</Text>
                 </Flex>
                 <Group gap={6}>
-                    <Tooltip label={<Trans i18nKey="xSpentUtxo" count={spentUtxos.length} />} radius="md" withArrow>
-                        <Badge color="gray" variant="light" radius="md">
+                    <Tooltip label={<Trans i18nKey="xSpentUtxo" count={spentUtxos.length} />} radius="xl" withArrow>
+                        <Badge color="gray" variant="light" radius="xl">
                             {spentUtxos.length}
                         </Badge>
                     </Tooltip>
-                    <Tooltip label={<Trans i18nKey="xUnspentUtxo" count={unspentUtxos.length} />} radius="md" withArrow>
-                        <Badge color="teal" radius="md">
+                    <Tooltip label={<Trans i18nKey="xUnspentUtxo" count={unspentUtxos.length} />} radius="xl" withArrow>
+                        <Badge color="teal" radius="xl">
                             {unspentUtxos.length}
                         </Badge>
                     </Tooltip>
@@ -90,7 +92,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
             </Flex>
             <Card
                 h={`calc(100% - ${UTXO_TITLE_MARGIN * 2 + UTXO_TITLE_CONTENT_HEIGHT}px`}
-                radius="md"
+                radius="lg"
                 bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
                 p={0}
                 pl="xs"

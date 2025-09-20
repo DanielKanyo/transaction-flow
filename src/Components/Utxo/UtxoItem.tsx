@@ -21,7 +21,7 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
         <Card
             shadow="xs"
             p="md"
-            radius="md"
+            radius="lg"
             bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}
             style={{ opacity: spent ? 0.6 : 1 }}
         >
@@ -38,7 +38,7 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
                         {formatedUnit}
                     </Text>
                 </Group>
-                <Badge variant={spent ? "light" : "filled"} color={spent ? "gray" : "teal"} radius="md">
+                <Badge variant={spent ? "light" : "filled"} color={spent ? "gray" : "teal"} radius="xl">
                     {spent ? t("spent") : t("unspent")}
                 </Badge>
             </Group>

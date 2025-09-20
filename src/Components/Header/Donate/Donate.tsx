@@ -12,8 +12,8 @@ function Donate() {
 
     return (
         <>
-            <Tooltip label={t("donate")} radius="md" withArrow>
-                <ActionIcon size={36} variant="light" color="gray" aria-label="Donate" radius="md" onClick={open}>
+            <Tooltip label={t("donate")} radius="xl" withArrow>
+                <ActionIcon size={40} variant="light" color="gray" aria-label="Donate" radius="xl" onClick={open}>
                     <IconHeartBolt size={20} />
                 </ActionIcon>
             </Tooltip>
@@ -23,18 +23,21 @@ function Donate() {
                 onClose={close}
                 title={t("donate")}
                 keepMounted
-                radius="md"
+                radius="lg"
                 overlayProps={{
                     backgroundOpacity: 0.6,
                     blur: 3,
                 }}
+                closeButtonProps={{
+                    radius: "xl",
+                }}
             >
-                <Alert variant="light" color="pink" icon={<IconHeartBolt />} radius="md" mb="lg">
+                <Alert variant="light" color="pink" icon={<IconHeartBolt />} radius="lg" mb="lg">
                     {t("sendMeSats")}
                 </Alert>
                 <QrCode />
                 <Group gap="xs" mt="lg" justify="flex-end">
-                    <Button variant="light" color="gray" onClick={close} radius="md">
+                    <Button variant="light" color="gray" onClick={close} radius="xl">
                         {t("cancel")}
                     </Button>
                 </Group>

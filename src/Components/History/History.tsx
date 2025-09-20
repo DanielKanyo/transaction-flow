@@ -33,14 +33,14 @@ function History() {
     const { colorScheme } = useMantineColorScheme();
 
     return (
-        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="md" h="110%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="110%">
             <GroupCard bg="dark.7">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconHistory />
                         {t("transactionHistory")}
                     </Flex>
-                    <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
+                    <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
                         <HoverCard.Target>
                             <IconInfoSquareRoundedFilled />
                         </HoverCard.Target>
@@ -89,7 +89,7 @@ function History() {
             </GroupCard>
             <Card
                 h="100%"
-                radius="md"
+                radius="lg"
                 bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
                 p={0}
                 pl="xs"

@@ -79,7 +79,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
         (!exchangeAddresses.includes(recipentAddress) || !exchangeMode);
 
     const addressInfo = (
-        <HoverCard width={320} shadow="md" withArrow openDelay={200} closeDelay={200} position="bottom-end" radius="md">
+        <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
             <HoverCard.Target>
                 <IconInfoSquareRoundedFilled size={20} />
             </HoverCard.Target>
@@ -117,10 +117,13 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
             title={title}
             centered
             size={480}
-            radius="md"
+            radius="lg"
             overlayProps={{
                 backgroundOpacity: 0.6,
                 blur: 3,
+            }}
+            closeButtonProps={{
+                radius: "xl",
             }}
         >
             <Stack gap="lg">
@@ -131,7 +134,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     placeholder={t("pasteAddressHere")}
                     value={recipentAddress}
                     onChange={(e) => setRecipentAddress(e.currentTarget.value)}
-                    radius="md"
+                    radius="xl"
                     required
                     rightSection={addressInfo}
                     error={
@@ -151,12 +154,12 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     min={0}
                     required
                     disabled={exchangeAddresses.includes(recipentAddress) && exchangeMode}
-                    radius="md"
+                    radius="xl"
                     suffix=" BTC"
                     decimalScale={8}
                     rightSection={
                         <ActionIcon
-                            radius="md"
+                            radius="xl"
                             fz={13}
                             me={26}
                             variant="subtle"
@@ -179,13 +182,13 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     </Text>
                 </Group>
 
-                <Alert variant="light" color="yellow" radius="md" title={t("importantReminder")} icon={<IconAlertSquareRoundedFilled />}>
+                <Alert variant="light" color="yellow" radius="lg" title={t("importantReminder")} icon={<IconAlertSquareRoundedFilled />}>
                     {t("doubleCheckAddress1")}
                 </Alert>
             </Stack>
 
             <Group gap="xs" mt="lg" justify="flex-end">
-                <Button variant="light" color="gray" onClick={handleClose} radius="md">
+                <Button variant="light" color="gray" onClick={handleClose} radius="xl">
                     {t("cancel")}
                 </Button>
                 <Button
@@ -195,7 +198,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     }}
                     disabled={!isValid}
                     leftSection={<IconArrowUp size={20} />}
-                    radius="md"
+                    radius="xl"
                 >
                     Send
                 </Button>
