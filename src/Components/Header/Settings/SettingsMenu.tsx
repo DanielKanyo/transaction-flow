@@ -62,7 +62,7 @@ function SettingsMenu() {
                     </Tooltip>
 
                     {!isMobile && (
-                        <Tooltip label={fullscreen ? "Exit Fullscreen" : "Enter Fullscreen"} radius="xl" withArrow>
+                        <Tooltip label={fullscreen ? t("exitFullscreen") : t("enterFullscreen")} radius="xl" withArrow>
                             <ActionIcon
                                 size="xl"
                                 variant="light"
