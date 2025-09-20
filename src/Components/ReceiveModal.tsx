@@ -52,7 +52,18 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
     );
 
     return (
-        <Modal opened={opened} onClose={handleClose} title={title} centered size={480} radius="md">
+        <Modal
+            opened={opened}
+            onClose={handleClose}
+            title={title}
+            centered
+            size={480}
+            radius="md"
+            overlayProps={{
+                backgroundOpacity: 0.6,
+                blur: 3,
+            }}
+        >
             <Stack gap="lg">
                 <TextInput
                     variant="filled"
@@ -83,7 +94,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                 </Alert>
             </Stack>
 
-            <Group gap="xs" mt="xl" justify="flex-end">
+            <Group gap="xs" mt="lg" justify="flex-end">
                 <Button variant="light" color="gray" onClick={handleClose} radius="md">
                     {t("cancel")}
                 </Button>

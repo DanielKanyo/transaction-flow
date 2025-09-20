@@ -5,7 +5,6 @@
     "unrecoverable": "Helyrehozhatatlan",
     "reset": "Visszaállítás",
     "settings": "Beállítások",
-    "mode": "Mód",
     "basic": "Alap",
     "advanced": "Haladó",
     "unit": "Mértékegység",
@@ -77,5 +76,7 @@
     "outputs": "Kimenetek",
     "yourTransactionWaiting": "A tranzakciód elszámolásra vár",
     "donate": "Ajándékozz",
-    "sendMeSats": "Ha hasznosnak találod ezt az alkalmazást, küldj nekem pár sat-ot. Előre is köszönöm!"
+    "sendMeSats": "Ha hasznosnak találod ezt az alkalmazást, küldj nekem pár sat-ot. Előre is köszönöm!",
+    "enterFullscreen": "Teljes képernyős módba váltás",
+    "exitFullscreen": "Kilépés a teljes képernyős módból"
 }

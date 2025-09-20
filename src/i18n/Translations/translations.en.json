@@ -5,7 +5,6 @@
     "unrecoverable": "Unrecoverable",
     "reset": "Reset",
     "settings": "Settings",
-    "mode": "Mode",
     "basic": "Basic",
     "advanced": "Advanced",
     "unit": "Unit",
@@ -77,5 +76,7 @@
     "outputs": "Outputs",
     "yourTransactionWaiting": "Your transaction waiting for the settlement",
     "donate": "Donate",
-    "sendMeSats": "If you find this app useful, send me some sats. Thanks in advance!"
+    "sendMeSats": "If you find this app useful, send me some sats. Thanks in advance!",
+    "enterFullscreen": "Enter fullscreen",
+    "exitFullscreen": "Exit fullscreen"
 }

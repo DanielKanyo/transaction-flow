@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { t } from "i18next";
 
-import { Menu, ActionIcon, NativeSelect } from "@mantine/core";
-import { IconLanguage, IconCheck } from "@tabler/icons-react";
+import { NativeSelect, Select } from "@mantine/core";
+import { IconLanguage } from "@tabler/icons-react";
 
 import { Languages, updateLanguage } from "../../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../../Store/hook";
@@ -52,25 +52,15 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
     }
 
     return (
-        <Menu withArrow withinPortal position="bottom">
-            <Menu.Target>
-                <ActionIcon size={36} variant="light" radius="md" color="gray" aria-label="Change language">
-                    <IconLanguage size={20} />
-                </ActionIcon>
-            </Menu.Target>
-
-            <Menu.Dropdown w={160}>
-                {availableLanguages.map((lng) => (
-                    <Menu.Item
-                        key={lng.key}
-                        leftSection={language === lng.key ? <IconCheck size={14} /> : null}
-                        onClick={() => handleLanguageSelect(lng.key)}
-                    >
-                        {lng.label}
-                    </Menu.Item>
-                ))}
-            </Menu.Dropdown>
-        </Menu>
+        <Select
+            value={language}
+            leftSectionPointerEvents="none"
+            leftSection={<IconLanguage size={16} />}
+            variant="filled"
+            data={languageOptions}
+            onChange={(value) => value && handleLanguageSelect(value as Languages)}
+            radius="md"
+        />
     );
 }
 

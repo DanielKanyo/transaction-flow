@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { generateDummyBTCAddress } from "../../../Utils/address";
 
-const INITIAL_BTC_AMOUNT = 1;
+export const INITIAL_BTC_AMOUNT = 1;
 
 export const DUST_THRESHOLD = 0.00000546; // ~546 satoshis
 

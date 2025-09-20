@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import { SegmentedControl, Text } from "@mantine/core";
+import { SegmentedControl } from "@mantine/core";
 
 import { settleTransaction, addNewBlock } from "../../../../Store/Features/Ledger/LedgerSlice";
 import { clearMempool } from "../../../../Store/Features/Mempool/MempoolSlice";
@@ -34,21 +34,18 @@ function ModeControl() {
     );
 
     return (
-        <div>
-            <Text fz="sm">{t("mode")}</Text>
-            <SegmentedControl
-                classNames={{ control: classes.control, label: classes.label }}
-                fullWidth
-                data={[
-                    { label: t(Modes.BASIC), value: Modes.BASIC },
-                    { label: t(Modes.ADVANCED), value: Modes.ADVANCED },
-                ]}
-                radius="md"
-                color="violet"
-                value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
-                onChange={(v) => handleOnChange(v as Modes)}
-            />
-        </div>
+        <SegmentedControl
+            classNames={{ control: classes.control, label: classes.label }}
+            fullWidth
+            data={[
+                { label: t(Modes.BASIC), value: Modes.BASIC },
+                { label: t(Modes.ADVANCED), value: Modes.ADVANCED },
+            ]}
+            radius="md"
+            color="violet"
+            value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
+            onChange={(v) => handleOnChange(v as Modes)}
+        />
     );
 }
 

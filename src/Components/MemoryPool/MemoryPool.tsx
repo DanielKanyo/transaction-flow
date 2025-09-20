@@ -202,13 +202,17 @@ function MemoryPool() {
                         <HoverCard.Target>
                             <Badge
                                 pos="absolute"
-                                color="dark.6"
                                 variant="filled"
                                 radius="md"
                                 size="lg"
                                 h={28}
                                 leftSection={<IconClockHour10 size={16} />}
-                                style={{ top: isMobile ? 9 : 12, right: isMobile ? 9 : 12 }}
+                                style={{
+                                    top: isMobile ? 9 : 12,
+                                    right: isMobile ? 9 : 12,
+                                    background: "rgba(46, 46, 46, 0.4)",
+                                    backdropFilter: "blur(3px)",
+                                }}
                             >
                                 <Text fz={14} lh={1} miw={43} ta="right">
                                     {formatTime(countdown)}

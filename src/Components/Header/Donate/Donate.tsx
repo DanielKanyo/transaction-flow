@@ -18,7 +18,17 @@ function Donate() {
                 </ActionIcon>
             </Tooltip>
 
-            <Modal opened={opened} onClose={close} title={t("donate")} keepMounted radius="md">
+            <Modal
+                opened={opened}
+                onClose={close}
+                title={t("donate")}
+                keepMounted
+                radius="md"
+                overlayProps={{
+                    backgroundOpacity: 0.6,
+                    blur: 3,
+                }}
+            >
                 <Alert variant="light" color="pink" icon={<IconHeartBolt />} radius="md" mb="lg">
                     {t("sendMeSats")}
                 </Alert>

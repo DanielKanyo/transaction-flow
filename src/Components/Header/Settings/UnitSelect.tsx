@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { NativeSelect, Select } from "@mantine/core";
+import { IconCurrencyBitcoin } from "@tabler/icons-react";
 
 import { updateUnit, Units } from "../../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../../Store/hook";
@@ -36,7 +37,8 @@ function UnitSelect({ native = false }: UnitSelectProps) {
     return (
         <Select
             value={unit}
-            label={t("unit")}
+            leftSectionPointerEvents="none"
+            leftSection={<IconCurrencyBitcoin size={16} />}
             variant="filled"
             data={unitOptions}
             onChange={(value) => value && dispatch(updateUnit(value as Units))}
