@@ -19,6 +19,8 @@ import ReceiveModal from "./ReceiveModal";
 import SendModal from "./SendModal";
 import UtxoList from "./Utxo/UtxoList";
 
+const BUTTON_MARGIN = 5;
+
 function Wallet() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
     const [receiveModalOpened, { open: openReceiveModal, close: closeReceiveModal }] = useDisclosure(false);
@@ -100,7 +102,9 @@ function Wallet() {
                                     variant="transparent"
                                     color="gray"
                                     h="fit-content"
-                                    fullWidth
+                                    m={BUTTON_MARGIN}
+                                    w={`calc(100% - ${BUTTON_MARGIN * 2}px)`}
+                                    radius="xl"
                                     onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
                                     mb={41}
                                 >

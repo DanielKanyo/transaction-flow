@@ -61,6 +61,7 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
             data={languageOptions}
             onChange={(value) => value && handleLanguageSelect(value as Languages)}
             radius="xl"
+            comboboxProps={{ radius: "lg" }}
         />
     );
 }

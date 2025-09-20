@@ -44,6 +44,7 @@ function UnitSelect({ native = false }: UnitSelectProps) {
             data={unitOptions}
             onChange={(value) => value && dispatch(updateUnit(value as Units))}
             radius="xl"
+            comboboxProps={{ radius: "lg" }}
         />
     );
 }

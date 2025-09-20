@@ -18,6 +18,8 @@ import GroupCard from "./GroupCard";
 import ReceiveModal from "./ReceiveModal";
 import SendModal from "./SendModal";
 
+const BUTTON_MARGIN = 5;
+
 function Exchange() {
     const [sendModalOpened, { open: openSendModal, close: closeSendModal }] = useDisclosure(false);
     const [receiveModalOpened, { open: openReceiveModal, close: closeReceiveModal }] = useDisclosure(false);
@@ -97,8 +99,10 @@ function Exchange() {
                                     variant="transparent"
                                     color="gray"
                                     h="fit-content"
-                                    fullWidth
+                                    m={BUTTON_MARGIN}
+                                    w={`calc(100% - ${BUTTON_MARGIN * 2}px)`}
                                     mb={41}
+                                    radius="xl"
                                     onClick={() => dispatch(updateUnit(unit === Units.Bitcoin ? Units.Satoshi : Units.Bitcoin))}
                                 >
                                     <Stack gap={0}>
