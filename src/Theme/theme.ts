@@ -1,6 +1,7 @@
-import { ActionIcon, Button, createTheme, Input, Select } from "@mantine/core";
+import { ActionIcon, Button, Checkbox, createTheme, Input, Select } from "@mantine/core";
 
 import buttonClasses from "./button.module.css";
+import checkboxClasses from "./checkbox.module.css";
 import inputClasses from "./input.module.css";
 import selectClasses from "./select.module.css";
 
@@ -11,5 +12,6 @@ export const theme = createTheme({
         Select: Select.extend({ classNames: selectClasses }),
         Button: Button.extend({ classNames: buttonClasses }),
         ActionIcon: ActionIcon.extend({ classNames: buttonClasses }),
+        Checkbox: Checkbox.extend({ classNames: checkboxClasses }),
     },
 });

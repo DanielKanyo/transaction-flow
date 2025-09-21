@@ -8,6 +8,7 @@ import { useHeadroom, useMediaQuery } from "@mantine/hooks";
 
 import "./App.css";
 import Chain from "./Components/Chain";
+import DisclaimerModal from "./Components/DisclaimerModal";
 import Exchange from "./Components/Exchange";
 import Header from "./Components/Header/Header";
 import History from "./Components/History/History";
@@ -66,43 +67,47 @@ export default function App() {
     };
 
     return (
-        <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
-            <AppShell.Header p="md">
-                <Header />
-            </AppShell.Header>
+        <>
+            <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
+                <AppShell.Header p="md">
+                    <Header />
+                </AppShell.Header>
 
-            <AppShell.Main px="xs" pb={isMobile ? "xs" : 0} pt={HEADER_HEIGHT + CONTENT_PADDING}>
-                <Grid gutter="xs" h={isMobile ? "auto" : GRID_HEIGHT} classNames={{ inner: "grid-inner" }}>
-                    <Grid.Col {...colProps}>
-                        <Exchange />
-                    </Grid.Col>
-                    <Grid.Col {...colProps}>
-                        <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
-                            <History />
-                            <AnimatePresence>
-                                {advancedMode && (
-                                    <>
-                                        <motion.div key="mempool" {...motionProps}>
-                                            <Box h="100%" pt="xs">
-                                                <MemoryPool />
-                                            </Box>
-                                        </motion.div>
+                <AppShell.Main px="xs" pb={isMobile ? "xs" : 0} pt={HEADER_HEIGHT + CONTENT_PADDING}>
+                    <Grid gutter="xs" h={isMobile ? "auto" : GRID_HEIGHT} classNames={{ inner: "grid-inner" }}>
+                        <Grid.Col {...colProps}>
+                            <Exchange />
+                        </Grid.Col>
+                        <Grid.Col {...colProps}>
+                            <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
+                                <History />
+                                <AnimatePresence>
+                                    {advancedMode && (
+                                        <>
+                                            <motion.div key="mempool" {...motionProps}>
+                                                <Box h="100%" pt="xs">
+                                                    <MemoryPool />
+                                                </Box>
+                                            </motion.div>
 
-                                        <motion.div key="chain" {...motionProps}>
-                                            <Box h="100%" pt="xs">
-                                                <Chain />
-                                            </Box>
-                                        </motion.div>
-                                    </>
-                                )}
-                            </AnimatePresence>
-                        </Flex>
-                    </Grid.Col>
-                    <Grid.Col {...colProps}>
-                        <Wallet />
-                    </Grid.Col>
-                </Grid>
-            </AppShell.Main>
-        </AppShell>
+                                            <motion.div key="chain" {...motionProps}>
+                                                <Box h="100%" pt="xs">
+                                                    <Chain />
+                                                </Box>
+                                            </motion.div>
+                                        </>
+                                    )}
+                                </AnimatePresence>
+                            </Flex>
+                        </Grid.Col>
+                        <Grid.Col {...colProps}>
+                            <Wallet />
+                        </Grid.Col>
+                    </Grid>
+                </AppShell.Main>
+            </AppShell>
+
+            <DisclaimerModal />
+        </>
     );
 }

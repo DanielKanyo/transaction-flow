@@ -78,5 +78,11 @@
     "donate": "Adományozz",
     "sendMeSats": "Ha hasznosnak találod ezt az alkalmazást, küldj nekem pár sat-ot. Előre is köszönöm!",
     "enterFullscreen": "Teljes képernyős módba váltás",
-    "exitFullscreen": "Kilépés a teljes képernyős módból"
+    "exitFullscreen": "Kilépés a teljes képernyős módból",
+    "disclaimer": "Felelősségi nyilatkozat",
+    "disclaimerPart1": "Üdvözlünk a <bold>TX Flow</bold> alkalmazásban. Ez az alkalmazás kizárólag <bold>oktatási és gyakorlási célokra</bold> készült.",
+    "disclaimerPart2": "Az alkalmazásban szereplő Bitcoin egyenlegek, tranzakciók és tárcák <bold>teljes mértékben hamisak</bold>, és nem léteznek a valódi Bitcoin hálózaton.",
+    "disclaimerPart3": "Itt nem tudsz valódi Bitcoint küldeni vagy fogadni. Ez az eszköz <bold>csak arra szolgál</bold>, hogy biztonságos, demó környezetben gyakorold a Bitcoin tranzakciók működését.",
+    "disclaimerPart4": "Megértem és elfogadom, hogy ez egy demó, és nem használ valódi Bitcoint.",
+    "continue": "Folytatás"
 }

@@ -78,5 +78,11 @@
     "donate": "Donate",
     "sendMeSats": "If you find this app useful, send me some sats. Thanks in advance!",
     "enterFullscreen": "Enter fullscreen",
-    "exitFullscreen": "Exit fullscreen"
+    "exitFullscreen": "Exit fullscreen",
+    "disclaimer": "Disclaimer",
+    "disclaimerPart1": "Welcome to <bold>TX Flow</bold>. This application is designed <bold>for educational and practice purposes only</bold>.",
+    "disclaimerPart2": "All Bitcoin balances, transactions, and wallets inside this simulator are <bold>completely fake</bold> and do not exist on the real Bitcoin network.",
+    "disclaimerPart3": "You cannot send or receive real Bitcoin here. This tool is <bold>only meant to help</bold> you practice how Bitcoin transactions work in a safe demo environment.",
+    "disclaimerPart4": "I understand and agree that this is a demo and does not use real Bitcoin.",
+    "continue": "Continue"
 }
