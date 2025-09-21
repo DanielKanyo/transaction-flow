@@ -22,12 +22,11 @@ type SendModalProps = {
     opened: boolean;
     senderAddresses: string[];
     utxos: UTXO[];
-    color: string;
     exchangeMode?: boolean;
     close: () => void;
 };
 
-function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode, close }: SendModalProps) {
+function SendModal({ title, opened, senderAddresses, utxos, exchangeMode, close }: SendModalProps) {
     const [recipentAddress, setRecipentAddress] = useState("");
     const [amount, setAmount] = useState<string | number>("");
     const { advancedMode } = useAppSelector((state) => state.settings);
@@ -192,7 +191,7 @@ function SendModal({ title, opened, senderAddresses, utxos, color, exchangeMode,
                     {t("cancel")}
                 </Button>
                 <Button
-                    color={color}
+                    color="violet"
                     onClick={() => {
                         if (isValid) send(recipentAddress, amount as number, DEFAULT_FEE);
                     }}

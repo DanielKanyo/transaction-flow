@@ -23,7 +23,7 @@ function UtxoItem({ amount, unit, formatedUnit, spent, address }: UtxoItemProps)
             p="md"
             radius="lg"
             bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}
-            style={{ opacity: spent ? 0.6 : 1 }}
+            style={{ opacity: spent ? 0.45 : 1 }}
         >
             <Group justify="space-between" align="center">
                 <Group gap={4} align="baseline">

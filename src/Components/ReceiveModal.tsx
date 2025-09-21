@@ -37,11 +37,12 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
                         reusing old ones.
                     </Text>
                     <Button
+                        variant="gradient"
+                        gradient={{ from: "violet", to: "grape", deg: 90 }}
                         fullWidth
                         component="a"
                         href="https://www.techtarget.com/whatis/definition/Bitcoin-address"
                         target="_blank"
-                        color="violet"
                         radius="xl"
                         mt="sm"
                     >
