@@ -7,12 +7,11 @@ import { IconAlertSquareRoundedFilled, IconBulbFilled, IconCheck, IconCopy, Icon
 interface ReceiveModalProps {
     title: string;
     opened: boolean;
-    color: string;
     latestAddress: string;
     close: () => void;
 }
 
-function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveModalProps) {
+function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps) {
     const { t } = useTranslation();
 
     const handleClose = useCallback(() => {
@@ -80,7 +79,7 @@ function ReceiveModal({ title, opened, color, latestAddress, close }: ReceiveMod
                         <CopyButton value={latestAddress || ""} timeout={2000}>
                             {({ copied, copy }) => (
                                 <Tooltip label={copied ? t("copied") : t("copy")} radius="xl" withArrow>
-                                    <ActionIcon color={copied ? color : "gray"} variant="subtle" onClick={copy} radius="xl">
+                                    <ActionIcon color="gray" variant="subtle" onClick={copy} radius="xl">
                                         {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
                                     </ActionIcon>
                                 </Tooltip>

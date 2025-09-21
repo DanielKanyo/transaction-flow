@@ -177,7 +177,6 @@ function Wallet() {
             />
             <ReceiveModal
                 title={t("receiveBitcoinToWallet")}
-                color="teal"
                 latestAddress={latestAddress}
                 opened={receiveModalOpened}
                 close={closeReceiveModal}

@@ -159,7 +159,6 @@ function Exchange() {
             />
             <ReceiveModal
                 title={t("receiveBitcoinToExchange")}
-                color="teal"
                 latestAddress={latestAddress}
                 opened={receiveModalOpened}
                 close={closeReceiveModal}

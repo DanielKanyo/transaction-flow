@@ -17,7 +17,7 @@ function Header() {
                 <Flex align="center" gap="xs">
                     <IconBolt size={28} />
                     <Group gap={4}>
-                        <Text fw={800} fz={28} fs="italic" lh={1}>
+                        <Text fw={800} fz={28} fs="italic" lh={1} c="violet">
                             TX
                         </Text>
                         <Text fw={400} fz={28} fs="italic" lh={1}>
