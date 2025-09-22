@@ -177,7 +177,7 @@ function MemoryPool() {
 
                     <AnimatePresence>
                         {transactions.map((tx) => (
-                            <Tooltip key={tx.txid} label={t("yourTransactionWaiting")} withArrow>
+                            <Tooltip key={tx.txid} label={t("yourTransactionWaiting")} withArrow radius="xl">
                                 <motion.div
                                     initial={{ y: -50, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
