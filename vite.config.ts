@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, UserConfig } from "vite";
 
 import react from "@vitejs/plugin-react";
 
@@ -9,4 +9,9 @@ export default defineConfig({
         host: true,
         port: 5173,
     },
-});
+    test: {
+        globals: true,
+        environment: "jsdom",
+        setupFiles: "./vitest.setup.mjs",
+    },
+} as UserConfig);

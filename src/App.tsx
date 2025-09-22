@@ -68,7 +68,7 @@ export default function App() {
 
     return (
         <>
-            <AppShell header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
+            <AppShell data-testid="app-shell" header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
                 <AppShell.Header p="md">
                     <Header />
                 </AppShell.Header>
