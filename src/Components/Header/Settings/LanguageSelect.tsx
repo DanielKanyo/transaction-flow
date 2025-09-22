@@ -21,6 +21,7 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
     const availableLanguages = [
         { key: Languages.English, label: "English" },
         { key: Languages.Hungarian, label: "Magyar" },
+        { key: Languages.German, label: "Deutsch" },
     ];
 
     const languageOptions = useMemo(

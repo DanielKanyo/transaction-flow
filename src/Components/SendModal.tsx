@@ -201,7 +201,7 @@ function SendModal({ title, opened, senderAddresses, utxos, exchangeMode, close 
                     leftSection={<IconArrowUp size={20} />}
                     radius="xl"
                 >
-                    Send
+                    {t("send")}
                 </Button>
             </Group>
         </Modal>

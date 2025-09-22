@@ -12,6 +12,7 @@ export const MODE_ANIMATION_DURATION = 0.6;
 export enum Languages {
     English = "en",
     Hungarian = "hu",
+    German = "de",
 }
 
 export enum Units {

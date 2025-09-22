@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 import i18next from "i18next";
 
 import { Languages } from "../Store/Features/Settings/SettingsSlice";
+import translationGerman from "./Translations/translations.de.json";
 import translationEnglish from "./Translations/translations.en.json";
 import translationHungarian from "./Translations/translations.hu.json";
 
@@ -12,6 +13,9 @@ const resources = {
     },
     hu: {
         translation: translationHungarian,
+    },
+    de: {
+        translation: translationGerman,
     },
 };
 
