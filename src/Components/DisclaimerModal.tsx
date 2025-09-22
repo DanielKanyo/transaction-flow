@@ -87,6 +87,7 @@ function DisclaimerModal() {
                 />
 
                 <Button
+                    data-testid="continue-btn"
                     onClick={handleAccept}
                     disabled={!checked}
                     radius="xl"
