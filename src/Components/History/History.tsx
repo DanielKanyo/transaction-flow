@@ -95,7 +95,7 @@ function History() {
                 pl="xs"
                 shadow="none"
             >
-                <ScrollArea scrollbarSize={6} classNames={{ viewport: isMobile ? classes.viewport : undefined }}>
+                <ScrollArea classNames={{ viewport: isMobile ? classes.viewport : undefined }} scrollbarSize={3}>
                     <Stack gap="xs" my="xs" me="xs">
                         {transactions.length === 0 ? (
                             <Center p="xs">

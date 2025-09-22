@@ -99,7 +99,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                 pl="xs"
                 shadow="none"
             >
-                <ScrollArea scrollbarSize={6} classNames={{ viewport: isMobile ? classes.viewport : undefined }}>
+                <ScrollArea classNames={{ viewport: isMobile ? classes.viewport : undefined }} scrollbarSize={2}>
                     <Stack gap="xs" my="xs" me="xs">
                         {walletUtxos.length === 0 ? (
                             <Center p="xs">
