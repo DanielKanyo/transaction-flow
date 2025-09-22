@@ -30,6 +30,7 @@ fast, modern frontend development experience.
 - [TypeScript](https://www.typescriptlang.org/) - Strongly typed
   JavaScript
 - [React](https://react.dev/) - Reactive, component-driven UI
+- [Vitest](https://vitest.dev/) - Fast and modern unit testing framework 
 
 ---
 
@@ -84,6 +85,12 @@ npm run build
 
 ```bash
 npm run preview
+```
+
+### 6. Run the tests
+
+```bash
+npm run test
 ```
 
 ---
