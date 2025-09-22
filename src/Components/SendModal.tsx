@@ -191,7 +191,9 @@ function SendModal({ title, opened, senderAddresses, utxos, exchangeMode, close 
                     {t("cancel")}
                 </Button>
                 <Button
-                    color="violet"
+                    variant="gradient"
+                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                    style={{ border: 0 }}
                     onClick={() => {
                         if (isValid) send(recipentAddress, amount as number, DEFAULT_FEE);
                     }}

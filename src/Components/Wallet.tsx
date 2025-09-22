@@ -41,7 +41,7 @@ function Wallet() {
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
                     <Flex h="100%" direction="column">
-                        <GroupCard bg="linear-gradient(90deg, var(--mantine-color-teal-filled), var(--mantine-color-green-filled))">
+                        <GroupCard bg="linear-gradient(90deg, var(--mantine-color-teal-filled), var(--mantine-color-teal-6))">
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center" lh={1}>
                                     <IconWallet />

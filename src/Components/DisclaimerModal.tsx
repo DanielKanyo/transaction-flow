@@ -86,7 +86,14 @@ function DisclaimerModal() {
                     color="violet"
                 />
 
-                <Button onClick={handleAccept} disabled={!checked} radius="xl" color="violet">
+                <Button
+                    onClick={handleAccept}
+                    disabled={!checked}
+                    radius="xl"
+                    variant="gradient"
+                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                    style={{ border: 0 }}
+                >
                     {t("continue")}
                 </Button>
             </Stack>

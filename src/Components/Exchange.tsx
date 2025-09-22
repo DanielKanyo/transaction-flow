@@ -40,7 +40,7 @@ function Exchange() {
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
                     <Flex h="100%" direction="column">
-                        <GroupCard bg="linear-gradient(90deg, var(--mantine-color-indigo-filled), var(--mantine-color-cyan-filled))">
+                        <GroupCard bg="linear-gradient(90deg, var(--mantine-color-indigo-filled), var(--mantine-color-indigo-5))">
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center" lh={1}>
                                     <IconExchange />

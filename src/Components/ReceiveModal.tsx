@@ -38,7 +38,7 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
                     </Text>
                     <Button
                         variant="gradient"
-                        gradient={{ from: "violet", to: "grape", deg: 90 }}
+                        gradient={{ from: "violet", to: "violet.5", deg: 90 }}
                         fullWidth
                         component="a"
                         href="https://www.techtarget.com/whatis/definition/Bitcoin-address"

@@ -93,7 +93,7 @@ function MemoryPool() {
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
-            <GroupCard bg="linear-gradient(90deg, var(--mantine-color-dark-filled), var(--mantine-color-dark-5))">
+            <GroupCard bg="linear-gradient(90deg, var(--mantine-color-dark-filled), var(--mantine-color-dark-7))">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconBlocks />
@@ -226,7 +226,7 @@ function MemoryPool() {
                                 <Button
                                     fullWidth
                                     variant="gradient"
-                                    gradient={{ from: "violet", to: "grape", deg: 90 }}
+                                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
                                     component="a"
                                     href="https://mempool.space/"
                                     target="_blank"
