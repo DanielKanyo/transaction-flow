@@ -12,7 +12,7 @@ import Chain from "./Layouts/Chain";
 import Exchange from "./Layouts/Exchange";
 import Header from "./Layouts/Header/Header";
 import History from "./Layouts/History/History";
-import MemoryPool from "./Layouts/MemoryPool/MemoryPool";
+import MemoryPool from "./Layouts/MemoryPool";
 import Wallet from "./Layouts/Wallet";
 import {
     Languages,

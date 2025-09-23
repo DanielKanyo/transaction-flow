@@ -26,8 +26,8 @@ import { IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 import { UTXO } from "../../Store/Features/Ledger/LedgerSlice";
 import { RESPONSIVE_BREAKPOINT, Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import classes from "./Utxo.module.css";
 import UtxoItem from "./UtxoItem";
+import classes from "./UtxoList.module.css";
 
 const UTXO_TITLE_MARGIN = 10;
 const UTXO_TITLE_CONTENT_HEIGHT = 25;

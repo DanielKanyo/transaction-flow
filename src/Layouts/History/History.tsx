@@ -20,10 +20,10 @@ import { useMediaQuery } from "@mantine/hooks";
 import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import GroupCard from "../../Components/GroupCard";
+import TransactionItem from "../../Components/TransactionItem";
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import classes from "./History.module.css";
-import TransactionItem from "./TransactionItem";
 
 function History() {
     const { transactions } = useAppSelector((state) => state.ledger);

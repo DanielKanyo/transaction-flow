@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
 
-import { Transaction } from "../../Store/Features/Ledger/LedgerSlice";
-import { Units } from "../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../Store/hook";
-import { determineDisplayedValueAndNumOfDecimals } from "../../Utils/number-of-decimals";
+import { Transaction } from "../Store/Features/Ledger/LedgerSlice";
+import { Units } from "../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../Store/hook";
+import { determineDisplayedValueAndNumOfDecimals } from "../Utils/number-of-decimals";
 
 enum AccountType {
     WALLET = "wallet",
