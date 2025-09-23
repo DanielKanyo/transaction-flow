@@ -34,7 +34,7 @@ import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/Ledg
 import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import BackgroundBlobs from "./BackgroundBlobs/BackgroundBlobs";
+import BackgroundBlobs from "../../Components/BackgroundBlobs/BackgroundBlobs";
 
 const DEFAULT_CYCLE_DURATION = 600_000; // 10 minutes in ms
 
