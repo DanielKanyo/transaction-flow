@@ -17,6 +17,7 @@
     "receive": "Fogadás",
     "selectSenderAddress": "Küldő cím kiválasztása",
     "recipentAddress": "Címzett Címe",
+    "receiveAddress": "Fogadó Cím",
     "copy": "Másolás",
     "copied": "Másolva",
     "receiveBitcoinToExchange": "Bitcoin Fogadása Váltóra",
@@ -84,5 +85,7 @@
     "disclaimerPart2": "Az alkalmazásban szereplő Bitcoin egyenlegek, tranzakciók és tárcák <bold>teljes mértékben hamisak</bold>, és nem léteznek a valódi Bitcoin hálózaton.",
     "disclaimerPart3": "Itt nem tudsz valódi Bitcoint küldeni vagy fogadni. Ez az eszköz <bold>csak arra szolgál</bold>, hogy biztonságos, demó környezetben gyakorold a Bitcoin tranzakciók működését.",
     "disclaimerPart4": "Megértem és elfogadom, hogy ez egy demó, és nem használ valódi Bitcoint.",
-    "continue": "Folytatás"
+    "continue": "Folytatás",
+    "receiveAddressExplanationPart1": "A fogadó cím olyan, mint a személyes Bitcoin postaládád. Megoszthatod másokkal, hogy Bitcoint küldhessenek neked. Minden cím egyedi, és a rá küldött érmék a tárcádban fognak megjelenni.",
+    "receiveAddressExplanationPart2": "Fontos, hogy mindig ellenőrizd a címet, mielőtt megosztod - ha elgépeled vagy rosszul másolod, a Bitcoin örökre elveszhet. A jobb adatvédelem érdekében érdemes minden alkalommal új címet használni ahelyett, hogy a régieket újrahasználnád."
 }

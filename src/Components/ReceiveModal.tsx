@@ -25,17 +25,10 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
             </HoverCard.Target>
             <HoverCard.Dropdown>
                 <Stack align="stretch" justify="center" gap="xs">
-                    <Text fw={600}>Receive Address</Text>
-                    <Text fz="sm">
-                        A receive address is like your personal Bitcoin mailbox. You can share it with others so they can send Bitcoin to
-                        you. Each address is unique, and the coins sent to it will appear in your wallet.
-                    </Text>
+                    <Text fw={600}>{t("receiveAddress")}</Text>
+                    <Text fz="sm">{t("receiveAddressExplanationPart1")}</Text>
                     <Divider />
-                    <Text fz="sm">
-                        It's important to double-check the address before sharing it - if it's typed or copied incorrectly, the Bitcoin
-                        could be lost forever. For better privacy, it's best to use a new address each time you receive Bitcoin instead of
-                        reusing old ones.
-                    </Text>
+                    <Text fz="sm">{t("receiveAddressExplanationPart2")}</Text>
                     <Button
                         variant="gradient"
                         gradient={{ from: "violet", to: "violet.5", deg: 90 }}

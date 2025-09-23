@@ -17,6 +17,7 @@
     "receive": "Receive",
     "selectSenderAddress": "Select sender address",
     "recipentAddress": "Recipient Address",
+    "receiveAddress": "Receive Address",
     "copy": "Copy",
     "copied": "Copied",
     "receiveBitcoinToExchange": "Receive Bitcoin to Exchange",
@@ -84,5 +85,7 @@
     "disclaimerPart2": "All Bitcoin balances, transactions, and wallets inside this simulator are <bold>completely fake</bold> and do not exist on the real Bitcoin network.",
     "disclaimerPart3": "You cannot send or receive real Bitcoin here. This tool is <bold>only meant to help</bold> you practice how Bitcoin transactions work in a safe demo environment.",
     "disclaimerPart4": "I understand and agree that this is a demo and does not use real Bitcoin.",
-    "continue": "Continue"
+    "continue": "Continue",
+    "receiveAddressExplanationPart1": "A receive address is like your personal Bitcoin mailbox. You can share it with others so they can send Bitcoin to you. Each address is unique, and the coins sent to it will appear in your wallet.",
+    "receiveAddressExplanationPart2": "It's important to double-check the address before sharing it - if it's typed or copied incorrectly, the Bitcoin could be lost forever. For better privacy, it's best to use a new address each time you receive Bitcoin instead of reusing old ones."
 }

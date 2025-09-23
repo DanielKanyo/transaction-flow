@@ -29,12 +29,12 @@ import {
     IconPlayerTrackNextFilled,
 } from "@tabler/icons-react";
 
+import BackgroundBlobs from "../../Components/BackgroundBlobs/BackgroundBlobs";
 import GroupCard from "../../Components/GroupCard";
 import { addNewBlock, settleTransaction } from "../../Store/Features/Ledger/LedgerSlice";
 import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
-import BackgroundBlobs from "../../Components/BackgroundBlobs/BackgroundBlobs";
 
 const DEFAULT_CYCLE_DURATION = 600_000; // 10 minutes in ms
 
