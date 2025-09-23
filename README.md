@@ -40,6 +40,7 @@ fast, modern frontend development experience.
     ├── public/              # Static assets
     ├── src/                 # Source code (TypeScript, components, logic)
     │   ├── Components/      # Reusable UI components
+    │   ├── Layouts/         # Application layout components
     │   ├── Store/           # State management (Redux slices)
     │   ├── Utils/           # Helper functions and utilities
     │   └── i18n/            # Internationalization setup and translations

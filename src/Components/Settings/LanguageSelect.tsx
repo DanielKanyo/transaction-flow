@@ -6,9 +6,9 @@ import { t } from "i18next";
 import { NativeSelect, Select } from "@mantine/core";
 import { IconLanguage } from "@tabler/icons-react";
 
-import { Languages, updateLanguage } from "../../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../../Store/hook";
-import i18n from "../../../i18n/i18n";
+import { Languages, updateLanguage } from "../../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../../Store/hook";
+import i18n from "../../i18n/i18n";
 
 interface LanguageSelectProps {
     native?: boolean;

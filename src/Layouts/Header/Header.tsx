@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Burger, Flex, Group, Text } from "@mantine/core";
 import { IconBolt } from "@tabler/icons-react";
 
-import Donate from "./Donate/Donate";
-import ResetButton from "./Settings/ResetButton";
-import SettingsDrawer from "./Settings/SettingsDrawer/SettingsDrawer";
-import SettingsMenu from "./Settings/SettingsMenu";
+import Donate from "../../Components/Donate/Donate";
+import ResetButton from "../../Components/Settings/ResetButton";
+import SettingsDrawer from "../../Components/Settings/SettingsDrawer/SettingsDrawer";
+import SettingsMenu from "../../Components/Settings/SettingsMenu";
 
 function Header() {
     const [opened, setOpened] = useState(false);

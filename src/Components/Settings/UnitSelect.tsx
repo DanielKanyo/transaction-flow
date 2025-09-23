@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { NativeSelect, Select } from "@mantine/core";
 import { IconCurrencyBitcoin } from "@tabler/icons-react";
 
-import { updateUnit, Units } from "../../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../../Store/hook";
+import { updateUnit, Units } from "../../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../../Store/hook";
 
 const unitOptions = Object.values(Units).map((value) => ({
     value,

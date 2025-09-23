@@ -5,7 +5,7 @@ import { ActionIcon, Popover, Stack, Group, Tooltip, em, useComputedColorScheme,
 import { useMediaQuery, useFullscreen } from "@mantine/hooks";
 import { IconSettings, IconBrandGithub, IconSun, IconMoon, IconArrowsMaximize, IconArrowsMinimize } from "@tabler/icons-react";
 
-import { RESPONSIVE_BREAKPOINT } from "../../../Store/Features/Settings/SettingsSlice";
+import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
 import LanguageSelect from "./LanguageSelect";
 import ModeControl from "./ModeControl/ModeControl";
 import UnitSelect from "./UnitSelect";

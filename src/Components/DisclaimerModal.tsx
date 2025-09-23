@@ -4,7 +4,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { Modal, Button, Checkbox, Text, Stack, Title, Divider, Group } from "@mantine/core";
 import { IconAlertTriangleFilled } from "@tabler/icons-react";
 
-import LanguageSelect from "./Header/Settings/LanguageSelect";
+import LanguageSelect from "./Settings/LanguageSelect";
 
 function DisclaimerModal() {
     const [opened, setOpened] = useState(false);

@@ -1,7 +1,7 @@
 import { t } from "i18next";
 
-import { Modes } from "../../../../Store/Features/Settings/SettingsSlice";
-import { fireEvent, render, screen } from "../../../../Utils/test-utils";
+import { Modes } from "../../../Store/Features/Settings/SettingsSlice";
+import { fireEvent, render, screen } from "../../../Utils/test-utils";
 import ModeControl from "./ModeControl";
 
 describe("ModeControl", () => {

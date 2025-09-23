@@ -7,13 +7,13 @@ import { AppShell, Box, em, Flex, Grid } from "@mantine/core";
 import { useHeadroom, useMediaQuery } from "@mantine/hooks";
 
 import "./App.css";
-import Chain from "./Components/Chain";
 import DisclaimerModal from "./Components/DisclaimerModal";
-import Exchange from "./Components/Exchange";
-import Header from "./Components/Header/Header";
-import History from "./Components/History/History";
-import MemoryPool from "./Components/MemoryPool/MemoryPool";
-import Wallet from "./Components/Wallet";
+import Chain from "./Layouts/Chain";
+import Exchange from "./Layouts/Exchange";
+import Header from "./Layouts/Header/Header";
+import History from "./Layouts/History/History";
+import MemoryPool from "./Layouts/MemoryPool/MemoryPool";
+import Wallet from "./Layouts/Wallet";
 import {
     Languages,
     MODE_ANIMATION_DURATION,

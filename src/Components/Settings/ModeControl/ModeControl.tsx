@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 
 import { SegmentedControl } from "@mantine/core";
 
-import { settleTransaction, addNewBlock } from "../../../../Store/Features/Ledger/LedgerSlice";
-import { clearMempool } from "../../../../Store/Features/Mempool/MempoolSlice";
-import { Modes, updateAdvancedMode } from "../../../../Store/Features/Settings/SettingsSlice";
-import { useAppSelector } from "../../../../Store/hook";
+import { settleTransaction, addNewBlock } from "../../../Store/Features/Ledger/LedgerSlice";
+import { clearMempool } from "../../../Store/Features/Mempool/MempoolSlice";
+import { Modes, updateAdvancedMode } from "../../../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../../../Store/hook";
 import classes from "./ModeControl.module.css";
 
 function ModeControl() {

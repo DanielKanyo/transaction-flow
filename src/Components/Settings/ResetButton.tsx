@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { Button } from "@mantine/core";
 import { IconReload } from "@tabler/icons-react";
 
-import { INITIAL_BTC_AMOUNT, resetLedger } from "../../../Store/Features/Ledger/LedgerSlice";
-import { clearMempool } from "../../../Store/Features/Mempool/MempoolSlice";
-import { useAppSelector } from "../../../Store/hook";
+import { INITIAL_BTC_AMOUNT, resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
+import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
+import { useAppSelector } from "../../Store/hook";
 
 interface ResetButtonProps {
     fullWidth?: boolean;
