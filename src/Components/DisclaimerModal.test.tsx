@@ -1,14 +1,8 @@
 import { t } from "i18next";
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 
 import { fireEvent, render, screen } from "../Utils/test-utils";
 import DisclaimerModal from "./DisclaimerModal";
-
-// Clear mocks before every test
-beforeEach(() => {
-    localStorage.clear();
-    vi.restoreAllMocks();
-});
 
 describe("DisclaimerModal component", () => {
     it("should render the disclaimer modal if not yet accepted", () => {

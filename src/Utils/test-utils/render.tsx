@@ -5,6 +5,7 @@ import { render as testingLibraryRender } from "@testing-library/react";
 
 import store from "../../Store/store";
 import { theme } from "../../Theme/theme";
+import "../../i18n/i18n.tsx";
 
 export function render(ui: React.ReactNode, { store: customStore = store, ...renderOptions }: { store?: typeof store } = {}) {
     function Wrapper({ children }: { children: React.ReactNode }) {
