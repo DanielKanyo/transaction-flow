@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 
-import { render, screen } from "../test-utils";
 import App from "./App";
+import { render, screen } from "./Utils/test-utils";
 
 describe("App component", () => {
     it("should render the AppShell component", () => {

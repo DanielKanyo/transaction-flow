@@ -1,7 +1,7 @@
 import { t } from "i18next";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
-import { fireEvent, render, screen } from "../../test-utils";
+import { fireEvent, render, screen } from "../Utils/test-utils";
 import DisclaimerModal from "./DisclaimerModal";
 
 // Clear mocks before every test
