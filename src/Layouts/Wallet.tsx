@@ -36,6 +36,39 @@ function Wallet() {
         return determineDisplayedValueAndNumOfDecimals(balance, unit);
     }, [balance, unit]);
 
+    const infoHoverCard = (
+        <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
+            <HoverCard.Target>
+                <IconInfoSquareRoundedFilled />
+            </HoverCard.Target>
+            <HoverCard.Dropdown>
+                <Stack align="stretch" justify="center" gap="xs">
+                    <Text fw={600}>{t("wallet")}</Text>
+                    <Text fz="sm">
+                        <Trans
+                            i18nKey="walletExplanationPart1"
+                            components={{
+                                bold: <b />,
+                                italic: <i />,
+                            }}
+                        />
+                    </Text>
+                    <Divider />
+                    <Text fz="sm">
+                        <Trans
+                            i18nKey="walletExplanationPart2"
+                            components={{
+                                bold: <b />,
+                                italic: <i />,
+                            }}
+                        />
+                    </Text>
+                </Stack>
+                <Text></Text>
+            </HoverCard.Dropdown>
+        </HoverCard>
+    );
+
     return (
         <>
             <Flex direction="column" gap="xs" h="100%">
@@ -47,36 +80,7 @@ function Wallet() {
                                     <IconWallet />
                                     {t("wallet")}
                                 </Flex>
-                                <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
-                                    <HoverCard.Target>
-                                        <IconInfoSquareRoundedFilled />
-                                    </HoverCard.Target>
-                                    <HoverCard.Dropdown>
-                                        <Stack align="stretch" justify="center" gap="xs">
-                                            <Text fw={600}>{t("wallet")}</Text>
-                                            <Text fz="sm">
-                                                <Trans
-                                                    i18nKey="walletExplanationPart1"
-                                                    components={{
-                                                        bold: <b />,
-                                                        italic: <i />,
-                                                    }}
-                                                />
-                                            </Text>
-                                            <Divider />
-                                            <Text fz="sm">
-                                                <Trans
-                                                    i18nKey="walletExplanationPart2"
-                                                    components={{
-                                                        bold: <b />,
-                                                        italic: <i />,
-                                                    }}
-                                                />
-                                            </Text>
-                                        </Stack>
-                                        <Text></Text>
-                                    </HoverCard.Dropdown>
-                                </HoverCard>
+                                {infoHoverCard}
                             </Flex>
                         </GroupCard>
                         <Flex

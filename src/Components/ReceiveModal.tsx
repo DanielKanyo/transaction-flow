@@ -18,7 +18,7 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
         close();
     }, [close]);
 
-    const info = (
+    const infoHoverCard = (
         <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-start" radius="lg">
             <HoverCard.Target>
                 <IconInfoSquareRoundedFilled size={20} />
@@ -80,7 +80,7 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
                             )}
                         </CopyButton>
                     }
-                    leftSection={info}
+                    leftSection={infoHoverCard}
                 />
 
                 <Alert variant="light" color="yellow" radius="lg" title={t("attention")} icon={<IconAlertSquareRoundedFilled />}>

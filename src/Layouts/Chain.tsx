@@ -54,6 +54,60 @@ function Chain() {
     const { blockchain, enteringBlockId } = useAppSelector((state) => state.ledger);
     const { t } = useTranslation();
 
+    const infoHoverCard = (
+        <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
+            <HoverCard.Target>
+                <IconInfoSquareRoundedFilled />
+            </HoverCard.Target>
+            <HoverCard.Dropdown>
+                <Stack align="stretch" justify="center" gap="xs">
+                    <Text fw={600}>Bitcoin {t("blockchain")}</Text>
+                    <Text fz="sm">
+                        <Trans
+                            i18nKey="blockchainExplanationPart1"
+                            components={{
+                                bold: <b />,
+                                italic: <i />,
+                            }}
+                        />
+                    </Text>
+                    <Divider />
+                    <Text fz="sm">
+                        <Trans
+                            i18nKey="blockchainExplanationPart2"
+                            components={{
+                                bold: <b />,
+                                italic: <i />,
+                            }}
+                        />
+                    </Text>
+                    <Divider />
+                    <Text fz="sm">
+                        <Trans
+                            i18nKey="blockchainExplanationPart3"
+                            components={{
+                                bold: <b />,
+                                italic: <i />,
+                            }}
+                        />
+                    </Text>
+                    <Button
+                        variant="gradient"
+                        gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                        fullWidth
+                        component="a"
+                        href="https://bitcoin.org/en/full-node"
+                        target="_blank"
+                        mt="sm"
+                        radius="xl"
+                    >
+                        {t("learnMore")}
+                    </Button>
+                </Stack>
+            </HoverCard.Dropdown>
+        </HoverCard>
+    );
+
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
             <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-dark-filled), var(--mantine-color-dark-7))">
@@ -62,57 +116,7 @@ function Chain() {
                         <IconBox />
                         {t("blockchain")}
                     </Flex>
-                    <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
-                        <HoverCard.Target>
-                            <IconInfoSquareRoundedFilled />
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown>
-                            <Stack align="stretch" justify="center" gap="xs">
-                                <Text fw={600}>Bitcoin {t("blockchain")}</Text>
-                                <Text fz="sm">
-                                    <Trans
-                                        i18nKey="blockchainExplanationPart1"
-                                        components={{
-                                            bold: <b />,
-                                            italic: <i />,
-                                        }}
-                                    />
-                                </Text>
-                                <Divider />
-                                <Text fz="sm">
-                                    <Trans
-                                        i18nKey="blockchainExplanationPart2"
-                                        components={{
-                                            bold: <b />,
-                                            italic: <i />,
-                                        }}
-                                    />
-                                </Text>
-                                <Divider />
-                                <Text fz="sm">
-                                    <Trans
-                                        i18nKey="blockchainExplanationPart3"
-                                        components={{
-                                            bold: <b />,
-                                            italic: <i />,
-                                        }}
-                                    />
-                                </Text>
-                                <Button
-                                    variant="gradient"
-                                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
-                                    fullWidth
-                                    component="a"
-                                    href="https://bitcoin.org/en/full-node"
-                                    target="_blank"
-                                    mt="sm"
-                                    radius="xl"
-                                >
-                                    {t("learnMore")}
-                                </Button>
-                            </Stack>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                    {infoHoverCard}
                 </Flex>
             </GroupCard>
 

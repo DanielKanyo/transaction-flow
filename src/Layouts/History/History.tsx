@@ -32,6 +32,54 @@ function History() {
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
 
+    const infoHoverCard = (
+        <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
+            <HoverCard.Target>
+                <IconInfoSquareRoundedFilled />
+            </HoverCard.Target>
+            <HoverCard.Dropdown>
+                <Stack align="stretch" justify="center" gap="xs">
+                    <Text fw={600}>Bitcoin {t("transactions")}</Text>
+                    <Text fz="sm">{t("transactionProcessExplanationPart1")}</Text>
+                    <Divider />
+                    <Text fz="sm">{t("transactionProcessExplanationPart2")}</Text>
+                    <List>
+                        <List.Item maw={260}>
+                            <Text fz="sm">
+                                <Trans
+                                    i18nKey="transactionProcessExplanationPart3"
+                                    components={{
+                                        bold: <b />,
+                                    }}
+                                />
+                            </Text>
+                        </List.Item>
+                        <List.Item maw={260}>
+                            <Text fz="sm">
+                                <Trans
+                                    i18nKey="transactionProcessExplanationPart4"
+                                    components={{
+                                        bold: <b />,
+                                    }}
+                                />
+                            </Text>
+                        </List.Item>
+                        <List.Item maw={260}>
+                            <Text fz="sm">
+                                <Trans
+                                    i18nKey="transactionProcessExplanationPart5"
+                                    components={{
+                                        bold: <b />,
+                                    }}
+                                />
+                            </Text>
+                        </List.Item>
+                    </List>
+                </Stack>
+            </HoverCard.Dropdown>
+        </HoverCard>
+    );
+
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="110%">
             <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-dark-filled), var(--mantine-color-dark-7))">
@@ -40,51 +88,7 @@ function History() {
                         <IconHistory />
                         {t("transactionHistory")}
                     </Flex>
-                    <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
-                        <HoverCard.Target>
-                            <IconInfoSquareRoundedFilled />
-                        </HoverCard.Target>
-                        <HoverCard.Dropdown>
-                            <Stack align="stretch" justify="center" gap="xs">
-                                <Text fw={600}>Bitcoin {t("transactions")}</Text>
-                                <Text fz="sm">{t("transactionProcessExplanationPart1")}</Text>
-                                <Divider />
-                                <Text fz="sm">{t("transactionProcessExplanationPart2")}</Text>
-                                <List>
-                                    <List.Item maw={260}>
-                                        <Text fz="sm">
-                                            <Trans
-                                                i18nKey="transactionProcessExplanationPart3"
-                                                components={{
-                                                    bold: <b />,
-                                                }}
-                                            />
-                                        </Text>
-                                    </List.Item>
-                                    <List.Item maw={260}>
-                                        <Text fz="sm">
-                                            <Trans
-                                                i18nKey="transactionProcessExplanationPart4"
-                                                components={{
-                                                    bold: <b />,
-                                                }}
-                                            />
-                                        </Text>
-                                    </List.Item>
-                                    <List.Item maw={260}>
-                                        <Text fz="sm">
-                                            <Trans
-                                                i18nKey="transactionProcessExplanationPart5"
-                                                components={{
-                                                    bold: <b />,
-                                                }}
-                                            />
-                                        </Text>
-                                    </List.Item>
-                                </List>
-                            </Stack>
-                        </HoverCard.Dropdown>
-                    </HoverCard>
+                    {infoHoverCard}
                 </Flex>
             </GroupCard>
             <Card
