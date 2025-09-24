@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { generateDummyBTCAddress } from "../../../Utils/address";
+import { generateDummyBTCAddress } from "../../../Utils/generate-address";
 
 export const INITIAL_BTC_AMOUNT = 1;
 
