@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+
 import { btcToSat } from "./btc-to-sat-converter";
 
 describe("btcToSat", () => {
