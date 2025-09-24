@@ -10,6 +10,7 @@ function isHex(str: string): boolean {
 describe("generateDummyBTCAddress", () => {
     it("should generate a string starting with default prefix 'bc1q'", () => {
         const address = generateDummyBTCAddress();
+
         expect(address.startsWith("bc1q")).toBe(true);
         expect(address.length).toBeGreaterThan(4); // basic sanity check
     });
@@ -17,6 +18,7 @@ describe("generateDummyBTCAddress", () => {
     it("should generate a string starting with custom prefix", () => {
         const prefix = "tb1q";
         const address = generateDummyBTCAddress(prefix);
+
         expect(address.startsWith(prefix)).toBe(true);
     });
 
@@ -24,6 +26,7 @@ describe("generateDummyBTCAddress", () => {
         const prefix = "bc1q";
         const address = generateDummyBTCAddress(prefix);
         const hexPart = address.slice(prefix.length);
+
         expect(hexPart.length).toBe(40);
         expect(isHex(hexPart)).toBe(true);
     });
@@ -31,6 +34,7 @@ describe("generateDummyBTCAddress", () => {
     it("should generate different addresses on multiple calls", () => {
         const addr1 = generateDummyBTCAddress();
         const addr2 = generateDummyBTCAddress();
+
         expect(addr1).not.toBe(addr2);
     });
 });
