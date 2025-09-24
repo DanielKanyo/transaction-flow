@@ -1,13 +1,14 @@
 import { Card } from "@mantine/core";
 
 interface GroupCardProps {
-    bg: string;
+    bgImage: string;
     children: React.ReactNode;
 }
 
-function GroupCard({ bg, children }: GroupCardProps) {
+function GroupCard({ bgImage, children }: GroupCardProps) {
     return (
         <Card
+            data-testid="group-card"
             shadow="sm"
             padding="sm"
             radius="lg"
@@ -17,7 +18,7 @@ function GroupCard({ bg, children }: GroupCardProps) {
             mah={52}
             style={{
                 justifyContent: "center",
-                backgroundImage: bg,
+                backgroundImage: bgImage,
             }}
         >
             {children}
