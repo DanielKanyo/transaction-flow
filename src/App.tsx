@@ -10,6 +10,7 @@ import "./App.css";
 import DisclaimerModal from "./Components/DisclaimerModal";
 import Chain from "./Layouts/Chain";
 import Exchange from "./Layouts/Exchange";
+import GettingStarted from "./Layouts/GettingStarted";
 import Header from "./Layouts/Header/Header";
 import History from "./Layouts/History/History";
 import MemoryPool from "./Layouts/MemoryPool";
@@ -30,7 +31,7 @@ const CONTENT_PADDING = 10;
 const GRID_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + CONTENT_PADDING}px)`;
 
 export default function App() {
-    const { advancedMode, language } = useAppSelector((state) => state.settings);
+    const { advancedMode, language, gettingStartedVisible } = useAppSelector((state) => state.settings);
     const pinned = useHeadroom({ fixedAt: 120 });
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const dispatch = useDispatch();
@@ -54,9 +55,8 @@ export default function App() {
         h: "100%",
     };
 
-    const motionProps = {
+    const motionPropsBase = {
         initial: { height: 0, opacity: 0 },
-        animate: { height: "69%", opacity: 1 },
         exit: { height: 0, opacity: 0 },
         transition: {
             duration: MODE_ANIMATION_DURATION,
@@ -64,6 +64,16 @@ export default function App() {
             bounce: 0,
         },
         style: { overflow: "hidden" },
+    };
+
+    const motionPropsHistoryAndGettingStarted = {
+        ...motionPropsBase,
+        animate: { height: "110%", opacity: 1 },
+    };
+
+    const motionPropsDefault = {
+        ...motionPropsBase,
+        animate: { height: "69%", opacity: 1 },
     };
 
     return (
@@ -80,17 +90,28 @@ export default function App() {
                         </Grid.Col>
                         <Grid.Col {...colProps}>
                             <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
-                                <History />
                                 <AnimatePresence>
+                                    {!advancedMode && gettingStartedVisible && (
+                                        <motion.div key="getting-started" {...motionPropsHistoryAndGettingStarted}>
+                                            <Box h="100%">
+                                                <GettingStarted />
+                                            </Box>
+                                        </motion.div>
+                                    )}
+                                    <motion.div key="history" {...motionPropsHistoryAndGettingStarted}>
+                                        <Box h="100%" pt="xs">
+                                            <History />
+                                        </Box>
+                                    </motion.div>
                                     {advancedMode && (
                                         <>
-                                            <motion.div key="mempool" {...motionProps}>
+                                            <motion.div key="mempool" {...motionPropsDefault}>
                                                 <Box h="100%" pt="xs">
                                                     <MemoryPool />
                                                 </Box>
                                             </motion.div>
 
-                                            <motion.div key="chain" {...motionProps}>
+                                            <motion.div key="chain" {...motionPropsDefault}>
                                                 <Box h="100%" pt="xs">
                                                     <Chain />
                                                 </Box>

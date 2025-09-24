@@ -87,5 +87,6 @@
     "disclaimerPart4": "Megértem és elfogadom, hogy ez egy demó, és nem használ valódi Bitcoint.",
     "continue": "Folytatás",
     "receiveAddressExplanationPart1": "A fogadó cím olyan, mint a személyes Bitcoin postaládád. Megoszthatod másokkal, hogy Bitcoint küldhessenek neked. Minden cím egyedi, és a rá küldött érmék a tárcádban fognak megjelenni.",
-    "receiveAddressExplanationPart2": "Fontos, hogy mindig ellenőrizd a címet, mielőtt megosztod - ha elgépeled vagy rosszul másolod, a Bitcoin örökre elveszhet. A jobb adatvédelem érdekében érdemes minden alkalommal új címet használni ahelyett, hogy a régieket újrahasználnád."
+    "receiveAddressExplanationPart2": "Fontos, hogy mindig ellenőrizd a címet, mielőtt megosztod - ha elgépeled vagy rosszul másolod, a Bitcoin örökre elveszhet. A jobb adatvédelem érdekében érdemes minden alkalommal új címet használni ahelyett, hogy a régieket újrahasználnád.",
+    "gettingStarted": "Első lépések"
 }

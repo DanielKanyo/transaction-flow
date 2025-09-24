@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 
 import { ActionIcon, Popover, Stack, Group, Tooltip, em, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useMediaQuery, useFullscreen } from "@mantine/hooks";
-import { IconSettings, IconBrandGithub, IconSun, IconMoon, IconArrowsMaximize, IconArrowsMinimize } from "@tabler/icons-react";
+import { IconSettings, IconBrandGithub, IconSun, IconMoon, IconArrowsMaximize, IconArrowsMinimize, IconRocket } from "@tabler/icons-react";
 
-import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
+import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../../Store/hook";
 import LanguageSelect from "./LanguageSelect";
 import ModeControl from "./ModeControl/ModeControl";
 import UnitSelect from "./UnitSelect";
@@ -13,10 +15,12 @@ import UnitSelect from "./UnitSelect";
 function SettingsMenu() {
     const { setColorScheme } = useMantineColorScheme({ keepTransitions: true });
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
+    const { gettingStartedVisible } = useAppSelector((state) => state.settings);
     const { t } = useTranslation();
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { toggle: toggleFullScreen, fullscreen } = useFullscreen();
     const [opened, setOpened] = useState(false);
+    const dispatch = useDispatch();
 
     return (
         <Popover position="bottom-end" radius="lg" opened={opened} onChange={setOpened} closeOnClickOutside>
@@ -45,6 +49,19 @@ function SettingsMenu() {
                             target="_blank"
                         >
                             <IconBrandGithub size={20} />
+                        </ActionIcon>
+                    </Tooltip>
+                    {/* TODO: Translation */}
+                    <Tooltip label="Toggle getting started" radius="xl" withArrow>
+                        <ActionIcon
+                            size="xl"
+                            variant="light"
+                            color="gray"
+                            aria-label="Toggle-getting-started"
+                            radius="xl"
+                            onClick={() => dispatch(updateGettingStartedVisible(!gettingStartedVisible))}
+                        >
+                            <IconRocket size={20} />
                         </ActionIcon>
                     </Tooltip>
 

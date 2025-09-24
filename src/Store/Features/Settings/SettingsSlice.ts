@@ -29,12 +29,14 @@ export type Settings = {
     unit: Units;
     language: Languages;
     advancedMode: boolean;
+    gettingStartedVisible: boolean;
 };
 
 const initSettings: Settings = {
     unit: Units.Bitcoin,
     language: Languages.English,
     advancedMode: false,
+    gettingStartedVisible: true,
 };
 
 export const settingsSlice = createSlice({
@@ -50,8 +52,11 @@ export const settingsSlice = createSlice({
         updateAdvancedMode: (state, action: PayloadAction<boolean>) => {
             state.advancedMode = action.payload;
         },
+        updateGettingStartedVisible: (state, action: PayloadAction<boolean>) => {
+            state.gettingStartedVisible = action.payload;
+        },
     },
 });
 
-export const { updateUnit, updateLanguage, updateAdvancedMode } = settingsSlice.actions;
+export const { updateUnit, updateLanguage, updateAdvancedMode, updateGettingStartedVisible } = settingsSlice.actions;
 export default settingsSlice.reducer;

@@ -87,5 +87,6 @@
     "disclaimerPart4": "I understand and agree that this is a demo and does not use real Bitcoin.",
     "continue": "Continue",
     "receiveAddressExplanationPart1": "A receive address is like your personal Bitcoin mailbox. You can share it with others so they can send Bitcoin to you. Each address is unique, and the coins sent to it will appear in your wallet.",
-    "receiveAddressExplanationPart2": "It's important to double-check the address before sharing it - if it's typed or copied incorrectly, the Bitcoin could be lost forever. For better privacy, it's best to use a new address each time you receive Bitcoin instead of reusing old ones."
+    "receiveAddressExplanationPart2": "It's important to double-check the address before sharing it - if it's typed or copied incorrectly, the Bitcoin could be lost forever. For better privacy, it's best to use a new address each time you receive Bitcoin instead of reusing old ones.",
+    "gettingStarted": "Getting Started"
 }
