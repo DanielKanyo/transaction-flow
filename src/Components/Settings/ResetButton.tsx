@@ -26,7 +26,7 @@ function ResetButton({ fullWidth = false }: ResetButtonProps) {
     return (
         <Button
             variant="gradient"
-            gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+            gradient={{ from: "violet", to: "grape", deg: 90 }}
             style={{ border: 0 }}
             aria-label="Reset"
             fullWidth={fullWidth}

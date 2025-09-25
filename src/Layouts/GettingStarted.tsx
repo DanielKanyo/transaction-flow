@@ -17,7 +17,7 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconEye, IconCheck, IconBulbFilled, IconList, IconFlagFilled } from "@tabler/icons-react";
+import { IconEye, IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti } from "@tabler/icons-react";
 
 import GroupCard from "../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../Store/Features/Settings/SettingsSlice";
@@ -31,7 +31,7 @@ function GettingStarted() {
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
-            <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-violet-7))">
+            <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-grape-filled))">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconBulbFilled />
@@ -130,10 +130,15 @@ function GettingStarted() {
                                     Use <b>advanced mode</b> to dive deeper into the mechanics of Bitcoin transactions and explore them in
                                     greater detail.
                                 </Text>
-                                <Text size="sm" c="dimmed">
-                                    Ready to explore? Start your first transaction and see Bitcoin in action!
-                                </Text>
                             </Stack>
+                        </Card>
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Text size="sm" c="dimmed">
+                                <Flex align="center" gap="sm">
+                                    <IconConfetti />
+                                    Ready to explore? Start your first transaction and see Bitcoin in action!
+                                </Flex>
+                            </Text>
                         </Card>
                     </Stack>
                 </ScrollArea>

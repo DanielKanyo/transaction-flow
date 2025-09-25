@@ -192,7 +192,7 @@ function SendModal({ title, opened, senderAddresses, utxos, exchangeMode, close 
                 </Button>
                 <Button
                     variant="gradient"
-                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                    gradient={{ from: "violet", to: "grape", deg: 90 }}
                     style={{ border: 0 }}
                     onClick={() => {
                         if (isValid) send(recipentAddress, amount as number, DEFAULT_FEE);

@@ -4,7 +4,15 @@ import { useDispatch } from "react-redux";
 
 import { ActionIcon, Popover, Stack, Group, Tooltip, em, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { useMediaQuery, useFullscreen } from "@mantine/hooks";
-import { IconSettings, IconBrandGithub, IconSun, IconMoon, IconArrowsMaximize, IconArrowsMinimize, IconRocket } from "@tabler/icons-react";
+import {
+    IconSettings,
+    IconBrandGithub,
+    IconSun,
+    IconMoon,
+    IconArrowsMaximize,
+    IconArrowsMinimize,
+    IconBulbFilled,
+} from "@tabler/icons-react";
 
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
@@ -61,7 +69,7 @@ function SettingsMenu() {
                             radius="xl"
                             onClick={() => dispatch(updateGettingStartedVisible(!gettingStartedVisible))}
                         >
-                            <IconRocket size={20} />
+                            <IconBulbFilled size={20} />
                         </ActionIcon>
                     </Tooltip>
 

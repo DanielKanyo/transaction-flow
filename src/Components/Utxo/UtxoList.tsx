@@ -64,7 +64,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                 <Button
                                     fullWidth
                                     variant="gradient"
-                                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                                    gradient={{ from: "violet", to: "grape", deg: 90 }}
                                     component="a"
                                     href="https://en.wikipedia.org/wiki/Unspent_transaction_output"
                                     target="_blank"
