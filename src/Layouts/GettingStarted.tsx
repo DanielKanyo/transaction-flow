@@ -1,9 +1,23 @@
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import { ActionIcon, Card, em, Flex, ScrollArea, Tooltip, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import {
+    ActionIcon,
+    Card,
+    em,
+    Flex,
+    ScrollArea,
+    Stack,
+    Tooltip,
+    Text,
+    Title,
+    List,
+    ThemeIcon,
+    useMantineColorScheme,
+    useMantineTheme,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconEye, IconRocket } from "@tabler/icons-react";
+import { IconEye, IconCheck, IconBulbFilled, IconListCheck, IconBolt } from "@tabler/icons-react";
 
 import GroupCard from "../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../Store/Features/Settings/SettingsSlice";
@@ -20,10 +34,9 @@ function GettingStarted() {
             <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-violet-7))">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <IconRocket />
+                        <IconBulbFilled />
                         {t("gettingStarted")}
                     </Flex>
-                    {/* TODO: Translation */}
                     <Tooltip label="Hide getting started" withArrow radius="xl">
                         <ActionIcon
                             variant="subtle"
@@ -45,7 +58,79 @@ function GettingStarted() {
                 pl="xs"
                 shadow="none"
             >
-                <ScrollArea scrollbarSize={3}>TODO</ScrollArea>
+                <ScrollArea scrollbarSize={3}>
+                    {/* TODO: Translations */}
+                    <Stack gap="xs" my="xs" me="xs">
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconBolt size={20} /> Welcome!
+                                    </Flex>
+                                </Title>
+                                <Text size="sm">
+                                    This simulator is designed to help you understand the basics of how Bitcoin transactions work - step by
+                                    step and without using any real coins.
+                                </Text>
+                                <Text size="sm">
+                                    Instead of working with full wallets, the focus here is on practical scenarios: sending Bitcoin between
+                                    an <b>exchange</b> and a <b>wallet</b>, and managing your
+                                    <b> unspent transaction outputs (UTXOs)</b>.
+                                </Text>
+                            </Stack>
+                        </Card>
+
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconListCheck size={20} /> What you can do here
+                                    </Flex>
+                                </Title>
+                                <List
+                                    spacing="xs"
+                                    size="sm"
+                                    icon={
+                                        <ThemeIcon color="violet" size={20} radius="xl">
+                                            <IconCheck size={14} />
+                                        </ThemeIcon>
+                                    }
+                                >
+                                    <List.Item>
+                                        Simulate sending Bitcoin from an <b>exchange</b> to a <b>wallet</b> and back
+                                    </List.Item>
+                                    <List.Item>
+                                        Practice <b>UTXO consolidation</b> to learn why it matters
+                                    </List.Item>
+                                    <List.Item>
+                                        Toggle <b>advanced mode</b> for a more realistic simulation
+                                    </List.Item>
+                                    <List.Item>
+                                        Explore transaction details like <b>inputs</b>, <b>outputs</b>, and <b>fees</b>
+                                    </List.Item>
+                                </List>
+                            </Stack>
+                        </Card>
+
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconBulbFilled size={20} /> Next steps
+                                    </Flex>
+                                </Title>
+                                <Text size="sm">
+                                    You begin with <b>1 Bitcoin</b> stored on your exchange account. Your first step is to send some BTC
+                                    from the exchange to your wallet and observe how the transaction is structured. From there, you can try
+                                    sending it back to the exchange or experiment with <b>UTXO consolidation</b> to see how multiple smaller
+                                    outputs can be combined. Use <b>advanced mode</b> to dive deeper into the mechanics of Bitcoin
+                                    transactions and explore them in greater detail.
+                                </Text>
+                                <Text size="sm">Ready to explore? Start your first transaction and see Bitcoin in action!</Text>
+                            </Stack>
+                        </Card>
+                    </Stack>
+                </ScrollArea>
             </Card>
         </Card>
     );
