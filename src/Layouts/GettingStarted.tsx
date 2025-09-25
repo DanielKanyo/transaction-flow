@@ -17,7 +17,7 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconEye, IconCheck, IconBulbFilled, IconListCheck, IconBolt } from "@tabler/icons-react";
+import { IconEye, IconCheck, IconBulbFilled, IconList, IconFlagFilled } from "@tabler/icons-react";
 
 import GroupCard from "../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../Store/Features/Settings/SettingsSlice";
@@ -65,14 +65,14 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconBolt size={20} /> Welcome!
+                                        <IconFlagFilled size={20} /> Welcome!
                                     </Flex>
                                 </Title>
-                                <Text size="sm">
-                                    This simulator is designed to help you understand the basics of how Bitcoin transactions work - step by
-                                    step and without using any real coins.
+                                <Text size="sm" c="dimmed">
+                                    TX Flow is designed to help you understand the basics of how Bitcoin transactions work - step by step
+                                    and without using any real coins.
                                 </Text>
-                                <Text size="sm">
+                                <Text size="sm" c="dimmed">
                                     Instead of working with full wallets, the focus here is on practical scenarios: sending Bitcoin between
                                     an <b>exchange</b> and a <b>wallet</b>, and managing your
                                     <b> unspent transaction outputs (UTXOs)</b>.
@@ -84,17 +84,18 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconListCheck size={20} /> What you can do here
+                                        <IconList size={20} /> What you can do here
                                     </Flex>
                                 </Title>
                                 <List
                                     spacing="xs"
                                     size="sm"
                                     icon={
-                                        <ThemeIcon color="violet" size={20} radius="xl">
-                                            <IconCheck size={14} />
+                                        <ThemeIcon color="violet" size={18} radius="xl">
+                                            <IconCheck size={12} />
                                         </ThemeIcon>
                                     }
+                                    c="dimmed"
                                 >
                                     <List.Item>
                                         Simulate sending Bitcoin from an <b>exchange</b> to a <b>wallet</b> and back
@@ -119,14 +120,19 @@ function GettingStarted() {
                                         <IconBulbFilled size={20} /> Next steps
                                     </Flex>
                                 </Title>
-                                <Text size="sm">
+                                <Text size="sm" c="dimmed">
                                     You begin with <b>1 Bitcoin</b> stored on your exchange account. Your first step is to send some BTC
                                     from the exchange to your wallet and observe how the transaction is structured. From there, you can try
                                     sending it back to the exchange or experiment with <b>UTXO consolidation</b> to see how multiple smaller
-                                    outputs can be combined. Use <b>advanced mode</b> to dive deeper into the mechanics of Bitcoin
-                                    transactions and explore them in greater detail.
+                                    outputs can be combined.
                                 </Text>
-                                <Text size="sm">Ready to explore? Start your first transaction and see Bitcoin in action!</Text>
+                                <Text size="sm" c="dimmed">
+                                    Use <b>advanced mode</b> to dive deeper into the mechanics of Bitcoin transactions and explore them in
+                                    greater detail.
+                                </Text>
+                                <Text size="sm" c="dimmed">
+                                    Ready to explore? Start your first transaction and see Bitcoin in action!
+                                </Text>
                             </Stack>
                         </Card>
                     </Stack>
