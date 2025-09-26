@@ -17,7 +17,7 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconEye, IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti } from "@tabler/icons-react";
+import { IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti, IconEyeClosed } from "@tabler/icons-react";
 
 import GroupCard from "../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../Store/Features/Settings/SettingsSlice";
@@ -45,7 +45,7 @@ function GettingStarted() {
                             aria-label="toggle-getting-started"
                             onClick={() => dispatch(updateGettingStartedVisible(false))}
                         >
-                            <IconEye />
+                            <IconEyeClosed />
                         </ActionIcon>
                     </Tooltip>
                 </Flex>
