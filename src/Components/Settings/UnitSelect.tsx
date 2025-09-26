@@ -26,6 +26,8 @@ function UnitSelect({ native = false }: UnitSelectProps) {
             <NativeSelect
                 value={unit}
                 label={t("unit")}
+                leftSectionPointerEvents="none"
+                leftSection={<IconCurrencyBitcoin size={16} />}
                 variant="filled"
                 data={unitOptions}
                 onChange={(event) => dispatch(updateUnit(event.currentTarget.value as Units))}

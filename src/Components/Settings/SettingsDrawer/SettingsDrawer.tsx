@@ -1,10 +1,14 @@
 import { useTranslation } from "react-i18next";
 
-import { Drawer, Flex, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import { Drawer, Flex, Group, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import { IconSun, IconMoon } from "@tabler/icons-react";
 
+import Donate from "../../Donate/Donate";
+import GettingStartedButton from "../GettingStartedButton";
 import LanguageSelect from "../LanguageSelect";
 import ModeControl from "../ModeControl/ModeControl";
 import ResetButton from "../ResetButton";
+import SourceCodeButton from "../SourceCodeButton";
 import UnitSelect from "../UnitSelect";
 import classes from "./SettingsDrawer.module.css";
 
@@ -35,6 +39,8 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
                     <NativeSelect
                         value={computedColorScheme}
                         label={t("toggleColorScheme")}
+                        leftSectionPointerEvents="none"
+                        leftSection={computedColorScheme === "light" ? <IconSun size={16} /> : <IconMoon size={16} />}
                         variant="filled"
                         data={[
                             { value: "dark", label: t("dark") },
@@ -44,7 +50,15 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
                         radius="lg"
                     />
                 </Stack>
-                <ResetButton fullWidth />
+
+                <Stack>
+                    <Group justify="flex-end" gap="xs">
+                        <Donate />
+                        <SourceCodeButton />
+                        <GettingStartedButton />
+                    </Group>
+                    <ResetButton fullWidth />
+                </Stack>
             </Flex>
         </Drawer>
     );

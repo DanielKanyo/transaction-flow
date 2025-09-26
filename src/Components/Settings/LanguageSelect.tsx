@@ -44,6 +44,8 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
             <NativeSelect
                 value={language}
                 label={t("language")}
+                leftSectionPointerEvents="none"
+                leftSection={<IconLanguage size={16} />}
                 variant="filled"
                 data={languageOptions}
                 onChange={(event) => handleLanguageSelect(event.currentTarget.value as Languages)}
