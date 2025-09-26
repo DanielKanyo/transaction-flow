@@ -85,13 +85,18 @@ export default function App() {
 
                 <AppShell.Main px="xs" pb={isMobile ? "xs" : 0} pt={HEADER_HEIGHT + CONTENT_PADDING}>
                     <Grid gutter="xs" h={isMobile ? "auto" : GRID_HEIGHT} classNames={{ inner: "grid-inner" }}>
+                        {!advancedMode && gettingStartedVisible && isMobile && (
+                            <Grid.Col {...colProps}>
+                                <GettingStarted />
+                            </Grid.Col>
+                        )}
                         <Grid.Col {...colProps}>
                             <Exchange />
                         </Grid.Col>
                         <Grid.Col {...colProps}>
                             <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
                                 <AnimatePresence>
-                                    {!advancedMode && gettingStartedVisible && (
+                                    {!advancedMode && gettingStartedVisible && !isMobile && (
                                         <motion.div key="getting-started" {...motionPropsHistoryAndGettingStarted}>
                                             <Box h="100%">
                                                 <GettingStarted />
@@ -99,7 +104,7 @@ export default function App() {
                                         </motion.div>
                                     )}
                                     <motion.div key="history" {...motionPropsHistoryAndGettingStarted}>
-                                        <Box h="100%" pt="xs">
+                                        <Box h="100%" pt={isMobile ? "" : "xs"}>
                                             <History />
                                         </Box>
                                     </motion.div>
