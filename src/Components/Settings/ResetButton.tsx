@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-import { Button } from "@mantine/core";
+import { Button, Tooltip } from "@mantine/core";
 import { IconReload } from "@tabler/icons-react";
 
 import { INITIAL_BTC_AMOUNT, resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
@@ -25,20 +25,22 @@ function ResetButton({ fullWidth = false }: ResetButtonProps) {
     }, []);
 
     return (
-        <Button
-            variant="gradient"
-            gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
-            style={{ border: 0 }}
-            aria-label="Reset"
-            fullWidth={fullWidth}
-            radius="xl"
-            h={40}
-            leftSection={<IconReload size={20} />}
-            onClick={handleResetBtnClick}
-            disabled={balanceOnExchange === INITIAL_BTC_AMOUNT}
-        >
-            {t("reset")}
-        </Button>
+        <Tooltip label={t("resetSimulation")} withArrow radius="xl">
+            <Button
+                variant="gradient"
+                gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
+                style={{ border: 0 }}
+                aria-label="Reset"
+                fullWidth={fullWidth}
+                radius="xl"
+                h={40}
+                leftSection={<IconReload size={20} />}
+                onClick={handleResetBtnClick}
+                disabled={balanceOnExchange === INITIAL_BTC_AMOUNT}
+            >
+                {t("reset")}
+            </Button>
+        </Tooltip>
     );
 }
 

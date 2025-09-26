@@ -2,8 +2,11 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
+import { logEvent } from "firebase/analytics";
+
 import { SegmentedControl } from "@mantine/core";
 
+import { analytics } from "../../../Config/Firebase/firebaseConfig";
 import { settleTransaction, addNewBlock } from "../../../Store/Features/Ledger/LedgerSlice";
 import { clearMempool } from "../../../Store/Features/Mempool/MempoolSlice";
 import { Modes, updateAdvancedMode } from "../../../Store/Features/Settings/SettingsSlice";
@@ -30,6 +33,10 @@ function ModeControl() {
                 dispatch(clearMempool());
                 dispatch(addNewBlock(Boolean(transactions.length)));
             }
+
+            logEvent(analytics, "mode_changed", {
+                mode: value,
+            });
         },
         [transactions]
     );

@@ -103,5 +103,6 @@
     "readyToExplore": "Ready to explore?",
     "readyToExploreText1": "Start your first transaction and see Bitcoin in action!",
     "toggleGettingStarted": "Toggle getting started",
-    "hideGettingStarted": "Hide getting started"
+    "hideGettingStarted": "Hide getting started",
+    "resetSimulation": "Reset simulation"
 }

@@ -1,9 +1,12 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
+import { logEvent } from "firebase/analytics";
+
 import { ActionIcon, Alert, Button, CopyButton, Group, HoverCard, Modal, Stack, TextInput, Tooltip, Text, Divider } from "@mantine/core";
 import { IconAlertSquareRoundedFilled, IconBulbFilled, IconCheck, IconCopy, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
+import { analytics } from "../Config/Firebase/firebaseConfig";
 import { COLORS } from "../Utils/colors";
 
 interface ReceiveModalProps {
@@ -73,13 +76,20 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
                     readOnly
                     rightSection={
                         <CopyButton value={latestAddress || ""} timeout={2000}>
-                            {({ copied, copy }) => (
-                                <Tooltip label={copied ? t("copied") : t("copy")} radius="xl" withArrow>
-                                    <ActionIcon color="gray" variant="subtle" onClick={copy} radius="xl">
-                                        {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
-                                    </ActionIcon>
-                                </Tooltip>
-                            )}
+                            {({ copied, copy }) => {
+                                const handleCopy = () => {
+                                    copy();
+                                    logEvent(analytics, "copy_bitcoin_address");
+                                };
+
+                                return (
+                                    <Tooltip label={copied ? t("copied") : t("copy")} radius="xl" withArrow>
+                                        <ActionIcon color="gray" variant="subtle" onClick={handleCopy} radius="xl">
+                                            {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                                        </ActionIcon>
+                                    </Tooltip>
+                                );
+                            }}
                         </CopyButton>
                     }
                     leftSection={infoHoverCard}

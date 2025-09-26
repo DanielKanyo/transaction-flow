@@ -2,9 +2,12 @@ import { useCallback, useMemo, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
+import { logEvent } from "firebase/analytics";
+
 import { Modal, TextInput, NumberInput, Button, Group, Text, Stack, HoverCard, Divider, ActionIcon, Alert } from "@mantine/core";
 import { IconAlertSquareRoundedFilled, IconArrowUp, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
+import { analytics } from "../Config/Firebase/firebaseConfig";
 import {
     UTXO,
     settleTransaction,
@@ -66,6 +69,11 @@ function SendModal({ title, opened, senderAddresses, utxos, exchangeMode, close 
                 dispatch(generateNewExchangeAddress());
 
                 handleClose();
+
+                logEvent(analytics, "send_bitcoin", {
+                    recipientAddress,
+                    transferredAmount: amount,
+                });
             }
         },
         [utxos, senderAddresses, advancedMode, dispatch, handleClose]

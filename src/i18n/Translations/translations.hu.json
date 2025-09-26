@@ -103,5 +103,6 @@
     "readyToExplore": "Készen állsz a felfedezésre?",
     "readyToExploreText1": "Indítsd el az első tranzakciódat, és nézd meg működés közben a Bitcoint!",
     "toggleGettingStarted": "Kezdő lépések váltása",
-    "hideGettingStarted": "Kezdő lépések elrejtése"
+    "hideGettingStarted": "Kezdő lépések elrejtése",
+    "resetSimulation": "Szimuláció visszaállítása"
 }
