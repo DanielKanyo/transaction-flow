@@ -22,6 +22,7 @@ import { IconBox, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 import GroupCard from "../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT } from "../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../Store/hook";
+import { COLORS } from "../Utils/colors";
 
 const FadeOverlay = () => {
     const { colorScheme } = useMantineColorScheme();
@@ -93,7 +94,7 @@ function Chain() {
                     </Text>
                     <Button
                         variant="gradient"
-                        gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                        gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
                         fullWidth
                         component="a"
                         href="https://bitcoin.org/en/full-node"

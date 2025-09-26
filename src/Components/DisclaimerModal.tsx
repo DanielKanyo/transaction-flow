@@ -4,6 +4,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { Modal, Button, Checkbox, Text, Stack, Title, Divider, Group } from "@mantine/core";
 import { IconAlertTriangleFilled } from "@tabler/icons-react";
 
+import { COLORS } from "../Utils/colors";
 import LanguageSelect from "./Settings/LanguageSelect";
 
 function DisclaimerModal() {
@@ -92,7 +93,7 @@ function DisclaimerModal() {
                     disabled={!checked}
                     radius="xl"
                     variant="gradient"
-                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                    gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
                     style={{ border: 0 }}
                 >
                     {t("continue")}

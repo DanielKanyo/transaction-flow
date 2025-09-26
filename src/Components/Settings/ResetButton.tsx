@@ -8,6 +8,7 @@ import { IconReload } from "@tabler/icons-react";
 import { INITIAL_BTC_AMOUNT, resetLedger } from "../../Store/Features/Ledger/LedgerSlice";
 import { clearMempool } from "../../Store/Features/Mempool/MempoolSlice";
 import { useAppSelector } from "../../Store/hook";
+import { COLORS } from "../../Utils/colors";
 
 interface ResetButtonProps {
     fullWidth?: boolean;
@@ -26,7 +27,7 @@ function ResetButton({ fullWidth = false }: ResetButtonProps) {
     return (
         <Button
             variant="gradient"
-            gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+            gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
             style={{ border: 0 }}
             aria-label="Reset"
             fullWidth={fullWidth}

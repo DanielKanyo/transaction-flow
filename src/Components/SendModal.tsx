@@ -15,6 +15,7 @@ import {
 import { addTransactionToMempool } from "../Store/Features/Mempool/MempoolSlice";
 import { Units } from "../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../Store/hook";
+import { COLORS } from "../Utils/colors";
 import { buildTransaction } from "../Utils/transaction-builder";
 
 type SendModalProps = {
@@ -192,7 +193,7 @@ function SendModal({ title, opened, senderAddresses, utxos, exchangeMode, close 
                 </Button>
                 <Button
                     variant="gradient"
-                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                    gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
                     style={{ border: 0 }}
                     onClick={() => {
                         if (isValid) send(recipentAddress, amount as number, DEFAULT_FEE);

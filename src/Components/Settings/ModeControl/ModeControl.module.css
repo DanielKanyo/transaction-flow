@@ -8,7 +8,3 @@
     align-items: center;
     justify-content: center;
 }
-
-.indicator {
-    background-image: linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-violet-5));
-}

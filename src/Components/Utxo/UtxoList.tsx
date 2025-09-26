@@ -26,6 +26,7 @@ import { IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 import { UTXO } from "../../Store/Features/Ledger/LedgerSlice";
 import { RESPONSIVE_BREAKPOINT, Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
+import { COLORS } from "../../Utils/colors";
 import UtxoItem from "./UtxoItem";
 import classes from "./UtxoList.module.css";
 
@@ -64,7 +65,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                                 <Button
                                     fullWidth
                                     variant="gradient"
-                                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                                    gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
                                     component="a"
                                     href="https://en.wikipedia.org/wiki/Unspent_transaction_output"
                                     target="_blank"

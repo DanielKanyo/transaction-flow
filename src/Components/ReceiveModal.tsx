@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { ActionIcon, Alert, Button, CopyButton, Group, HoverCard, Modal, Stack, TextInput, Tooltip, Text, Divider } from "@mantine/core";
 import { IconAlertSquareRoundedFilled, IconBulbFilled, IconCheck, IconCopy, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
+import { COLORS } from "../Utils/colors";
+
 interface ReceiveModalProps {
     title: string;
     opened: boolean;
@@ -31,7 +33,7 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
                     <Text fz="sm">{t("receiveAddressExplanationPart2")}</Text>
                     <Button
                         variant="gradient"
-                        gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                        gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
                         fullWidth
                         component="a"
                         href="https://www.techtarget.com/whatis/definition/Bitcoin-address"

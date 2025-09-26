@@ -8,6 +8,7 @@ import { settleTransaction, addNewBlock } from "../../../Store/Features/Ledger/L
 import { clearMempool } from "../../../Store/Features/Mempool/MempoolSlice";
 import { Modes, updateAdvancedMode } from "../../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../../Store/hook";
+import { COLORS } from "../../../Utils/colors";
 import classes from "./ModeControl.module.css";
 
 function ModeControl() {
@@ -35,14 +36,18 @@ function ModeControl() {
 
     return (
         <SegmentedControl
-            classNames={{ control: classes.control, label: classes.label, indicator: classes.indicator }}
+            classNames={{ control: classes.control, label: classes.label }}
+            styles={{
+                indicator: {
+                    backgroundImage: `linear-gradient(90deg, ${COLORS.VIOLET}, ${COLORS.PURPLE})`,
+                },
+            }}
             fullWidth
             data={[
                 { label: t(Modes.BASIC), value: Modes.BASIC },
                 { label: t(Modes.ADVANCED), value: Modes.ADVANCED },
             ]}
             radius="xl"
-            color="violet"
             value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
             onChange={(v) => handleOnChange(v as Modes)}
         />

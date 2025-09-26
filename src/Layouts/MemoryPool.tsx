@@ -35,6 +35,7 @@ import { addNewBlock, settleTransaction } from "../Store/Features/Ledger/LedgerS
 import { clearMempool } from "../Store/Features/Mempool/MempoolSlice";
 import { RESPONSIVE_BREAKPOINT } from "../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../Store/hook";
+import { COLORS } from "../Utils/colors";
 
 const DEFAULT_CYCLE_DURATION = 600_000; // 10 minutes in ms
 
@@ -226,7 +227,7 @@ function MemoryPool() {
                                 <Button
                                     fullWidth
                                     variant="gradient"
-                                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
+                                    gradient={{ from: "violet", to: COLORS.PURPLE, deg: 90 }}
                                     component="a"
                                     href="https://mempool.space/"
                                     target="_blank"

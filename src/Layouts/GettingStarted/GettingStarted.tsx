@@ -21,6 +21,7 @@ import { IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti, Icon
 
 import GroupCard from "../../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../../Store/Features/Settings/SettingsSlice";
+import { COLORS } from "../../Utils/colors";
 import classes from "./GettingStarted.module.css";
 
 const WHAT_CAN_YOU_DO_HERE_TRANSLATION_KEY_LIST = [
@@ -39,7 +40,7 @@ function GettingStarted() {
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
-            <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-violet-5))">
+            <GroupCard bgImage={`linear-gradient(90deg, ${COLORS.VIOLET}, ${COLORS.PURPLE})`}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconBulbFilled />
