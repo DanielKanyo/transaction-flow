@@ -10,7 +10,7 @@ import "./App.css";
 import DisclaimerModal from "./Components/DisclaimerModal";
 import Chain from "./Layouts/Chain";
 import Exchange from "./Layouts/Exchange";
-import GettingStarted from "./Layouts/GettingStarted";
+import GettingStarted from "./Layouts/GettingStarted/GettingStarted";
 import Header from "./Layouts/Header/Header";
 import History from "./Layouts/History/History";
 import MemoryPool from "./Layouts/MemoryPool";

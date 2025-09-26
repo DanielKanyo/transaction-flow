@@ -19,8 +19,9 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti, IconEyeClosed } from "@tabler/icons-react";
 
-import GroupCard from "../Components/GroupCard";
-import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../Store/Features/Settings/SettingsSlice";
+import GroupCard from "../../Components/GroupCard";
+import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../../Store/Features/Settings/SettingsSlice";
+import classes from "./GettingStarted.module.css";
 
 const WHAT_CAN_YOU_DO_HERE_TRANSLATION_KEY_LIST = [
     "whatYouCanDoHereListItem1",
@@ -65,7 +66,7 @@ function GettingStarted() {
                 pl="xs"
                 shadow="none"
             >
-                <ScrollArea scrollbarSize={3}>
+                <ScrollArea classNames={{ viewport: isMobile ? classes.viewport : undefined }} scrollbarSize={3}>
                     <Stack gap="xs" my="xs" me="xs">
                         <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
                             <Stack>
