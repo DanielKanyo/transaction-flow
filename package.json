@@ -9,7 +9,8 @@
         "typecheck": "tsc --noEmit",
         "prettier": "npx prettier --write .",
         "test": "vitest run",
-        "coverage": "vitest run --coverage"
+        "coverage": "vitest run --coverage",
+        "deploy": "npm run build && firebase deploy"
     },
     "dependencies": {
         "@mantine/core": "8.2.8",
@@ -17,6 +18,7 @@
         "@number-flow/react": "^0.5.10",
         "@reduxjs/toolkit": "^2.9.0",
         "@tabler/icons-react": "^3.34.1",
+        "firebase": "^12.3.0",
         "framer-motion": "^12.23.12",
         "i18next": "^25.5.2",
         "qr-code-styling": "^1.9.2",

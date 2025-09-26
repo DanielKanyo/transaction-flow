@@ -3,8 +3,8 @@ import { Provider } from "react-redux";
 import { MantineProvider } from "@mantine/core";
 import { render as testingLibraryRender } from "@testing-library/react";
 
+import { theme } from "../../Config/Theme/theme.ts";
 import store from "../../Store/store";
-import { theme } from "../../Theme/theme";
 import "../../i18n/i18n.tsx";
 
 export function render(ui: React.ReactNode, { store: customStore = store, ...renderOptions }: { store?: typeof store } = {}) {

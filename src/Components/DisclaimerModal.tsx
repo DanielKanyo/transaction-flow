@@ -42,7 +42,7 @@ function DisclaimerModal() {
                 radius: "xl",
             }}
         >
-            <Stack gap="lg" px="lg" py="md">
+            <Stack gap="lg">
                 <Group align="center">
                     <IconAlertTriangleFilled />
                     <Title order={3}>{t("disclaimer")}</Title>

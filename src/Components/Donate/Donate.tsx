@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { ActionIcon, Alert, Button, Group, Modal, Tooltip } from "@mantine/core";
+import { ActionIcon, Alert, Button, Group, Modal, Stack, Tooltip } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconHeartBolt } from "@tabler/icons-react";
 
@@ -32,10 +32,12 @@ function Donate() {
                     radius: "xl",
                 }}
             >
-                <Alert variant="light" color="pink" icon={<IconHeartBolt />} radius="lg" mb="lg">
-                    {t("sendMeSats")}
-                </Alert>
-                <QrCode />
+                <Stack gap="lg">
+                    <Alert variant="light" color="pink" icon={<IconHeartBolt />} radius="lg">
+                        {t("sendMeSats")}
+                    </Alert>
+                    <QrCode />
+                </Stack>
                 <Group gap="xs" mt="lg" justify="flex-end">
                     <Button variant="light" color="gray" onClick={close} radius="xl">
                         {t("cancel")}
