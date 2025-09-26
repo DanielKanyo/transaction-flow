@@ -22,6 +22,13 @@ import { IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti, Icon
 import GroupCard from "../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../Store/Features/Settings/SettingsSlice";
 
+const WHAT_CAN_YOU_DO_HERE_TRANSLATION_KEY_LIST = [
+    "whatYouCanDoHereListItem1",
+    "whatYouCanDoHereListItem2",
+    "whatYouCanDoHereListItem3",
+    "whatYouCanDoHereListItem4",
+];
+
 function GettingStarted() {
     const { colorScheme } = useMantineColorScheme();
     const theme = useMantineTheme();
@@ -98,38 +105,11 @@ function GettingStarted() {
                                     }
                                     c="dimmed"
                                 >
-                                    <List.Item>
-                                        <Trans
-                                            i18nKey="whatYouCanDoHereListItem1"
-                                            components={{
-                                                bold: <b />,
-                                            }}
-                                        />
-                                    </List.Item>
-                                    <List.Item>
-                                        <Trans
-                                            i18nKey="whatYouCanDoHereListItem2"
-                                            components={{
-                                                bold: <b />,
-                                            }}
-                                        />
-                                    </List.Item>
-                                    <List.Item>
-                                        <Trans
-                                            i18nKey="whatYouCanDoHereListItem3"
-                                            components={{
-                                                bold: <b />,
-                                            }}
-                                        />
-                                    </List.Item>
-                                    <List.Item>
-                                        <Trans
-                                            i18nKey="whatYouCanDoHereListItem4"
-                                            components={{
-                                                bold: <b />,
-                                            }}
-                                        />
-                                    </List.Item>
+                                    {WHAT_CAN_YOU_DO_HERE_TRANSLATION_KEY_LIST.map((key) => (
+                                        <List.Item key={key}>
+                                            <Trans i18nKey={key} components={{ bold: <b /> }} />
+                                        </List.Item>
+                                    ))}
                                 </List>
                             </Stack>
                         </Card>
