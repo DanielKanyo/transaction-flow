@@ -74,7 +74,7 @@ function Wallet() {
             <Flex direction="column" gap="xs" h="100%">
                 <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
                     <Flex h="100%" direction="column">
-                        <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-teal-filled), var(--mantine-color-cyan-6))">
+                        <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-teal-filled), var(--mantine-color-teal-5))">
                             <Flex justify="space-between" align="center" h="100%">
                                 <Flex gap="sm" align="center" lh={1}>
                                     <IconWallet />

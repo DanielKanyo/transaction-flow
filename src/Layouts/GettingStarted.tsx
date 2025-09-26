@@ -65,7 +65,7 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconFlagFilled size={20} /> Welcome!
+                                        <IconFlagFilled /> Welcome!
                                     </Flex>
                                 </Title>
                                 <Text size="sm" c="dimmed">
@@ -84,7 +84,7 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconList size={20} /> What you can do here
+                                        <IconList /> What you can do here
                                     </Flex>
                                 </Title>
                                 <List
@@ -117,7 +117,7 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconBulbFilled size={20} /> Next steps
+                                        <IconBulbFilled /> Next steps
                                     </Flex>
                                 </Title>
                                 <Text size="sm" c="dimmed">
@@ -133,12 +133,16 @@ function GettingStarted() {
                             </Stack>
                         </Card>
                         <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
-                            <Text size="sm" c="dimmed">
-                                <Flex align="center" gap="sm">
-                                    <IconConfetti />
-                                    Ready to explore? Start your first transaction and see Bitcoin in action!
-                                </Flex>
-                            </Text>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconConfetti /> Ready to explore?
+                                    </Flex>
+                                </Title>
+                                <Text size="sm" c="dimmed">
+                                    Start your first transaction and see Bitcoin in action!
+                                </Text>
+                            </Stack>
                         </Card>
                     </Stack>
                 </ScrollArea>
