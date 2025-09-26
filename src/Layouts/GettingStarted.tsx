@@ -1,0 +1,181 @@
+import { Trans, useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+
+import {
+    ActionIcon,
+    Card,
+    em,
+    Flex,
+    ScrollArea,
+    Stack,
+    Tooltip,
+    Text,
+    Title,
+    List,
+    ThemeIcon,
+    useMantineColorScheme,
+    useMantineTheme,
+} from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import { IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti, IconEyeClosed } from "@tabler/icons-react";
+
+import GroupCard from "../Components/GroupCard";
+import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../Store/Features/Settings/SettingsSlice";
+
+function GettingStarted() {
+    const { colorScheme } = useMantineColorScheme();
+    const theme = useMantineTheme();
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
+    const { t } = useTranslation();
+    const dispatch = useDispatch();
+
+    return (
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
+            <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-violet-5))">
+                <Flex justify="space-between" align="center" h="100%">
+                    <Flex gap="sm" align="center" lh={1}>
+                        <IconBulbFilled />
+                        {t("gettingStarted")}
+                    </Flex>
+                    <Tooltip label={t("hideGettingStarted")} withArrow radius="xl">
+                        <ActionIcon
+                            variant="subtle"
+                            color="white"
+                            radius="lg"
+                            aria-label="toggle-getting-started"
+                            onClick={() => dispatch(updateGettingStartedVisible(false))}
+                        >
+                            <IconEyeClosed />
+                        </ActionIcon>
+                    </Tooltip>
+                </Flex>
+            </GroupCard>
+            <Card
+                h="100%"
+                radius="lg"
+                bg={colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[5]}
+                p={0}
+                pl="xs"
+                shadow="none"
+            >
+                <ScrollArea scrollbarSize={3}>
+                    <Stack gap="xs" my="xs" me="xs">
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconFlagFilled /> {t("welcome")}
+                                    </Flex>
+                                </Title>
+                                <Text size="sm" c="dimmed">
+                                    {t("welcomeText1")}
+                                </Text>
+                                <Text size="sm" c="dimmed">
+                                    <Trans
+                                        i18nKey="welcomeText2"
+                                        components={{
+                                            bold: <b />,
+                                        }}
+                                    />
+                                </Text>
+                            </Stack>
+                        </Card>
+
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconList /> {t("whatYouCanDoHere")}
+                                    </Flex>
+                                </Title>
+                                <List
+                                    spacing="xs"
+                                    size="sm"
+                                    icon={
+                                        <ThemeIcon color="violet" size={18} radius="xl">
+                                            <IconCheck size={12} />
+                                        </ThemeIcon>
+                                    }
+                                    c="dimmed"
+                                >
+                                    <List.Item>
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem1"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
+                                    </List.Item>
+                                    <List.Item>
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem2"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
+                                    </List.Item>
+                                    <List.Item>
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem3"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
+                                    </List.Item>
+                                    <List.Item>
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem4"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
+                                    </List.Item>
+                                </List>
+                            </Stack>
+                        </Card>
+
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconBulbFilled /> {t("nextSteps")}
+                                    </Flex>
+                                </Title>
+                                <Text size="sm" c="dimmed">
+                                    <Trans
+                                        i18nKey="nextStepsText1"
+                                        components={{
+                                            bold: <b />,
+                                        }}
+                                    />
+                                </Text>
+                                <Text size="sm" c="dimmed">
+                                    <Trans
+                                        i18nKey="nextStepsText2"
+                                        components={{
+                                            bold: <b />,
+                                        }}
+                                    />
+                                </Text>
+                            </Stack>
+                        </Card>
+                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                            <Stack>
+                                <Title order={4}>
+                                    <Flex align="center" gap="xs">
+                                        <IconConfetti /> {t("readyToExplore")}
+                                    </Flex>
+                                </Title>
+                                <Text size="sm" c="dimmed">
+                                    {t("readyToExploreText1")}
+                                </Text>
+                            </Stack>
+                        </Card>
+                    </Stack>
+                </ScrollArea>
+            </Card>
+        </Card>
+    );
+}
+
+export default GettingStarted;

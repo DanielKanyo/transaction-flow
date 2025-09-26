@@ -35,7 +35,7 @@ function ModeControl() {
 
     return (
         <SegmentedControl
-            classNames={{ control: classes.control, label: classes.label }}
+            classNames={{ control: classes.control, label: classes.label, indicator: classes.indicator }}
             fullWidth
             data={[
                 { label: t(Modes.BASIC), value: Modes.BASIC },

@@ -87,5 +87,21 @@
     "disclaimerPart4": "I understand and agree that this is a demo and does not use real Bitcoin.",
     "continue": "Continue",
     "receiveAddressExplanationPart1": "A receive address is like your personal Bitcoin mailbox. You can share it with others so they can send Bitcoin to you. Each address is unique, and the coins sent to it will appear in your wallet.",
-    "receiveAddressExplanationPart2": "It's important to double-check the address before sharing it - if it's typed or copied incorrectly, the Bitcoin could be lost forever. For better privacy, it's best to use a new address each time you receive Bitcoin instead of reusing old ones."
+    "receiveAddressExplanationPart2": "It's important to double-check the address before sharing it - if it's typed or copied incorrectly, the Bitcoin could be lost forever. For better privacy, it's best to use a new address each time you receive Bitcoin instead of reusing old ones.",
+    "gettingStarted": "Getting Started",
+    "welcome": "Welcome",
+    "welcomeText1": "TX Flow is designed to help you understand the basics of how Bitcoin transactions work - step by step and without using any real coins.",
+    "welcomeText2": "Instead of working with full wallets, the focus here is on practical scenarios: sending Bitcoin between an <bold>exchange</bold> and a <bold>wallet</bold>, and managing your <bold> unspent transaction outputs (UTXOs)</bold>.",
+    "whatYouCanDoHere": "What you can do here",
+    "whatYouCanDoHereListItem1": "Simulate sending Bitcoin from an <bold>exchange</bold> to a <bold>wallet</bold> and back",
+    "whatYouCanDoHereListItem2": "Practice <bold>UTXO consolidation</bold> to learn why it matters",
+    "whatYouCanDoHereListItem3": "Toggle <bold>advanced mode</bold> for a more realistic simulation",
+    "whatYouCanDoHereListItem4": "Explore transaction details like <bold>inputs</bold>, <bold>outputs</bold>, and <bold>fees</bold>",
+    "nextSteps": "Next steps",
+    "nextStepsText1": "You begin with <bold>1 Bitcoin</bold> stored on your exchange account. Your first step is to send some BTC from the exchange to your wallet and observe how the transaction is structured. From there, you can try sending it back to the exchange or experiment with <bold>UTXO consolidation</bold> to see how multiple smaller outputs can be combined.",
+    "nextStepsText2": "Use <bold>advanced mode</bold> to dive deeper into the mechanics of Bitcoin transactions and explore them in greater detail.",
+    "readyToExplore": "Ready to explore?",
+    "readyToExploreText1": "Start your first transaction and see Bitcoin in action!",
+    "toggleGettingStarted": "Toggle getting started",
+    "hideGettingStarted": "Hide getting started"
 }
