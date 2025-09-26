@@ -92,7 +92,7 @@ function DisclaimerModal() {
                     disabled={!checked}
                     radius="xl"
                     variant="gradient"
-                    gradient={{ from: "violet", to: "grape", deg: 90 }}
+                    gradient={{ from: "violet", to: "violet.5", deg: 90 }}
                     style={{ border: 0 }}
                 >
                     {t("continue")}

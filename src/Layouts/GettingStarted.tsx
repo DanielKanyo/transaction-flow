@@ -31,7 +31,7 @@ function GettingStarted() {
 
     return (
         <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
-            <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-grape-filled))">
+            <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-violet-5))">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
                         <IconBulbFilled />

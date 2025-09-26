@@ -10,5 +10,5 @@
 }
 
 .indicator {
-    background-image: linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-grape-filled));
+    background-image: linear-gradient(90deg, var(--mantine-color-violet-filled), var(--mantine-color-violet-5));
 }
