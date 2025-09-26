@@ -88,5 +88,20 @@
     "continue": "Weiter",
     "receiveAddressExplanationPart1": "Eine Empfangsadresse ist wie dein persönlicher Bitcoin-Briefkasten. Du kannst sie mit anderen teilen, damit sie dir Bitcoin senden können. Jede Adresse ist einzigartig, und die an sie gesendeten Coins erscheinen in deiner Wallet.",
     "receiveAddressExplanationPart2": "Es ist wichtig, die Adresse vor dem Teilen sorgfältig zu überprüfen - wenn sie falsch getippt oder kopiert wird, könnten die Bitcoins für immer verloren gehen. Für besseren Datenschutz ist es am besten, jedes Mal eine neue Adresse zu verwenden, anstatt alte erneut zu benutzen.",
-    "gettingStarted": "Erste Schritte"
+    "gettingStarted": "Erste Schritte",
+    "welcome": "Willkommen",
+    "welcomeText1": "TX Flow wurde entwickelt, um dir Schritt für Schritt die Grundlagen von Bitcoin-Transaktionen zu erklären - ganz ohne echte Coins.",
+    "welcomeText2": "Anstatt mit vollständigen Wallets zu arbeiten, liegt der Fokus hier auf praktischen Szenarien: dem Senden von Bitcoin zwischen einer <bold>Börse</bold> und einer <bold>Wallet</bold> sowie dem Verwalten deiner <bold>nicht ausgegebenen Transaktionsausgänge (UTXOs)</bold>.",
+    "whatYouCanDoHere": "Was du hier tun kannst",
+    "whatYouCanDoHereListItem1": "Simuliere das Senden von Bitcoin von einer <bold>Börse</bold> zu einer <bold>Wallet</bold> und zurück",
+    "whatYouCanDoHereListItem2": "Übe die <bold>UTXO-Konsolidierung</bold>, um zu verstehen, warum sie wichtig ist",
+    "whatYouCanDoHereListItem3": "Aktiviere den <bold>Erweiterten Modus</bold> für eine realistischere Simulation",
+    "whatYouCanDoHereListItem4": "Erkunde Transaktionsdetails wie <bold>Eingänge</bold>, <bold>Ausgänge</bold> und <bold>Gebühren</bold>",
+    "nextSteps": "Nächste Schritte",
+    "nextStepsText1": "Du beginnst mit <bold>1 Bitcoin</bold> auf deinem Börsenkonto. Der erste Schritt besteht darin, etwas BTC von der Börse an deine Wallet zu senden und zu beobachten, wie die Transaktion aufgebaut ist. Danach kannst du es zurück an die Börse senden oder mit der <bold>UTXO-Konsolidierung</bold> experimentieren, um zu sehen, wie mehrere kleinere Ausgänge kombiniert werden können.",
+    "nextStepsText2": "Nutze den <bold>Erweiterten Modus</bold>, um tiefer in die Mechanik von Bitcoin-Transaktionen einzutauchen und sie im Detail zu erkunden.",
+    "readyToExplore": "Bereit zum Erkunden?",
+    "readyToExploreText1": "Starte deine erste Transaktion und sieh dir Bitcoin in Aktion an!",
+    "toggleGettingStarted": "Erste Schritte umschalten",
+    "hideGettingStarted": "Erste Schritte ausblenden"
 }

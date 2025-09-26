@@ -88,5 +88,20 @@
     "continue": "Folytatás",
     "receiveAddressExplanationPart1": "A fogadó cím olyan, mint a személyes Bitcoin postaládád. Megoszthatod másokkal, hogy Bitcoint küldhessenek neked. Minden cím egyedi, és a rá küldött érmék a tárcádban fognak megjelenni.",
     "receiveAddressExplanationPart2": "Fontos, hogy mindig ellenőrizd a címet, mielőtt megosztod - ha elgépeled vagy rosszul másolod, a Bitcoin örökre elveszhet. A jobb adatvédelem érdekében érdemes minden alkalommal új címet használni ahelyett, hogy a régieket újrahasználnád.",
-    "gettingStarted": "Első lépések"
+    "gettingStarted": "Kezdő lépések",
+    "welcome": "Üdvözlünk",
+    "welcomeText1": "A TX Flow célja, hogy lépésről lépésre megértesse veled, hogyan működnek a Bitcoin tranzakciók - valódi érmék használata nélkül.",
+    "welcomeText2": "A teljes tárcák helyett itt a gyakorlati helyzetekre koncentrálunk: Bitcoin küldése egy <bold>váltóról</bold> egy <bold>tárcába</bold>, valamint a <bold>fel nem használt tranzakciós kimenetek (UTXO-k)</bold> kezelése.",
+    "whatYouCanDoHere": "Mit tehetsz itt",
+    "whatYouCanDoHereListItem1": "Szimulálhatod a Bitcoin küldését egy <bold>váltóról</bold> egy <bold>tárcába</bold>, majd vissza",
+    "whatYouCanDoHereListItem2": "Gyakorolhatod az <bold>UTXO konszolidációt</bold>, hogy megértsd, miért fontos",
+    "whatYouCanDoHereListItem3": "Kapcsold be az <bold>haladó módot</bold> a valósághűbb szimulációhoz",
+    "whatYouCanDoHereListItem4": "Fedezd fel a tranzakció részleteit, mint például a <bold>bemeneteket</bold>, <bold>kimeneteket</bold> és <bold>díjakat</bold>",
+    "nextSteps": "Következő lépések",
+    "nextStepsText1": "Kezdésként <bold>1 Bitcoin</bold> áll rendelkezésedre a váltódban. Az első lépés, hogy küldj némi BTC-t a tárcádba, és figyeld meg, hogyan épül fel a tranzakció. Ezután visszaküldheted a váltóra, vagy kipróbálhatod az <bold>UTXO konszolidációt</bold>, hogy lásd, hogyan lehet több kisebb kimenetet egyesíteni.",
+    "nextStepsText2": "Használd az <bold>haladó módot</bold>, hogy mélyebben belemerülj a Bitcoin tranzakciók mechanikájába és részletesebben felfedezd őket.",
+    "readyToExplore": "Készen állsz a felfedezésre?",
+    "readyToExploreText1": "Indítsd el az első tranzakciódat, és nézd meg működés közben a Bitcoint!",
+    "toggleGettingStarted": "Kezdő lépések váltása",
+    "hideGettingStarted": "Kezdő lépések elrejtése"
 }

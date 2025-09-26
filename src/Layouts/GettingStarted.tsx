@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import {
@@ -37,7 +37,7 @@ function GettingStarted() {
                         <IconBulbFilled />
                         {t("gettingStarted")}
                     </Flex>
-                    <Tooltip label="Hide getting started" withArrow radius="xl">
+                    <Tooltip label={t("hideGettingStarted")} withArrow radius="xl">
                         <ActionIcon
                             variant="subtle"
                             color="white"
@@ -59,23 +59,24 @@ function GettingStarted() {
                 shadow="none"
             >
                 <ScrollArea scrollbarSize={3}>
-                    {/* TODO: Translations */}
                     <Stack gap="xs" my="xs" me="xs">
                         <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconFlagFilled /> Welcome!
+                                        <IconFlagFilled /> {t("welcome")}
                                     </Flex>
                                 </Title>
                                 <Text size="sm" c="dimmed">
-                                    TX Flow is designed to help you understand the basics of how Bitcoin transactions work - step by step
-                                    and without using any real coins.
+                                    {t("welcomeText1")}
                                 </Text>
                                 <Text size="sm" c="dimmed">
-                                    Instead of working with full wallets, the focus here is on practical scenarios: sending Bitcoin between
-                                    an <b>exchange</b> and a <b>wallet</b>, and managing your
-                                    <b> unspent transaction outputs (UTXOs)</b>.
+                                    <Trans
+                                        i18nKey="welcomeText2"
+                                        components={{
+                                            bold: <b />,
+                                        }}
+                                    />
                                 </Text>
                             </Stack>
                         </Card>
@@ -84,7 +85,7 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconList /> What you can do here
+                                        <IconList /> {t("whatYouCanDoHere")}
                                     </Flex>
                                 </Title>
                                 <List
@@ -98,16 +99,36 @@ function GettingStarted() {
                                     c="dimmed"
                                 >
                                     <List.Item>
-                                        Simulate sending Bitcoin from an <b>exchange</b> to a <b>wallet</b> and back
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem1"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
                                     </List.Item>
                                     <List.Item>
-                                        Practice <b>UTXO consolidation</b> to learn why it matters
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem2"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
                                     </List.Item>
                                     <List.Item>
-                                        Toggle <b>advanced mode</b> for a more realistic simulation
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem3"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
                                     </List.Item>
                                     <List.Item>
-                                        Explore transaction details like <b>inputs</b>, <b>outputs</b>, and <b>fees</b>
+                                        <Trans
+                                            i18nKey="whatYouCanDoHereListItem4"
+                                            components={{
+                                                bold: <b />,
+                                            }}
+                                        />
                                     </List.Item>
                                 </List>
                             </Stack>
@@ -117,18 +138,24 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconBulbFilled /> Next steps
+                                        <IconBulbFilled /> {t("nextSteps")}
                                     </Flex>
                                 </Title>
                                 <Text size="sm" c="dimmed">
-                                    You begin with <b>1 Bitcoin</b> stored on your exchange account. Your first step is to send some BTC
-                                    from the exchange to your wallet and observe how the transaction is structured. From there, you can try
-                                    sending it back to the exchange or experiment with <b>UTXO consolidation</b> to see how multiple smaller
-                                    outputs can be combined.
+                                    <Trans
+                                        i18nKey="nextStepsText1"
+                                        components={{
+                                            bold: <b />,
+                                        }}
+                                    />
                                 </Text>
                                 <Text size="sm" c="dimmed">
-                                    Use <b>advanced mode</b> to dive deeper into the mechanics of Bitcoin transactions and explore them in
-                                    greater detail.
+                                    <Trans
+                                        i18nKey="nextStepsText2"
+                                        components={{
+                                            bold: <b />,
+                                        }}
+                                    />
                                 </Text>
                             </Stack>
                         </Card>
@@ -136,11 +163,11 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
-                                        <IconConfetti /> Ready to explore?
+                                        <IconConfetti /> {t("readyToExplore")}
                                     </Flex>
                                 </Title>
                                 <Text size="sm" c="dimmed">
-                                    Start your first transaction and see Bitcoin in action!
+                                    {t("readyToExploreText1")}
                                 </Text>
                             </Stack>
                         </Card>

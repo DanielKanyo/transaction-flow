@@ -59,8 +59,7 @@ function SettingsMenu() {
                             <IconBrandGithub size={20} />
                         </ActionIcon>
                     </Tooltip>
-                    {/* TODO: Translation */}
-                    <Tooltip label="Toggle getting started" radius="xl" withArrow>
+                    <Tooltip label={t("toggleGettingStarted")} radius="xl" withArrow>
                         <ActionIcon
                             size="xl"
                             variant="light"
