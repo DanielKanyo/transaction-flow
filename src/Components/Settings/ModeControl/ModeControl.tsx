@@ -50,6 +50,7 @@ function ModeControl() {
             radius="xl"
             value={advancedMode ? Modes.ADVANCED : Modes.BASIC}
             onChange={(v) => handleOnChange(v as Modes)}
+            color="violet"
         />
     );
 }
