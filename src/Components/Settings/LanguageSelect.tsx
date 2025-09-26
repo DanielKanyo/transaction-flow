@@ -44,6 +44,7 @@ function LanguageSelect({ native = false }: LanguageSelectProps) {
             <NativeSelect
                 value={language}
                 label={t("language")}
+                styles={{ label: { marginBottom: 4 } }}
                 leftSectionPointerEvents="none"
                 leftSection={<IconLanguage size={16} />}
                 variant="filled"

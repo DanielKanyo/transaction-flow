@@ -26,6 +26,7 @@ function UnitSelect({ native = false }: UnitSelectProps) {
             <NativeSelect
                 value={unit}
                 label={t("unit")}
+                styles={{ label: { marginBottom: 4 } }}
                 leftSectionPointerEvents="none"
                 leftSection={<IconCurrencyBitcoin size={16} />}
                 variant="filled"

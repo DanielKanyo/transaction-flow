@@ -50,7 +50,8 @@ function GettingStarted() {
                         <ActionIcon
                             variant="subtle"
                             color="white"
-                            radius="lg"
+                            radius={36}
+                            size={36}
                             aria-label="toggle-getting-started"
                             onClick={() => dispatch(updateGettingStartedVisible(false))}
                         >
