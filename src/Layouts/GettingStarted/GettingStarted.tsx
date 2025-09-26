@@ -69,7 +69,13 @@ function GettingStarted() {
             >
                 <ScrollArea classNames={{ viewport: isMobile ? classes.viewport : undefined }} scrollbarSize={3}>
                     <Stack gap="xs" my="xs" me="xs">
-                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                        <Card
+                            data-testid="welcome-card"
+                            shadow="xs"
+                            padding="lg"
+                            radius="lg"
+                            bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}
+                        >
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
@@ -90,7 +96,13 @@ function GettingStarted() {
                             </Stack>
                         </Card>
 
-                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                        <Card
+                            data-testid="what-can-you-do-here-card"
+                            shadow="xs"
+                            padding="lg"
+                            radius="lg"
+                            bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}
+                        >
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
@@ -116,7 +128,13 @@ function GettingStarted() {
                             </Stack>
                         </Card>
 
-                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                        <Card
+                            data-testid="next-steps-card"
+                            shadow="xs"
+                            padding="lg"
+                            radius="lg"
+                            bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}
+                        >
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
@@ -141,7 +159,13 @@ function GettingStarted() {
                                 </Text>
                             </Stack>
                         </Card>
-                        <Card shadow="xs" padding="lg" radius="lg" bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}>
+                        <Card
+                            data-testid="ready-to-explore-card"
+                            shadow="xs"
+                            padding="lg"
+                            radius="lg"
+                            bg={colorScheme === "light" ? "white" : theme.colors.dark[7]}
+                        >
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs">
