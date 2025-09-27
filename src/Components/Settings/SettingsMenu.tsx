@@ -6,6 +6,7 @@ import { useMediaQuery, useFullscreen } from "@mantine/hooks";
 import { IconSettings, IconSun, IconMoon, IconArrowsMaximize, IconArrowsMinimize } from "@tabler/icons-react";
 
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
+import { useAppSelector } from "../../Store/hook";
 import GettingStartedButton from "./GettingStartedButton";
 import LanguageSelect from "./LanguageSelect";
 import ModeControl from "./ModeControl/ModeControl";
@@ -19,6 +20,7 @@ function SettingsMenu() {
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
     const { toggle: toggleFullScreen, fullscreen } = useFullscreen();
     const [opened, setOpened] = useState(false);
+    const { advancedMode } = useAppSelector((state) => state.settings);
 
     return (
         <Popover position="bottom-end" radius="lg" opened={opened} onChange={setOpened} closeOnClickOutside>
@@ -36,7 +38,7 @@ function SettingsMenu() {
                 </Stack>
                 <Group justify="flex-end" gap="xs">
                     <SourceCodeButton />
-                    <GettingStartedButton />
+                    {!advancedMode ? <GettingStartedButton /> : null}
 
                     <Tooltip label={t("toggleColorScheme")} radius="xl" withArrow>
                         <ActionIcon

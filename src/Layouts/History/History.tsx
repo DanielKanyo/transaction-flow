@@ -2,23 +2,11 @@ import { Trans, useTranslation } from "react-i18next";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import {
-    Card,
-    Text,
-    Stack,
-    ScrollArea,
-    Flex,
-    useMantineTheme,
-    useMantineColorScheme,
-    Center,
-    Divider,
-    HoverCard,
-    List,
-    em,
-} from "@mantine/core";
+import { Card, Text, Stack, ScrollArea, Flex, useMantineTheme, useMantineColorScheme, Divider, HoverCard, List, em } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconHistory, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
+import EmptyList from "../../Components/EmptyList";
 import GroupCard from "../../Components/GroupCard";
 import TransactionItem from "../../Components/TransactionItem";
 import { RESPONSIVE_BREAKPOINT } from "../../Store/Features/Settings/SettingsSlice";
@@ -102,9 +90,7 @@ function History() {
                 <ScrollArea classNames={{ viewport: isMobile ? classes.viewport : undefined }} scrollbarSize={3}>
                     <Stack gap="xs" my="xs" me="xs">
                         {transactions.length === 0 ? (
-                            <Center p="xs">
-                                <Text c="dimmed">{t("noTransactionsFound")}</Text>
-                            </Center>
+                            <EmptyList text={t("noTransactionsFound")} />
                         ) : (
                             <AnimatePresence mode="popLayout">
                                 {transactions.map((tx, index) => (

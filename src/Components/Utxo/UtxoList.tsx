@@ -17,7 +17,6 @@ import {
     Divider,
     Button,
     Tooltip,
-    Center,
     em,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
@@ -27,6 +26,7 @@ import { UTXO } from "../../Store/Features/Ledger/LedgerSlice";
 import { RESPONSIVE_BREAKPOINT, Units } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
 import { COLORS } from "../../Utils/colors";
+import EmptyList from "../EmptyList";
 import UtxoItem from "./UtxoItem";
 import classes from "./UtxoList.module.css";
 
@@ -103,9 +103,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                 <ScrollArea classNames={{ viewport: isMobile ? classes.viewport : undefined }} scrollbarSize={2}>
                     <Stack gap="xs" my="xs" me="xs">
                         {walletUtxos.length === 0 ? (
-                            <Center p="xs">
-                                <Text c="dimmed">{t("noUtxosAvailable")}</Text>
-                            </Center>
+                            <EmptyList text={t("noUtxosAvailable")} />
                         ) : (
                             <AnimatePresence mode="popLayout">
                                 {[...walletUtxos]

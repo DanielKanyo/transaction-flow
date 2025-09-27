@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Drawer, Flex, Group, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
+import { useAppSelector } from "../../../Store/hook";
 import Donate from "../../Donate/Donate";
 import GettingStartedButton from "../GettingStartedButton";
 import LanguageSelect from "../LanguageSelect";
@@ -20,6 +21,7 @@ interface SettingsDrawerProps {
 function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
     const { setColorScheme } = useMantineColorScheme({ keepTransitions: true });
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
+    const { advancedMode } = useAppSelector((state) => state.settings);
     const { t } = useTranslation();
 
     return (
@@ -55,7 +57,7 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
                     <Group justify="flex-end" gap="xs">
                         <Donate />
                         <SourceCodeButton />
-                        <GettingStartedButton />
+                        {!advancedMode ? <GettingStartedButton /> : null}
                     </Group>
                     <ResetButton fullWidth />
                 </Stack>
