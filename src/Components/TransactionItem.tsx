@@ -1,11 +1,12 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter, useMantineColorScheme, useMantineTheme, em } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconArrowRight } from "@tabler/icons-react";
 
 import { Transaction } from "../Store/Features/Ledger/LedgerSlice";
-import { Units } from "../Store/Features/Settings/SettingsSlice";
+import { RESPONSIVE_BREAKPOINT, Units } from "../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../Store/hook";
 import { determineDisplayedValueAndNumOfDecimals } from "../Utils/number-of-decimals";
 
@@ -13,11 +14,6 @@ enum AccountType {
     WALLET = "wallet",
     EXCHANGE = "exchange",
     UNKNOWN = "unknown",
-}
-
-interface TransactionItemProps {
-    tx: Transaction;
-    index: number;
 }
 
 function UnitLabel({ children }: { children: React.ReactNode }) {
@@ -28,17 +24,15 @@ function UnitLabel({ children }: { children: React.ReactNode }) {
     );
 }
 
-function AddressList({
-    label,
-    items,
-    unit,
-    formattedUnit,
-}: {
+interface AddressListProps {
     label: string;
     items: { address: string; amount: number }[];
     unit: Units;
     formattedUnit: string;
-}) {
+    isMobile: boolean;
+}
+
+function AddressList({ label, items, unit, formattedUnit, isMobile }: AddressListProps) {
     return (
         <>
             <Text size="sm" mb="xs" c="dimmed">
@@ -50,7 +44,7 @@ function AddressList({
                     return (
                         <Group key={idx} justify="space-between" align="center">
                             <Text size="xs" style={{ wordBreak: "break-all" }}>
-                                {item.address}
+                                {isMobile ? `${item.address.slice(0, 11)}...${item.address.slice(-11)}` : item.address}
                             </Text>
                             <Group align="center" gap={4}>
                                 <Text size="xs">
@@ -66,12 +60,18 @@ function AddressList({
     );
 }
 
+interface TransactionItemProps {
+    tx: Transaction;
+    index: number;
+}
+
 function TransactionItem({ tx, index }: TransactionItemProps) {
     const { walletAddresses, exchangeAddresses } = useAppSelector((state) => state.ledger);
     const { unit, advancedMode } = useAppSelector((state) => state.settings);
     const { t } = useTranslation();
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
 
     const { from, to } = useMemo(() => {
         const inputFromExchange = tx.inputs.some((i) => exchangeAddresses.includes(i.address));
@@ -149,9 +149,9 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
 
             {advancedMode ? (
                 <>
-                    <AddressList label={t("inputs")} items={tx.inputs} unit={unit} formattedUnit={formattedUnit} />
+                    <AddressList label={t("inputs")} items={tx.inputs} unit={unit} formattedUnit={formattedUnit} isMobile={isMobile} />
                     <Divider my="sm" />
-                    <AddressList label={t("outputs")} items={tx.outputs} unit={unit} formattedUnit={formattedUnit} />
+                    <AddressList label={t("outputs")} items={tx.outputs} unit={unit} formattedUnit={formattedUnit} isMobile={isMobile} />
                     <Divider my="sm" />
                     <Group justify="space-between" align="baseline">
                         <Text size="sm" c="dimmed">
