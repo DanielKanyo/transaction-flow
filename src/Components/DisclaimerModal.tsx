@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
-import { Modal, Button, Checkbox, Text, Stack, Title, Divider, Group } from "@mantine/core";
+import { Modal, Button, Checkbox, Text, Stack, Title, Divider, Group, em } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconAlertTriangleFilled } from "@tabler/icons-react";
 
+import { RESPONSIVE_BREAKPOINT } from "../Store/Features/Settings/SettingsSlice";
 import { COLORS } from "../Utils/colors";
 import LanguageSelect from "./Settings/LanguageSelect";
 
@@ -11,6 +13,7 @@ function DisclaimerModal() {
     const [opened, setOpened] = useState(false);
     const [checked, setChecked] = useState(false);
     const { t } = useTranslation();
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
 
     useEffect(() => {
         const accepted = localStorage.getItem("appDisclaimerAccepted");
@@ -48,7 +51,7 @@ function DisclaimerModal() {
                     <Title order={3}>{t("disclaimer")}</Title>
                 </Group>
 
-                <LanguageSelect />
+                <LanguageSelect native={isMobile} />
 
                 <Text size="sm">
                     <Trans

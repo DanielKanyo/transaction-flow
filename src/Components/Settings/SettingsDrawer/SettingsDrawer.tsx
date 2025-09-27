@@ -39,7 +39,6 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
                     <NativeSelect
                         value={computedColorScheme}
                         label={t("toggleColorScheme")}
-                        styles={{ label: { marginBottom: 4 } }}
                         leftSectionPointerEvents="none"
                         leftSection={computedColorScheme === "light" ? <IconSun size={16} /> : <IconMoon size={16} />}
                         variant="filled"

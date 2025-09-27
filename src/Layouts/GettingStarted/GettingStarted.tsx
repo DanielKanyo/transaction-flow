@@ -79,7 +79,7 @@ function GettingStarted() {
                         >
                             <Stack>
                                 <Title order={4}>
-                                    <Flex align="center" gap="xs">
+                                    <Flex align="center" gap="xs" c={colorScheme === "light" ? theme.colors.dark[3] : theme.colors.dark[1]}>
                                         <IconFlagFilled /> {t("welcome")}
                                     </Flex>
                                 </Title>
@@ -106,7 +106,7 @@ function GettingStarted() {
                         >
                             <Stack>
                                 <Title order={4}>
-                                    <Flex align="center" gap="xs">
+                                    <Flex align="center" gap="xs" c={colorScheme === "light" ? theme.colors.dark[3] : theme.colors.dark[1]}>
                                         <IconList /> {t("whatYouCanDoHere")}
                                     </Flex>
                                 </Title>
@@ -138,7 +138,7 @@ function GettingStarted() {
                         >
                             <Stack>
                                 <Title order={4}>
-                                    <Flex align="center" gap="xs">
+                                    <Flex align="center" gap="xs" c={colorScheme === "light" ? theme.colors.dark[3] : theme.colors.dark[1]}>
                                         <IconBulbFilled /> {t("nextSteps")}
                                     </Flex>
                                 </Title>
@@ -169,7 +169,7 @@ function GettingStarted() {
                         >
                             <Stack>
                                 <Title order={4}>
-                                    <Flex align="center" gap="xs">
+                                    <Flex align="center" gap="xs" c={colorScheme === "light" ? theme.colors.dark[3] : theme.colors.dark[1]}>
                                         <IconConfetti /> {t("readyToExplore")}
                                     </Flex>
                                 </Title>

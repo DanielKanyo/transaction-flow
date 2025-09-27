@@ -54,7 +54,7 @@ function UtxoList({ walletUtxos }: UtxoListProps) {
                 <Flex align="center" gap="xs" h={UTXO_TITLE_CONTENT_HEIGHT}>
                     <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-start" radius="lg">
                         <HoverCard.Target>
-                            <IconInfoSquareRoundedFilled color={colorScheme === "light" ? theme.colors.dark[2] : theme.colors.dark[1]} />
+                            <IconInfoSquareRoundedFilled color={colorScheme === "light" ? theme.colors.dark[3] : theme.colors.dark[1]} />
                         </HoverCard.Target>
                         <HoverCard.Dropdown>
                             <Stack align="stretch" justify="center" gap="xs">

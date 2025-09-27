@@ -7,3 +7,7 @@
         --input-bd: var(--mantine-color-violet-filled);
     }
 }
+
+.label {
+    margin-bottom: 4px;
+}
