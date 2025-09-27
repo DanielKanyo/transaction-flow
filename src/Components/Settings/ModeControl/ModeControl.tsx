@@ -43,7 +43,7 @@ function ModeControl() {
 
     return (
         <SegmentedControl
-            classNames={{ control: classes.control, label: classes.label }}
+            classNames={{ control: classes.control, label: classes.label, input: classes.input }}
             styles={{
                 indicator: {
                     backgroundImage: `linear-gradient(90deg, ${COLORS.VIOLET}, ${COLORS.PURPLE})`,

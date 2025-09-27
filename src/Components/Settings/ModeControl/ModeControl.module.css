@@ -8,3 +8,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.input[data-focus-ring="auto"]:focus:focus-visible + .label {
+    --segmented-control-outline: 2px solid var(--mantine-color-violet-filled);
+}

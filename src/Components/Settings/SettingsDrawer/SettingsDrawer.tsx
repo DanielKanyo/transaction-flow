@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { Drawer, Flex, Group, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import { Drawer, Flex, Group, NativeSelect, Stack, useComputedColorScheme, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
 import { useAppSelector } from "../../../Store/hook";
@@ -23,6 +23,7 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
     const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
     const { advancedMode } = useAppSelector((state) => state.settings);
     const { t } = useTranslation();
+    const theme = useMantineTheme();
 
     return (
         <Drawer
@@ -32,6 +33,19 @@ function SettingsDrawer({ opened, setOpened }: SettingsDrawerProps) {
             size="lg"
             position="bottom"
             classNames={{ body: classes.body }}
+            overlayProps={{
+                backgroundOpacity: 0.6,
+                blur: 3,
+            }}
+            closeButtonProps={{
+                radius: "xl",
+            }}
+            styles={{
+                content: {
+                    borderTopLeftRadius: theme.radius.lg,
+                    borderTopRightRadius: theme.radius.lg,
+                },
+            }}
         >
             <Flex direction="column" justify="space-between" h="100%">
                 <Stack gap="md">
