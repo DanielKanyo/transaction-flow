@@ -16,6 +16,8 @@ enum AccountType {
     UNKNOWN = "unknown",
 }
 
+const ADDRESS_BREAKPOINT_INDEX = 11;
+
 function UnitLabel({ children }: { children: React.ReactNode }) {
     return (
         <Text size="xs" c="dimmed">
@@ -44,7 +46,9 @@ function AddressList({ label, items, unit, formattedUnit, isMobile }: AddressLis
                     return (
                         <Group key={idx} justify="space-between" align="center">
                             <Text size="xs" style={{ wordBreak: "break-all" }}>
-                                {isMobile ? `${item.address.slice(0, 11)}...${item.address.slice(-11)}` : item.address}
+                                {isMobile
+                                    ? `${item.address.slice(0, ADDRESS_BREAKPOINT_INDEX)}...${item.address.slice(-ADDRESS_BREAKPOINT_INDEX)}`
+                                    : item.address}
                             </Text>
                             <Group align="center" gap={4}>
                                 <Text size="xs">

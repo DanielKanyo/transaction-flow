@@ -11,9 +11,9 @@ describe("Header component", () => {
         expect(screen.getByText("FLOW")).toBeInTheDocument();
     });
 
-    it("should render the bolt icon", () => {
+    it("should render the app icon", () => {
         render(<Header />);
 
-        expect(screen.getByTestId("icon-bolt")).toBeInTheDocument();
+        expect(screen.getByTestId("icon-app")).toBeInTheDocument();
     });
 });

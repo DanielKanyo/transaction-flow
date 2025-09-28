@@ -95,7 +95,7 @@
     "whatYouCanDoHere": "Mit tehetsz itt",
     "whatYouCanDoHereListItem1": "Szimulálhatod a Bitcoin küldését egy <bold>váltóról</bold> egy <bold>tárcába</bold>, majd vissza",
     "whatYouCanDoHereListItem2": "Gyakorolhatod az <bold>UTXO konszolidációt</bold>, hogy megértsd, miért fontos",
-    "whatYouCanDoHereListItem3": "Kapcsold be az <bold>haladó módot</bold> a valósághűbb szimulációhoz",
+    "whatYouCanDoHereListItem3": "Kapcsold be a <bold>haladó módot</bold> a valósághűbb szimulációhoz",
     "whatYouCanDoHereListItem4": "Fedezd fel a tranzakció részleteit, mint például a <bold>bemeneteket</bold>, <bold>kimeneteket</bold> és <bold>díjakat</bold>",
     "nextSteps": "Következő lépések",
     "nextStepsText1": "Kezdésként <bold>1 Bitcoin</bold> áll rendelkezésedre. Az első lépés, hogy küldj némi BTC-t a tárcádba, és figyeld meg, hogyan épül fel a tranzakció. Ezután visszaküldheted a váltóra, vagy kipróbálhatod az <bold>UTXO konszolidációt</bold>, hogy lásd, hogyan lehet több kisebb kimenetet egyesíteni.",
