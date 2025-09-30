@@ -17,7 +17,7 @@ import {
     useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconCheck, IconBulbFilled, IconList, IconFlagFilled, IconConfetti, IconEyeClosed } from "@tabler/icons-react";
+import { IconCheck, IconBulb, IconList, IconFlagFilled, IconConfetti, IconEyeClosed } from "@tabler/icons-react";
 
 import GroupCard from "../../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT, updateGettingStartedVisible } from "../../Store/Features/Settings/SettingsSlice";
@@ -43,7 +43,7 @@ function GettingStarted() {
             <GroupCard bgImage={`linear-gradient(90deg, ${COLORS.VIOLET}, ${COLORS.PURPLE})`}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <IconBulbFilled />
+                        <IconBulb />
                         {t("gettingStarted")}
                     </Flex>
                     <Tooltip label={t("hideGettingStarted")} withArrow radius="xl">
@@ -139,7 +139,7 @@ function GettingStarted() {
                             <Stack>
                                 <Title order={4}>
                                     <Flex align="center" gap="xs" c={colorScheme === "light" ? theme.colors.dark[3] : theme.colors.dark[1]}>
-                                        <IconBulbFilled /> {t("nextSteps")}
+                                        <IconBulb /> {t("nextSteps")}
                                     </Flex>
                                 </Title>
                                 <Text size="sm" c="dimmed">

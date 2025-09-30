@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { Tooltip, ActionIcon } from "@mantine/core";
-import { IconBulbFilled } from "@tabler/icons-react";
+import { IconBulb } from "@tabler/icons-react";
 
 import { updateGettingStartedVisible } from "../../Store/Features/Settings/SettingsSlice";
 import { useAppSelector } from "../../Store/hook";
@@ -22,7 +22,7 @@ function GettingStartedButton() {
                 radius="xl"
                 onClick={() => dispatch(updateGettingStartedVisible(!gettingStartedVisible))}
             >
-                <IconBulbFilled size={20} />
+                <IconBulb size={20} />
             </ActionIcon>
         </Tooltip>
     );

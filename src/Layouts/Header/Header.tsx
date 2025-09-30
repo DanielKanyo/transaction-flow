@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { Burger, Flex, Group, Text } from "@mantine/core";
-import { IconTransactionBitcoin } from "@tabler/icons-react";
+import { IconBolt } from "@tabler/icons-react";
 
 import Donate from "../../Components/Donate/Donate";
 import ResetButton from "../../Components/Settings/ResetButton";
@@ -15,12 +15,15 @@ function Header() {
         <>
             <Flex align="center" justify="space-between" h="100%" lh={1}>
                 <Flex align="center" gap="xs">
-                    <IconTransactionBitcoin data-testid="icon-app" size={28} />
-                    <Group gap={4}>
+                    <IconBolt data-testid="icon-app" size={24} />
+                    <Group gap={0}>
+                        <Text fw={800} fz={28} fs="italic" lh={1}>
+                            BTC
+                        </Text>
                         <Text fw={800} fz={28} fs="italic" lh={1} c="violet">
                             TX
                         </Text>
-                        <Text fw={400} fz={28} fs="italic" lh={1}>
+                        <Text fw={800} fz={28} fs="italic" lh={1}>
                             FLOW
                         </Text>
                     </Group>

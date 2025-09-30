@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { logEvent } from "firebase/analytics";
 
 import { ActionIcon, Alert, Button, CopyButton, Group, HoverCard, Modal, Stack, TextInput, Tooltip, Text, Divider } from "@mantine/core";
-import { IconAlertSquareRoundedFilled, IconBulbFilled, IconCheck, IconCopy, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
+import { IconAlertSquareRoundedFilled, IconBulb, IconCheck, IconCopy, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
 
 import { analytics } from "../Config/Firebase/firebaseConfig";
 import { COLORS } from "../Utils/colors";
@@ -99,7 +99,7 @@ function ReceiveModal({ title, opened, latestAddress, close }: ReceiveModalProps
                     {t("doubleCheckAddress2")}
                 </Alert>
 
-                <Alert variant="light" color="violet" radius="lg" title={t("privacyTip")} icon={<IconBulbFilled />}>
+                <Alert variant="light" color="violet" radius="lg" title={t("privacyTip")} icon={<IconBulb />}>
                     {t("doNotReuseAddress")}
                 </Alert>
             </Stack>
