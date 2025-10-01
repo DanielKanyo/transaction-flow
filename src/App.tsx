@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 
 import { AnimatePresence, motion, Transition } from "framer-motion";
@@ -30,12 +30,7 @@ const HEADER_HEIGHT = 70;
 const CONTENT_PADDING = 10;
 const GRID_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + CONTENT_PADDING}px)`;
 
-export default function App() {
-    const { advancedMode, language, gettingStartedVisible } = useAppSelector((state) => state.settings);
-    const pinned = useHeadroom({ fixedAt: 120 });
-    const theme = useMantineTheme();
-    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
-    const { colorScheme } = useMantineColorScheme();
+function usePersistedSettings(language: Languages, advancedMode: boolean) {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -51,32 +46,87 @@ export default function App() {
             dispatch(updateAdvancedMode(storedMode !== Modes.BASIC));
         }
     }, [dispatch, language, advancedMode]);
+}
 
-    const colProps = {
-        span: { base: 12, lg: 4 },
-        h: "100%",
-    };
+function useMotionProps(animateHeight: string) {
+    return useMemo(
+        () => ({
+            initial: { height: 0, opacity: 0 },
+            animate: { height: animateHeight, opacity: 1 },
+            exit: { height: 0, opacity: 0 },
+            transition: {
+                duration: MODE_ANIMATION_DURATION,
+                type: "spring" as Transition["type"],
+                bounce: 0,
+            },
+            style: { overflow: "hidden" },
+        }),
+        [animateHeight]
+    );
+}
 
-    const motionPropsBase = {
-        initial: { height: 0, opacity: 0 },
-        exit: { height: 0, opacity: 0 },
-        transition: {
-            duration: MODE_ANIMATION_DURATION,
-            type: "spring" as Transition["type"],
-            bounce: 0,
-        },
-        style: { overflow: "hidden" },
-    };
+function MiddleColumn({
+    advancedMode,
+    gettingStartedVisible,
+    isMobile,
+}: {
+    advancedMode: boolean;
+    gettingStartedVisible: boolean;
+    isMobile: boolean;
+}) {
+    const historyMotion = useMotionProps("110%");
+    const defaultMotion = useMotionProps("69%");
 
-    const motionPropsHistoryAndGettingStarted = {
-        ...motionPropsBase,
-        animate: { height: "110%", opacity: 1 },
-    };
+    return (
+        <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
+            <AnimatePresence>
+                {!advancedMode && gettingStartedVisible && !isMobile && (
+                    <motion.div key="getting-started" {...historyMotion}>
+                        <Box h="100%" pb="xs">
+                            <GettingStarted />
+                        </Box>
+                    </motion.div>
+                )}
+                <motion.div key="history" {...historyMotion}>
+                    <Box h="100%">
+                        <History />
+                    </Box>
+                </motion.div>
+                {advancedMode && (
+                    <>
+                        <motion.div key="mempool" {...defaultMotion}>
+                            <Box h="100%" pt="xs">
+                                <MemoryPool />
+                            </Box>
+                        </motion.div>
+                        <motion.div key="chain" {...defaultMotion}>
+                            <Box h="100%" pt="xs">
+                                <Chain />
+                            </Box>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </Flex>
+    );
+}
 
-    const motionPropsDefault = {
-        ...motionPropsBase,
-        animate: { height: "69%", opacity: 1 },
-    };
+export default function App() {
+    const { advancedMode, language, gettingStartedVisible } = useAppSelector((state) => state.settings);
+    const pinned = useHeadroom({ fixedAt: 120 });
+    const theme = useMantineTheme();
+    const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
+    const { colorScheme } = useMantineColorScheme();
+
+    usePersistedSettings(language, advancedMode);
+
+    const colProps = useMemo(
+        () => ({
+            span: { base: 12, lg: 4 },
+            h: "100%",
+        }),
+        []
+    );
 
     return (
         <>
@@ -84,7 +134,9 @@ export default function App() {
                 data-testid="app-shell"
                 header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }}
                 padding="md"
-                style={{ background: colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7] }}
+                style={{
+                    background: colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7],
+                }}
             >
                 <AppShell.Header p="md">
                     <Header />
@@ -101,37 +153,7 @@ export default function App() {
                             <Exchange />
                         </Grid.Col>
                         <Grid.Col {...colProps}>
-                            <Flex direction="column" h="100%" style={{ overflow: "hidden" }}>
-                                <AnimatePresence>
-                                    {!advancedMode && gettingStartedVisible && !isMobile && (
-                                        <motion.div key="getting-started" {...motionPropsHistoryAndGettingStarted}>
-                                            <Box h="100%" pb="xs">
-                                                <GettingStarted />
-                                            </Box>
-                                        </motion.div>
-                                    )}
-                                    <motion.div key="history" {...motionPropsHistoryAndGettingStarted}>
-                                        <Box h="100%">
-                                            <History />
-                                        </Box>
-                                    </motion.div>
-                                    {advancedMode && (
-                                        <>
-                                            <motion.div key="mempool" {...motionPropsDefault}>
-                                                <Box h="100%" pt="xs">
-                                                    <MemoryPool />
-                                                </Box>
-                                            </motion.div>
-
-                                            <motion.div key="chain" {...motionPropsDefault}>
-                                                <Box h="100%" pt="xs">
-                                                    <Chain />
-                                                </Box>
-                                            </motion.div>
-                                        </>
-                                    )}
-                                </AnimatePresence>
-                            </Flex>
+                            <MiddleColumn advancedMode={advancedMode} gettingStartedVisible={gettingStartedVisible} isMobile={isMobile} />
                         </Grid.Col>
                         <Grid.Col {...colProps}>
                             <Wallet />
