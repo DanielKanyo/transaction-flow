@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { AnimatePresence, motion, Transition } from "framer-motion";
 
-import { AppShell, Box, em, Flex, Grid } from "@mantine/core";
+import { AppShell, Box, em, Flex, Grid, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { useHeadroom, useMediaQuery } from "@mantine/hooks";
 
 import "./App.css";
@@ -33,7 +33,9 @@ const GRID_HEIGHT = `calc(100vh - ${HEADER_HEIGHT + CONTENT_PADDING}px)`;
 export default function App() {
     const { advancedMode, language, gettingStartedVisible } = useAppSelector((state) => state.settings);
     const pinned = useHeadroom({ fixedAt: 120 });
+    const theme = useMantineTheme();
     const isMobile = useMediaQuery(`(max-width: ${em(RESPONSIVE_BREAKPOINT)})`);
+    const { colorScheme } = useMantineColorScheme();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -78,7 +80,12 @@ export default function App() {
 
     return (
         <>
-            <AppShell data-testid="app-shell" header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }} padding="md">
+            <AppShell
+                data-testid="app-shell"
+                header={{ height: HEADER_HEIGHT, collapsed: !pinned, offset: false }}
+                padding="md"
+                style={{ background: colorScheme === "light" ? theme.colors.gray[1] : theme.colors.dark[7] }}
+            >
                 <AppShell.Header p="md">
                     <Header />
                 </AppShell.Header>
@@ -98,13 +105,13 @@ export default function App() {
                                 <AnimatePresence>
                                     {!advancedMode && gettingStartedVisible && !isMobile && (
                                         <motion.div key="getting-started" {...motionPropsHistoryAndGettingStarted}>
-                                            <Box h="100%">
+                                            <Box h="100%" pb="xs">
                                                 <GettingStarted />
                                             </Box>
                                         </motion.div>
                                     )}
                                     <motion.div key="history" {...motionPropsHistoryAndGettingStarted}>
-                                        <Box h="100%" pt={isMobile ? "" : "xs"}>
+                                        <Box h="100%">
                                             <History />
                                         </Box>
                                     </motion.div>

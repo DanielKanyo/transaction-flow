@@ -71,7 +71,7 @@ function Exchange() {
     return (
         <>
             <Flex direction="column" gap="xs" h="100%">
-                <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
+                <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%" style={{ boxShadow: "none" }}>
                     <Flex h="100%" direction="column">
                         <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-blue-filled), var(--mantine-color-indigo-filled))">
                             <Flex justify="space-between" align="center" h="100%">

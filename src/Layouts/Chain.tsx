@@ -110,7 +110,7 @@ function Chain() {
     );
 
     return (
-        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%" style={{ boxShadow: "none" }}>
             <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-dark-filled), var(--mantine-color-dark-7))">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>

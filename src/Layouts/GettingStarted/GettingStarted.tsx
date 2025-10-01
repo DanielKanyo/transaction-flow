@@ -39,7 +39,7 @@ function GettingStarted() {
     const dispatch = useDispatch();
 
     return (
-        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%">
+        <Card shadow="sm" padding={isMobile ? "xs" : "md"} radius="lg" h="100%" style={{ boxShadow: "none" }}>
             <GroupCard bgImage={`linear-gradient(90deg, ${COLORS.VIOLET}, ${COLORS.PURPLE})`}>
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
