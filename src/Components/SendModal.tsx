@@ -89,7 +89,7 @@ function SendModal({ title, opened, senderAddresses, utxos, exchangeMode, close 
     const addressInfo = (
         <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
             <HoverCard.Target>
-                <IconInfoSquareRoundedFilled size={20} />
+                <IconInfoSquareRoundedFilled size={20} role="img" aria-label="More-info" style={{ cursor: "help" }} />
             </HoverCard.Target>
             <HoverCard.Dropdown>
                 <Stack align="stretch" justify="center" gap="xs">

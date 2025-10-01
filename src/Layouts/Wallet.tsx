@@ -40,7 +40,7 @@ function Wallet() {
     const infoHoverCard = (
         <HoverCard width={320} shadow="md" openDelay={200} closeDelay={200} position="bottom-end" radius="lg">
             <HoverCard.Target>
-                <IconInfoSquareRoundedFilled />
+                <IconInfoSquareRoundedFilled role="img" aria-label="More-info" style={{ cursor: "help" }} />
             </HoverCard.Target>
             <HoverCard.Dropdown>
                 <Stack align="stretch" justify="center" gap="xs">
