@@ -21,12 +21,12 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import {
-    IconBlocks,
     IconClockHour10,
     IconInfoSquareRoundedFilled,
     IconPick,
     IconPlayerPlayFilled,
     IconPlayerTrackNextFilled,
+    IconStack2,
 } from "@tabler/icons-react";
 
 import BackgroundBlobs from "../Components/BackgroundBlobs/BackgroundBlobs";
@@ -97,7 +97,7 @@ function MemoryPool() {
             <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-dark-filled), var(--mantine-color-dark-7))">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <IconBlocks />
+                        <IconStack2 />
                         {t("memoryPool")}
                     </Flex>
                     <Flex gap="xs" align="center">

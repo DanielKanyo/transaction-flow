@@ -17,7 +17,7 @@ import {
     Button,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconBox, IconInfoSquareRoundedFilled } from "@tabler/icons-react";
+import { IconBox, IconInfoSquareRoundedFilled, IconLink } from "@tabler/icons-react";
 
 import GroupCard from "../Components/GroupCard";
 import { RESPONSIVE_BREAKPOINT } from "../Store/Features/Settings/SettingsSlice";
@@ -114,7 +114,7 @@ function Chain() {
             <GroupCard bgImage="linear-gradient(90deg, var(--mantine-color-dark-filled), var(--mantine-color-dark-7))">
                 <Flex justify="space-between" align="center" h="100%">
                     <Flex gap="sm" align="center" lh={1}>
-                        <IconBox />
+                        <IconLink />
                         {t("blockchain")}
                     </Flex>
                     {infoHoverCard}

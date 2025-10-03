@@ -74,7 +74,7 @@ function MiddleColumn({
     gettingStartedVisible: boolean;
     isMobile: boolean;
 }) {
-    const historyMotion = useMotionProps("110%");
+    const historyMotion = useMotionProps("120%");
     const defaultMotion = useMotionProps("69%");
 
     return (

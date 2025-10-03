@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter, useMantineColorScheme, useMantineTheme, em } from "@mantine/core";
+import { Badge, Card, Divider, Group, Stack, Text, NumberFormatter, useMantineColorScheme, useMantineTheme, em, Flex } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconArrowRight } from "@tabler/icons-react";
+import { IconArrowRight, IconSwipeLeft, IconSwipeRight } from "@tabler/icons-react";
 
 import { Transaction } from "../Store/Features/Ledger/LedgerSlice";
 import { RESPONSIVE_BREAKPOINT, Units } from "../Store/Features/Settings/SettingsSlice";
@@ -32,14 +32,18 @@ interface AddressListProps {
     unit: Units;
     formattedUnit: string;
     isMobile: boolean;
+    icon: React.ReactNode;
 }
 
-function AddressList({ label, items, unit, formattedUnit, isMobile }: AddressListProps) {
+function AddressList({ label, items, unit, formattedUnit, isMobile, icon }: AddressListProps) {
     return (
         <>
-            <Text size="sm" mb="xs" c="dimmed">
-                {label}
-            </Text>
+            <Flex align="center" mb="xs" gap="xs">
+                {icon}
+                <Text size="sm" c="dimmed">
+                    {label}
+                </Text>
+            </Flex>
             <Stack gap={2}>
                 {items.map((item, idx) => {
                     const { displayedValue, numOfDecimals } = determineDisplayedValueAndNumOfDecimals(item.amount, unit);
@@ -153,14 +157,31 @@ function TransactionItem({ tx, index }: TransactionItemProps) {
 
             {advancedMode ? (
                 <>
-                    <AddressList label={t("inputs")} items={tx.inputs} unit={unit} formattedUnit={formattedUnit} isMobile={isMobile} />
+                    <AddressList
+                        label={t("inputs")}
+                        items={tx.inputs}
+                        unit={unit}
+                        formattedUnit={formattedUnit}
+                        isMobile={isMobile}
+                        icon={<IconSwipeRight size={19} style={{ color: "gray" }} />}
+                    />
                     <Divider my="sm" />
-                    <AddressList label={t("outputs")} items={tx.outputs} unit={unit} formattedUnit={formattedUnit} isMobile={isMobile} />
+                    <AddressList
+                        label={t("outputs")}
+                        items={tx.outputs}
+                        unit={unit}
+                        formattedUnit={formattedUnit}
+                        isMobile={isMobile}
+                        icon={<IconSwipeLeft size={19} style={{ color: "gray" }} />}
+                    />
                     <Divider my="sm" />
                     <Group justify="space-between" align="baseline">
-                        <Text size="sm" c="dimmed">
-                            {t("transactionFee")}
-                        </Text>
+                        <Flex align="center" gap="xs">
+                            <IconSwipeLeft size={19} style={{ color: "gray" }} />
+                            <Text size="sm" c="dimmed">
+                                {t("transactionFee")}
+                            </Text>
+                        </Flex>
                         <Group align="center" gap={4}>
                             <Text size="xs">{fee.displayedValue}</Text>
                             <UnitLabel>{formattedUnit}</UnitLabel>
