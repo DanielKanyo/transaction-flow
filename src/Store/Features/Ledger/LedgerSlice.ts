@@ -8,7 +8,7 @@ export const DUST_THRESHOLD = 0.00000546; // ~546 satoshis
 
 export const DEFAULT_FEE = 0.000001;
 
-export type Block = { id: number; highlightTransaction: boolean };
+type Block = { id: number; highlightTransaction: boolean };
 
 const INITIAL_BLOCKS: Block[] = [
     { id: 1, highlightTransaction: false },
@@ -39,7 +39,7 @@ export type Transaction = {
     transferredAmount: number;
 };
 
-export type LedgerState = {
+type LedgerState = {
     exchangeAddresses: string[];
     walletAddresses: string[];
     balanceOnExchange: number;
@@ -80,7 +80,7 @@ const createInitialLedgerState = (): LedgerState => {
 
 const initialState = createInitialLedgerState();
 
-export const ledgerSlice = createSlice({
+const ledgerSlice = createSlice({
     name: "ledger",
     initialState,
     reducers: {

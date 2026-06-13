@@ -25,7 +25,7 @@ export enum Modes {
     ADVANCED = "advanced",
 }
 
-export type Settings = {
+type Settings = {
     unit: Units;
     language: Languages;
     advancedMode: boolean;
@@ -39,7 +39,7 @@ const initSettings: Settings = {
     gettingStartedVisible: true,
 };
 
-export const settingsSlice = createSlice({
+const settingsSlice = createSlice({
     name: "settings",
     initialState: initSettings,
     reducers: {

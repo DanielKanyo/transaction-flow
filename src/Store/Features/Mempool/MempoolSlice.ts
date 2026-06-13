@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { Transaction } from "../Ledger/LedgerSlice";
 
-export type Mempool = {
+type Mempool = {
     transactions: Transaction[];
 };
 
@@ -10,7 +10,7 @@ const initMempool: Mempool = {
     transactions: [],
 };
 
-export const mempoolSlice = createSlice({
+const mempoolSlice = createSlice({
     name: "mempool",
     initialState: initMempool,
     reducers: {
